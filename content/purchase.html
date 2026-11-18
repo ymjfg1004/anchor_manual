@@ -1,0 +1,1353 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>구매관리 매뉴얼</title><style>
+:root{--bg:#fff;--fg:#1f2328;--muted:#656d76;--line:#d0d7de;--soft:#f6f8fa;--link:#0b5cad}
+@media (prefers-color-scheme:dark){:root{--bg:#161b22;--fg:#e6edf3;--muted:#9198a1;--line:#30363d;--soft:#1c2128;--link:#79b8ff}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.7 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif}
+a{color:var(--link)}
+.layout{display:flex;align-items:flex-start;max-width:1280px;margin:0 auto}
+nav.side{width:300px;flex:none;position:sticky;top:0;height:100vh;overflow:auto;padding:20px 16px;border-right:1px solid var(--line);font-size:13px}
+nav.side .brand{font-weight:700;font-size:15px;margin-bottom:12px;display:block;color:var(--fg);text-decoration:none}
+nav.side .mods{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:14px}
+nav.side .mods a{padding:2px 8px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:var(--fg)}
+nav.side .mods a.on{background:var(--fg);color:var(--bg)}
+nav.side ol{list-style:none;margin:0;padding:0}
+nav.side li a{display:block;padding:2px 0;text-decoration:none;color:var(--fg)}
+nav.side li a:hover{color:var(--link)}
+main{flex:1;min-width:0;padding:28px 36px 80px}
+.pill{display:inline-block;font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:10px;padding:0 8px;margin-bottom:8px}
+h1.module-title{font-size:28px;margin:0 0 6px}
+section.page{padding-top:28px;margin-top:36px;border-top:3px solid var(--fg)}
+h1.page-title{font-size:24px;margin:0 0 4px}
+section.page h1{font-size:20px;margin:28px 0 8px}
+section.page h2{font-size:18px;margin:24px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+section.page h3{font-size:16px;margin:20px 0 6px}
+img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:4px;display:block;margin:10px 0 4px;background:#fff}
+.callout{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--muted);border-radius:4px;padding:8px 14px;margin:12px 0}
+.callout p{margin:6px 0}
+table{border-collapse:collapse;margin:12px 0;font-size:14px;display:block;overflow:auto;max-width:100%}
+th,td{border:1px solid var(--line);padding:5px 10px;vertical-align:top;text-align:left}
+th{background:var(--soft)}
+blockquote{margin:10px 0;padding:2px 14px;border-left:4px solid var(--line);color:var(--muted)}
+ul,ol{padding-left:1.4em}
+.toc-page ol{columns:2;column-gap:32px}
+.note{font-size:13px;color:var(--muted)}
+.top{font-size:12px;float:right}
+@media (max-width:860px){.layout{display:block}nav.side{position:static;width:auto;height:auto;border-right:0;border-bottom:1px solid var(--line)}main{padding:20px 16px 60px}}
+@media print{nav.side{display:none}main{padding:0}section.page{break-before:page}}
+</style></head><body><div class="layout"><nav class="side"><a class="brand" href="index.html">앵커 ERP 매뉴얼 · 내용 정리</a><div class="mods"><a href="index.html">홈</a><a href="production.html">생산관리</a><a href="purchase.html" class="on">구매관리</a><a href="cost.html">원가관리</a><a href="outsourcing.html">외주관리</a><a href="budget.html">예산관리</a><a href="sales.html">영업관리</a><a href="review.html">검토 메모</a></div><ol><li><a href="#purchase-1-1">1.1. 구매거래처 정보</a></li><li><a href="#purchase-2-1">2.1. 구매요청서</a></li><li><a href="#purchase-3-1">3.1. 발주서(구매오더)</a></li><li><a href="#purchase-3-2">3.2. 발주대비 입고내역</a></li><li><a href="#purchase-4-1">4.1. 구매입고서</a></li><li><a href="#purchase-4-2">4.2. 검수 및 반품처리</a></li><li><a href="#purchase-5-1">5.1. 송장입력</a></li><li><a href="#purchase-5-2">5.2. 구매관리 회계처리</a></li><li><a href="#purchase-6-1">6.1. GR/IR 불일치 조회</a></li><li><a href="#purchase-6-2">6.2. GR/IR 잔액조회</a></li><li><a href="#purchase-6-3">6.3. 발주 별 입고/송장 현황</a></li></ol></nav><main><a id="top"></a><span class="pill">앵커 ERP 매뉴얼 · 11개 문서</span><h1 class="module-title">구매관리 매뉴얼</h1><div class="toc-page"><ol><li><a href="#purchase-1-1">1.1. 구매거래처 정보</a></li><li><a href="#purchase-2-1">2.1. 구매요청서</a></li><li><a href="#purchase-3-1">3.1. 발주서(구매오더)</a></li><li><a href="#purchase-3-2">3.2. 발주대비 입고내역</a></li><li><a href="#purchase-4-1">4.1. 구매입고서</a></li><li><a href="#purchase-4-2">4.2. 검수 및 반품처리</a></li><li><a href="#purchase-5-1">5.1. 송장입력</a></li><li><a href="#purchase-5-2">5.2. 구매관리 회계처리</a></li><li><a href="#purchase-6-1">6.1. GR/IR 불일치 조회</a></li><li><a href="#purchase-6-2">6.2. GR/IR 잔액조회</a></li><li><a href="#purchase-6-3">6.3. 발주 별 입고/송장 현황</a></li></ol></div><section class="page" id="purchase-1-1"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">1.1. 구매거래처 정보</h1><h1>1. 구매처 관리</h1>
+<h2>1.1. 구매거래처 정보</h2>
+<h3>개요</h3>
+<p>자재·원재료·서비스를 공급받는 <strong>구매거래처(공급사)</strong>를 등록·관리하는 화면입니다. 여기서 등록한 거래처는 구매요청서·발주서·송장 등 후속 구매 업무에서 선택 대상으로 사용됩니다.</p>
+<div class="callout">
+<p>🧱 거래처는 ‘기본정보 + 거래조건(기본통화/결제조건/인도조건/평균리드타임) + 담당자/계좌정보’를 한 등록 팝업에서 모두 입력합니다. 결제조건·인도조건은 발주 시점에 그대로 끌어오므로 가급적 모두 설정합니다.</p>
+</div>
+<h3>화면 진입</h3>
+<p>좌측 사이드바 <code>[구매관리] ▸ [구매처 관리] ▸ [구매거래처 정보]</code></p>
+<h3>목록 화면</h3>
+<p><img loading="lazy" src="images/purchase/1-1/01_list.png" alt="구매거래처 정보 목록 — 거래처코드/거래처명/사업자번호/대표자/통화/결제조건/인도조건/평균리드타임/담당자/연락처/이메일/사용여부" /></p>
+<p>구매거래처 정보 목록 — 거래처코드/거래처명/사업자번호/대표자/통화/결제조건/인도조건/평균리드타임/담당자/연락처/이메일/사용여부</p>
+<ul>
+<li><strong>①</strong> 기능 버튼 — <code>[등록]</code> / <code>[수정]</code> / <code>[삭제]</code> / <code>[다운로드]</code> / <code>[업로드]</code>. 수정·삭제는 그리드에서 체크박스로 선택 후 사용합니다.</li>
+<li><strong>②</strong> 그리드 — 등록된 거래처 한 행이 거래처 1건. 결제조건/인도조건/담당자명/신용등급 셀의 돋보기 아이콘으로 별도 선택 팝업을 열어 빠르게 변경할 수도 있습니다.</li>
+</ul>
+<div class="callout">
+<p>📌 표시 데이터 예시 — V-001 / 도장외주㈜ (외주거래처), G00002 / 공급사A, G00003 / 공급사B. 사용여부 토글이 ON인 행만 발주 화면의 선택 대상이 됩니다.</p>
+</div>
+<h3>거래처 등록</h3>
+<p>상단 <code>[등록]</code> 버튼을 클릭하면 거래처 등록 팝업이 열립니다. 폼이 길어 메모 아래 영역까지 스크롤이 필요하므로, 아래는 위·아래를 합친 전체 모습입니다.</p>
+<p><img loading="lazy" src="images/purchase/1-1/02_register.png" alt="거래처 등록 팝업 — 전체 필드(메모 아래 거래조건·담당자정보 포함)" /></p>
+<p>거래처 등록 팝업 — 전체 필드(메모 아래 거래조건·담당자정보 포함)</p>
+<ul>
+<li><strong>①</strong> 거래처 구분* — 매입 / 혼합. 일반 공급사는 ‘매입’, 외주·매입을 같이 하는 곳은 ‘혼합’</li>
+<li><strong>②</strong> 거래처명* — 공급사의 상호명</li>
+<li><strong>③</strong> 거래처코드 — ‘자동’ 토글 ON이면 저장 시 시스템이 채번. 끄면 직접 입력</li>
+<li><strong>④</strong> 거래처 유형* — 개인사업자 / 법인사업자 / 개인</li>
+<li><strong>⑤</strong> 사업자번호* — 10자리. <code>[휴폐업조회]</code> 버튼으로 국세청 휴폐업 여부 확인</li>
+<li><strong>⑥</strong> 대표자명* — 사업자등록증상 대표자</li>
+<li><strong>⑦</strong> 사용여부* — 토글. OFF면 발주 화면 선택 대상에서 제외</li>
+<li><strong>⑧</strong> 주소 — 우편번호 검색으로 도로명 주소 + 상세주소</li>
+<li><strong>⑨</strong> 업태 / 종목 — 사업자등록증 그대로</li>
+<li><strong>⑩</strong> 연락처 / Fax 번호 — 3분할 번호 입력</li>
+<li><strong>⑪</strong> 메모 — 거래처 자유 텍스트 (취급 품목, 특이사항 등)</li>
+<li><strong>⑫</strong> 기본통화* / 결제조건 — 기본통화 코드와 결제조건 마스터에서 선택. 결제조건은 발주 시 만기일 계산에 사용</li>
+<li><strong>⑬</strong> 인도조건 / 평균리드타임 — 인코텀스 기반 인도조건과 발주 후 입고까지 평균 일수. 평균리드타임은 MRP 계산에 사용</li>
+<li><strong>⑭</strong> 전용품목 — 토글 ON 시 해당 거래처에만 발주 가능한 ‘전용품목’ 관리 메뉴 연동</li>
+<li><strong>⑮</strong> 거래등급 — 신용·실적 기반 거래등급 (해당없음/A/B/C 등)</li>
+<li><strong>⑯</strong> 담당자정보 / 계좌정보 탭 — <code>[추가]</code>로 담당자(이름/직위/연락처/이메일)와 송금 계좌 정보를 등록. 발주서·송장 메일 발송 시 이 담당자가 수신자로 기본 설정됩니다.</li>
+</ul>
+<p>입력 후 <code>[저장]</code> / <code>[연속 등록]</code> (저장 후 빈 폼 재오픈)</p>
+<h3>거래처 수정</h3>
+<p>목록에서 거래처를 체크박스로 선택한 뒤 <code>[수정]</code> 버튼을 클릭하면 동일 폼이 데이터가 채워진 상태로 열립니다 (거래처코드는 readonly). 메모 아래 거래조건·담당자정보까지 한 화면에서 모두 확인할 수 있습니다.</p>
+<p><img loading="lazy" src="images/purchase/1-1/03_edit.png" alt="거래처 수정 — 공급사A(G00002) 전체 데이터가 채워진 상태" /></p>
+<p>거래처 수정 — 공급사A(G00002) 전체 데이터가 채워진 상태</p>
+<ul>
+<li>거래처 코드 G00002, 법인사업자, 사업자번호 120-81-12345, 대표자 이공급, 본사 경기도 성남시 분당구 판교로 256</li>
+<li>결제조건 ‘계산서일 즉시지급’, 인도조건 ‘장소 인도’, 기본통화 ‘대한민국 원’</li>
+<li>담당자 1명: 이매입 대리 / 101-234-1234 / lee@supplya.co.kr</li>
+</ul>
+<h3>결제조건 / 인도조건 / 담당자 — 빠른 변경</h3>
+<p>거래처 수정 팝업을 열지 않고도, 목록 그리드의 셀에 있는 돋보기를 눌러 결제조건/인도조건/담당자만 빠르게 바꿀 수 있습니다.</p>
+<p>결제조건 — 사전 등록된 마스터에서 선택</p>
+<p><img loading="lazy" src="images/purchase/1-1/04_payment.png" alt="결제조건 선택 팝업" /></p>
+<p>결제조건 선택 팝업</p>
+<ul>
+<li>기본 옵션: <em>계산서일 즉시 지급 / 계산서 30·45·60일 후 / 매월 25일 또는 말일 지급 / 납품 후 30일 / 검수 후 30일 / 30일 후 지급(2% 할인) / 선지급 100%</em></li>
+</ul>
+<p>인도조건 — 인코텀스(Incoterms) 8종</p>
+<p><img loading="lazy" src="images/purchase/1-1/05_delivery.png" alt="인도조건 선택 팝업" /></p>
+<p>인도조건 선택 팝업</p>
+<ul>
+<li><code>EXW</code> 공장 인도 / <code>FCA</code> 운송인 인도</li>
+<li><code>CPT</code> 운송비 지급 인도 / <code>CIP</code> 운송·보험 지급 인도</li>
+<li><code>DAP</code> 장소 인도 / <code>DPU</code> 하역 후 인도 / <code>DDP</code> 관세지급 인도 / <code>ETC</code> 기타</li>
+</ul>
+<p>담당자 — 등록된 담당자 조회</p>
+<p><img loading="lazy" src="images/purchase/1-1/06_manager.png" alt="담당자 조회 팝업 (공급사A · 이매입)" /></p>
+<p>담당자 조회 팝업 (공급사A · 이매입)</p>
+<h3>기타 기능</h3>
+<ul>
+<li>평균리드타임 — 발주 후 입고까지 평균 일수. 셀 클릭으로 직접 숫자 입력</li>
+<li>사용여부 토글 — OFF로 바꾸면 신규 발주 선택 대상에서 제외 (기존 발주·송장에는 영향 없음)</li>
+<li>다운로드 — 현재 거래처 목록을 엑셀로 내려받기</li>
+<li>업로드 — 엑셀 양식에 맞춰 다수의 거래처를 일괄 등록</li>
+</ul>
+</section><section class="page" id="purchase-2-1"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">2.1. 구매요청서</h1><h1>2. 구매요청(PR)</h1>
+<h2>2.1. 구매요청서</h2>
+<h3>개요</h3>
+<p>자재/원재료가 필요한 부서가 <strong>구매요청(Purchase Request, PR)</strong>을 등록하는 화면입니다. 구매요청서는 발주서(PO)의 원천 문서로, 여기서 등록한 품목·수량·납기가 발주의 기준이 됩니다.</p>
+<div class="callout">
+<p>🧱 구매요청서 1건은 ‘요청 헤더(요청번호/일자/공장/요청부서/요청자)’와 ‘여러 줄의 품목정보(품목/수량/창고/납기)’로 구성됩니다. 작성 후에는 결재상신을 통해 승인 절차를 거친 뒤 발주서로 전환됩니다.</p>
+</div>
+<h3>화면 진입</h3>
+<p>좌측 사이드바 <code>[구매관리] ▸ [구매요청(PR)] ▸ [구매요청서]</code></p>
+<h3>목록 화면</h3>
+<p>상단에는 구매요청서 헤더 목록, 하단의 ‘상세품목정보’ 영역에는 상단에서 선택한 요청서의 품목 라인들이 표시되는 2단 구조입니다.</p>
+<p><img loading="lazy" src="images/purchase/2-1/01_list.png" alt="구매요청서 목록 — 상단: 요청서 헤더 / 하단: 선택된 요청서의 품목 상세 / 우측에 결재상신 버튼" /></p>
+<p>구매요청서 목록 — 상단: 요청서 헤더 / 하단: 선택된 요청서의 품목 상세 / 우측에 결재상신 버튼</p>
+<ul>
+<li><strong>①</strong> 기능 버튼 — <code>[마감]</code> / <code>[등록]</code> / <code>[수정]</code> / <code>[삭제]</code> / <code>[복사]</code> / <code>[출력]</code> / <code>[다운로드]</code> / <code>[결재상신]</code></li>
+<li><strong>②</strong> 요청서 그리드 — 한 행이 요청서 1건. <code>구매요청번호 / 구매요청일자 / 공장 / 요청납기일자 / 프로젝트 / 현장 / 요청부서 / 요청자 / 비고 / 구매요청상태 / 요청경로 / 최종작업자 / 작업일시</code></li>
+<li><strong>③</strong> 상세품목정보 — 상단 그리드에서 선택한 요청서의 품목 라인 목록. <code>품목코드 / 품목명 / 품목유형 / 규격 / 단위 / 구매요청수량 / 공장 / 창고 / 요청납기일자 / 비고 / 미발주수량 / 상태</code></li>
+<li><strong>④ 결재상신</strong> — 작성한 구매요청서를 전자결재로 올려 승인을 받는 버튼. 결재 완료된 요청서만 발주서 생성 후보가 됩니다.</li>
+</ul>
+<div class="callout">
+<p>🔄 상태 흐름 — [작성중] → [결재상신] → 결재 진행 중/완료 → 발주서 생성 시 [발주]/[미발주] 잔량 표시. 미발주수량이 0이 되면 해당 라인은 발주 완료.</p>
+</div>
+<h3>구매요청서 생성 방식</h3>
+<p>구매요청서는 <strong>3가지 방식</strong>으로 만들 수 있습니다. 어떤 방식이든 결과물은 동일한 ‘구매요청서’ 한 건이며, 이후 결재상신·발주 전환은 같은 흐름입니다.</p>
+<ul>
+<li><strong>MRP 기반 자동 생성</strong> — 주관부서: 생산관리팀. MRP 실행 시 자재 부족 분이 산출되면 구매요청서 초안이 자동 생성됩니다.</li>
+<li><strong>안전재고 기반 자동 생성</strong> — 주관부서: 창고관리팀. 품목별 안전재고수량 미만이 되면 일배치로 자동 생성됩니다. <em>실행 시각: 매일 새벽 2시</em>.</li>
+<li><strong>요청자 수기 생성</strong> — 요청자가 본 화면에서 <code>[등록]</code> 버튼으로 헤더·라인을 직접 입력하고 필요 시 첨부도 등록합니다. (아래 ‘구매요청서 등록’ 참조)</li>
+</ul>
+<h3>안전재고 기반 자동 생성 — 설정 방법</h3>
+<p>품목 단위로 <code>[기초정보] ▸ [품목정보]</code> 화면의 <strong>‘재고정보’</strong> 탭에서 자동 구매요청 조건을 설정합니다.</p>
+<p><img loading="lazy" src="images/purchase/2-1/10_auto_purchase_setting.png" alt="품목정보 ▸ 재고정보 탭 — 안전재고수량 / 자동구매요청 / 재주문수량 설정" /></p>
+<p>품목정보 ▸ 재고정보 탭 — 안전재고수량 / 자동구매요청 / 재주문수량 설정</p>
+<ul>
+<li><strong>안전재고수량</strong> — 보유 재고가 이 수량 아래로 떨어지면 보충이 필요한 기준.</li>
+<li><strong>자동구매요청</strong> — <code>사용</code> 선택 시 일배치 대상이 됩니다. <code>미사용</code>이면 안전재고 미만이어도 자동 생성하지 않습니다.</li>
+<li><strong>재주문수량</strong> — 자동구매요청이 트리거됐을 때 생성되는 요청서의 <code>요청수량</code>. 즉 "안전재고 아래로 떨어지면 재주문수량만큼 요청".</li>
+<li>적정재고수량 — 참고용 보조 필드 (자동 생성 트리거에는 직접 사용되지 않음)</li>
+</ul>
+<div class="callout">
+<p>🕑 실행 흐름 — 매일 새벽 2시에 ‘자동구매요청 = 사용’인 품목을 스캔 → 현재고 &lt; 안전재고수량인 품목에 대해 재주문수량만큼의 구매요청서 초안 자동 생성 → 창고관리팀이 검토·결재상신.</p>
+</div>
+<h3>구매요청서 등록</h3>
+<p>상단 <code>[등록]</code> 버튼을 클릭하면 구매요청서 등록 팝업이 열립니다.</p>
+<p><img loading="lazy" src="images/purchase/2-1/02_register.png" alt="구매요청서 등록 팝업" /></p>
+<p>구매요청서 등록 팝업</p>
+<ul>
+<li><strong>①</strong> 헤더 1행 — <code>구매요청번호(자동 채번) / 구매요청일자(오늘) / 요청납기일자(오늘) / 공장*</code>. 공장은 발주처(자재가 들어올 공장)를 선택</li>
+<li><strong>②</strong> 헤더 2행 — <code>프로젝트 / 현장 / 요청부서 / 요청자</code>. 사용 안 하면 비워둬도 됩니다.</li>
+<li><strong>③</strong> 비고 — 요청서 전체에 대한 메모 (예: <em>Case A — 정상 베이스 RM-A01 60EA × 1,000</em>)</li>
+<li><strong>④</strong> 품목정보 — 요청 품목 라인을 등록하는 영역. <code>[품목불러오기]</code> 클릭 → 품목 조회 팝업에서 선택. 라인별 필수: <code>요청수량* / 공장* / 창고* / 요청납기일자*</code></li>
+</ul>
+<p><code>[저장]</code> → 요청서가 ‘작성중’ 상태로 목록에 추가됩니다.</p>
+<h3>구매요청서 수정</h3>
+<p>목록에서 요청서를 체크박스로 선택한 뒤 <code>[수정]</code> 버튼 클릭. 동일 폼이 데이터가 채워진 상태로 열립니다.</p>
+<p><img loading="lazy" src="images/purchase/2-1/03_edit.png" alt="구매요청서 수정 — PR2605210001 (Case A) 데이터가 채워진 상태" /></p>
+<p>구매요청서 수정 — PR2605210001 (Case A) 데이터가 채워진 상태</p>
+<ul>
+<li>이미 발주서가 생성된 라인은 ‘미발주수량’이 줄어든 상태로 수정에 제약이 있을 수 있습니다.</li>
+<li>결재 진행 중/완료 상태의 요청서는 수정이 막힙니다. 정정이 필요하면 결재를 회수하거나 새 요청서를 등록하세요.</li>
+</ul>
+<h3>전자결재로 업무 승인</h3>
+<p>구매요청서는 작성 후 <code>[결재상신]</code> 버튼으로 전자결재 문서를 생성·상신합니다. 결재가 완료되어야 발주서 생성 단계로 넘어갈 수 있습니다.</p>
+<p><img loading="lazy" src="images/purchase/2-1/08_approval_form.png" alt="구매요청서 결재 양식 — 결재선/문서번호/구매요청 헤더·품목정보가 자동으로 채워짐" /></p>
+<p>구매요청서 결재 양식 — 결재선/문서번호/구매요청 헤더·품목정보가 자동으로 채워짐</p>
+<p>결재 양식 구성:</p>
+<ul>
+<li>문서번호 — 결재 시스템이 자동 채번</li>
+<li>기안일자 / 기안부서 / 기안자 — 상신자의 정보가 자동 입력</li>
+<li>참조자 / 시행자 / 제목 — 필요 시 직접 입력</li>
+<li>본문 — 워드 에디터로 사유·근거를 자유 작성 (기본 결재선이 본문 위에 표시됨)</li>
+<li>구매요청정보 — 구매요청번호 / 구매요청일자 / 공장 / 요청납기일자가 자동 채워짐</li>
+<li>상세품목정보 — 품목코드 / 품목명 / 품목유형 / 규격 / 단위 / 구매요청수량 / 단가 / 비고 라인이 자동 첨부 (구매요청서의 데이터를 그대로 끌어옴)</li>
+<li>첨부문서 — 견적서·계약서 등 보조 자료 첨부</li>
+<li>문서유형 / 보존연한 — 사내 결재 정책에 따라 분류</li>
+</ul>
+<div class="callout">
+<p>🔒 결재 진행 중에는 구매요청서가 잠긴 상태(수정/삭제 불가)가 됩니다. 반려·회수되면 다시 [작성중]으로 돌아가 수정 가능.</p>
+</div>
+<h3>기타 기능</h3>
+<ul>
+<li>마감 — 더 이상 발주하지 않을 요청서를 종결. 발주서 생성 후보에서 제외</li>
+<li>복사 — 기존 요청서를 그대로 복제해 새 번호로 등록</li>
+<li>출력 / 다운로드 — 인쇄용 양식(요청서 1건) / 엑셀(요청서 목록 전체)</li>
+<li>요청경로 — 수기 / 시스템(MRP 자동 생성) 등</li>
+</ul>
+</section><section class="page" id="purchase-3-1"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">3.1. 발주서(구매오더)</h1><h1>3. 구매오더(PO)</h1>
+<h2>3.1. 발주서(구매오더)</h2>
+<h3>개요</h3>
+<p>승인된 구매요청서(PR)를 근거로 거래처에 보낼 <strong>발주서(Purchase Order, PO)</strong>를 만들고 송부·결재상신·발송까지 처리하는 화면입니다. 발주서가 만들어지면 ‘기발주 수량’이 늘고 PR의 ‘미발주 수량’이 줄어들며, 이후 입고(GR)·송장(IR) 단계의 기준 문서가 됩니다.</p>
+<div class="callout">
+<p>🛒 발주 흐름 — 구매요청서(PR) ▸ 발주서(PO) ▸ 물품입고(GR) ▸ 송장접수(IR). 본 화면에서는 PR을 끌어와서 PO를 만드는 ‘구매요청서 불러오기’ 흐름을 사용합니다.</p>
+</div>
+<h3>화면 진입</h3>
+<p>좌측 사이드바 <code>[구매관리] ▸ [구매오더(PO)] ▸ [발주서(구매오더)]</code></p>
+<h3>목록 화면</h3>
+<p>기본 조회 조건은 ‘발주일자 기준 당월 1일~오늘’입니다. 우상단 기간을 바꿔 다른 기간의 발주서도 조회할 수 있습니다.</p>
+<p><img loading="lazy" src="images/purchase/3-1/01_list.png" alt="발주서(구매오더) 목록 — 상단: 발주정보 / 하단: 선택 발주서의 상세품목정보" /></p>
+<p>발주서(구매오더) 목록 — 상단: 발주정보 / 하단: 선택 발주서의 상세품목정보</p>
+<ul>
+<li><strong>①</strong> 기능 버튼 — <code>[마감]</code> / <code>[구매요청서 불러오기]</code> / <code>[결재상신]</code> / <code>[복사]</code> / <code>[출력]</code> / <code>[다운로드]</code> / <code>[발송]</code> / <code>[발송내역]</code>. 새 발주서는 보통 <code>[구매요청서 불러오기]</code>로 시작합니다.</li>
+<li><strong>②</strong> 발주정보 그리드 — 한 행이 발주서 1건. <code>발주번호 / 발주일자 / 거래처 / 요청공장 / 납기일자 / 통화코드 / 적용환율 / 과세구분 / 결제조건 / 인도조건 / 프로젝트 / 현장 / 부서 / 사원</code></li>
+<li><strong>③</strong> 상세품목정보 — 상단에서 선택한 발주서의 품목 라인. <code>품목코드 / 품목명 / 품목유형 / 규격 / 단위 / 발주수량 / 단가 / 공급가 / 부가세 / 합계 / 공장 / 창고 / 입고번호</code></li>
+</ul>
+<div class="callout">
+<p>ℹ️ 조회 팁 — 매뉴얼 예시처럼 5월 전체를 보려면 우상단 기간을 ‘2026-05-01 ~ 2026-05-31’로 바꾸고 <code>[조회]</code> 클릭. ‘발주일자 / 납기일자’ 등으로 기준일을 바꿀 수도 있습니다.</p>
+</div>
+<h3>1단계. 구매요청서 불러오기</h3>
+<p>상단 <code>[구매요청서 불러오기]</code> 버튼을 클릭하면 ‘구매요청기반 발주서 작성’ 팝업이 열립니다.</p>
+<p><img loading="lazy" src="images/purchase/3-1/02_pr_picker.png" alt="구매요청기반 발주서 작성 — 5/9 작성된 PR2605260001 선택, 발주수량 40/100 입력" /></p>
+<p>구매요청기반 발주서 작성 — 5/9 작성된 PR2605260001 선택, 발주수량 40/100 입력</p>
+<ul>
+<li><strong>①</strong> 검색 조건 — 구매요청일자 / 요청부서 / 요청자로 후보를 좁힙니다. 기본은 본 메뉴 조회 기간을 따라옵니다.</li>
+<li><strong>②</strong> 구매요청정보 — 발주 후보 PR 목록. 발주로 만들 PR 1건 또는 여러 건의 체크박스를 선택합니다. (예시: 5/9 자 PR2605260001 ‘[Case F] 추가매입’ 선택)</li>
+</ul>
+<div class="callout">
+<p>🔍 여기 조회되는 PR은 다음 두 조건을 모두 만족한 건만 보입니다.<br />
+① 결재 ‘승인 완료’ 상태 — 결재 진행 중·반려·회수 상태의 PR은 후보에서 제외됩니다.<br />
+② 발주 가능한 잔여(미발주수량 &gt; 0)가 남아 있음 — 구매요청수량이 100% 발주된 PR은 더 이상 조회되지 않습니다.</p>
+</div>
+<ul>
+<li><strong>③</strong> 품목별 발주수량 입력 — 위에서 선택한 PR의 품목 라인이 펼쳐집니다. 각 라인의 <strong>발주수량</strong> 셀에 발주할 수량을 직접 입력합니다. <em>미발주수량 = 발주수량으로 두는 게 일반적</em>이고, 분할 발주가 필요하면 일부만 입력해 잔여를 남깁니다.</li>
+<li><strong>④</strong> <code>[발주하기]</code> — 발주수량을 채운 라인만 모아 발주서 등록 팝업으로 넘어갑니다. <em>발주수량이 비어 있으면 ‘발주수량을 입력해 주세요’ 알림이 뜹니다.</em></li>
+</ul>
+<div class="callout">
+<p>🔢 발주수량 의미 — 구매요청수량(요청한 총량) − 기발주수량(이미 발주된 양) = 미발주수량(남은 양). 발주수량은 미발주수량 이내로 입력해야 합니다. 잔여수량은 ‘미발주수량 − 발주수량’으로 자동 계산되어, 0이 되면 그 라인은 발주 완료.</p>
+</div>
+<h3>2단계. 발주서 등록</h3>
+<p>‘구매요청기반 발주서 작성’에서 <code>[발주하기]</code>를 누르면 발주서 등록 팝업이 열립니다. PR 헤더·라인 정보가 자동으로 채워진 상태입니다.</p>
+<p><img loading="lazy" src="images/purchase/3-1/03_po_register.png" alt="발주서 등록 — PR2605260001 기반, 두 품목 라인 + 단가·공급가·부가세·합계 자동 계산" /></p>
+<p>발주서 등록 — PR2605260001 기반, 두 품목 라인 + 단가·공급가·부가세·합계 자동 계산</p>
+<ul>
+<li><strong>①</strong> 발주번호 / 발행경로 — 발주번호는 ‘자동부여’로 저장 시 채번. 발행경로에는 <code>구매요청서(PR2605260001)</code> 처럼 원천 PR이 표시됩니다.</li>
+<li><strong>②</strong> 발주일자* / 요청납기일자* / 요청공장 — 발주일자는 오늘로 채워지고, 요청납기일자·요청공장은 PR 값을 그대로 가져옵니다.</li>
+<li><strong>③</strong> 거래처 / 결제조건 / 인도조건 — 거래처는 돋보기로 직접 선택. 거래처를 선택하면 ‘거래처 기본 결제조건·인도조건’이 자동으로 채워집니다.</li>
+<li><strong>④</strong> 프로젝트 / 현장 / 부서 / 사원 — 비용 귀속을 위한 보조 정보. 필요 시 입력.</li>
+<li><strong>⑤</strong> 비고 — 발주서에 대한 자유 메모 (포장 조건, 운송 요청사항 등)</li>
+<li><strong>⑥</strong> 과세구분 / 외화거래 / 통화정보 — 기본값: 과세 / 부 / KRW (환율 1). 외화 발주면 ‘여’로 바꾸고 통화·환율 지정.</li>
+<li><strong>⑦</strong> 품목정보 그리드 — PR에서 가져온 라인. <code>품목코드 / 품목명 / 규격 / 발주수량* / 단가* / 공급가* / 부가세* / 합계* / 공장* / 창고* / 요청납기일자*</code>. 단가는 거래처-품목 단가가 등록돼 있으면 자동, 없으면 직접 입력. 공급가·부가세·합계는 발주수량과 단가로 자동 계산.</li>
+<li><strong>⑧</strong> 합계 — 라인별 발주수량/단가/공급가/부가세/합계의 총합. 예시: 발주수량 140 / 공급가 90,000 / 부가세 9,000 / 합계 99,000.</li>
+</ul>
+<p><code>[저장]</code> 클릭 시 발주서가 ‘작성중’ 상태로 목록에 추가됩니다. 이후 <code>[결재상신]</code>으로 승인 받고, <code>[발송]</code>으로 거래처에 PDF/메일을 보냅니다.</p>
+<h3>전체 등록 절차 요약</h3>
+<ol type="1">
+<li>발주서 목록에서 <code>[구매요청서 불러오기]</code> 클릭</li>
+<li>구매요청정보에서 발주로 만들 PR 체크 → 하단 ‘품목별 발주수량 입력’에서 <strong>발주수량</strong> 입력</li>
+<li><code>[발주하기]</code> → 발주서 등록 팝업 자동 오픈</li>
+<li>거래처 선택 → 결제조건·인도조건 확인 → 비고 입력</li>
+<li><code>[저장]</code> → 발주서 ‘작성중’ 등록</li>
+<li>목록에서 발주서 선택 → <code>[결재상신]</code> → 승인 완료 후 <code>[발송]</code>으로 거래처에 송부</li>
+</ol>
+<h3>기타 기능</h3>
+<ul>
+<li>마감 — 더 이상 진행하지 않을 발주서를 종결. 입고·송장 단계의 후보에서 제외</li>
+<li>복사 — 기존 발주서를 그대로 복제해 새 번호로 등록 (정기 발주에 유용)</li>
+<li>출력 / 다운로드 — 발주서 1건 PDF 출력 / 목록 엑셀 다운로드</li>
+<li>발송 — 등록된 거래처 메일로 발주서 PDF 송부. 발송 이력은 <code>[발송내역]</code>에서 확인</li>
+<li>결재상신 — 발주서를 전자결재로 올려 승인 받기. 사내 결재 정책에 따라 사전 결재가 필수일 수 있음</li>
+</ul>
+</section><section class="page" id="purchase-3-2"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">3.2. 발주대비 입고내역</h1><h1>3. 구매오더(PO)</h1>
+<h2>3.2. 발주대비 입고내역</h2>
+<h3>개요</h3>
+<p>발주서(PO)별로 <strong>발주수량 대비 실제 입고된 수량·양품·불량·미입고 현황</strong>을 한 화면에서 확인하는 조회 전용 화면입니다. 발주가 정상적으로 입고됐는지 점검하고, 부분 입고/미입고 건을 빠르게 추려낼 때 사용합니다.</p>
+<div class="callout">
+<p>🧮 계산 규칙 — 발주수량(PO) − 입고수량(GR) = 미입고량. 입고수량 안에서 양품수량 + 불량수량의 합이 다시 입고수량이 됩니다.</p>
+</div>
+<h3>화면 진입</h3>
+<p>좌측 사이드바 <code>[구매관리] ▸ [구매오더(PO)] ▸ [발주대비 입고내역]</code></p>
+<h3>목록 화면</h3>
+<p>기본 조회 조건은 ‘발주일자 기준 당월 1일~오늘’입니다. 한 행이 발주 라인 1건이고, 같은 발주서 안에 여러 라인이 있으면 <code>[소계]</code> 행이, 화면 전체 끝에는 <code>[합계]</code> 행이 자동으로 표시됩니다.</p>
+<p><img loading="lazy" src="images/purchase/3-2/01_list.png" alt="발주대비 입고내역 — 5월 조회 결과(4건). 발주정보 + 입고정보를 한 행에 함께 표시" /></p>
+<p>발주대비 입고내역 — 5월 조회 결과(4건). 발주정보 + 입고정보를 한 행에 함께 표시</p>
+<ul>
+<li><strong>①</strong> 검색 조건 — <code>발주일자 / 기간 / 거래처 전체 / 검색 조건</code> + <code>[미입고 내역만 보기]</code> 토글 + <code>[조회]</code> / <code>[초기화]</code>. 기준일을 ‘발주일자/입고일자/납기일자’로 바꿔서 다른 관점으로 조회할 수 있습니다.</li>
+<li><strong>②</strong> <code>[다운로드]</code> — 현재 조회 결과를 엑셀로 내려받기.</li>
+<li><strong>③</strong> 발주정보 그룹 — <code>발주번호 / 발주일자 / 거래처코드 / 거래처명 / 납기일자 / 품목코드 / 품목명 / 품목유형 / 발주수량</code></li>
+<li><strong>④</strong> 입고정보 그룹 — <code>입고번호 / 입고일자 / 입고수량 / 양품수량 / 불량수량 / 미입고량</code>. 입고가 여러 번 나눠 들어오면 같은 발주 라인이 입고건 수만큼 행이 늘어나고 ‘소계’로 합산됩니다.</li>
+<li><strong>⑤</strong> [소계] / [합계] 행 — 같은 발주서 안의 모든 라인 합계와 화면 전체 합계가 자동 계산됩니다. (예시: 합계 발주수량 420 / 입고 340 / 양품 320 / 불량 20 / 미입고 100)</li>
+</ul>
+<div class="callout">
+<p>📌 표시 데이터 예시<br />
+• PO2605100002 / 5-10 / 공급사A / RM-A01 캔버스 원단 60 발주 → 60 입고 (양품 60·불량 0)<br />
+• PO2605100001 / 5-01 / 공급사A / RM-A01 캔버스 원단 60 발주 → 60 입고 (양품 60·불량 0)<br />
+• PO2605060001 / 5-06 / 공급사A / RM-A02 면 손잡이 끈 200 발주 → 120 입고 (양품 100·불량 20·미입고 100)<br />
+• PO2605060002 / 5-06 / 공급사B / RM-A03 실크 프린트 잉크 100 발주 → 100 입고 (양품 100·불량 0)</p>
+</div>
+<h3>미입고 건만 골라 보기</h3>
+<h3>미입고 건만 골라 보기</h3>
+<p>우상단 <code>[미입고 내역만 보기]</code> 체크박스를 켜고 <code>[조회]</code>를 누르면, 입고가 전체/부분만 된 발주 라인(즉 미입고량 &gt; 0 또는 입고 자체가 없는 라인)만 추려서 보여줍니다.</p>
+<p><img loading="lazy" src="images/purchase/3-2/02_unreceived.png" alt="[미입고 내역만 보기] 켠 상태 — 입고가 완료되지 않은 발주만 좁혀서 표시" /></p>
+<p>[미입고 내역만 보기] 켠 상태 — 입고가 완료되지 않은 발주만 좁혀서 표시</p>
+<ul>
+<li>거래처 독촉, 부분 입고 잔량 점검에 사용. 양품/불량으로 100% 마감된 발주서는 화면에서 제외됩니다.</li>
+<li>불량으로 인한 미입고도 함께 잡힙니다 — 예시의 PO2605060001처럼 ‘입고 120 / 양품 100 / 불량 20 / 미입고 100’이면 양품 기준으로는 100개가 부족하므로 후속 발주·추가 입고가 필요한 라인.</li>
+</ul>
+<h3>활용 팁</h3>
+<ul>
+<li>입고 후 송장(IR)이 정상적으로 매칭되는지 확인할 때 — 입고수량 ≠ 발주수량인 라인을 골라 GR/IR 불일치 보고서와 함께 점검</li>
+<li>거래처별 ‘납기 준수율’을 보고 싶다면 거래처 필터 + 기준일을 ‘납기일자’로 두고 미입고 내역만 보기를 켜서 조회</li>
+<li>월말 결산 직전, 합계의 <code>발주수량 vs 입고수량</code> 갭이 큰 라인은 입고 누락/거래처 지연 여부를 거래처 담당자에게 확인해야 하는 후보입니다.</li>
+</ul>
+</section><section class="page" id="purchase-4-1"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">4.1. 구매입고서</h1><h1>4. 물품입고(GR)</h1>
+<h2>4.1. 구매입고서</h2>
+<h3>개요</h3>
+<p>거래처에서 도착한 물품을 <strong>구매입고서(Goods Receipt, GR)</strong>로 등록해 ‘발주서 잔량 감소 + 입고전표 처리’를 진행하는 화면입니다. 본 화면은 발주서(PO)에서 입고를 끌어오는 <code>[구매오더(발주서) 입고처리]</code> 흐름을 사용합니다.</p>
+<div class="callout">
+<p>📦 처리 범위 — 본 화면은 ‘입고전표’만 끊습니다. 양품/불량 확정과 매입전표는 다음 단계인 [구매관리] ▸ [물품입고(GR)] ▸ [검수 및 반품처리] 에서 진행합니다.<br />
+전체 흐름: 구매요청(PR) ▸ 구매오더(PO) ▸ 구매입고서(GR, 본 화면 = 입고전표) ▸ 검수 및 반품처리(확정·매입전표) ▸ 송장접수(IR).</p>
+</div>
+<h3>화면 진입</h3>
+<p>좌측 사이드바 <code>[구매관리] ▸ [물품입고(GR)] ▸ [구매입고서]</code></p>
+<h3>목록 화면</h3>
+<p><img loading="lazy" src="images/purchase/4-1/01_list.png" alt="구매입고서 목록 — 상단 구매입고 헤더, 하단 선택 입고서의 상세품목정보" /></p>
+<p>구매입고서 목록 — 상단 구매입고 헤더, 하단 선택 입고서의 상세품목정보</p>
+<ul>
+<li><strong>①</strong> 기능 버튼 — <code>[마감]</code> / <code>[구매오더(발주서) 입고처리]</code> / <code>[입고확정]</code> / <code>[입고취소]</code> / <code>[삭제]</code> / <code>[다운로드]</code> / <code>[출력]</code>. 새 입고는 보통 <code>[구매오더(발주서) 입고처리]</code>로 시작합니다.</li>
+<li><strong>②</strong> 구매입고 그리드 — 한 행이 입고서 1건. <code>구매입고번호 / 입고일자 / 구매오더번호 / 거래처 / 입고공장 / 입고창고 / 프로젝트 / 현장 / 부서 / 사원 / 입고상태 / 송장처리상태</code></li>
+<li><strong>③</strong> 상세품목정보 — 상단에서 선택한 입고서의 품목 라인. <code>품목코드 / 품목명 / 품목유형 / 규격 / 단위 / 입고수량 / 요청납기일 / 입고지연여부 / 지연일수 / 공장 / 창고 / 발주서(PO)항목 / 송장처리상태 / 양품수량</code></li>
+</ul>
+<h3>입고처리 — 발주서로 입고 등록</h3>
+<p>상단 <code>[구매오더(발주서) 입고처리]</code> 버튼을 클릭하면 ‘구매오더(발주)건 입고처리’ 팝업이 열립니다.</p>
+<p><img loading="lazy" src="images/purchase/4-1/02_picker.png" alt="구매오더(발주)건 입고처리 — PO2605260001 선택 + 입고일자/공장/창고 + 라인별 입고수량 전량(140) 입력" /></p>
+<p>구매오더(발주)건 입고처리 — PO2605260001 선택 + 입고일자/공장/창고 + 라인별 입고수량 전량(140) 입력</p>
+<ul>
+<li><strong>①</strong> 검색 조건 — 구매오더일자 / 기간 / 거래처 / 부서 / 사원. 기본은 ‘발주일자 당월 1일~오늘’.</li>
+<li><strong>②</strong> 구매오더(발주) 선택 — <strong>입고 가능한 발주서(미입고 잔량 &gt; 0)</strong>만 라디오로 표시됩니다. 한 번에 1건만 선택합니다. (예시: 5/26자 PO2605260001 공급사A)</li>
+<li><strong>③</strong> 품목별 입고상세정보 입력 — 입고서 ‘헤더’에 해당. <code>입고일자 / 입고공장 / 입고창고 / 비고</code>. <strong>입고공장은 발주서의 헤더 공장이 기본으로 들어오고 수정 가능</strong>. 입고창고는 사용자가 직접 선택 (예: <code>[W0005] 기본공장_원재료창고</code>).</li>
+<li><strong>④</strong> 입고 라인 그리드 — 선택한 발주서의 모든 라인이 자동으로 펼쳐집니다. <code>발주수량 / 기입고수량 / 미입고수량 / 입고수량* / 잔여수량 / 입고공장 / 입고창고 / 납기일자</code>. ‘입고수량’은 미입고수량과 같게 자동 채워지며 <em>전량 입고</em> 시 그대로 두면 됩니다. 부분 입고는 직접 줄여서 입력 → 잔여수량이 남고 다음 회차에 또 입고 처리할 수 있습니다. 라인별로 다른 공장·창고를 두려면 라인 그리드에서 셀을 직접 바꿉니다.</li>
+<li><strong>⑤</strong> <code>[입고처리]</code> — 입력된 헤더·라인 정보로 GR을 생성합니다.</li>
+</ul>
+<div class="callout">
+<p>🔍 등록 가능 조건 — 본 팝업에는 ‘승인 완료 + 미입고수량 &gt; 0’인 발주서만 보입니다. 100% 입고된 발주서는 더 이상 후보로 잡히지 않습니다.</p>
+</div>
+<h3>입고처리 확인</h3>
+<p><code>[입고처리]</code> 버튼을 누르면 확인 알림이 뜹니다.</p>
+<p><code>[확인]</code> 클릭 시 다음이 실행됩니다.</p>
+<ul>
+<li>구매입고서 1건 신규 생성 — 입고번호 자동 채번 (예: GR2605260001)</li>
+<li>발주서(PO)의 ‘기입고수량’ 증가, ‘미입고수량’ 감소</li>
+<li>입고전표 처리 — 입고창고의 재고 증가 (재고수불 반영)</li>
+</ul>
+<div class="callout">
+<p>⚠️ 이 작업은 되돌릴 수 있지만 — 다음 단계(검수 및 반품처리)에서 확정 처리가 들어갔다면 ‘입고취소’가 막힙니다. 입고일자·수량·창고를 정확히 확인한 뒤 저장하세요.</p>
+</div>
+<h3>등록 결과 확인</h3>
+<p>저장 후 목록으로 복귀하면 새 입고서가 맨 위에 표시됩니다.</p>
+<p><img loading="lazy" src="images/purchase/4-1/04_after.png" alt="저장 후 — 신규 GR2605260001 / 5-26 / PO2605260001 / 공급사A / 기본공장_원재료 / RM-A01 40 + RM-A02 100 = 합계 140" /></p>
+<p>저장 후 — 신규 GR2605260001 / 5-26 / PO2605260001 / 공급사A / 기본공장_원재료 / RM-A01 40 + RM-A02 100 = 합계 140</p>
+<ul>
+<li><strong>①</strong> 새 GR2605260001 행이 추가됨. ‘입고상태’는 입고대기/검수대기 등 사내 운영 정책에 맞춰 표시됩니다.</li>
+<li><strong>②</strong> 상세품목정보에 RM-A01 40 / RM-A02 100 두 라인이 들어가 있고, 발주서(PO)항목 컬럼에 원천 PO 라인이 연결돼 있습니다.</li>
+</ul>
+<h3>등록 절차 요약</h3>
+<ol type="1">
+<li><code>[구매오더(발주서) 입고처리]</code> 클릭</li>
+<li>발주서 라디오 선택 — <strong>승인 완료 + 미입고수량 &gt; 0</strong>인 PO만 후보</li>
+<li>입고일자 / 입고공장(기본=PO 공장, 수정 가능) / 입고창고(직접 선택, 예: 원재료창고) / 비고 입력</li>
+<li>라인별 입고수량 확인·조정 — 전량 입고면 그대로 두기</li>
+<li><code>[입고처리]</code> → 확인 alert에서 <code>[확인]</code> → GR 신규 등록</li>
+</ol>
+<h3>기타 기능</h3>
+<ul>
+<li>입고취소 — 다음 단계(검수 및 반품처리)에서 확정 처리가 들어가기 전이라면 입고를 되돌려 발주 잔량을 복구합니다.</li>
+<li>입고확정 — 사내 운영 정책에 따라 입고 단계에서 잠그는 용도. 일반적으로 양품/불량 확정은 <code>[검수 및 반품처리]</code>에서 진행됩니다.</li>
+<li>마감 — 추가 입고가 없을 것으로 판단되는 입고서를 종결</li>
+<li>출력 / 다운로드 — 입고서 1건 PDF / 목록 엑셀</li>
+</ul>
+<h3>다음 단계 — 검수 및 반품처리</h3>
+<p>본 화면에서 만든 GR은 <strong>입고전표만 끊은 상태</strong>입니다. 양품/불량 구분, 반품 처리 등 확정처리는 다음 메뉴 <code>[구매관리] ▸ [물품입고(GR)] ▸ [검수 및 반품처리]</code>에서 진행합니다.</p>
+</section><section class="page" id="purchase-4-2"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">4.2. 검수 및 반품처리</h1><h1>4. 물품입고(GR)</h1>
+<h2>4.2. 검수 및 반품처리</h2>
+<h3>개요</h3>
+<p>구매입고서(GR)로 들어온 물품을 <strong>양품 / 불량 / 반품요청</strong>으로 구분해 검수하고 ‘검수완료’로 확정하는 화면입니다. 확정 시점에 매입전표가 자동 생성되어 회계로 전송됩니다.</p>
+<div class="callout">
+<p>🔬 화면 범위 — 입고전표는 앞 단계 [구매입고서]에서 끊고, 본 화면에서는 검수 결과(양품/불량/반품)를 확정합니다. 검수완료 후에는 입고 취소가 막히므로 수량·사유를 확정 전에 정확히 확인하세요.</p>
+</div>
+<div class="callout">
+<p>🧮 검증식 — 입고수량 = 양품수량 + 불량수량 + 반품요청수량. 불량은 사내 격리/재가공, 반품요청은 공급사로 되돌려 보낼 수량입니다.</p>
+</div>
+<h3>화면 진입</h3>
+<p>좌측 사이드바 <code>[구매관리] ▸ [물품입고(GR)] ▸ [검수 및 반품처리]</code></p>
+<h3>화면 구성</h3>
+<p><img loading="lazy" src="images/purchase/4-2/01_list.png" alt="검수 및 반품처리 진입 — 상단: 입고서 헤더 / 하단: 선택 입고서의 상세품목정보(양품/불량/반품 입력)" /></p>
+<p>검수 및 반품처리 진입 — 상단: 입고서 헤더 / 하단: 선택 입고서의 상세품목정보(양품/불량/반품 입력)</p>
+<ul>
+<li><strong>①</strong> 기능 버튼 — <code>[검수완료]</code> / <code>[검수취소]</code> / <code>[다운로드]</code> / <code>[출력]</code>. 검수가 끝난 입고서는 헤더 체크 + <code>[검수완료]</code>로 확정합니다.</li>
+<li><strong>②</strong> 입고서 그리드 — 한 행이 GR 1건. 상태가 <code>입고대기(미가입)</code> / <code>검수완료</code>로 구분됩니다. ‘입고대기’ 행만 검수 처리 대상.</li>
+<li><strong>③</strong> 상세품목정보 — 선택한 GR의 라인. <code>품목코드 / 품목명 / 품목유형 / 규격 / 단위 / 입고수량 / 양품수량* / 불량수량 / 반품요청수량 / 반품완료수량 / 입고공장 / 입고창고 / 구매오더(PO)항목 / 비고</code></li>
+</ul>
+<h3>검수 — 양품 / 불량 / 반품요청 입력</h3>
+<p>입고대기 GR을 선택하면 상세에 라인이 펼쳐집니다. 라인별로 <strong>양품수량</strong> · <strong>불량수량</strong> · <strong>반품요청수량</strong>을 직접 입력합니다. 입고수량과의 합이 일치해야 ‘검수완료’가 통과됩니다.</p>
+<p><img loading="lazy" src="images/purchase/4-2/02_filled.png" alt="GR2605260001 검수 시연 — RM-A01: 양품 38·불량 2·반품요청 2 / RM-A02: 양품 95·불량 5·반품요청 5" /></p>
+<p>GR2605260001 검수 시연 — RM-A01: 양품 38·불량 2·반품요청 2 / RM-A02: 양품 95·불량 5·반품요청 5</p>
+<ul>
+<li><strong>①</strong> RM-A01 캔버스 원단 — 입고 40 / 양품 38 / 불량 2 / 반품요청 2</li>
+<li><strong>②</strong> RM-A02 면 손잡이 끈 — 입고 100 / 양품 95 / 불량 5 / 반품요청 5</li>
+</ul>
+<div class="callout">
+<p>↩️ 불량과 반품요청은 별개 — ‘불량’은 사내에서 폐기/재가공할 수량, ‘반품요청’은 공급사에 되돌릴 수량입니다. 둘 다 잡힌 케이스(예: 불량 2 + 반품요청 2)는 ‘2개 모두 공급사 책임으로 반품, 자체 재고에는 안 잡힘’을 의미합니다.</p>
+</div>
+<h3>불량 사유 입력 팝업</h3>
+<p>불량수량 셀의 돋보기를 클릭하면 <strong>불량 사유 코드별로 수량을 쪼개 입력</strong>하는 팝업이 열립니다. 사유는 사전에 등록된 불량코드 마스터(DEF001~)에서 가져오며, 합이 헤더의 불량수량과 일치해야 합니다.</p>
+<p><img loading="lazy" src="images/purchase/4-2/03_def_popup.png" alt="불량 수량 입력 팝업 — RM-A01 불량수량 2를 [DEF010] 기타 불량으로 분류" /></p>
+<p>불량 수량 입력 팝업 — RM-A01 불량수량 2를 [DEF010] 기타 불량으로 분류</p>
+<ul>
+<li><strong>①</strong> 헤더 — 품목코드/품목명/불량수량(전체) 표시 (RM-A01 / 캔버스 원단 / 2)</li>
+<li><strong>②</strong> 불량 수량 코드별 상세입력 — <em>[DEF001] 치수 / [DEF002] 외관 / [DEF005] 도장 / [DEF007] 전기적 / [DEF008] 기능 / [DEF009] 포장 / [DEF010] 기타 / [DEF011] 이종품·혼입 / [DEF012] 누설 / [DEF019] S/W·펌웨어 / [DEF020] 운송 중 파손 / [DEF021] 외관 손상 / [DEF022~] 수량 과다·부족·품목 오납·규격 불일치·문서 불일치 …</em> 등 사내 불량코드 마스터에 등록된 사유</li>
+<li><strong>③</strong> <code>[확인]</code> — 헤더 불량수량과 합이 일치하면 저장. 일치 안 하면 알림 발생.</li>
+</ul>
+<div class="callout">
+<p>🔍 반품요청수량도 별도 사유 입력이 필요한 경우가 있습니다(반품사유코드 마스터 기반). 라인의 반품요청수량 셀에서 동일한 방식으로 사유를 분배합니다.</p>
+</div>
+<h3>검수완료 — 확정 처리</h3>
+<p>입력이 끝나면 헤더 그리드에서 GR 체크박스를 켜고 상단 <code>[검수완료]</code> 버튼 클릭. 확인 알림이 뜨고 <code>[예]</code>를 누르면 확정됩니다.</p>
+<p><img loading="lazy" src="images/purchase/4-2/04_confirm.png" alt="검수완료 확인 — ‘선택한 항목을 검수완료 처리하시겠습니까?’" /></p>
+<p>검수완료 확인 — ‘선택한 항목을 검수완료 처리하시겠습니까?’</p>
+<p>확정 시 다음이 실행됩니다.</p>
+<ul>
+<li>GR 상태 → <code>검수완료</code> 로 변경</li>
+<li>매입전표 자동 생성 — 회계 모듈로 전송 (양품 + 불량 기준)</li>
+<li>반품요청수량이 있으면 후속 ‘반품 출고/회계’ 프로세스의 대상이 됩니다.</li>
+</ul>
+<p><img loading="lazy" src="images/purchase/4-2/05_after.png" alt="처리 후 — GR2605260001 상태가 ‘검수완료’로 변경됨" /></p>
+<p>처리 후 — GR2605260001 상태가 ‘검수완료’로 변경됨</p>
+<ul>
+<li><strong>①</strong> GR2605260001 행의 상태가 <code>입고대기 → 검수완료</code>로 변경. 이후로는 본 화면에서 양품/불량 값을 수정할 수 없습니다.</li>
+</ul>
+<h3>등록 절차 요약</h3>
+<ol type="1">
+<li>상단 그리드에서 입고대기 상태의 GR 선택</li>
+<li>상세품목정보에서 라인별 <strong>양품수량 / 불량수량 / 반품요청수량</strong> 입력 (합 = 입고수량)</li>
+<li>불량수량 셀 돋보기 → 사유 코드별로 수량 분배 → <code>[확인]</code></li>
+<li>반품요청수량이 있으면 동일하게 반품 사유 분배</li>
+<li>헤더 체크 후 <code>[검수완료]</code> → 확인 <code>[예]</code> → 매입전표 생성</li>
+</ol>
+<h3>검수취소 / 다운로드 / 출력</h3>
+<ul>
+<li>검수취소 — 검수완료 상태의 GR을 되돌립니다. 단 매입전표·반품 후속 단계가 이미 진행된 경우 막힙니다.</li>
+<li>다운로드 / 출력 — 검수 결과를 엑셀로 내려받거나 검수 성적서 형태로 인쇄</li>
+</ul>
+<h3>다음 단계</h3>
+<p>검수완료로 매입전표는 회계에서 자동 처리됩니다. 반품요청수량이 있는 GR은 후속 ‘반품 출고/회계’ 프로세스에서 공급사 반품 처리 → <code>[구매관리] ▸ [송장접수(IR)] ▸ [송장입력]</code>에서 송장 매칭으로 이어집니다.</p>
+</section><section class="page" id="purchase-5-1"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">5.1. 송장입력</h1><h1>5. 송장접수(IR)</h1>
+<h2>5.1. 송장입력</h2>
+<h3>개요</h3>
+<p>공급사가 청구한 송장(Invoice Receipt, IR)을 등록하고, <strong>구매오더(PO)·구매입고(GR)·송장(IR) 3건의 수량/단가/세액을 매칭</strong>해 매입채무 전표를 끊는 화면입니다. 송장확정 시 AP 전표가 자동 발행되며, GR/IR 단가차이가 있으면 PPV(구매가격차이)가 함께 인식됩니다.</p>
+<div class="callout">
+<p>📝 두 가지 입력 방식 — ① 일반송장: 이미 입고된 GR을 골라 청구 (정상 순서) / ② 선 송장: GR 전에 PO 기반으로 먼저 청구 (선청구). 일반송장이 표준이고, 선 송장은 입고 전 청구가 필요한 예외 케이스에서 사용합니다.</p>
+</div>
+<h3>화면 진입</h3>
+<p>좌측 사이드바 [구매관리] ▸ [송장접수(IR)] ▸ [송장입력]</p>
+<h3>목록 화면</h3>
+<p><img loading="lazy" src="images/purchase/5-1/01_list.png" alt="송장입력 목록 — 상단 송장 헤더 그리드, 하단 선택 송장의 상세품목정보" /></p>
+<p>송장입력 목록 — 상단 송장 헤더 그리드, 하단 선택 송장의 상세품목정보</p>
+<ul>
+<li>① 기능 버튼 — [마감] / [일반송장-구매입고(GR)로 입력] / [선송장-구매오더(PO)로 입력] / [수정] / [삭제] / [송장확정] / [송장취소] / [출력] / [다운로드]. 신규 송장은 두 입력 버튼 중 하나로 시작합니다.</li>
+<li>② 송장 그리드 — 한 행이 송장 1건. 송장번호 / 송장일자 / 공급사송장번호 / 거래처코드 / 거래처명 / 통화코드 / 적용환율 / 총 공급가 / 총 부가세 / 총 합계금액 / 과세구분 / 결제조건 / 지급기한 / 발주서(PO)번호 등.</li>
+<li>③ 상세품목정보 — 상단에서 선택한 송장의 라인. 품목코드 / 품목명 / 규격 / 단위 / 송장수량 / 단가 / 공급가 / 부가세 / 합계 / 공장 / 창고 / 요청납기일자 / 발주항목번호.</li>
+</ul>
+<h3>송장입력 ① 일반송장 — 구매입고(GR)로 입력</h3>
+<p>상단 <code>[일반송장-구매입고(GR)로 입력]</code> 클릭 → 팝업이 열립니다. 이미 입고된 GR을 선택해 청구하는 정상 케이스입니다.</p>
+<p><img loading="lazy" src="images/purchase/5-1/02_general_popup.png" alt="일반송장 팝업 — GR2605260001 선택, 송장수량 10,000 입력 후 Enter → 공급가/부가세 자동 계산" /></p>
+<p>일반송장 팝업 — GR2605260001 선택, 송장수량 10,000 입력 후 Enter → 공급가/부가세 자동 계산</p>
+<ul>
+<li>① 검색 조건 — 입고일자 기간 / 거래처 / 부서 / 사원. 기본은 ‘입고일자 당월 1일~오늘’.</li>
+<li>② 구매입고(GR) 정보 그리드 — 청구 대상 GR을 체크. 한 송장에 동일 거래처의 GR만 묶을 수 있습니다 (다른 거래처 GR이 섞이면 ‘동일 거래처의 입고 내역만 일괄 처리가 가능합니다’ 알림).</li>
+<li>③ 송장상세정보 입력 — 송장 헤더에 해당. 송장일자 / <strong>공급사송장번호</strong>* / 결제조건 / 지급기한 / 과세구분 / 외화거래 / 통화정보 / 비고. 공급사송장번호는 거래처가 보낸 원문 송장번호를 그대로 입력합니다.</li>
+<li>④ 라인 그리드 — 선택한 GR의 미청구 양품수량이 자동으로 펼쳐집니다. 입고수량 / 불량수량 / 양품수량 / 기청구수량 / 미청구수량 / <strong>송장수량</strong>* / 잔여수량 / <strong>단가</strong>* / 공급가 / 부가세 / 합계. 송장수량 입력 후 Enter를 치면 잔여수량이 계산되고, 단가 입력 후 Enter를 치면 공급가·부가세·합계가 자동 계산됩니다.</li>
+<li>⑤ [송장입력] — 입력된 헤더·라인으로 IR 1건을 생성합니다.</li>
+</ul>
+<div class="callout">
+<p>⌨️ Enter 입력이 핵심 — 송장수량/단가 셀 입력 후 반드시 Enter 키를 눌러야 잔여수량·공급가·부가세 자동 계산 로직이 실행됩니다.</p>
+</div>
+<h3>송장입력 ② 선 송장 — 구매오더(PO)로 입력</h3>
+<p>상단 <code>[선송장-구매오더(PO)로 입력]</code> 클릭 → 팝업이 열립니다. GR보다 송장이 먼저 도착한 경우(선청구) 또는 GR 없이 청구해야 하는 예외 케이스에서 사용합니다.</p>
+<p><img loading="lazy" src="images/purchase/5-1/03_po_popup.png" alt="선 송장 팝업 — PO2605060002 선택, 송장수량 10,000 입력 후 Enter → 공급가/부가세 자동 계산" /></p>
+<p>선 송장 팝업 — PO2605060002 선택, 송장수량 10,000 입력 후 Enter → 공급가/부가세 자동 계산</p>
+<ul>
+<li>① 검색 조건 — 상태(전체/대기/처리중 등) / 발주일자 기간 / 거래처 / 부서 / 사원.</li>
+<li>② 구매오더(발주) 선택 — 청구 대상 PO를 라디오로 1건 선택. 한 송장에는 1개 PO만 매칭됩니다.</li>
+<li>③ 송장상세정보 입력 — 일반송장과 동일 (송장일자 / 공급사송장번호 / 결제조건 / 지급기한 / 과세구분 / 비고).</li>
+<li>④ 라인 그리드 — 선택 PO의 모든 라인이 펼쳐집니다. 발주수량 / <strong>송장수량</strong>* / 잔여수량 / <strong>단가</strong>* / 공급가 / 부가세 / 합계. 입력 방식은 일반송장과 동일.</li>
+<li>⑤ [송장입력] — 선 송장(NoGR 상태)으로 IR 1건이 생성됩니다. 추후 GR이 처리되면 매칭상태가 자동 재계산됩니다.</li>
+</ul>
+<div class="callout">
+<p>⚠️ 선 송장의 매칭 상태 — 등록 시점에는 GR이 없으므로 매칭상태 = NoGR. 입고(GR) 처리되면 시스템이 자동으로 Matched / Short / Over 등으로 재산정합니다. 단, NoGR 상태에서는 송장확정이 차단됩니다 — 반드시 GR 처리 후 확정하세요.</p>
+</div>
+<h3>송장확정 — AP전표 발행 + PPV 인식</h3>
+<p>목록에서 송장 행을 체크하고 상단 <code>[송장확정]</code> 클릭 → 확인 alert가 뜹니다. [확인]을 누르면 매입채무 전표(AP)가 자동 생성됩니다.</p>
+<p><img loading="lazy" src="images/purchase/5-1/04_confirm_alert.png" alt="송장확정 alert — GR/IR 단가차이가 있으면 PPV(구매가격차이)로 함께 전표처리됨을 안내" /></p>
+<p>송장확정 alert — GR/IR 단가차이가 있으면 PPV(구매가격차이)로 함께 전표처리됨을 안내</p>
+<ul>
+<li>일치(Matched) — PO·GR·IR 수량/단가/세액 모두 일치.</li>
+<li>부분청구(Short) — IR 수량이 미청구 양품수량보다 적음. 잔량은 차기 송장에서 청구.</li>
+<li>과다청구(Over) — IR 수량이 미청구 양품수량을 초과. 확정 차단 (추가 GR 처리 또는 송장 수정 필요).</li>
+<li>단가상이(PriceDiff) — PO 단가 ≠ IR 단가. 확정 시 차액이 <strong>PPV(구매가격차이) 계정으로 자동 인식</strong>됩니다. (위 alert가 PriceDiff 상태일 때 표시됩니다.)</li>
+<li>세액차이(TaxDiff) — 세금코드/세율 불일치. 확정 차단.</li>
+<li>GR없음(NoGR) — 선 송장 상태이거나 참조 GR 누락. 확정 차단 (GR 처리 후 재확정).</li>
+</ul>
+<div class="callout">
+<p>📒 회계 분개(GR · 검수 · 반품 · IR · PPV · 마감) 전체 흐름은 별도 페이지 <a href="purchase.html#purchase-5-2">5.2. 구매관리 회계처리</a>에 정리되어 있습니다.</p>
+</div>
+<h3>입력 절차 요약 — 일반송장 (정상 케이스)</h3>
+<ol type="1">
+<li>[일반송장-구매입고(GR)로 입력] 클릭</li>
+<li>청구 대상 GR 체크 (동일 거래처만 가능)</li>
+<li>송장일자 / 공급사송장번호 / 결제조건 / 지급기한 / 과세구분 입력</li>
+<li>라인별 송장수량 입력 → Enter → 잔여수량 계산 확인</li>
+<li>단가 입력 (PO 단가 기본 세팅됨, 송장 단가가 다르면 수정) → Enter → 공급가/부가세/합계 자동 계산</li>
+<li>[송장입력] → IR 신규 등록</li>
+<li>목록에서 송장 체크 → [송장확정] → 확인 alert에서 [확인] → AP 전표 자동 발행 (+ 단가차이 시 PPV 인식)</li>
+</ol>
+<h3>기타 기능</h3>
+<ul>
+<li>송장취소 — Approved 상태의 IR을 역분개(Cancelled)로 처리. 대금지급(Paid) 전에만 가능.</li>
+<li>수정 — Draft 상태에서만 헤더/라인 수정 가능. Approved 후에는 수정 불가, 취소 후 재작성.</li>
+<li>삭제 — Draft 상태에서만 가능.</li>
+<li>마감 — 추가 송장이 없을 것으로 확정된 PO/GR을 종결.</li>
+<li>출력 / 다운로드 — 송장 1건 PDF / 목록 엑셀.</li>
+</ul>
+<h3>관련 메뉴</h3>
+<ul>
+<li><code>[GR/IR 보고서] ▸ [GR/IR 불일치 조회]</code> — 매칭상태가 Matched가 아닌 IR을 추적해 OnHold 원인 해소</li>
+<li><code>[GR/IR 보고서] ▸ [GR/IR 잔액조회]</code> — GR/IR 미결산 계정 잔액 상세</li>
+<li><code>[GR/IR 보고서] ▸ [발주 별 입고/송장 현황]</code> — PO 기준으로 GR/IR 진행률 확인</li>
+</ul>
+</section><section class="page" id="purchase-5-2"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">5.2. 구매관리 회계처리</h1><h2>5.2. 구매관리 회계처리</h2>
+<div class="callout">
+<p>📒 이 문서는 구매 사이클의 회계 분개를 한 곳에 모았습니다. 실제 화면 사용법은 <code>[4.1 구매입고서] / [4.2 검수 및 반품처리] / [5.1 송장입력]</code> 각 페이지를 참조하세요.</p>
+</div>
+<h3>개요</h3>
+<p><strong>GR(입고) → 검수(양품/불량) → 반품 → IR(송장확정) → 월마감 → 기말마감(PPV 배부)에서 회계처리가 어떤 방식으로 처리되는 정리한 문서입니다</strong>. 핵심 가교 계정은 <code>GR/IR 임시계정(00001)</code> — GR과 IR의 시점 차이를 메우는 조정계정으로, 매칭이 끝나면 잔액이 0이 됩니다.</p>
+<div class="callout">
+<p>📒 실제 사용 계정코드 — GR/IR 임시계정(00001) · 원재료(15300) · 원재료-검수대기(15301) · 원재료-반품대기(15302) · 부가세대급금(13500) · 선급금(13100) · 외상매입금(25100) · 미지급금-GRIR미정산(25302) · PPV 구매가격차이(00004) · 제품매출원가(45500) · 상품매출원가(45100) · 재공품 WIP(16900) · 제품(15000)</p>
+</div>
+<h3>Part A. GR 입고 · 검수 · 반품 (실시간)</h3>
+<p>GR 시점에는 세금계산서가 아직 없으므로 부가세를 인식하지 않고, PO 단가 × 입고수량으로 GR/IR 임시계정에 잠정 인식합니다. 검수에서 양품/불량을 가르고, 불량은 반품 출고 시점에 GR/IR 임시계정을 같이 소멸시킵니다.</p>
+<p><strong>【T1】 GR 입고 — 검수대기 + GR/IR 임시계정 인식</strong></p>
+<p>트리거: 구매입고서 등록 → 전표일자 = GR 입고일자 / 헤더거래처 O / 전표경로 = 구매입고(GR)</p>
+<p>예시: PO단가 10,000 × 100개 = 1,000,000 (VAT 없음 — 세금계산서 미수취)</p>
+<table>
+<thead>
+<tr class="header">
+<th>구분</th>
+<th>계정과목</th>
+<th>금액</th>
+<th>적요</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>차변</td>
+<td>원재료-검수대기(15301)</td>
+<td>1,000,000</td>
+<td>원재료검수대기_PO번호-항목_GR번호-항목</td>
+</tr>
+<tr class="even">
+<td>대변</td>
+<td>GR/IR 임시계정(00001)</td>
+<td>1,000,000</td>
+<td>GRIR정리_PO번호-항목_GR번호-항목</td>
+</tr>
+</tbody>
+</table>
+<div class="callout">
+<p>⚠️ 재고테이블에는 원재료(15300)로 입고 처리되지만, 회계 분개는 검수대기(15301)로 구분 인식합니다. 해당월 입고건은 해당월 마감 전에 반드시 검수 완료해야 합니다 (검수대기 잔액 존재 시 마감 차단).</p>
+</div>
+<p><strong>【T2】 검수 확정 — 양품 → 정상재고</strong></p>
+<p>트리거: 검수 완료 → 양품 판정 / 전표일자 = GR 입고일자 (자동) / 전표경로 = 구매검수</p>
+<p>예시: 양품 70개 × 10,000 = 700,000 (계정 대체만 발생, 재고테이블 변동 없음)</p>
+<table>
+<thead>
+<tr class="header">
+<th>구분</th>
+<th>계정과목</th>
+<th>금액</th>
+<th>적요</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>차변</td>
+<td>원재료(15300)</td>
+<td>700,000</td>
+<td>원재료_..._양품확정</td>
+</tr>
+<tr class="even">
+<td>대변</td>
+<td>원재료-검수대기(15301)</td>
+<td>700,000</td>
+<td>원재료검수대기_..._양품확정</td>
+</tr>
+</tbody>
+</table>
+<p><strong>【T3】 검수 확정 — 불량 → 반품대기</strong></p>
+<p>트리거: 검수 완료 → 불량 판정 / 전표일자 = GR 입고일자 (자동) / 전표경로 = 구매검수</p>
+<p>예시: 불량 30개 × 10,000 = 300,000 (계정 대체만 발생, 재고테이블 변동 없음)</p>
+<table>
+<thead>
+<tr class="header">
+<th>구분</th>
+<th>계정과목</th>
+<th>금액</th>
+<th>적요</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>차변</td>
+<td>원재료-반품대기(15302)</td>
+<td>300,000</td>
+<td>원재료반품대기_..._불량확정</td>
+</tr>
+<tr class="even">
+<td>대변</td>
+<td>원재료-검수대기(15301)</td>
+<td>300,000</td>
+<td>원재료검수대기_..._불량확정</td>
+</tr>
+</tbody>
+</table>
+<p><strong>【T4】 반품 처리 — GR/IR 임시채무 소멸</strong></p>
+<p>트리거: 반품요청 → 입출고요청서 → 출고처리 / 전표일자 = 출고처리일 / 전표경로 = 입출고요청</p>
+<p>예시: 불량 30개 전량 반품 → 재고 차감 + 분개 동시 발생</p>
+<table>
+<thead>
+<tr class="header">
+<th>구분</th>
+<th>계정과목</th>
+<th>금액</th>
+<th>적요</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>차변</td>
+<td>GR/IR 임시계정(00001)</td>
+<td>300,000</td>
+<td>GRIR정리_..._반품</td>
+</tr>
+<tr class="even">
+<td>대변</td>
+<td>원재료-반품대기(15302)</td>
+<td>300,000</td>
+<td>원재료반품대기_..._반품출고</td>
+</tr>
+</tbody>
+</table>
+<p>→ GR/IR 임시계정 잔액 = 양품 700,000만 남음 (반품 300,000 소멸). 이 잔액이 IR 송장확정 시 상계 대상이 됩니다.</p>
+<h3>Part B. 송장확정(IR) — 매입채무 인식</h3>
+<p>공급사 세금계산서를 수취하면 GR/IR 임시계정을 상계하고 외상매입금(25100)을 확정합니다. PO 단가와 IR 단가가 다르면 차액을 PPV(구매가격차이)로 분리 인식합니다. (</p>
+<p><strong>매칭상태별 처리 — Matched/Short → 정상 전표, Over/TaxDiff/NoGR → 확정 차단, PriceDiff → 사용자 컨펌 후 허용</strong></p>
+<p><strong>【T5】 정상 IR 확정 — Matched, VAT 없음 (영세율·면세 거래 등)</strong></p>
+<p>트리거: 송장확정 / 전표일자 = 송장일자(세금계산서 발행일) / 헤더거래처 O / 전표경로 = 구매송장</p>
+<p>예시: 양품 70개 × @10,000 = 700,000</p>
+<table>
+<thead>
+<tr class="header">
+<th>구분</th>
+<th>계정과목</th>
+<th>금액</th>
+<th>적요</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>차변</td>
+<td>GR/IR 임시계정(00001)</td>
+<td>700,000</td>
+<td>GRIR정리_..._IR번호_송장확정</td>
+</tr>
+<tr class="even">
+<td>대변</td>
+<td>외상매입금(25100)</td>
+<td>700,000</td>
+<td>외상매입금_..._IR번호_송장확정</td>
+</tr>
+</tbody>
+</table>
+<p><strong>【T6】 정상 IR 확정 — Matched, VAT 10% 포함</strong></p>
+<p>예시: 공급가 700,000 + VAT 70,000 = 외상매입금 770,000</p>
+<table>
+<thead>
+<tr class="header">
+<th>구분</th>
+<th>계정과목</th>
+<th>금액</th>
+<th>적요</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>차변</td>
+<td>GR/IR 임시계정(00001)</td>
+<td>700,000</td>
+<td>GRIR정리_..._IR번호_송장확정</td>
+</tr>
+<tr class="even">
+<td>차변</td>
+<td>부가세대급금(13500)</td>
+<td>70,000</td>
+<td>부가세대급금_IR번호_매입세액</td>
+</tr>
+<tr class="odd">
+<td>대변</td>
+<td>외상매입금(25100)</td>
+<td>770,000</td>
+<td>외상매입금_..._IR번호_송장확정</td>
+</tr>
+</tbody>
+</table>
+<div class="callout">
+<p>🧾 VAT는 IR(세금계산서 수취) 시점에만 인식 — GR 시점에는 세금계산서가 없으므로 부가세 인식 불가. 부가세 신고는 외상매입금(25100) 잔액 = 세금계산서 합계로 대사합니다.</p>
+</div>
+<p><strong>【T7】 PPV 불리차이 — IR 단가 &gt; PO 단가</strong></p>
+<p>예시: PO 10,000 / IR 10,200 / 100개 → 공급가 1,020,000 / VAT 102,000 / 외상매입금 1,122,000 / PPV 불리 20,000 (비용 증가)</p>
+<table>
+<thead>
+<tr class="header">
+<th>구분</th>
+<th>계정과목</th>
+<th>금액</th>
+<th>적요</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>차변</td>
+<td>GR/IR 임시계정(00001)</td>
+<td>1,000,000</td>
+<td>GRIR정리_..._IR번호_송장확정 (PO 단가 기준 잔액 상계)</td>
+</tr>
+<tr class="even">
+<td>차변</td>
+<td>PPV 구매가격차이(00004)</td>
+<td>20,000</td>
+<td>PPV불리_..._단가차이</td>
+</tr>
+<tr class="odd">
+<td>차변</td>
+<td>부가세대급금(13500)</td>
+<td>102,000</td>
+<td>부가세대급금_IR번호_매입세액</td>
+</tr>
+<tr class="even">
+<td>대변</td>
+<td>외상매입금(25100)</td>
+<td>1,122,000</td>
+<td>외상매입금_..._IR번호 (IR 단가 × 수량 + VAT)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>【T8】 PPV 유리차이 — IR 단가 &lt; PO 단가</strong></p>
+<p>예시: PO 10,000 / IR 9,800 / 100개 → 공급가 980,000 / VAT 98,000 / 외상매입금 1,078,000 / PPV 유리 20,000 (비용 감소)</p>
+<table>
+<thead>
+<tr class="header">
+<th>구분</th>
+<th>계정과목</th>
+<th>금액</th>
+<th>적요</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>차변</td>
+<td>GR/IR 임시계정(00001)</td>
+<td>1,000,000</td>
+<td>GRIR정리_..._IR번호 (PO 단가 기준 잔액 상계)</td>
+</tr>
+<tr class="even">
+<td>차변</td>
+<td>부가세대급금(13500)</td>
+<td>98,000</td>
+<td>부가세대급금_IR번호_매입세액</td>
+</tr>
+<tr class="odd">
+<td>대변</td>
+<td>외상매입금(25100)</td>
+<td>1,078,000</td>
+<td>외상매입금_..._IR번호</td>
+</tr>
+<tr class="even">
+<td>대변</td>
+<td>PPV 구매가격차이(00004)</td>
+<td>20,000</td>
+<td>PPV유리_..._단가차이</td>
+</tr>
+</tbody>
+</table>
+<div class="callout">
+<p>⚖️ 불리 vs 유리 핵심 — IR 단가 &gt; PO 단가면 PPV 차변(불리), IR 단가 &lt; PO 단가면 PPV 대변(유리). 송장확정 alert의 “GR/IR 단가차이 상태는 PPV로 확정처리 및 전표처리가 진행됩니다”가 이 분개를 가리킵니다. 재고는 PO 단가(표준) 기준으로 유지되고, 단가차이만 PPV 계정으로 분리됩니다.</p>
+</div>
+<h3>Part C. 송장 월마감 — GR/IR 재분류 + 차월 역분개</h3>
+<p>월말 시점에 GR/IR 임시계정에 잔액이 남아있으면(GR은 끝났는데 IR 미도착, 또는 그 반대), 재무상태표(BS) 표시를 위해 거래처별 정규계정으로 재분류합니다. 차월 1일에 시스템이 자동으로 역분개해 GR/IR 임시계정을 원복합니다.</p>
+<p><strong>【T9】 월말 GR/IR 재분류 — 거래처별 정규계정 전환</strong></p>
+<p>트리거: 구매 정산마감 완료 → 거래처별 잔액 자동 집계 → 전표 1장 통합 / 분개거래처 O / 전표일자 = 해당월 말일</p>
+<p>판단 기준 — 대변잔액 = 정상(GR 완료, IR 미도착) → 미지급금-GRIR미정산(25302) / 차변잔액 = 비정상(IR 완료, GR 미완료) → 선급금(13100)</p>
+<p>예시: A공급사 500,000(대) + B공급사 300,000(대) + C공급사 100,000(차)</p>
+<table>
+<thead>
+<tr class="header">
+<th>구분</th>
+<th>계정과목</th>
+<th>금액</th>
+<th>거래처</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>차변</td>
+<td>GR/IR 임시계정(00001)</td>
+<td>500,000</td>
+<td>A공급사 (대변잔액 재분류)</td>
+</tr>
+<tr class="even">
+<td>대변</td>
+<td>미지급금-GRIR미정산(25302)</td>
+<td>500,000</td>
+<td>A공급사</td>
+</tr>
+<tr class="odd">
+<td>차변</td>
+<td>GR/IR 임시계정(00001)</td>
+<td>300,000</td>
+<td>B공급사 (대변잔액 재분류)</td>
+</tr>
+<tr class="even">
+<td>대변</td>
+<td>미지급금-GRIR미정산(25302)</td>
+<td>300,000</td>
+<td>B공급사</td>
+</tr>
+<tr class="odd">
+<td>차변</td>
+<td>선급금(13100)</td>
+<td>100,000</td>
+<td>C공급사 (차변잔액 비정상)</td>
+</tr>
+<tr class="even">
+<td>대변</td>
+<td>GR/IR 임시계정(00001)</td>
+<td>100,000</td>
+<td>C공급사</td>
+</tr>
+</tbody>
+</table>
+<div class="callout">
+<p>📌 왜 외상매입금(25100)이 아니라 미지급금-GRIR미정산(25302)인가? — 세금계산서를 아직 받지 못한 추정채무이므로 부가세대급금 인식 불가. 외상매입금(25100) 잔액 = 세금계산서 합계 대사를 정확히 유지하기 위해 별도 세목으로 분리합니다. 또한 거래처원장(보조원장)에 잡혀야 IR 도착 시 거래처별 매칭이 가능합니다.</p>
+</div>
+<p><strong>【T10】 차월 1일 자동 역분개 — GR/IR 원복</strong></p>
+<p>트리거: 차월 1일 Period Open 자동 / 전표일자 = 차월 1일 / 분개거래처 O (T9와 동일 거래처)</p>
+<table>
+<thead>
+<tr class="header">
+<th>구분</th>
+<th>계정과목</th>
+<th>금액</th>
+<th>거래처</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>차변</td>
+<td>미지급금-GRIR미정산(25302)</td>
+<td>500,000</td>
+<td>A공급사 (역분개)</td>
+</tr>
+<tr class="even">
+<td>대변</td>
+<td>GR/IR 임시계정(00001)</td>
+<td>500,000</td>
+<td>A공급사</td>
+</tr>
+<tr class="odd">
+<td>차변</td>
+<td>미지급금-GRIR미정산(25302)</td>
+<td>300,000</td>
+<td>B공급사 (역분개)</td>
+</tr>
+<tr class="even">
+<td>대변</td>
+<td>GR/IR 임시계정(00001)</td>
+<td>300,000</td>
+<td>B공급사</td>
+</tr>
+<tr class="odd">
+<td>차변</td>
+<td>GR/IR 임시계정(00001)</td>
+<td>100,000</td>
+<td>C공급사 (역분개)</td>
+</tr>
+<tr class="even">
+<td>대변</td>
+<td>선급금(13100)</td>
+<td>100,000</td>
+<td>C공급사</td>
+</tr>
+</tbody>
+</table>
+<div class="callout">
+<p>🔁 역분개 누락 = GR/IR + 미지급금-GRIR미정산 이중계상 오류. 시스템이 자동 처리하므로 수동 조작 금지. 역분개 후 차월에 실제 IR이 도착하면 GR/IR 임시계정과 정상적으로 상계됩니다.</p>
+</div>
+<h3>Part D. 기말마감 — PPV 배부 (총량비율안분)</h3>
+<p>기말(월말 또는 분기말)에 <strong>PPV(구매가격차이) 잔액</strong>을 재고/매출원가에 배부해 PPV 계정 잔액을 0으로 만듭니다. 앵커는 <strong>총량비율안분</strong> 방식 — 기초재고 + 당월입고 총량을 4개 위치(원재료 잔량 / 재공품 투입분 / 완성품 미판매 / 매출원가)로 분해하고, 위치별 수량 비율로 PPV를 안분합니다.</p>
+<p><strong>배부 로직</strong></p>
+<p>기초재고 + 당월입고 총량을 4개 위치(① 원재료 잔량 / ② 재공품 투입분 / ③ 완성품 미판매 / ④ 매출원가)로 분해하고, 위치별 수량 비율로 PPV 안분.</p>
+<p>예시: 기초 200 + 입고 100 = 총 300개, PPV 불리 20,000원</p>
+<table>
+<thead>
+<tr class="header">
+<th>위치</th>
+<th>수량</th>
+<th>비율</th>
+<th>PPV 배부</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>① 원재료 잔량</td>
+<td>150개</td>
+<td>50.0%</td>
+<td>10,000</td>
+</tr>
+<tr class="even">
+<td>② 재공품 투입분</td>
+<td>50개</td>
+<td>16.7%</td>
+<td>3,333</td>
+</tr>
+<tr class="odd">
+<td>③ 제품(미판매)</td>
+<td>33개</td>
+<td>11.0%</td>
+<td>2,200</td>
+</tr>
+<tr class="even">
+<td>④ 매출원가(판매)</td>
+<td>67개</td>
+<td>22.3%</td>
+<td>4,467</td>
+</tr>
+<tr class="odd">
+<td>합계</td>
+<td>300개</td>
+<td>100%</td>
+<td>20,000</td>
+</tr>
+</tbody>
+</table>
+<p>품목별 통합 1장 전표 — 불리 케이스:</p>
+<table>
+<thead>
+<tr class="header">
+<th>구분</th>
+<th>계정과목</th>
+<th>금액</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>차변</td>
+<td>원재료(15300)</td>
+<td>10,000</td>
+</tr>
+<tr class="even">
+<td>차변</td>
+<td>재공품 WIP(16900)</td>
+<td>3,333</td>
+</tr>
+<tr class="odd">
+<td>차변</td>
+<td>제품(15000)</td>
+<td>2,200</td>
+</tr>
+<tr class="even">
+<td>차변</td>
+<td>제품매출원가(45500)</td>
+<td>4,467</td>
+</tr>
+<tr class="odd">
+<td>대변</td>
+<td>PPV 구매가격차이(00004)</td>
+<td>20,000</td>
+</tr>
+</tbody>
+</table>
+<div class="callout">
+<p>🔢 소수점 처리 — 최대잔여법(Largest Remainder): 비율 곱 후 소수점 절사 → 절사 합계와 PPV 총액 차이(잔여분)를 소수점 큰 순서대로 1원씩 배분 → 합계 = PPV 총액 항상 보장.</p>
+</div>
+<div class="callout">
+<p>🧮 PPV 배부는 구매마감 + 제조원가 A+ 완료 후, 재고마감 단계(4. 재고마감 → ‘PPV 원가조정 반영’)에서 발행됩니다. 18번 전표(C3 제조원가 차이) / F-5 (PPV 구매가격차이) / E-1 (상품 평가차이)은 원천이 분리되어 매출원가에 이중반영되지 않습니다. 상세 산식은 ‘생산회계처리(표준원가)’ 매뉴얼 참조.</p>
+</div>
+<h3>마감 프로세스 5단계 — 송장 관련</h3>
+<ul>
+<li>1. 구매마감 — 모든 GR 검수 완료 + IR 송장확정 완료 (검수대기/매칭상태 OnHold 잔존 시 차단)</li>
+<li>2. 생산마감 — 생산실적/원가 A+ 확정 (PPV 안분의 ④ 매출원가 수량 확정)</li>
+<li>3. 재고실사 → 재고마감 — ① 원재료 / ③ 완성품 기말수량 확정, 생산투입수량확정 → ② 재공품 수량 확정</li>
+<li>4. PPV 원가조정 반영 — Part D 분개 자동 발행 → 재고평가에 ① 잔량분 PPV 흡수</li>
+<li>5. T9 GR/IR 재분류 (월말) + T10 차월 1일 자동 역분개</li>
+</ul>
+<div class="callout">
+<p>⏰ 매월 [GR/IR 잔액조회]에서 미결 항목을 추적하세요. GR/IR 임시계정(00001) 잔액은 거래처별 매칭이 완료되면 0이 되어야 정상입니다. 잔액 누적은 회계감사 시 즉시 지적사항이 됩니다.</p>
+</div>
+</section><section class="page" id="purchase-6-1"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">6.1. GR/IR 불일치 조회</h1><h1>6. GR/IR 보고서</h1>
+<h2>6.1. GR/IR 불일치 조회</h2>
+<h3>개요</h3>
+<p>PO·GR·IR 3-Way 매칭에서 <strong>일치하지 않는 라인</strong>만 모아 보는 보고서입니다. 매칭상태가 Matched/Short(부분청구)가 아닌 항목 — Over(과청구)·PriceDiff(단가차이)·TaxDiff(세액차이)·NoGR(GR없음) — 을 추적해 송장확정·지급을 보류하고 원천 PO/GR/IR을 수정하는 데 사용합니다.</p>
+<div class="callout">
+<p>🚧 이 보고서는 ‘지급 보류 게이트키퍼’입니다. Block=Y(Over/PriceDiff/TaxDiff/NoGR) 라인은 송장확정·전표·지급이 모두 차단되며, 매칭이슈코드(ISS-…)가 자동 발행되어 별도 이슈관리로 넘어갑니다.</p>
+</div>
+<h3>화면 진입</h3>
+<p>좌측 사이드바 [구매관리] ▸ [GR/IR 보고서] ▸ [GR/IR 불일치 조회]</p>
+<h3>상세현황 탭</h3>
+<p><img loading="lazy" src="images/purchase/6-1/01_list.png" alt="GR/IR 불일치 조회 — 상세현황 (PO/GR/IR 라인별 매칭 차이 확인)" /></p>
+<p>GR/IR 불일치 조회 — 상세현황 (PO/GR/IR 라인별 매칭 차이 확인)</p>
+<ul>
+<li>① 탭 — [상세현황] / [요약현황]. 우측에 [상세검색] / [조회] / [초기화]. 출력·다운로드 버튼.</li>
+<li>② 그리드 — 한 행이 PO/GR/IR 매칭 라인 1건. 32개 컬럼 좌→우 순서:</li>
+<li><strong>ⓐ 기준정보 —</strong> 거래처코드 / 거래처명 / 품목코드 / 품목명 / 품목유형 / 규격 / 단위</li>
+<li><strong>ⓑ 발주서(PO) 정보 —</strong> 발주서(PO)항목 / 발주일자 / 발주수량 / 발주단가 / 공급가 / 부가세 / 합계</li>
+<li><strong>ⓒ 구매입고(GR) 정보 —</strong> 구매입고(GR)항목 / 입고일자 / 입고수량 / 양품수량 / 불량수량</li>
+<li><strong>ⓓ 송장(IR) 정보 —</strong> 송장(IR)항목 / 송장일자 / 송장수량 / 송장(IR)단가 / 공급가 / 부가세 / 합계</li>
+<li><strong>ⓔ 차이/매칭 —</strong> 수량차이 / 단가차이 / 세액차이 / GR/IR 매칭상태</li>
+</ul>
+<h3>요약현황 탭</h3>
+<p><img loading="lazy" src="images/purchase/6-1/02_summary.png" alt="GR/IR 불일치 조회 — 요약현황 (매칭상태×거래처 단위 집계)" /></p>
+<p>GR/IR 불일치 조회 — 요약현황 (매칭상태×거래처 단위 집계)</p>
+<ul>
+<li>① [요약현황] 탭 클릭 — 매칭상태와 거래처 조합으로 라인 집계.</li>
+<li>② 집계 컬럼 — GR/IR 매칭상태 / 거래처코드 / 거래처명 / 라인개수 / 수량차이(합) / 단가차이(합) / 세액차이(합)</li>
+<li>예시 데이터: 공급사A 일치 3건 / 공급사A 부분청구 1건 (수량차이 -2,000) / 공급사A 과(선)청구 1건 (수량차이 +2,000) / 공급사A 단가차이 1건 (단가차이 100, 세액차이 60,000) / 공급사B 단가차이 1건 (단가차이 -100, 세액차이 -100,000)</li>
+</ul>
+<h3>매칭상태 코드 정의</h3>
+<table>
+<thead>
+<tr class="header">
+<th>코드</th>
+<th>정의</th>
+<th>Block(후속 차단)</th>
+<th>조치</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>일치(Matched)</td>
+<td>수량·단가·세액 모두 일치</td>
+<td>N</td>
+<td>정상 송장확정 → 지급</td>
+</tr>
+<tr class="even">
+<td>부분청구(Short)</td>
+<td>IR수량 &lt; GR 미청구 양품수량</td>
+<td>N</td>
+<td>잔량은 차기 송장으로 청구</td>
+</tr>
+<tr class="odd">
+<td>과(선)청구(Over)</td>
+<td>IR수량 &gt; GR 미청구 양품수량</td>
+<td>Y</td>
+<td>GR 추가입고 또는 송장 수정 요청</td>
+</tr>
+<tr class="even">
+<td>단가차이(PriceDiff)</td>
+<td>PO 단가 ≠ IR 단가</td>
+<td>Y (사용자 컨펌 시 PPV 처리 허용)</td>
+<td>PO 정정·재발행 또는 송장 재발행</td>
+</tr>
+<tr class="odd">
+<td>세액차이(TaxDiff)</td>
+<td>세금코드/세율/세액 불일치</td>
+<td>Y</td>
+<td>세무 담당자 승인 + 정정</td>
+</tr>
+<tr class="even">
+<td>GR없음(NoGR)</td>
+<td>참조 GR 없음 / GR 전량 청구 완료</td>
+<td>Y</td>
+<td>GR 처리 또는 송장 취소</td>
+</tr>
+</tbody>
+</table>
+<div class="callout">
+<p>📒 Block=Y 상태에서는 ‘송장확정 alert’에서 확정 시도가 차단됩니다. 단, PriceDiff만 예외로 사용자 컨펌 시 PPV(구매가격차이)로 분리 인식 후 확정 허용 — 자세한 분개는 [5.2. 구매관리 회계처리] T7/T8 참조.</p>
+</div>
+<h3>활용 시나리오</h3>
+<ol type="1">
+<li>매월/매주 정기 점검 — 상세현황에서 매칭상태가 일치/부분청구가 아닌 라인 필터링.</li>
+<li>Block=Y 라인 → 매칭이슈코드(ISS-…) 자동 발행 → 이슈관리에서 담당자 배정.</li>
+<li>Over → 공급사에 추가 GR 요청 또는 송장 정정 요청 / NoGR → GR 처리 우선.</li>
+<li>PriceDiff → 견적·계약 단가와 대조 후 PO 정정 또는 송장 재발행 / 사용자 컨펌 시 PPV로 통과.</li>
+<li>TaxDiff → 세무 담당자에게 에스컬레이션 → 수정세금계산서 요청.</li>
+<li>원천 문서 수정이 완료되면 매칭상태가 자동 재계산되어 일치/부분청구로 전환.</li>
+</ol>
+<h3>관련 메뉴</h3>
+<ul>
+<li>[5.1. 송장입력] — 송장확정 시 매칭상태 자동 산정의 시작점</li>
+<li>[5.2. 구매관리 회계처리] — PriceDiff PPV 분개, NoGR/Over 차단 정책</li>
+<li>[6.2. GR/IR 잔액조회] — 매칭은 OK이나 GR↔IR 금액·시점 차이로 잔액이 남은 항목</li>
+<li>[6.3. 발주 별 입고/송장 현황] — PO 기준 진행률로 드릴다운</li>
+</ul>
+</section><section class="page" id="purchase-6-2"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">6.2. GR/IR 잔액조회</h1><h1>6. GR/IR 보고서</h1>
+<h2>6.2. GR/IR 잔액조회</h2>
+<h3>개요</h3>
+<p><strong>GR/IR 임시계정(00001)의 미정산 잔액</strong>을 라인별로 보여주는 보고서입니다. GR과 IR의 시점·금액 차이로 발생하는 잔액을 GRNI(Goods Receipt Not Invoiced) / IRNI(Invoice Receipt Not Received) 두 방향으로 분리해서 표시합니다.</p>
+<div class="callout">
+<p>⏰ GR/IR 임시계정 잔액은 최종 0이 되어야 정상입니다. 잔액이 누적되면 월마감 시 거래처별로 미지급금-GRIR미정산(25302) 또는 선급금(13100)으로 재분류되고, 차월 1일에 자동 역분개됩니다. 90일 초과 시 대표이사 보고 대상.</p>
+</div>
+<h3>핵심 정의</h3>
+<ul>
+<li><strong>GRNI</strong> (Goods Receipt Not Invoiced) — 입고는 됐는데 송장이 아직 안 옴. 양품금액 &gt; 송장금액. 채권자 입장에서 잠재 부채.</li>
+<li><strong>IRNI</strong> (Invoice Receipt Not Received) — 송장은 받았는데 입고가 안 됨 / 부족 입고. 송장금액 &gt; 양품금액. 비정상 상태 (선급 또는 입고 누락).</li>
+<li><strong>미정산 잔액</strong> = 양품금액 − 송장금액. 양수면 GRNI, 음수면 IRNI.</li>
+<li><strong>기준일자</strong> — 일반적으로 입고일. 입고일이 없으면 송장일을 기준일로 사용.</li>
+<li><strong>경과일수</strong> = 현재일자(또는 리포트 실행일) − 기준일자.</li>
+</ul>
+<h3>경과일수 구간 기준정보</h3>
+<p>회사 정책으로 정의하는 표준 구간 (GRIR_STD):</p>
+<table>
+<thead>
+<tr class="header">
+<th>순번</th>
+<th>구간 명칭</th>
+<th>최소일수</th>
+<th>최대일수</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>0–7</td>
+<td>0</td>
+<td>7</td>
+<td>정상 운영 범위</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>8–15</td>
+<td>8</td>
+<td>15</td>
+<td>주의 관찰</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>16–30</td>
+<td>16</td>
+<td>30</td>
+<td>원인 조사 시작</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>31–60</td>
+<td>31</td>
+<td>60</td>
+<td>에스컬레이션</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>61–90</td>
+<td>61</td>
+<td>90</td>
+<td>월말 강제 정리 대상</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>&gt;90</td>
+<td>91</td>
+<td>—</td>
+<td>90일 초과 즉시 대표이사 보고</td>
+</tr>
+</tbody>
+</table>
+<h3>화면 진입</h3>
+<p>좌측 사이드바 [구매관리] ▸ [GR/IR 보고서] ▸ [GR/IR 잔액조회]</p>
+<h3>상세현황 탭</h3>
+<p><img loading="lazy" src="images/purchase/6-2/01_list.png" alt="GR/IR 잔액조회 — 상세현황 (라인별 미정산 잔액)" /></p>
+<p>GR/IR 잔액조회 — 상세현황 (라인별 미정산 잔액)</p>
+<ul>
+<li>① 4개 탭 — [상세현황] / [거래처별 현황] / [경과일수별 현황] / [거래처/경과일수 별 현황]</li>
+<li>② 상세 그리드 — 한 행이 GR/IR 매칭 라인 1건. 22개 컬럼:</li>
+<li><strong>ⓐ 기준정보 —</strong> 거래처코드 / 거래처명 / 품목코드 / 품목명 / 품목유형 / 규격 / 단위</li>
+<li><strong>ⓑ PO/수량 —</strong> 발주서(PO)항목 / 발주(PO)단가 / 양품수량 / 송장수량</li>
+<li><strong>ⓒ 금액 —</strong> 양품금액 / 송장금액 / 미정산 잔액 (= 양품금액 − 송장금액)</li>
+<li><strong>ⓓ 일자/경과 —</strong> 발주일자 / 입고일자 / 송장일자 / 기준일자 / 경과일수 / 경과일수 구간</li>
+<li><strong>ⓔ 방향 분리 —</strong> GRNI 금액(양품금액&gt;송장금액일 때) / IRNI 금액(양품금액&lt;송장금액일 때)</li>
+</ul>
+<h3>거래처별 현황 탭</h3>
+<p><img loading="lazy" src="images/purchase/6-2/02_by_vendor.png" alt="GR/IR 잔액조회 — 거래처별 집계 (공급사별 GRNI/IRNI 합계)" /></p>
+<p>GR/IR 잔액조회 — 거래처별 집계 (공급사별 GRNI/IRNI 합계)</p>
+<ul>
+<li><strong>거래처(공급사) 단위 집계.</strong> 거래처코드 / 거래처명 / 건수 / 입고가치 / 송장가치 / 미정산 잔액 / GRNI 금액 / IRNI 금액</li>
+<li>활용 — 어느 공급사가 송장 누락(GRNI)이 잦은지, 입고 지연(IRNI)이 잦은지 식별. 정기 SCM 미팅에서 공급사별 risk 지표로 사용.</li>
+</ul>
+<h3>경과일수별 현황 탭</h3>
+<p><img loading="lazy" src="images/purchase/6-2/03_by_aging.png" alt="GR/IR 잔액조회 — 경과일수 구간별 집계 (에이징 분석)" /></p>
+<p>GR/IR 잔액조회 — 경과일수 구간별 집계 (에이징 분석)</p>
+<ul>
+<li><strong>경과일수 구간 단위 집계.</strong> 경과일수 구간 / 건수 / 미정산 잔액 / GRNI 금액 / IRNI 금액</li>
+<li>활용 — 잔액의 ‘노후도’ 파악. &gt;90일 구간이 0이 아니면 즉시 대표이사 보고. 61–90 구간은 다음 월마감에서 강제 정리 대상.</li>
+</ul>
+<h3>거래처/경과일수 별 현황 탭</h3>
+<p><img loading="lazy" src="images/purchase/6-2/04_by_vendor_aging.png" alt="GR/IR 잔액조회 — 거래처 × 경과일수 매트릭스" /></p>
+<p>GR/IR 잔액조회 — 거래처 × 경과일수 매트릭스</p>
+<ul>
+<li><strong>거래처 × 경과일수 구간 매트릭스.</strong> 거래처코드 / 거래처명 / 에이징구간 / 건수 / 미정산 잔액 / GRNI 금액 / IRNI 금액</li>
+<li>활용 — 특정 공급사의 어느 구간에 잔액이 집중되는지 한눈에 확인. ‘공급사A가 61–90 구간에 GRNI 12,000만 있다’ 같은 정밀 진단.</li>
+</ul>
+<h3>회계처리 흐름 (요약)</h3>
+<p>실시간 발생 → 월마감 재분류 → 차월 1일 자동 역분개. 자세한 분개는 <code>[5.2. 구매관리 회계처리] Part C</code> 참조.</p>
+<table>
+<thead>
+<tr class="header">
+<th>구분</th>
+<th>조건</th>
+<th>월말 처리</th>
+<th>차월 초</th>
+<th>지급 여부</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>GRNI</td>
+<td>입고 &gt; 송장</td>
+<td>GR/IR → 미지급금-GRIR미정산(25302)</td>
+<td>자동 역분개</td>
+<td>불가 (송장 없음) — 송장 독촉</td>
+</tr>
+<tr class="even">
+<td>IRNI</td>
+<td>송장 &gt; 입고</td>
+<td>GR/IR → 선급금(13100) (비정상)</td>
+<td>자동 역분개</td>
+<td>보류 (Block) — 입고 촉구 / 송장 정정</td>
+</tr>
+</tbody>
+</table>
+<h3>활용 시나리오</h3>
+<ol type="1">
+<li>월말 — 경과일수별 탭에서 &gt;90일 잔액 확인 → 대표이사 보고.</li>
+<li>주간 — 거래처별 탭에서 IRNI 큰 공급사 식별 → 입고/송장 정정 요청.</li>
+<li>결산 시 — 상세현황에서 GR/IR 임시계정 잔액의 거래처별 거래처원장 대사 (외상매입금 25100과 별도 매입세액공제 정확성 보존).</li>
+</ol>
+<h3>관련 메뉴</h3>
+<ul>
+<li>[5.1. 송장입력] — 송장확정으로 GR/IR 잔액을 0으로 만듦</li>
+<li>[5.2. 구매관리 회계처리] — T9 월말 재분류 / T10 차월 역분개</li>
+<li>[6.1. GR/IR 불일치 조회] — 매칭상태가 일치/부분청구가 아닌 라인을 별도로 추적</li>
+<li>[6.3. 발주 별 입고/송장 현황] — PO 기준 미입고/미청구 잔량 확인</li>
+</ul>
+</section><section class="page" id="purchase-6-3"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">6.3. 발주 별 입고/송장 현황</h1><h1>6. GR/IR 보고서</h1>
+<h2>6.3. 발주 별 입고/송장 현황</h2>
+<h3>개요</h3>
+<p>구매오더(PO) 라인 기준으로 매핑된 <strong>모든 GR과 IR의 수량/금액을 합산</strong>해 진행률을 보여주는 보고서입니다. ‘이 PO는 발주 100개 중 입고 80개, 송장 70개 → 미입고 20개, 미청구 10개 + 납기 7일 지연’ 같은 PO 단위 진척도를 한 화면에서 확인할 수 있습니다.</p>
+<div class="callout">
+<p>🧭 이 보고서는 구매 운영의 ‘게이트웨이 대시보드’입니다. PO별로 문제가 보이면 [6.1 GR/IR 불일치 조회] 또는 [6.2 GR/IR 잔액조회]로 드릴다운해 원인을 파악합니다.</p>
+</div>
+<h3>화면 진입</h3>
+<p>좌측 사이드바 [구매관리] ▸ [GR/IR 보고서] ▸ [발주 별 입고/송장 현황]</p>
+<h3>상세현황 탭</h3>
+<p><img loading="lazy" src="images/purchase/6-3/01_list.png" alt="발주 별 입고/송장 현황 — 상세현황 (PO 라인별 진행률)" /></p>
+<p>발주 별 입고/송장 현황 — 상세현황 (PO 라인별 진행률)</p>
+<ul>
+<li>① [상세현황] / [요약현황] 탭</li>
+<li>② 라인 단위 그리드 — 한 행이 PO 항번 1건. 29개 컬럼:</li>
+<li><strong>ⓐ 기준정보 —</strong> 거래처코드 / 거래처명 / 품목코드 / 품목명 / 품목유형 / 규격 / 단위</li>
+<li><strong>ⓑ PO 정보 —</strong> 발주번호 / 발주일자 / 항목번호 / 납기일자 / 발주수량 / 발주단가 / 공급가 / 부가세 / 합계</li>
+<li><strong>ⓒ GR 합산 —</strong> 입고수량 / 양품수량 / 불량수량 / 양품금액 (= PO단가 × 양품수량)</li>
+<li><strong>ⓓ IR 합산 —</strong> 송장수량 / 송장금액 (= PO단가 × 송장수량)</li>
+<li><strong>ⓔ 잔량 —</strong> 미입고잔량 (= 발주수량 − 송장수량) / 미청구잔량 (= 양품수량 − 송장수량)</li>
+<li><strong>ⓕ 납기 —</strong> 최종입고일자 / 최종송장일자 / 납기경과일수 (= 최종입고일 − 납기일, 미입고면 System Date − 납기일) / 납기지연수량 / 비고</li>
+</ul>
+<h3>요약현황 탭</h3>
+<p><img loading="lazy" src="images/purchase/6-3/02_summary.png" alt="발주 별 입고/송장 현황 — 요약현황 (PO 문서 단위 집계)" /></p>
+<p>발주 별 입고/송장 현황 — 요약현황 (PO 문서 단위 집계)</p>
+<ul>
+<li>① [요약현황] 탭 — PO 문서 단위로 라인 합산</li>
+<li><strong>② 집계 컬럼 —</strong> 거래처코드 / 거래처명 / 발주서(PO)항목 / 발주 품목 항목갯수 / 발주수량 / 입고수량 / 송장수량 / 미입고잔량 / 미청구잔량 / 발주금액 / 입고금액 / 송장금액</li>
+<li>활용 — PO 1건에 여러 품목이 묶여있을 때 전체 진척률 한눈에 확인. 100% 완결된 PO는 마감 후보, 잔량이 큰 PO는 추적 대상.</li>
+</ul>
+<h3>핵심 계산식</h3>
+<table>
+<thead>
+<tr class="header">
+<th>지표</th>
+<th>계산식</th>
+<th>활용</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>양품금액</td>
+<td>PO단가 × 양품수량</td>
+<td>기대 송장금액</td>
+</tr>
+<tr class="even">
+<td>송장금액</td>
+<td>PO단가 × 송장수량</td>
+<td>현재 청구된 금액</td>
+</tr>
+<tr class="odd">
+<td>미입고잔량</td>
+<td>발주수량 − 송장수량</td>
+<td>공급사가 더 청구할 잔여</td>
+</tr>
+<tr class="even">
+<td>미청구잔량</td>
+<td>양품수량 − 송장수량</td>
+<td>당사가 송장 받아야 할 잔여 (GRNI 후보)</td>
+</tr>
+<tr class="odd">
+<td>납기경과일수</td>
+<td>최종입고일 − 납기일자 (입고없으면 System Date − 납기)</td>
+<td>지연도 점검</td>
+</tr>
+<tr class="even">
+<td>납기지연수량</td>
+<td>납기 초과 시점의 미입고 수량</td>
+<td>지연 충격도</td>
+</tr>
+</tbody>
+</table>
+<h3>활용 시나리오</h3>
+<ol type="1">
+<li>주간 — 미입고잔량 &gt; 0 + 납기경과일수 &gt; 0 PO를 필터링 → 공급사 납기 독촉.</li>
+<li>월간 — 미청구잔량 &gt; 0인 PO를 식별 → 공급사에 송장 청구 요청 (GRNI 사전 예방).</li>
+<li>문제 발견 시 — 해당 PO 라인을 [6.1] (매칭 차이 확인) 또는 [6.2] (계정 잔액 확인)로 드릴다운.</li>
+<li>PO 마감 — 발주수량 = 송장수량 + 미청구잔량 = 0인 PO는 [발주서] 화면에서 마감 처리.</li>
+</ol>
+<h3>관련 메뉴</h3>
+<ul>
+<li>[3.1. 발주서(구매오더)] — PO 원천 문서. 마감/취소 처리</li>
+<li>[3.2. 발주대비 입고내역] — PO ↔ GR 1:1 매칭 (송장은 제외)</li>
+<li>[4.1. 구매입고서] / [4.2. 검수 및 반품처리] — GR 등록</li>
+<li>[5.1. 송장입력] — IR 등록 (해당 PO 기준)</li>
+<li>[6.1. GR/IR 불일치 조회] — 매칭 실패 라인 드릴다운</li>
+<li>[6.2. GR/IR 잔액조회] — 계정 잔액 드릴다운</li>
+</ul>
+</section></main></div></body></html>

@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>영업관리 매뉴얼</title><style>
+:root{--bg:#fff;--fg:#1f2328;--muted:#656d76;--line:#d0d7de;--soft:#f6f8fa;--link:#0b5cad}
+@media (prefers-color-scheme:dark){:root{--bg:#161b22;--fg:#e6edf3;--muted:#9198a1;--line:#30363d;--soft:#1c2128;--link:#79b8ff}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.7 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif}
+a{color:var(--link)}
+.layout{display:flex;align-items:flex-start;max-width:1280px;margin:0 auto}
+nav.side{width:300px;flex:none;position:sticky;top:0;height:100vh;overflow:auto;padding:20px 16px;border-right:1px solid var(--line);font-size:13px}
+nav.side .brand{font-weight:700;font-size:15px;margin-bottom:12px;display:block;color:var(--fg);text-decoration:none}
+nav.side .mods{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:14px}
+nav.side .mods a{padding:2px 8px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:var(--fg)}
+nav.side .mods a.on{background:var(--fg);color:var(--bg)}
+nav.side ol{list-style:none;margin:0;padding:0}
+nav.side li a{display:block;padding:2px 0;text-decoration:none;color:var(--fg)}
+nav.side li a:hover{color:var(--link)}
+main{flex:1;min-width:0;padding:28px 36px 80px}
+.pill{display:inline-block;font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:10px;padding:0 8px;margin-bottom:8px}
+h1.module-title{font-size:28px;margin:0 0 6px}
+section.page{padding-top:28px;margin-top:36px;border-top:3px solid var(--fg)}
+h1.page-title{font-size:24px;margin:0 0 4px}
+section.page h1{font-size:20px;margin:28px 0 8px}
+section.page h2{font-size:18px;margin:24px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+section.page h3{font-size:16px;margin:20px 0 6px}
+img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:4px;display:block;margin:10px 0 4px;background:#fff}
+.callout{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--muted);border-radius:4px;padding:8px 14px;margin:12px 0}
+.callout p{margin:6px 0}
+table{border-collapse:collapse;margin:12px 0;font-size:14px;display:block;overflow:auto;max-width:100%}
+th,td{border:1px solid var(--line);padding:5px 10px;vertical-align:top;text-align:left}
+th{background:var(--soft)}
+blockquote{margin:10px 0;padding:2px 14px;border-left:4px solid var(--line);color:var(--muted)}
+ul,ol{padding-left:1.4em}
+.toc-page ol{columns:2;column-gap:32px}
+.note{font-size:13px;color:var(--muted)}
+.top{font-size:12px;float:right}
+@media (max-width:860px){.layout{display:block}nav.side{position:static;width:auto;height:auto;border-right:0;border-bottom:1px solid var(--line)}main{padding:20px 16px 60px}}
+@media print{nav.side{display:none}main{padding:0}section.page{break-before:page}}
+</style></head><body><div class="layout"><nav class="side"><a class="brand" href="index.html">앵커 ERP 매뉴얼 · 내용 정리</a><div class="mods"><a href="index.html">홈</a><a href="production.html">생산관리</a><a href="purchase.html">구매관리</a><a href="cost.html">원가관리</a><a href="outsourcing.html">외주관리</a><a href="budget.html">예산관리</a><a href="sales.html" class="on">영업관리</a><a href="review.html">검토 메모</a></div><ol><li><a href="#sales-1-1">1.1. 연간영업계획</a></li><li><a href="#sales-1-2">1.2. 월간영업계획</a></li></ol></nav><main><a id="top"></a><span class="pill">앵커 ERP 매뉴얼 · 2개 문서</span><h1 class="module-title">영업관리 매뉴얼</h1><div class="toc-page"><ol><li><a href="#sales-1-1">1.1. 연간영업계획</a></li><li><a href="#sales-1-2">1.2. 월간영업계획</a></li></ol></div><section class="page" id="sales-1-1"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">1.1. 연간영업계획</h1><h1>1. 영업계획</h1>
+<h2>1.1. 연간영업계획</h2>
+<p>회계연도 단위로 사업부·품목별 연간 매출(판매수량·단가) 계획을 수립·관리하는 화면입니다. 화면은 [1. 계획버전] → [2. 사업부별 매출계획] → [3. 품목별 매출계획] → [4. 계획상세(월별)]의 4단 마스터-디테일 구조로, 상위에서 선택한 행을 기준으로 하위 영역이 연동되어 표시됩니다.</p>
+<p>여기서 수립한 연간 매출계획은 경영·실행계획의 출발점으로, 생산계획과 원가(재료비)계획 수립의 기준 데이터로 사용됩니다.</p>
+<div class="callout">
+<p>✅ 계획버전은 [확정]과 [미확정] 두 상태가 있습니다. [확정](결재 완료)된 버전은 데이터가 잠겨 사업부·품목·금액을 추가·수정·삭제할 수 없습니다. 내용을 변경하려면 미확정 상태여야 합니다.</p>
+</div>
+<div class="callout">
+<p>💡 매출계획 금액은 [판매수량 × 단가]로 계산되며, [4. 계획상세]의 월별 금액을 합산해 품목·사업부·버전 단위로 자동 집계됩니다.</p>
+</div>
+<div class="callout">
+<p>💱 외화 품목은 단가를 해당 외화로 입력하고, 매출계획 금액은 기준환율을 적용해 KRW로 환산되어 표시됩니다.</p>
+</div>
+<p><img loading="lazy" src="images/sales/1-1/01_list.png" /></p>
+<p><strong>① 조회조건</strong></p>
+<ul>
+<li>회계연도: 조회할 회계연도를 입력·선택합니다. [조회]를 클릭하면 해당 연도의 계획버전이 조회되고, [초기화]는 검색 조건을 되돌립니다.</li>
+</ul>
+<p><strong>② 1. 계획버전 (마스터)</strong></p>
+<p>회계연도별 연간영업계획 버전 목록입니다. 카드를 선택하면 우측 ③·④·⑤ 영역에 해당 버전의 사업부·품목·월별 내역이 연동되어 표시됩니다. (화면 진입 시 최상단 버전이 자동 선택됩니다.)</p>
+<ul>
+<li>추가: 새 계획버전을 등록합니다. [연간영업계획 버전 추가] 팝업이 열립니다.</li>
+<li>복사: 선택한 버전을 다른 회계연도로 복제합니다. [버전복사] 팝업에서 복사할 연도를 입력하면 사업부·품목·월별 계획이 그대로 복제되어 신규 생성됩니다.</li>
+<li>결재상신: 작성 완료한 버전을 결재 상신합니다. 결재가 완료되면 [확정] 상태가 되어 데이터가 잠깁니다.</li>
+<li>삭제: 선택한 버전을 사업부·품목·상세 내역과 함께 삭제합니다. (확정된 버전은 삭제할 수 없습니다.)</li>
+<li>카드 정보: 계획번호, 계획기간, 비고, 결재상태, 최종작업자·작업일시가 표시되며, 우측 상단에 [확정]/[미확정] 상태 배지가 표시됩니다.</li>
+</ul>
+<p><strong>③ 2. 사업부별 매출계획</strong></p>
+<p>선택한 계획버전의 사업부별 매출계획 금액 목록입니다.</p>
+<ul>
+<li>추가 / 삭제: 사업부 행을 추가([사업부 추가] 팝업)하거나 선택한 행을 삭제합니다.</li>
+<li>컬럼 — 번호 / 사업부([코드] 사업부명) / 매출계획 금액 / 비고. 맨 아래 [합계] 행에 매출계획 금액 합계가 표시됩니다.</li>
+</ul>
+<p><strong>④ 3. 품목별 매출계획</strong></p>
+<p>③에서 선택한 사업부의 품목별 매출계획입니다. 영역 상단의 [사업부] 버튼에 현재 선택된 사업부가 표시됩니다.</p>
+<ul>
+<li>추가 / 삭제: 품목을 추가([품목 등록] 팝업)하거나 선택한 행을 삭제합니다.</li>
+<li>컬럼 — 품목([코드] 품목명) / 규격 / 품목유형 / 단위 / 판매수량 / 단가 / 매출계획 금액. 판매수량·단가·금액은 ⑤ 계획상세 입력 후 자동 계산되며, 맨 아래 [합계] 행이 표시됩니다.</li>
+</ul>
+<p><strong>⑤ 4. 계획상세 (월별)</strong></p>
+<p>④에서 선택한 품목의 처리년월(월)별 판매수량·단가·매출계획 금액입니다. 상단 [사업부]·[품목] 버튼에 현재 대상이 표시됩니다.</p>
+<ul>
+<li>처리년월: 회계연도의 1~12월(예: 2026-01 ~ 2026-12)이 행으로 표시됩니다.</li>
+<li>판매수량 / 단가: 월별 계획값을 입력합니다. 좌측 상단 드롭다운으로 적용 항목을 선택하고 [일괄등록]으로 여러 월에 한 번에 적용할 수 있습니다.</li>
+<li>매출계획 금액: 판매수량 × 단가로 자동 계산되며, 월별 합계가 상위 ④·③ 영역으로 집계됩니다.</li>
+</ul>
+<hr />
+<h3>⊙ 입력 예제</h3>
+<h3>1.1.1. 계획버전 등록하기</h3>
+<p>[1. 계획버전] 영역의 [추가] 버튼을 클릭하면 [연간영업계획 버전 추가] 팝업이 열립니다.</p>
+<p><img loading="lazy" src="images/sales/1-1/02_version_add.png" /></p>
+<p><strong>입력 항목</strong></p>
+<ul>
+<li>계획연도: 계획을 수립할 회계연도를 선택합니다.</li>
+<li>기간: 계획 기간(시작월 ~ 종료월)이 표시됩니다 (예: 2026-01 ~ 2026-12).</li>
+<li>비고: 버전에 대한 메모를 입력합니다.</li>
+</ul>
+<p>진행 순서: 계획연도 선택 → 기간 확인 → 비고 입력 → [저장]. 저장하면 새 계획버전이 [미확정] 상태로 생성됩니다.</p>
+<div class="callout">
+<p>💡 기존 버전을 다른 연도로 그대로 가져오려면 [복사]를 사용하세요. [버전복사] 팝업은 입력 항목(계획연도·기간·비고)이 동일하며, 선택한 버전의 사업부·품목·월별 계획까지 함께 복제됩니다.</p>
+</div>
+<h3>1.1.2. 사업부 추가하기</h3>
+<p>[2. 사업부별 매출계획] 영역의 [추가] 버튼을 클릭하면 [사업부 추가] 팝업이 열립니다. (미확정 상태의 버전에서만 가능합니다.)</p>
+<p><img loading="lazy" src="images/sales/1-1/03_biz_add.png" /></p>
+<ul>
+<li>사업부 *: 돋보기 버튼을 클릭해 [사업부 조회] 팝업에서 사업부를 선택합니다. (필수)</li>
+<li>비고: 사업부 매출계획에 대한 메모를 입력합니다.</li>
+</ul>
+<p>[저장]하면 ② 사업부별 매출계획 목록에 행이 추가됩니다.</p>
+<h3>1.1.3. 품목 등록하기</h3>
+<p>[3. 품목별 매출계획] 영역의 [추가] 버튼을 클릭하면 [품목 등록] 팝업이 열립니다. 여러 품목을 한 번에 선택해 등록할 수 있습니다.</p>
+<p><img loading="lazy" src="images/sales/1-1/04_item_register.png" /></p>
+<ul>
+<li>전체목록: 등록 가능한 품목 목록입니다. 품목유형·과세유형·품목코드·품목명·규격·단위·단가가 표시되며, 상단 검색어와 [조회]로 원하는 품목을 찾을 수 있습니다. [전용품목 보기]로 전용 품목만 보거나 [신규등록]으로 새 품목을 등록할 수 있습니다.</li>
+<li>선택목록: 전체목록에서 체크한 품목이 담깁니다. 등록할 품목을 확인한 뒤 [등록]을 클릭합니다.</li>
+</ul>
+<p>등록한 품목은 ③ 품목별 매출계획에 추가되며, 이후 ④ 계획상세에서 월별 판매수량·단가를 입력하면 매출계획 금액이 계산됩니다.</p>
+</section><section class="page" id="sales-1-2"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">1.2. 월간영업계획</h1><h1>1. 영업계획</h1>
+<h2>1.2. 월간영업계획</h2>
+<p>계획년월(월) 단위로 사업부·품목별 월간 매출(판매수량·단가) 계획을 수립·관리하는 화면입니다. 화면은 [1. 계획버전] → [2. 사업부별 매출계획] → [3. 품목별 매출계획]의 마스터-디테일 구조로, 상위에서 선택한 행을 기준으로 하위 영역이 연동되어 표시됩니다.</p>
+<p>연간영업계획이 회계연도 단위의 연간 계획이라면, 월간영업계획은 이를 월 단위로 구체화한 실행 계획입니다. [연간영업계획 불러오기]로 연간계획의 해당 월 데이터를 그대로 가져와 작성할 수 있으며, 여기서 확정된 월간 매출계획은 월간 생산계획·원가계획의 기준이 됩니다.</p>
+<div class="callout">
+<p>✅ 계획버전은 [확정]과 [미확정] 두 상태가 있습니다. [확정](결재 완료)된 버전은 데이터가 잠겨 사업부·품목·금액을 추가·수정·삭제할 수 없습니다. 내용을 변경하려면 미확정 상태여야 합니다.</p>
+</div>
+<div class="callout">
+<p>💡 [연간영업계획 불러오기]를 사용하면 선택한 연간영업계획의 해당 월 사업부·품목·매출계획이 자동으로 채워집니다. 이미 입력된 데이터가 있으면 덮어쓰기 되므로 주의하세요.</p>
+</div>
+<div class="callout">
+<p>💱 매출계획 금액은 [판매수량 × 단가]로 계산되며, 품목·사업부·버전 단위로 자동 집계됩니다. 외화 품목은 단가를 외화로 입력하고 매출액은 기준환율로 KRW 환산되어 표시됩니다.</p>
+</div>
+<p><img loading="lazy" src="images/sales/1-2/01_list.png" /></p>
+<p><strong>① 조회조건</strong></p>
+<ul>
+<li>계획년월: 조회할 계획 연·월을 선택합니다. [조회]를 클릭하면 해당 월의 계획버전이 조회되고, [초기화]는 검색 조건을 되돌립니다.</li>
+</ul>
+<p><strong>② 1. 계획버전 (마스터)</strong></p>
+<p>계획년월별 월간영업계획 버전 목록입니다. 카드를 선택하면 우측 ③·④ 영역에 해당 버전의 사업부·품목 내역이 연동되어 표시됩니다. (화면 진입 시 최상단 버전이 자동 선택됩니다.)</p>
+<ul>
+<li>추가: 새 계획버전을 등록합니다. [월간영업계획 버전 추가] 팝업이 열립니다.</li>
+<li>복사: 선택한 버전을 다른 계획년월로 복제합니다.</li>
+<li>결재상신: 작성 완료한 버전을 결재 상신합니다. 결재가 완료되면 [확정] 상태가 되어 데이터가 잠깁니다.</li>
+<li>삭제: 선택한 버전을 사업부·품목 내역과 함께 삭제합니다. (확정된 버전은 삭제할 수 없습니다.)</li>
+<li>카드 정보: 계획번호, 계획년월, 비고, 결재상태, 최종작업자·작업일시가 표시되며, 우측 상단에 [확정]/[미확정] 상태 배지가 표시됩니다.</li>
+</ul>
+<p><strong>③ 2. 사업부별 매출계획</strong></p>
+<p>선택한 계획버전의 사업부별 월 매출계획 금액 목록입니다.</p>
+<ul>
+<li>추가 / 삭제: 사업부 행을 추가([사업부 추가] 팝업)하거나 선택한 행을 삭제합니다.</li>
+<li>컬럼 — 번호 / 사업부([코드] 사업부명) / 매출계획 금액 / 비고. 맨 아래 [합계] 행에 매출계획 금액 합계가 표시됩니다.</li>
+</ul>
+<p><strong>④ 3. 품목별 매출계획</strong></p>
+<p>③에서 선택한 사업부의 품목별 월 매출계획입니다. 판매수량·단가를 입력하면 매출계획 금액이 계산됩니다.</p>
+<ul>
+<li>연간영업계획 불러오기: [연간영업계획 반영하기] 팝업이 열립니다. 연간영업계획을 선택해 해당 월의 사업부·품목·매출계획을 한 번에 가져옵니다.</li>
+<li>추가 / 삭제: 품목을 추가([품목 등록] 팝업)하거나 선택한 행을 삭제합니다.</li>
+<li>컬럼 — 품목([코드] 품목명) / 규격 / 품목유형 / 단위 / 판매수량 / 단가 / 매출계획 금액. 맨 아래 [합계] 행이 표시됩니다.</li>
+</ul>
+<hr />
+<h3>⊙ 입력 예제</h3>
+<h3>1.2.1. 계획버전 등록하기</h3>
+<p>[1. 계획버전] 영역의 [추가] 버튼을 클릭하면 [월간영업계획 버전 추가] 팝업이 열립니다.</p>
+<p><img loading="lazy" src="images/sales/1-2/02_version_add.png" /></p>
+<p><strong>입력 항목</strong></p>
+<ul>
+<li>계획년월 *: 계획을 수립할 연·월을 선택합니다. (필수)</li>
+<li>비고: 버전에 대한 메모를 입력합니다.</li>
+</ul>
+<p>진행 순서: 계획년월 선택 → 비고 입력 → [저장]. 저장하면 새 계획버전이 [미확정] 상태로 생성됩니다.</p>
+<h3>1.2.2. 연간영업계획 불러오기</h3>
+<p>[3. 품목별 매출계획] 영역의 [연간영업계획 불러오기] 버튼을 클릭하면 [연간영업계획 반영하기] 팝업이 열립니다. (미확정 상태의 버전에서만 가능합니다.)</p>
+<p><img loading="lazy" src="images/sales/1-2/03_load_annual.png" /></p>
+<ul>
+<li>목록에서 가져올 연간영업계획 한 건을 선택합니다. 영업계획번호 / 계획연도 / 매출계획 금액 / 비고가 표시됩니다.</li>
+<li>[반영]을 클릭하면 선택한 연간영업계획의 해당 월 사업부·품목·매출계획이 ② · ③ 영역에 자동으로 채워집니다.</li>
+</ul>
+<div class="callout">
+<p>⚠️ 기존에 입력한 사업부·품목 데이터가 있으면 불러온 데이터로 덮어쓰기 됩니다.</p>
+</div>
+<h3>1.2.3. 사업부 추가하기</h3>
+<p>[2. 사업부별 매출계획] 영역의 [추가] 버튼을 클릭하면 [사업부 추가] 팝업이 열립니다. (미확정 상태의 버전에서만 가능합니다.)</p>
+<p><img loading="lazy" src="images/sales/1-2/04_biz_add.png" /></p>
+<ul>
+<li>사업부 *: 돋보기 버튼을 클릭해 [사업부 조회] 팝업에서 사업부를 선택합니다. (필수)</li>
+<li>비고: 사업부 매출계획에 대한 메모를 입력합니다.</li>
+</ul>
+<p>[저장]하면 ② 사업부별 매출계획 목록에 행이 추가됩니다.</p>
+<h3>1.2.4. 품목 등록하기</h3>
+<p>[3. 품목별 매출계획] 영역의 [추가] 버튼을 클릭하면 [품목 등록] 팝업이 열립니다. 여러 품목을 한 번에 선택해 등록할 수 있습니다.</p>
+<p><img loading="lazy" src="images/sales/1-2/05_item_register.png" /></p>
+<ul>
+<li>전체목록: 등록 가능한 품목 목록입니다. 품목유형·과세유형·품목코드·품목명·규격·단위·단가가 표시되며, 상단 검색어와 [조회]로 원하는 품목을 찾을 수 있습니다.</li>
+<li>선택목록: 전체목록에서 체크한 품목이 담깁니다. 등록할 품목을 확인한 뒤 [등록]을 클릭합니다.</li>
+</ul>
+<p>등록한 품목은 ③ 품목별 매출계획에 추가되며, 판매수량·단가를 입력하면 매출계획 금액이 계산됩니다.</p>
+</section></main></div></body></html>

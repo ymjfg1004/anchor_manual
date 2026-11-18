@@ -1,0 +1,3035 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>생산관리 매뉴얼</title><style>
+:root{--bg:#fff;--fg:#1f2328;--muted:#656d76;--line:#d0d7de;--soft:#f6f8fa;--link:#0b5cad}
+@media (prefers-color-scheme:dark){:root{--bg:#161b22;--fg:#e6edf3;--muted:#9198a1;--line:#30363d;--soft:#1c2128;--link:#79b8ff}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.7 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif}
+a{color:var(--link)}
+.layout{display:flex;align-items:flex-start;max-width:1280px;margin:0 auto}
+nav.side{width:300px;flex:none;position:sticky;top:0;height:100vh;overflow:auto;padding:20px 16px;border-right:1px solid var(--line);font-size:13px}
+nav.side .brand{font-weight:700;font-size:15px;margin-bottom:12px;display:block;color:var(--fg);text-decoration:none}
+nav.side .mods{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:14px}
+nav.side .mods a{padding:2px 8px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:var(--fg)}
+nav.side .mods a.on{background:var(--fg);color:var(--bg)}
+nav.side ol{list-style:none;margin:0;padding:0}
+nav.side li a{display:block;padding:2px 0;text-decoration:none;color:var(--fg)}
+nav.side li a:hover{color:var(--link)}
+main{flex:1;min-width:0;padding:28px 36px 80px}
+.pill{display:inline-block;font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:10px;padding:0 8px;margin-bottom:8px}
+h1.module-title{font-size:28px;margin:0 0 6px}
+section.page{padding-top:28px;margin-top:36px;border-top:3px solid var(--fg)}
+h1.page-title{font-size:24px;margin:0 0 4px}
+section.page h1{font-size:20px;margin:28px 0 8px}
+section.page h2{font-size:18px;margin:24px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+section.page h3{font-size:16px;margin:20px 0 6px}
+img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:4px;display:block;margin:10px 0 4px;background:#fff}
+.callout{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--muted);border-radius:4px;padding:8px 14px;margin:12px 0}
+.callout p{margin:6px 0}
+table{border-collapse:collapse;margin:12px 0;font-size:14px;display:block;overflow:auto;max-width:100%}
+th,td{border:1px solid var(--line);padding:5px 10px;vertical-align:top;text-align:left}
+th{background:var(--soft)}
+blockquote{margin:10px 0;padding:2px 14px;border-left:4px solid var(--line);color:var(--muted)}
+ul,ol{padding-left:1.4em}
+.toc-page ol{columns:2;column-gap:32px}
+.note{font-size:13px;color:var(--muted)}
+.top{font-size:12px;float:right}
+@media (max-width:860px){.layout{display:block}nav.side{position:static;width:auto;height:auto;border-right:0;border-bottom:1px solid var(--line)}main{padding:20px 16px 60px}}
+@media print{nav.side{display:none}main{padding:0}section.page{break-before:page}}
+</style></head><body><div class="layout"><nav class="side"><a class="brand" href="index.html">앵커 ERP 매뉴얼 · 내용 정리</a><div class="mods"><a href="index.html">홈</a><a href="production.html" class="on">생산관리</a><a href="purchase.html">구매관리</a><a href="cost.html">원가관리</a><a href="outsourcing.html">외주관리</a><a href="budget.html">예산관리</a><a href="sales.html">영업관리</a><a href="review.html">검토 메모</a></div><ol><li><a href="#production-1-1">1.1. 공장관리</a></li><li><a href="#production-1-2">1.2. 교대패턴관리</a></li><li><a href="#production-1-3">1.3. 캘린더관리</a></li><li><a href="#production-1-4">1.4. 창고관리</a></li><li><a href="#production-1-5">1.5. 설비관리</a></li><li><a href="#production-1-6">1.6. 불량/반품코드관리</a></li><li><a href="#production-1-7">1.7. 작업장관리</a></li><li><a href="#production-1-8">1.8. 생산품목관리</a></li><li><a href="#production-1-9">1.9. 공정관리</a></li><li><a href="#production-1-10">1.10. 작업관리</a></li><li><a href="#production-1-11">1.11. 공정순서(라우팅)</a></li><li><a href="#production-1-12">1.12. E-BOM관리</a></li><li><a href="#production-1-13">1.13. M-BOM관리</a></li><li><a href="#production-1-14">1.14. 공정별 BOM관리</a></li><li><a href="#production-2-1">2.1. 연간생산계획</a></li><li><a href="#production-2-2">2.2. 월간생산계획</a></li><li><a href="#production-2-3">2.3. 주간생산계획</a></li><li><a href="#production-2-4">2.4. 부하분석(MPS)</a></li><li><a href="#production-2-5">2.5. 생산요청서</a></li><li><a href="#production-2-6">2.6. MRP</a></li><li><a href="#production-3-1">3.1. 생산지시서</a></li><li><a href="#production-3-2">3.2. 자재이동요청</a></li><li><a href="#production-3-3">3.3. 자재이동요청 내역</a></li><li><a href="#production-3-4">3.4. 생산실적</a></li><li><a href="#production-3-5">3.5. 생산실적 관련 전표처리 로직</a></li><li><a href="#production-4-1">4.1. 생산투입수량확정</a></li><li><a href="#production-5-1">5.1. 생산지시 대비 / 실적 현황</a></li><li><a href="#production-5-2">5.2. 생산지시 대비 실적 차이</a></li><li><a href="#production-5-3">5.3. 주차별 생산효율</a></li><li><a href="#production-5-4">5.4. BOM 대비 실적 차이</a></li><li><a href="#production-5-5">5.5. 생산지시서별 재공재고 현황</a></li></ol></nav><main><a id="top"></a><span class="pill">앵커 ERP 매뉴얼 · 31개 문서</span><h1 class="module-title">생산관리 매뉴얼</h1><div class="toc-page"><ol><li><a href="#production-1-1">1.1. 공장관리</a></li><li><a href="#production-1-2">1.2. 교대패턴관리</a></li><li><a href="#production-1-3">1.3. 캘린더관리</a></li><li><a href="#production-1-4">1.4. 창고관리</a></li><li><a href="#production-1-5">1.5. 설비관리</a></li><li><a href="#production-1-6">1.6. 불량/반품코드관리</a></li><li><a href="#production-1-7">1.7. 작업장관리</a></li><li><a href="#production-1-8">1.8. 생산품목관리</a></li><li><a href="#production-1-9">1.9. 공정관리</a></li><li><a href="#production-1-10">1.10. 작업관리</a></li><li><a href="#production-1-11">1.11. 공정순서(라우팅)</a></li><li><a href="#production-1-12">1.12. E-BOM관리</a></li><li><a href="#production-1-13">1.13. M-BOM관리</a></li><li><a href="#production-1-14">1.14. 공정별 BOM관리</a></li><li><a href="#production-2-1">2.1. 연간생산계획</a></li><li><a href="#production-2-2">2.2. 월간생산계획</a></li><li><a href="#production-2-3">2.3. 주간생산계획</a></li><li><a href="#production-2-4">2.4. 부하분석(MPS)</a></li><li><a href="#production-2-5">2.5. 생산요청서</a></li><li><a href="#production-2-6">2.6. MRP</a></li><li><a href="#production-3-1">3.1. 생산지시서</a></li><li><a href="#production-3-2">3.2. 자재이동요청</a></li><li><a href="#production-3-3">3.3. 자재이동요청 내역</a></li><li><a href="#production-3-4">3.4. 생산실적</a></li><li><a href="#production-3-5">3.5. 생산실적 관련 전표처리 로직</a></li><li><a href="#production-4-1">4.1. 생산투입수량확정</a></li><li><a href="#production-5-1">5.1. 생산지시 대비 / 실적 현황</a></li><li><a href="#production-5-2">5.2. 생산지시 대비 실적 차이</a></li><li><a href="#production-5-3">5.3. 주차별 생산효율</a></li><li><a href="#production-5-4">5.4. BOM 대비 실적 차이</a></li><li><a href="#production-5-5">5.5. 생산지시서별 재공재고 현황</a></li></ol></div><section class="page" id="production-1-1"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">1.1. 공장관리</h1><h1>1. 기준정보</h1>
+<h2>1.1. 공장관리</h2>
+<p>생산 활동이 이루어지는 공장을 등록하고 관리하는 화면입니다.</p>
+<p>등록된 공장은 <strong>[생산관리] - [기준정보] - [창고관리]</strong>, <strong>[생산관리] - [기준정보] - [작업장관리]</strong>, <strong>[생산관리] - [기준정보] - [설비관리]</strong> 등 하위 기준정보의 소속 단위가 됩니다.</p>
+<div class="callout">
+<p>✅ 공장 코드는 등록 시 자동 부여되며, 직접 입력하거나 수정할 수 없습니다.</p>
+</div>
+<div class="callout">
+<p>📅 공장캘린더는 사전에 [생산관리]-[기준정보]-[캘린더관리]에서 등록한 캘린더 중에서 선택합니다.</p>
+</div>
+<p><img loading="lazy" src="images/production/1-1/factory_list_v2.png" alt="공장관리 메뉴 진입 화면" /></p>
+<p>공장관리 메뉴 진입 화면</p>
+<p><strong>① 기능 버튼</strong></p>
+<ul>
+<li><strong>등록</strong>: 새로운 공장을 등록합니다. [공장 상세] 팝업이 열립니다.</li>
+<li><strong>수정</strong>: 리스트에서 공장을 선택(체크박스 클릭)한 후 활성화됩니다. 선택한 공장의 [공장 상세] 팝업이 열려 정보를 수정할 수 있습니다.</li>
+<li><strong>삭제</strong>: 리스트에서 선택한 공장을 삭제합니다. 하위 기준정보(작업장·창고·설비 등)가 공장에 연결되어 있으면 삭제되지 않을 수 있습니다.</li>
+<li><strong>다운로드</strong>: 현재 리스트 내역을 엑셀 파일로 내려받습니다.</li>
+<li><strong>업로드</strong>: 엑셀 파일을 업로드하여 공장을 일괄 등록할 수 있습니다.</li>
+</ul>
+<p><strong>② 검색 영역</strong></p>
+<ul>
+<li><strong>전체</strong>: 검색 기준 컬럼을 선택합니다. 기본값은 ‘전체’이며 공장코드/공장명 등 특정 컬럼을 지정할 수 있습니다.</li>
+<li><strong>전체 검색</strong>: 입력한 키워드로 리스트를 필터링합니다.</li>
+</ul>
+<p><strong>③ 리스트 영역</strong></p>
+<ul>
+<li><strong>공장코드</strong>: 시스템이 자동 부여한 공장 고유 식별 코드 (예: PLT001).</li>
+<li><strong>공장명</strong>: 사용자가 입력한 공장의 이름.</li>
+<li><strong>주소</strong>: 공장의 우편번호·도로명 주소·상세주소가 결합되어 표시됩니다.</li>
+<li><strong>캘린더</strong>: 공장에 적용된 운영 캘린더 (영업일·휴무일 기준). 생산일정·납기 계산에 사용됩니다.</li>
+</ul>
+<hr />
+<h3>⊙ 입력 예제</h3>
+<h3>1.1.1. 새로운 공장 등록하기</h3>
+<p>리스트 화면에서 <strong>[등록]</strong> 버튼을 클릭하면 [공장 상세] 팝업이 열립니다.</p>
+<p><img loading="lazy" src="images/production/1-1/factory_register_v2.png" alt="공장 상세 - 등록 팝업" /></p>
+<p>공장 상세 - 등록 팝업</p>
+<p><strong>입력 항목</strong></p>
+<ul>
+<li><strong>① 공장코드</strong>: <em>자동 부여됩니다.</em> 저장 시 시스템이 PLT001, PLT002 형식으로 채번하며 직접 입력할 수 없습니다.</li>
+<li><strong>② 공장명</strong> *: 등록할 공장의 이름을 입력합니다. (필수)</li>
+<li><strong>③ 공장주소</strong> *: [우편번호 검색] 돋보기 버튼을 눌러 주소를 검색한 후, 아래 [상세주소 입력]란에 동·호수 등 상세 주소를 추가 입력합니다. (필수)</li>
+<li><strong>④ 공장캘린더</strong> *: 드롭다운에서 사전에 등록된 공장 운영 캘린더를 선택합니다. (필수) ※ 사용할 캘린더가 없다면 먼저 [생산관리]-[기준정보]-[캘린더관리]에서 등록해야 합니다.</li>
+<li><strong>⑤ 사용여부</strong> *: 등록한 공장의 사용 여부를 설정합니다. 기본값은 [사용] 상태이며, 미사용으로 전환하면 다른 화면의 공장 선택지에서 노출되지 않습니다.</li>
+</ul>
+<p><strong>진행 순서:</strong> ② 공장명 입력 → ③ 공장주소 검색 + 상세 입력 → ④ 공장캘린더 선택 → <strong>[저장]</strong> 클릭</p>
+<blockquote>
+<p>※ 필수 항목(*)을 모두 입력하지 않으면 [저장] 버튼이 비활성화되거나 저장 시 안내 메시지가 표시됩니다.</p>
+</blockquote>
+<hr />
+<h3>1.1.2. 등록된 공장 정보 수정하기</h3>
+<p>이미 등록된 공장의 이름·주소·캘린더 등을 변경하려면 리스트에서 해당 공장을 선택한 후 수정합니다.</p>
+<p><img loading="lazy" src="images/production/1-1/factory_edit_v2.png" alt="공장 상세 - 수정 팝업 (PLT001 기본 공장)" /></p>
+<p>공장 상세 - 수정 팝업 (PLT001 기본 공장)</p>
+<p><strong>진행 순서:</strong> 리스트에서 수정할 공장의 <strong>체크박스</strong> 선택 → <strong>[수정]</strong> 버튼 클릭 → [공장 상세] 팝업에서 변경할 값 입력 → <strong>[저장]</strong> 클릭</p>
+<p><strong>수정 팝업 동작 특징</strong></p>
+<ul>
+<li>① 공장코드는 수정할 수 없습니다.</li>
+<li>기존에 저장된 값은 그대로 표시되며, 변경하고 싶은 항목만 갱신한 후 저장하면 됩니다.</li>
+<li>취소 시 안내 팝업이 한 번 더 표시되며, [확인]을 누르면 변경 내용 없이 닫힙니다.</li>
+</ul>
+</section><section class="page" id="production-1-2"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">1.2. 교대패턴관리</h1><h1>1. 기준정보</h1>
+<h2>1.2. 교대패턴관리</h2>
+<p>공장의 근무 시간대(교대 패턴)를 등록하고 관리하는 화면입니다.</p>
+<p>등록된 교대 패턴은 <strong>[생산관리] - [기준정보] - [캘린더관리]</strong> 등에서 공장·작업장 운영 시간 계산의 기준으로 사용됩니다.</p>
+<div class="callout">
+<p>✅ 교대근무ID는 등록 시 자동 부여되며, 직접 입력하거나 수정할 수 없습니다.</p>
+</div>
+<div class="callout">
+<p>🕒 교대 패턴 한 건은 [교대 패턴 마스터(상단 그리드)] + [교대근무 조 상세(하단 그리드)]로 구성됩니다. 상단에서 패턴을 선택하면 하단에 해당 패턴의 조별 근무·휴게 시간이 표시됩니다.</p>
+</div>
+<div class="callout">
+<p>⚙️ 교대구분(1교대/2교대/3교대) 선택에 따라 등록·수정 팝업의 근무시간 입력 영역이 동적으로 바뀝니다. 1교대는 1개 조, 2교대는 주간·야간 2개 조(각 조 휴게시간 1·2 선택 가능), 3교대는 Day·Evening·Night 3개 조 입력 폼이 표시됩니다.</p>
+</div>
+<p><img loading="lazy" src="images/production/1-2/01_list.png" alt="교대패턴관리 메뉴 진입 화면" /></p>
+<p>교대패턴관리 메뉴 진입 화면</p>
+<p><strong>① 기능 버튼</strong></p>
+<ul>
+<li><strong>등록</strong>: 새로운 교대 패턴을 등록합니다. [교대패턴 상세] 팝업이 열립니다.</li>
+<li><strong>수정</strong>: 상단 그리드에서 패턴을 선택(체크박스 클릭)한 후 활성화됩니다. 선택한 패턴의 [교대패턴 상세] 팝업이 열립니다.</li>
+<li><strong>삭제</strong>: 상단 그리드에서 선택한 패턴을 삭제합니다. 다른 기준정보에서 사용 중인 패턴은 삭제되지 않을 수 있습니다.</li>
+</ul>
+<p><strong>② 검색 영역</strong></p>
+<ul>
+<li><strong>검색기준</strong>: 검색 대상 컬럼을 선택합니다. 기본값은 ‘전체’.</li>
+<li><strong>검색</strong>: 입력한 키워드로 리스트를 필터링합니다.</li>
+</ul>
+<p><strong>③ 교대 패턴 그리드 (상단)</strong></p>
+<ul>
+<li><strong>교대근무코드</strong>: 자동 부여된 교대 패턴 고유 코드 (예: SHT001).</li>
+<li><strong>교대근무 명</strong>: 패턴의 이름 (예: ‘1교대 근무’).</li>
+<li><strong>교대근무 설명</strong>: 패턴에 대한 부연 설명.</li>
+</ul>
+<p><strong>④ 교대근무 상세정보 그리드 (하단)</strong></p>
+<ul>
+<li><strong>교대근무 조</strong>: 패턴 내 각 조의 이름. 교대구분에 따라 상시조 / 주간조·야간조 / Day·Evening·Night 등으로 표시됩니다.</li>
+<li><strong>근무시간</strong>: 해당 조의 근무 시작 ~ 종료 시각.</li>
+<li><strong>휴게시간1</strong>: 근무 시간 안에 설정된 휴게 구간. 2교대 패턴의 경우 휴게시간2까지 추가로 설정할 수 있습니다.</li>
+</ul>
+<p><em>상단 그리드에서 선택한 패턴에 매핑된 조별 근무 정보가 자동으로 표시됩니다.</em></p>
+<hr />
+<h3>⊙ 입력 예제</h3>
+<h3>1.2.1. 새로운 교대 패턴 등록하기</h3>
+<p>리스트 화면에서 <strong>[등록]</strong> 버튼을 클릭하면 [교대패턴 상세] 팝업이 열립니다. 기본값은 ‘1교대’ 상태이며 1개 조의 근무·휴게 시간을 입력합니다.</p>
+<p><img loading="lazy" src="images/production/1-2/02_register.png" alt="교대패턴 상세 - 등록 팝업 (기본: 1교대)" /></p>
+<p>교대패턴 상세 - 등록 팝업 (기본: 1교대)</p>
+<p><strong>공통 입력 항목</strong></p>
+<ul>
+<li><strong>① 교대근무ID</strong>: <em>자동 부여됩니다.</em> 저장 시 시스템이 SHT001, SHT002 형식으로 채번하며 직접 입력할 수 없습니다.</li>
+<li><strong>② 교대패턴명</strong> *: 등록할 교대 패턴의 이름을 입력합니다. (필수) 예: ‘1교대 근무’, ‘주간 2교대’</li>
+<li><strong>③ 교대패턴설명</strong>: 패턴에 대한 부연 설명을 자유롭게 입력합니다. 여러 줄 입력이 가능합니다.</li>
+<li><strong>④ 교대구분</strong>: 하루 몇 교대 체계인지 선택합니다. 기본값은 ‘1교대’이며, 1교대 / 2교대 / 3교대 중에서 선택합니다. 선택값에 따라 아래 근무시간 영역(⑤·⑥)의 입력 항목이 자동으로 바뀝니다.</li>
+<li><strong>⑤·⑥ 근무시간 / 휴게시간</strong>: 교대구분에 따라 다른 형태로 표시됩니다. 아래 1.2.2 ~ 1.2.4 참고.</li>
+</ul>
+<blockquote>
+<p>※ 휴게시간은 근무시간 범위 안에 포함되어야 합니다.</p>
+</blockquote>
+<hr />
+<h3>1.2.2. 교대구분 선택</h3>
+<p>교대구분 드롭다운을 클릭하면 다음 3가지 옵션이 표시됩니다.</p>
+<p><img loading="lazy" src="images/production/1-2/04_shift_options.png" alt="교대구분 드롭다운 - 1교대 / 2교대 / 3교대" /></p>
+<p>교대구분 드롭다운 - 1교대 / 2교대 / 3교대</p>
+<ul>
+<li><strong>1교대</strong>: 하루 1개 조가 근무하는 패턴. 기본값. (예: 일반 사무직 9 to 6)</li>
+<li><strong>2교대</strong>: 하루 2개 조(주간·야간)가 교대로 근무하는 패턴. 각 조에 휴게시간 1·2까지 설정 가능.</li>
+<li><strong>3교대</strong>: 하루 3개 조(Day·Evening·Night)가 8시간씩 교대로 근무하는 패턴.</li>
+</ul>
+<hr />
+<h3>1.2.3. 2교대 패턴 입력</h3>
+<p>교대구분에서 ‘2교대’를 선택하면 근무시간 입력 영역이 주간조·야간조 두 행으로 확장됩니다. 각 조에는 휴게시간을 최대 2개까지 설정할 수 있습니다.</p>
+<p><img loading="lazy" src="images/production/1-2/05_2shift.png" alt="교대구분 = 2교대 선택 시 입력 영역" /></p>
+<p>교대구분 = 2교대 선택 시 입력 영역</p>
+<ul>
+<li><strong>① 교대구분</strong>: ‘2교대’ 선택 상태.</li>
+<li><strong>② 주간조 근무시간</strong>: 주간 조의 시작 ~ 종료 시각. 예: 08:00 ~ 20:00</li>
+<li><strong>③ 휴게시간1 (주간조)</strong>: 주간조의 첫 번째 휴게 구간. 우측 체크박스가 활성화된 상태로 기본 표시됩니다.</li>
+<li><strong>④ 휴게시간2 (주간조)</strong>: 주간조의 두 번째 휴게 구간. 우측 체크박스를 켜야 시간이 적용됩니다. 필요 없으면 체크 해제.</li>
+<li><strong>⑤ 야간조 근무시간</strong>: 야간 조의 시작 ~ 종료 시각. 예: 18:00 ~ 09:00 (다음 날까지 이어지는 경우 자동 처리)</li>
+<li><strong>⑥ 휴게시간1 (야간조)</strong>: 야간조의 첫 번째 휴게 구간. 예: 00:00 ~ 01:00</li>
+<li><strong>⑦ 휴게시간2 (야간조)</strong>: 야간조의 두 번째 휴게 구간. 체크박스로 활성/비활성 전환.</li>
+</ul>
+<hr />
+<h3>1.2.4. 3교대 패턴 입력</h3>
+<p>교대구분에서 ‘3교대’를 선택하면 근무시간 입력 영역이 Day·Evening·Night 세 행으로 확장됩니다. 각 조에는 휴게시간 1개씩만 설정할 수 있습니다.</p>
+<p><img loading="lazy" src="images/production/1-2/06_3shift.png" alt="교대구분 = 3교대 선택 시 입력 영역" /></p>
+<p>교대구분 = 3교대 선택 시 입력 영역</p>
+<ul>
+<li><strong>① 교대구분</strong>: ‘3교대’ 선택 상태.</li>
+<li><strong>② Day조 근무시간</strong>: 주간 첫 번째 조. 예: 07:00 ~ 15:00</li>
+<li><strong>③ Day조 휴게시간</strong>: Day조의 휴게 구간. 예: 12:00 ~ 13:00</li>
+<li><strong>④ Evening조 근무시간</strong>: 저녁 조. 예: 15:00 ~ 23:00</li>
+<li><strong>⑤ Evening조 휴게시간</strong>: Evening조의 휴게 구간. 예: 19:00 ~ 20:00</li>
+<li><strong>⑥ Night조 근무시간</strong>: 야간 조 (다음 날 새벽까지). 예: 23:00 ~ 07:00</li>
+<li><strong>⑦ Night조 휴게시간</strong>: Night조의 휴게 구간. 예: 03:00 ~ 04:00</li>
+</ul>
+<blockquote>
+<p>※ 2교대와 달리 3교대 패턴에서는 각 조의 휴게시간이 1개로 고정됩니다. 더 세분화된 휴게 운영이 필요한 경우 1교대·2교대 패턴을 여러 개 등록해 작업장별로 매핑하는 방식을 검토하세요.</p>
+</blockquote>
+<hr />
+<h3>1.2.5. 등록된 교대 패턴 수정하기</h3>
+<p>이미 등록된 교대 패턴의 이름·설명·시간 등을 변경하려면 상단 그리드에서 해당 패턴을 선택한 후 수정합니다.</p>
+<p><img loading="lazy" src="images/production/1-2/03_edit.png" alt="교대패턴 상세 - 수정 팝업 (SHT001 1교대 근무)" /></p>
+<p>교대패턴 상세 - 수정 팝업 (SHT001 1교대 근무)</p>
+<p><strong>진행 순서:</strong> 상단 그리드에서 수정할 패턴의 <strong>체크박스</strong> 선택 → <strong>[수정]</strong> 버튼 클릭 → [교대패턴 상세] 팝업에서 변경할 값 입력 → <strong>[저장]</strong> 클릭</p>
+<p><strong>수정 팝업 동작 특징</strong></p>
+<ul>
+<li>교대근무ID는 수정할 수 없습니다.</li>
+<li>교대구분을 다른 값으로 바꾸면 근무시간 입력 영역이 위 1.2.2 ~ 1.2.4와 같이 새 형태로 전환됩니다.</li>
+<li>기존에 저장된 값은 그대로 표시되며, 변경하고 싶은 항목만 갱신한 후 저장하면 됩니다.</li>
+<li>취소 시 안내 팝업이 한 번 더 표시되며, [확인]을 누르면 변경 내용 없이 닫힙니다.</li>
+</ul>
+</section><section class="page" id="production-1-3"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">1.3. 캘린더관리</h1><h1>1. 기준정보</h1>
+<h2>1.3. 캘린더관리</h2>
+<p>공장의 연간 근무일·휴무일·공휴일 일정을 관리하는 화면입니다.</p>
+<p>등록한 캘린더는 <strong>[생산관리] - [기준정보] - [공장관리]</strong>, <strong>[생산관리] - [기준정보] - [작업장관리]</strong> 등에서 운영 시간 계산의 기준으로 사용됩니다.</p>
+<div class="callout">
+<p>✅ 캘린더ID는 등록 시 자동 부여되며, 직접 입력하거나 수정할 수 없습니다.</p>
+</div>
+<div class="callout">
+<p>📅 캘린더 한 건은 [기본 정보(이름·적용연도·근무일 설정)] + [개별 일자 상세(공휴일·주휴일 지정)]로 구성됩니다. 기본 정보는 등록 팝업에서 입력하고, 개별 일자 상세는 리스트에서 캘린더를 더블클릭한 뒤 연간 캘린더에서 일자를 클릭해 조정합니다.</p>
+</div>
+<p><img loading="lazy" src="images/production/1-3/01_list.png" alt="캘린더관리 메뉴 진입 화면" /></p>
+<p>캘린더관리 메뉴 진입 화면</p>
+<p><strong>① 기능 버튼</strong></p>
+<ul>
+<li><strong>등록</strong>: 새로운 캘린더를 등록합니다. [캘린더 기본정보 상세] 팝업이 열립니다.</li>
+<li><strong>수정</strong>: 리스트에서 캘린더를 선택(체크박스 클릭)한 후 활성화됩니다. 선택한 캘린더의 [캘린더 기본정보 상세] 팝업이 열립니다.</li>
+<li><strong>삭제</strong>: 리스트에서 선택한 캘린더를 삭제합니다. 다른 기준정보(공장·작업장 등)에서 사용 중인 캘린더는 삭제되지 않을 수 있습니다.</li>
+</ul>
+<p><strong>② 검색 영역</strong></p>
+<ul>
+<li><strong>적용연도</strong>: 특정 연도의 캘린더만 필터링할 수 있습니다. 기본값은 ‘전체’.</li>
+<li><strong>검색기준</strong>: 검색 대상 컬럼을 선택합니다. 기본값은 ‘전체’.</li>
+<li><strong>검색</strong>: 입력한 키워드로 리스트를 필터링합니다.</li>
+</ul>
+<p><strong>③ 리스트 영역</strong></p>
+<ul>
+<li><strong>적용연도</strong>: 해당 캘린더가 적용되는 연도 (예: 2026).</li>
+<li><strong>캘린더ID</strong>: 시스템이 자동 부여한 고유 코드 (예: CAL001).</li>
+<li><strong>캘린더명</strong>: 사용자가 입력한 캘린더의 이름.</li>
+</ul>
+<hr />
+<h3>⊙ 입력 예제</h3>
+<h3>1.3.1. 새로운 캘린더 등록하기</h3>
+<p>리스트 화면에서 <strong>[등록]</strong> 버튼을 클릭하면 [캘린더 기본정보 상세] 팝업이 열립니다.</p>
+<p><img loading="lazy" src="images/production/1-3/02_register.png" alt="캘린더 기본정보 상세 - 등록 팝업" /></p>
+<p>캘린더 기본정보 상세 - 등록 팝업</p>
+<p><strong>입력 항목</strong></p>
+<ul>
+<li><strong>① 캘린더ID</strong>: <em>자동 부여됩니다.</em> 저장 시 시스템이 CAL001, CAL002 형식으로 채번하며 직접 입력할 수 없습니다.</li>
+<li><strong>② 캘린더명</strong> *: 등록할 캘린더의 이름을 입력합니다. (필수) 예: ‘기본공장 캘린더’, ‘부천2공장용 캘린더’</li>
+<li><strong>③ 적용기간</strong>: 생성하는 캘린더가 적용되는 시작 연도를 선택합니다. 기본값은 당해 연도.</li>
+<li><strong>④ 근무일</strong>: 주중 정상 근무일에 해당하는 요일을 체크합니다. 기본값은 월~금 ON, 토·일·법정공휴일 OFF.</li>
+<li><em>└</em> 토요일에도 정상 근무하는 사업장은 ‘토’를 추가로 체크합니다.</li>
+<li><em>└</em> ‘법정 공휴일’을 체크하면 국가 공휴일에도 정상 근무하는 것으로 설정됩니다.</li>
+</ul>
+<p><strong>진행 순서:</strong> ② 캘린더명 입력 → ③ 적용기간 선택 → ④ 근무일 체크 → <strong>[저장]</strong> 클릭</p>
+<blockquote>
+<p>※ 저장 후 새로운 캘린더가 리스트에 추가되며, 연간 근무일·휴무일 수가 근무일 설정에 따라 자동 계산됩니다.</p>
+</blockquote>
+<hr />
+<h3>1.3.2. 캘린더 기본 정보 수정하기</h3>
+<p>이미 등록된 캘린더의 이름·적용연도·근무일 설정을 변경하려면 리스트에서 해당 캘린더를 선택한 후 수정합니다.</p>
+<p><img loading="lazy" src="images/production/1-3/03_edit.png" alt="캘린더 기본정보 상세 - 수정 팝업" /></p>
+<p>캘린더 기본정보 상세 - 수정 팝업</p>
+<p><strong>진행 순서:</strong> 리스트에서 수정할 캘린더의 <strong>체크박스</strong> 선택 → <strong>[수정]</strong> 버튼 클릭 → 변경할 값 입력 → <strong>[저장]</strong> 클릭</p>
+<p><strong>수정 팝업 동작 특징</strong></p>
+<ul>
+<li>캘린더ID는 수정할 수 없습니다.</li>
+<li>기존에 저장된 값은 그대로 표시되며, 변경하고 싶은 항목만 갱신한 후 저장하면 됩니다.</li>
+<li>근무일 설정을 바꾸면 연간 근무일·휴무일 수가 재계산됩니다.</li>
+</ul>
+<hr />
+<h3>1.3.3. 캘린더 상세 화면 (개별 일자 조회·관리)</h3>
+<p>리스트에서 캘린더를 <strong>더블클릭</strong>하면 캘린더 상세 화면으로 이동합니다. 연간 근무·휴무 일정을 한눈에 확인하고, 개별 일자를 클릭해 휴무 여부를 조정할 수 있습니다.</p>
+<p><img loading="lazy" src="images/production/1-3/04_detail.png" alt="캘린더 상세 화면 - [CAL001] 캘린더의 연간 캘린더" /></p>
+<p>캘린더 상세 화면 - [CAL001] 캘린더의 연간 캘린더</p>
+<ul>
+<li><strong>① 근무일·휴무일 요약</strong>: 조회한 캘린더의 연간 근무일과 휴무일 수가 표시됩니다.</li>
+<li><strong>② 공휴일 목록</strong>: 연간 공휴일 목록이 ‘구분 / 날짜 / 공휴일명’ 형태로 표시됩니다.</li>
+<li><strong>③ 연간 캘린더</strong>: 1월부터 12월까지의 연간 일정을 컬러로 구분해 표시합니다. 평일/주휴일/공휴일이 색상으로 구분됩니다.</li>
+<li><strong>④ 휴무일 범례</strong>: 우측 상단에 휴무일 종류별 색상 범례(공휴일·주휴일·직접입력·전사휴무·근무일)가 표시됩니다.</li>
+</ul>
+<blockquote>
+<p>※ 특정 일자에 마우스를 올리면 휴무일의 이름(공휴일명)이 툴팁으로 표시됩니다.</p>
+</blockquote>
+<hr />
+<h3>1.3.4. 개별 일자의 휴무 여부 변경하기</h3>
+<p>연간 캘린더에서 일자를 클릭하면 [일정 상세] 팝업이 열립니다. 클릭한 일자가 평일이냐 휴일이냐에 따라 휴일 구분의 선택지가 다르게 표시됩니다.</p>
+<div class="callout">
+<p>🔀 평일 클릭 시: 4가지 휴일 종류(공휴일/주휴일/직접입력/전사휴무) 중 하나를 선택해 휴일로 변경할 수 있습니다.<br />
+휴일 클릭 시: 위 4가지에 ‘근무일’ 옵션이 추가되어 총 5가지 — 휴일 종류를 변경하거나 다시 근무일로 되돌릴 수 있습니다.</p>
+</div>
+<p><strong>(가) 평일 일자를 클릭한 경우</strong></p>
+<p>기존에 휴일 지정이 없는 일자를 클릭하면 휴일 종류가 어떤 것도 선택되지 않은 상태로 표시됩니다. 휴일 종류 라디오 4개 중 하나를 선택하고 휴무일명을 입력한 뒤 저장하면 해당 일자가 휴일로 지정됩니다.</p>
+<p><img loading="lazy" src="images/production/1-3/05_day_popup_weekday.png" alt="일정 상세 (평일 클릭) - 휴일 종류 4개 옵션" /></p>
+<p>일정 상세 (평일 클릭) - 휴일 종류 4개 옵션</p>
+<p><strong>입력 항목</strong></p>
+<ul>
+<li><strong>① 일자</strong>: 클릭한 일자가 ‘시작일 ~ 종료일’ 형태로 표시됩니다. 일자 범위를 변경하면 여러 날에 동일 설정을 일괄 적용할 수 있습니다.</li>
+<li><strong>② 휴일 구분</strong>: 휴일 종류를 라디오로 선택합니다. 옵션은 4가지.</li>
+<li><strong>• 공휴일</strong>: 신정·설날·추석 등 법정 공휴일. 빨간색 표시.</li>
+<li><strong>• 주휴일</strong>: 정기적인 주말 휴무 (토·일). 빨간색 표시.</li>
+<li><strong>• 직접입력</strong>: 회사 자체적으로 지정하는 휴일 (창립기념일 등). 초록색 표시.</li>
+<li><strong>• 전사휴무</strong>: 회사 전체 휴무일. 빨간색 표시.</li>
+<li><em>└ 각 옵션 오른쪽</em> [휴무일명 직접 입력] 칸에 휴무일 이름을 입력합니다. 입력한 이름은 연간 캘린더에서 마우스 오버 시 툴팁으로 표시됩니다.</li>
+</ul>
+<p><strong>진행 순서:</strong> 연간 캘린더에서 휴일로 만들 평일 클릭 → 휴일 구분 라디오 선택 → 휴무일명 입력 → <strong>[저장]</strong> 클릭</p>
+<hr />
+<p><strong>(나) 휴일 일자를 클릭한 경우</strong></p>
+<p>기존에 휴일로 지정된 일자를 클릭하면 현재 휴일 종류가 선택된 상태로 표시되고 휴무일명도 그대로 채워집니다. 휴일 종류를 다른 값으로 바꾸거나, ‘근무일’ 옵션을 선택해 다시 정상 근무일로 되돌릴 수 있습니다.</p>
+<p><img loading="lazy" src="images/production/1-3/06_day_popup_holiday.png" alt="일정 상세 (휴일 클릭) - 휴일 종류 5개 옵션 (+근무일)" /></p>
+<p>일정 상세 (휴일 클릭) - 휴일 종류 5개 옵션 (+근무일)</p>
+<p><strong>화면 구성</strong></p>
+<ul>
+<li><strong>① 일자</strong>: 클릭한 휴일의 일자. (예: 2026-01-03 ~ 2026-01-03)</li>
+<li><strong>② 휴일 구분</strong>: 현재 지정된 휴일 종류가 선택되어 표시됩니다. (예: ‘주휴일’ 선택, 휴무일명 ‘토요일’)</li>
+<li><strong>• 공휴일 / 주휴일 / 직접입력 / 전사휴무</strong>: 평일 클릭 시와 동일한 4가지 휴일 종류. 다른 옵션을 선택하면 해당 휴일의 종류·이름이 변경됩니다.</li>
+<li><strong>• 근무일</strong>: 휴일을 정상 근무일로 되돌립니다. 휴일 클릭 시에만 추가로 노출되는 옵션입니다.</li>
+</ul>
+<p><strong>진행 순서 (휴일 종류 변경):</strong> 연간 캘린더에서 휴일 클릭 → 새 휴일 구분 라디오 선택 → 휴무일명 수정 → <strong>[저장]</strong> 클릭</p>
+<p><strong>진행 순서 (휴일 → 근무일 변환):</strong> 연간 캘린더에서 휴일 클릭 → <strong>‘근무일’</strong> 라디오 선택 → <strong>[저장]</strong> 클릭</p>
+<blockquote>
+<p>※ 일자 입력란에 기간을 지정하면 여러 날을 한 번에 동일 휴일/근무일로 설정할 수 있습니다.</p>
+</blockquote>
+</section><section class="page" id="production-1-4"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">1.4. 창고관리</h1><h1>1. 기준정보</h1>
+<h2>1.4. 창고관리</h2>
+<p>공장에 소속된 창고를 등록하고 관리하는 화면입니다.</p>
+<p>등록한 창고는 <strong>[생산관리] - [기준정보] - [작업장관리]</strong> 등에서 기본 창고로 매핑되거나, 입출고·재고 이동의 위치 기준으로 사용됩니다.</p>
+<div class="callout">
+<p>✅ 창고코드는 등록 시 자동 부여되며, 직접 입력하거나 수정할 수 없습니다.</p>
+</div>
+<div class="callout">
+<p>🏭 창고는 반드시 공장에 소속되므로, 공장을 먼저 [생산관리]-[기준정보]-[공장관리]에서 등록해야 공장 드롭다운에서 선택할 수 있습니다.</p>
+</div>
+<p><img loading="lazy" src="images/production/1-4/01_list.png" alt="창고관리 메뉴 진입 화면" /></p>
+<p>창고관리 메뉴 진입 화면</p>
+<p><strong>① 기능 버튼</strong></p>
+<ul>
+<li><strong>등록</strong>: 새로운 창고를 등록합니다. [창고 상세] 팝업이 열립니다.</li>
+<li><strong>수정</strong>: 리스트에서 창고를 선택(체크박스 클릭)한 후 활성화됩니다. 선택한 창고의 [창고 상세] 팝업이 열립니다.</li>
+<li><strong>삭제</strong>: 리스트에서 선택한 창고를 삭제합니다. 재고가 남아 있거나 다른 기준정보(작업장 등)에서 사용 중인 창고는 삭제되지 않을 수 있습니다.</li>
+<li><strong>다운로드</strong>: 현재 리스트 내역을 엑셀 파일로 내려받습니다.</li>
+<li><strong>업로드</strong>: 엑셀 파일을 업로드하여 창고를 일괄 등록할 수 있습니다.</li>
+</ul>
+<p><strong>② 검색 영역</strong></p>
+<ul>
+<li><strong>검색기준</strong>: 검색 대상 컬럼을 선택합니다. 기본값은 ‘전체’.</li>
+<li><strong>전체 검색</strong>: 입력한 키워드로 리스트를 필터링합니다.</li>
+</ul>
+<p><strong>③ 리스트 영역</strong></p>
+<ul>
+<li><strong>창고코드</strong>: 시스템이 자동 부여한 고유 코드 (예: W0001).</li>
+<li><strong>창고명</strong>: 사용자가 입력한 창고 이름.</li>
+<li><strong>공장</strong>: 해당 창고가 소속된 공장 (예: [PLT001] 기본 공장).</li>
+<li><strong>창고유형</strong>: 창고의 보관 용도 분류 (완제품 창고 / 공정창고 / 원부자재창고 / 외주창고 등).</li>
+</ul>
+<hr />
+<h3>⊙ 입력 예제</h3>
+<h3>1.4.1. 새로운 창고 등록하기</h3>
+<p>리스트 화면에서 <strong>[등록]</strong> 버튼을 클릭하면 [창고 상세] 팝업이 열립니다.</p>
+<p><img loading="lazy" src="images/production/1-4/02_register.png" alt="창고 상세 - 등록 팝업" /></p>
+<p>창고 상세 - 등록 팝업</p>
+<p><strong>입력 항목</strong></p>
+<ul>
+<li><strong>① 창고코드</strong>: <em>자동 부여됩니다.</em> 저장 시 시스템이 W0001, W0002 형식으로 채번하며 직접 입력할 수 없습니다.</li>
+<li><strong>② 창고명</strong> *: 등록할 창고의 이름을 입력합니다. (필수) 예: ‘기본창고’, ‘기본공장_원재료창고’</li>
+<li><strong>③ 공장</strong> *: 드롭다운에서 해당 창고가 소속될 공장을 선택합니다. (필수) ※ 공장이 미등록이면 옵션이 없으므로 [공장관리]에서 먼저 등록.</li>
+<li><strong>④ 창고유형</strong> *: 드롭다운에서 창고의 보관 용도를 선택합니다. (필수) 옵션은 아래 1.4.2 참고.</li>
+<li><strong>⑤ 최대보관량</strong>: 창고에서 최대 보관 가능한 수량(또는 중량)을 입력합니다. placeholder 안내대로 ‘500EA’, ‘50KG’ 같은 형식으로 단위와 함께 입력합니다.</li>
+</ul>
+<p><strong>진행 순서:</strong> ② 창고명 입력 → ③ 공장 선택 → ④ 창고유형 선택 → ⑤ 최대보관량 입력(선택) → <strong>[저장]</strong> 클릭</p>
+<blockquote>
+<p>※ 필수 항목(*)을 모두 입력하지 않으면 저장 시 안내 메시지가 표시됩니다.</p>
+</blockquote>
+<hr />
+<h3>1.4.2. 창고유형 선택</h3>
+<p>창고유형 드롭다운을 클릭하면 다음 옵션이 표시됩니다.</p>
+<p><img loading="lazy" src="images/production/1-4/04_type_options.png" alt="창고유형 드롭다운 - 7개 옵션" /></p>
+<p>창고유형 드롭다운 - 7개 옵션</p>
+<ul>
+<li><strong>원부자재창고</strong>: 원재료·부자재를 보관하는 창고.</li>
+<li><strong>반제품 창고</strong>: 공정 진행 중인 반제품 보관.</li>
+<li><strong>완제품 창고</strong>: 생산 완료된 완제품 보관.</li>
+<li><strong>기타 창고</strong>: 위 분류에 해당하지 않는 일반 보관 창고.</li>
+<li><strong>불용자재 창고</strong>: 사용하지 않는 불용·폐기 대상 자재 보관.</li>
+<li><strong>샘플 보관 창고</strong>: 품질 검사용 샘플 또는 영업 샘플 보관.</li>
+<li><strong>연구 개발 전용 창고</strong>: R&amp;D 용도의 자재·시제품 보관.</li>
+<li><strong>외주 창고</strong>: 외주거래처별 사급자재 보관.</li>
+</ul>
+<hr />
+<h3>1.4.3. 등록된 창고 정보 수정하기</h3>
+<p>이미 등록된 창고의 이름·공장·유형·최대보관량을 변경하려면 리스트에서 해당 창고를 선택한 후 수정합니다.</p>
+<p><img loading="lazy" src="images/production/1-4/03_edit.png" alt="창고 상세 - 수정 팝업 (W0001 기본창고)" /></p>
+<p>창고 상세 - 수정 팝업 (W0001 기본창고)</p>
+<p><strong>진행 순서:</strong> 리스트에서 수정할 창고의 <strong>체크박스</strong> 선택 → <strong>[수정]</strong> 버튼 클릭 → 변경할 값 입력 → <strong>[저장]</strong> 클릭</p>
+<p><strong>수정 팝업 동작 특징</strong></p>
+<ul>
+<li>창고코드는 수정할 수 없습니다.</li>
+<li>기존에 저장된 값은 그대로 표시되며, 변경하고 싶은 항목만 갱신한 후 저장하면 됩니다.</li>
+<li>공장을 변경하면 해당 창고의 소속 공장이 바뀌므로, 작업장 매핑 등 연관 설정의 정합성을 한 번 더 확인하세요.</li>
+</ul>
+</section><section class="page" id="production-1-5"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">1.5. 설비관리</h1><h1>1. 기준정보</h1>
+<h2>1.5. 설비관리</h2>
+<p>생산 활동에 사용되는 설비를 등록하고 관리하는 화면입니다.</p>
+<p>등록한 설비는 <strong>[생산관리] - [기준정보] - [작업장관리]</strong> 에서 작업장에 연결되어 가동시간·표준 셋업시간 등의 산정에 사용되며, 고정자산 정보와도 연동됩니다.</p>
+<div class="callout">
+<p>✅ 설비코드는 등록 시 우측 ‘자동’ 체크박스가 켜져 있으면 시스템이 자동 채번(FC00000001~)합니다. 직접 입력하려면 체크를 해제하고 최대 10자리까지 입력합니다.</p>
+</div>
+<div class="callout">
+<p>🗂️ 설비 등록 팝업은 [기본정보 / 추가정보] 두 개의 탭으로 구성됩니다. 기본정보 탭은 고정자산·담당자 정보, 추가정보 탭은 설치일자·모델·제조사 등 물리 정보입니다.</p>
+</div>
+<div class="callout">
+<p>⚠️ 작업장에 연결된 설비는 삭제할 수 없습니다. 삭제 가능한 설비를 지우면 연동된 고정자산도 자동으로 해제됩니다.</p>
+</div>
+<p><img loading="lazy" src="images/production/1-5/01_list.png" alt="설비관리 메뉴 진입 화면" /></p>
+<p>설비관리 메뉴 진입 화면</p>
+<p><strong>① 기능 버튼</strong></p>
+<ul>
+<li><strong>등록</strong>: 새로운 설비를 등록합니다. [설비 등록] 팝업이 열립니다.</li>
+<li><strong>수정</strong>: 리스트에서 설비를 선택(체크박스 클릭)한 후 활성화됩니다. 선택한 설비의 [설비 등록] 팝업이 기존 값으로 채워져 열립니다.</li>
+<li><strong>삭제</strong>: 리스트에서 선택한 설비를 삭제합니다. 작업장에 등록된 설비는 삭제되지 않고 안내 팝업이 표시됩니다.</li>
+<li><strong>다운로드</strong>: 현재 리스트 내역을 엑셀 파일로 내려받습니다.</li>
+<li><strong>업로드</strong>: 엑셀 파일을 업로드해 설비를 일괄 등록할 수 있습니다.</li>
+</ul>
+<p><strong>② 검색 영역</strong></p>
+<ul>
+<li><strong>검색 기준 드롭다운 + 키워드 검색</strong>: 설비코드·설비명 등 컬럼별로 필터링할 수 있습니다.</li>
+</ul>
+<p><strong>③ 리스트 영역</strong></p>
+<ul>
+<li><strong>설비코드 / 설비명</strong>: 설비의 고유 코드와 이름.</li>
+<li><strong>소속공장 / 작업장</strong>: 해당 설비가 배치된 공장과 작업장. 작업장 화면에서 설비를 연결하면 자동으로 채워집니다.</li>
+<li><strong>담당사원 / 담당부서</strong>: 설비 운영을 담당하는 사원과 부서.</li>
+<li><strong>고정자산정보 (계정코드·계정과목·자산코드 등)</strong>: 회계 모듈의 고정자산과 연결된 정보. 등록 시 [기본정보] 탭에서 매핑.</li>
+</ul>
+<hr />
+<h3>⊙ 입력 예제</h3>
+<h3>1.5.1. 새로운 설비 등록하기 — [기본정보] 탭</h3>
+<p>리스트 화면에서 <strong>[등록]</strong> 버튼을 클릭하면 [설비 등록] 팝업이 열립니다. 기본적으로 [기본정보] 탭이 선택되어 있습니다.</p>
+<p><img loading="lazy" src="images/production/1-5/02_register_basic.png" alt="설비 등록 팝업 - 기본정보 탭" /></p>
+<p>설비 등록 팝업 - 기본정보 탭</p>
+<p><strong>입력 항목 (공통 영역)</strong></p>
+<ul>
+<li><strong>① 설비코드</strong> *<em>: 우측 ‘자동’ 체크박스가 켜져 있으면 자동 부여</em> (FC00000001~). 직접 지정하려면 ‘자동’ 체크를 해제하고 입력합니다 (최대 10자리).</li>
+<li><strong>② 설비명</strong> *: 설비의 이름을 입력합니다. 텍스트+숫자 최대 50자.</li>
+<li><strong>③ 사용여부</strong> *: 토글. 기본값 ‘사용’. 미사용으로 전환하면 작업장 매핑·생산 실적 입력 등에서 선택지에 노출되지 않습니다.</li>
+</ul>
+<p><strong>입력 항목 ([기본정보] 탭)</strong></p>
+<ul>
+<li><strong>④ 탭</strong>: [기본정보] / [추가정보] 두 탭을 전환합니다.</li>
+<li><strong>⑤ 고정자산계정과목</strong>: 돋보기 검색 팝업으로 회계 모듈의 고정자산 계정과목을 선택합니다. (예: 기계장치 / 20600)</li>
+<li><strong>⑥ 고정자산정보</strong> *: 자산명을 검색 팝업으로 선택합니다. 위에서 선택한 계정과목에 등록된 자산 중, 다른 설비/업무용승용차에 연결되지 않은 항목만 노출됩니다.</li>
+<li><strong>⑦ 취득일자 / 처분일자</strong>: 자산의 취득일과 처분일을 입력합니다. (선택한 고정자산 정보에서 자동 채워질 수 있음)</li>
+<li><strong>⑧ 경비구분</strong>: 드롭다운에서 선택. 기본값 ‘제조원가’.</li>
+<li><strong>⑨ 담당사원 / 담당부서</strong>: 설비 운영 담당자를 검색 팝업으로 선택합니다.</li>
+</ul>
+<hr />
+<h3>1.5.2. [추가정보] 탭 - 설치·물리 정보</h3>
+<p>팝업 상단의 <strong>[추가정보]</strong> 탭을 클릭하면 설치일자·모델명·제조사 등의 물리 정보 입력 영역이 나타납니다.</p>
+<p><img loading="lazy" src="images/production/1-5/03_register_extra.png" alt="설비 등록 팝업 - 추가정보 탭" /></p>
+<p>설비 등록 팝업 - 추가정보 탭</p>
+<p><strong>입력 항목</strong></p>
+<ul>
+<li><strong>⑤ 설치일자</strong>: 설비를 실제로 설치한 날짜를 입력합니다.</li>
+<li><strong>⑥ 소속공장 / 작업장</strong>: <em>표시 전용 필드입니다.</em> [작업장관리] 화면에서 이 설비를 작업장에 연결할 때 자동으로 채워집니다.</li>
+<li><strong>⑦ 모델명 / 제조사</strong>: 제조사가 부여한 모델 식별자와 제조 기업명. 모델명 최대 50자, 제조사 최대 200자.</li>
+<li><strong>⑧ 시리얼No / 구입처</strong>: 설비 일련번호(최대 100자)와 구입한 업체(최대 200자).</li>
+<li><strong>⑨ 비고</strong>: 자유 메모. 최대 100자.</li>
+<li><strong>⑩ 첨부파일</strong>: [첨부파일 업로드] 버튼으로 관련 문서(설치 보고서, 매뉴얼, 시방서 등)를 첨부합니다.</li>
+</ul>
+<p><strong>진행 순서 (등록):</strong> ① 설비코드 자동/수동 선택 → ② 설비명 입력 → [기본정보] 탭에서 ⑥ 고정자산정보 선택(필수) → 나머지 항목 입력(선택) → [추가정보] 탭으로 이동해 설치/모델 정보 입력(선택) → <strong>[저장]</strong> 클릭</p>
+<blockquote>
+<p>※ 고정자산을 미리 [기초정보]-[고정자산 관리]에서 등록해두어야 ⑥ 고정자산정보 검색 팝업에 옵션이 나타납니다.</p>
+</blockquote>
+<hr />
+<h3>1.5.3. 등록된 설비 정보 수정하기</h3>
+<p>이미 등록된 설비의 정보를 변경하려면 리스트에서 해당 설비를 선택한 후 수정합니다. 팝업 제목은 ‘설비 등록’ 그대로 표시되지만 기존 값이 채워진 상태로 열립니다.</p>
+<p><img loading="lazy" src="images/production/1-5/04_edit.png" alt="설비 등록 팝업 - 수정 (EQP-A01 자동 포장기 1호)" /></p>
+<p>설비 등록 팝업 - 수정 (EQP-A01 자동 포장기 1호)</p>
+<p><strong>진행 순서:</strong> 리스트에서 수정할 설비의 <strong>체크박스</strong> 선택 → <strong>[수정]</strong> 버튼 클릭 → [기본정보] 또는 [추가정보] 탭에서 값 변경 → <strong>[저장]</strong> 클릭</p>
+<p><strong>수정 시 주의</strong></p>
+<ul>
+<li>설비코드는 수정할 수 없습니다.</li>
+<li>고정자산정보를 변경하면 기존 자산은 해제되고 새 자산이 이 설비에 연결됩니다.</li>
+<li>소속공장·작업장은 직접 수정하지 않고 [작업장관리]에서 작업장-설비 연결을 통해 변경합니다.</li>
+<li>취소 시 안내 팝업이 한 번 더 표시되며, [확인]을 누르면 변경 내용 없이 닫힙니다.</li>
+</ul>
+</section><section class="page" id="production-1-6"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">1.6. 불량/반품코드관리</h1><h1>1. 기준정보</h1>
+<h2>1.6. 불량/반품코드관리</h2>
+<p>생산·구매·외주 과정에서 발생하는 불량과 반품 사유를 코드로 등록·관리하는 화면입니다.</p>
+<p>등록된 불량코드는 생산 실적 입력, 입고 검수, 외주 양품 확정 등에서 불량 분류 기준으로 사용됩니다.</p>
+<div class="callout">
+<p>✅ 불량코드는 등록 시 [자동] 체크박스가 켜져 있으면 시스템이 DEF001, DEF002 형식으로 자동 부여합니다. 직접 코드를 지정하려면 체크를 해제하고 입력합니다.</p>
+</div>
+<div class="callout">
+<p>🚫 시스템이 기본 제공하는 불량코드는 삭제되지 않고 ‘사용안함’으로 자동 전환됩니다. 사용자가 추가한 불량코드만 직접 삭제할 수 있고, 그 코드로 등록된 실적이 있으면 삭제 대신 ‘미사용 처리’로 안내됩니다.</p>
+</div>
+<p><img loading="lazy" src="images/production/1-6/01_list.png" alt="불량/반품코드관리 메뉴 진입 화면" /></p>
+<p>불량/반품코드관리 메뉴 진입 화면</p>
+<p><strong>① 기능 버튼</strong></p>
+<ul>
+<li><strong>등록</strong>: 새로운 불량코드를 등록합니다. [불량코드 등록] 팝업이 열립니다.</li>
+<li><strong>수정</strong>: 리스트에서 불량코드를 선택(체크박스 클릭)한 후 활성화됩니다. [불량코드 수정] 팝업이 열립니다.</li>
+<li><strong>삭제</strong>: 리스트에서 선택한 불량코드를 삭제합니다. 시스템 기본 코드 또는 실적이 있는 코드는 ‘사용안함’ 처리로 대체됩니다.</li>
+<li><strong>다운로드</strong>: 현재 리스트 내역을 엑셀 파일로 내려받습니다.</li>
+<li><strong>업로드</strong>: 엑셀 파일을 업로드해 불량코드를 일괄 등록할 수 있습니다.</li>
+</ul>
+<p><strong>② 검색 영역</strong></p>
+<ul>
+<li><strong>검색기준</strong>: 검색 대상 컬럼을 선택합니다. 기본값은 ‘전체’.</li>
+<li><strong>전체 검색</strong>: 입력한 키워드로 리스트를 필터링합니다.</li>
+</ul>
+<p><strong>③ 리스트 영역</strong></p>
+<ul>
+<li><strong>불량코드</strong>: 시스템이 부여한 고유 코드 (예: DEF001).</li>
+<li><strong>불량명</strong>: 불량 유형 이름 (예: ‘치수 불량’, ‘용접 불량’, ‘도장 불량’).</li>
+<li><strong>설명</strong>: 해당 불량 유형의 정의/판정 기준.</li>
+<li><strong>예시</strong>: 구체적인 불량 사례 (예: ‘길이 짧음, 홀 작음, 홀 안 맞음, 두께 오버, 평행도 불량, …’).</li>
+<li><strong>생산불량</strong>: 생산 공정에서의 사용 구분 — 정상불량 / 비정상불량 / 사용안함 중 하나.</li>
+<li><strong>구매불량</strong>: 구매(입고 검수)에서 이 코드를 사용할지 여부 (○ = 사용 / 빈칸 = 사용안함).</li>
+<li><strong>외주불량</strong>: 외주 양품 확정에서 이 코드를 사용할지 여부 (○ = 사용 / 빈칸 = 사용안함).</li>
+<li><strong>사용여부</strong>: 이 불량코드의 전반적 활성/비활성 상태.</li>
+</ul>
+<hr />
+<h3>⊙ 입력 예제</h3>
+<h3>1.5.1. 새로운 불량코드 등록하기</h3>
+<p>리스트 화면에서 <strong>[등록]</strong> 버튼을 클릭하면 [불량코드 등록] 팝업이 열립니다.</p>
+<p><img loading="lazy" src="images/production/1-6/02_register.png" alt="불량코드 등록 팝업" /></p>
+<p>불량코드 등록 팝업</p>
+<p><strong>입력 항목</strong></p>
+<ul>
+<li><strong>① 불량코드</strong> **: 우측 ‘자동’ 체크박스가 켜진 상태에서는 자동 부여*됩니다. 직접 코드를 지정하려면 ‘자동’ 체크를 해제하고 입력합니다.</li>
+<li><strong>② 불량코드명</strong> *: 불량 유형 이름을 입력합니다. 예: ‘치수 불량’, ‘외관 불량’, ‘조립 불량’</li>
+<li><strong>③ 설명</strong>: 해당 불량의 정의나 판정 기준을 자유롭게 입력합니다. 여러 줄 입력 가능.</li>
+<li><strong>④ 예시</strong>: 구체적인 불량 사례를 콤마로 구분해 나열합니다. 예: ‘길이 짧음, 홀 작음, 두께 오버’</li>
+<li><strong>⑤ 생산불량 사용여부</strong>: 생산 공정에서 이 불량코드를 어떻게 사용할지 라디오로 선택합니다.</li>
+<li><strong>• 정상불량</strong>: 생산 진행 중 흔히 발생하는 통상 불량. 일반 실적에 반영.</li>
+<li><strong>• 비정상불량</strong>: 예외 사유로 발생한 불량. 별도 분석 대상.</li>
+<li><strong>• 사용안함</strong>: 생산 공정에서는 이 코드를 사용하지 않음.</li>
+<li><strong>⑥ 구매불량 사용여부</strong>: 구매(입고 검수)에서 이 불량코드를 사용할지 선택. 사용 / 사용안함.</li>
+<li><strong>⑦ 외주불량 사용여부</strong>: 외주 양품 확정에서 이 불량코드를 사용할지 선택. 사용 / 사용안함.</li>
+</ul>
+<p><strong>진행 순서:</strong> ② 불량코드명 입력 → ③ 설명 / ④ 예시 입력(선택) → ⑤·⑥·⑦ 사용 여부 라디오 선택 → <strong>[저장]</strong> 클릭</p>
+<blockquote>
+<p>※ 같은 불량코드를 [생산·구매·외주] 세 영역에서 동시에 사용할 수도 있고, 일부 영역에서만 ‘사용안함’으로 설정해 노출되지 않게 할 수도 있습니다.</p>
+</blockquote>
+<hr />
+<h3>1.5.2. 등록된 불량코드 수정하기</h3>
+<p>이미 등록된 불량코드의 이름·설명·예시·사용 여부를 변경하려면 리스트에서 해당 코드를 선택한 후 수정합니다.</p>
+<p><img loading="lazy" src="images/production/1-6/03_edit.png" alt="불량코드 수정 팝업 (DEF001 치수 불량)" /></p>
+<p>불량코드 수정 팝업 (DEF001 치수 불량)</p>
+<p><strong>진행 순서:</strong> 리스트에서 수정할 불량코드의 <strong>체크박스</strong> 선택 → <strong>[수정]</strong> 버튼 클릭 → 변경할 값 입력 → <strong>[저장]</strong> 클릭</p>
+<p><strong>수정 팝업 동작 특징</strong></p>
+<ul>
+<li>불량코드는 수정할 수 없습니다.</li>
+<li>기존에 저장된 값은 그대로 표시되며, 변경하고 싶은 항목만 갱신한 후 저장하면 됩니다.</li>
+<li>‘사용안함’으로 전환하면 다른 화면(생산 실적/구매 검수/외주 양품 확정 등)의 불량코드 선택지에서 노출되지 않습니다.</li>
+</ul>
+<hr />
+<h3>1.5.3. 불량코드 삭제 동작</h3>
+<p>불량코드를 삭제하려고 하면 시스템이 자동으로 다음과 같이 처리합니다.</p>
+<ul>
+<li><strong>사용자가 직접 추가한 코드 + 실적이 없는 경우</strong>: 실제로 삭제됩니다.</li>
+<li><strong>시스템 기본 제공 코드 (예: DEF001~DEF014)</strong>: 삭제되지 않고 ‘사용안함’으로 자동 전환됩니다.</li>
+<li><strong>실적이 등록된 코드</strong>: 삭제되지 않습니다. 안내 팝업 — “업무에 사용된 불량코드는 삭제할 수 없습니다. 미사용 처리 하시겠습니까?” — 에서 [확인] 시 ‘사용안함’으로 전환.</li>
+</ul>
+<p><strong>삭제 시 표시되는 결과 안내</strong></p>
+<ul>
+<li>‘삭제 처리: x건 / 미사용 처리: x건’ 형태로 두 가지 처리 결과가 분리 표시됩니다.</li>
+</ul>
+</section><section class="page" id="production-1-7"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">1.7. 작업장관리</h1><h1>1. 기준정보</h1>
+<h2>1.7. 작업장관리</h2>
+<h3>개요</h3>
+<p>작업장(Work Center)은 생산이 실제로 수행되는 <strong>가장 기본적인 조직 단위</strong>입니다 — 사람(작업자)·기계(설비) 또는 작업이 이뤄지는 장소를 정의합니다. 공정(라우팅)에 연결되어 ① 생산능력·일정 계획 ② 제조원가(가공비) 산정의 핵심 기준이 됩니다.</p>
+<div class="callout">
+<p>🏭 작업장은 ‘자원을 정의하는 곳’입니다. 특정 제품의 표준 작업시간은 [공정/작업]에서, 실제 작업시간은 [생산지시서]에서 기록합니다. 작업장에는 시간당 생산량(UPH)·효율·세팅시간·원가 귀속(코스트센터) 등 ‘기본값’만 둡니다.</p>
+</div>
+<h3>핵심 개념 — 작업장유형 × 생산능력 집계구분</h3>
+<p>작업장은 두 축으로 분류됩니다. 이 두 값이 입력 폼의 하위 필드를 결정합니다.</p>
+<p><strong>① 작업장유형 (외주여부 + 외주구분으로 결정)</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>작업장유형</th>
+<th>외주여부 / 외주구분</th>
+<th>의미</th>
+<th>집계구분 선택</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>자체작업</td>
+<td>부</td>
+<td>사내 인력·설비로 직접 생산</td>
+<td>사람/기계/혼합 가능</td>
+</tr>
+<tr class="even">
+<td>사내외주</td>
+<td>여 / 사내</td>
+<td>사내에 입주한 외주(도급) — 자체작업과 동일하게 운영</td>
+<td>사람/기계/혼합 가능</td>
+</tr>
+<tr class="odd">
+<td>사외외주</td>
+<td>여 / 사외</td>
+<td>외부 업체에 위탁 — 외주거래처·외주창고로 관리</td>
+<td>선택 없음 (외주)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>② 생산능력 집계구분 (가용시간을 무엇으로 집계하는가)</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>집계구분</th>
+<th>추가 입력</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>사람 (LAB)</td>
+<td>부서선택 + 표준노무세팅시간 + 근태율</td>
+<td>작업자(인원) 기준 가용시간</td>
+</tr>
+<tr class="even">
+<td>기계 (MACH)</td>
+<td>설비선택 + 표준설비세팅시간 + 가동율</td>
+<td>설비(기계) 기준 가용시간</td>
+</tr>
+<tr class="odd">
+<td>혼합 (MIX)</td>
+<td>위 두 가지 모두</td>
+<td>사람 + 설비 둘 다 사용</td>
+</tr>
+</tbody>
+</table>
+<h3>화면 진입</h3>
+<p>좌측 사이드바 [생산관리] ▸ [기준정보] ▸ [작업장관리]</p>
+<h3>목록 화면</h3>
+<p><img loading="lazy" src="images/production/1-7/01_list.png" alt="작업장관리 목록 — 4개 작업장(자체작업 3 + 사외외주 1)" /></p>
+<p>작업장관리 목록 — 4개 작업장(자체작업 3 + 사외외주 1)</p>
+<ul>
+<li>① 기능 버튼 — [복사 등록] / [등록] / [수정] / [삭제] / [다운로드] / [업로드]</li>
+<li>② 목록 그리드 — 한 행이 작업장 1건. 작업장코드 / 작업장명 / <strong>작업장유형</strong> / 소속공장 / 기본 창고 / 코스트센터 / 작업장 생산달력 / 교대코드 / <strong>생산능력 집계구분</strong> / (집계구분별) 세팅시간·근태율·근무인원수·설비수·가동율 / 생산효율 / 표준·정격 UPH / 대기·이동시간 / 기본 스크랩</li>
+</ul>
+<h3>신규 등록 — 기본 입력 폼</h3>
+<p>상단 <code>[등록]</code> 클릭 → ‘작업장 상세’ 팝업이 열립니다.</p>
+<p><img loading="lazy" src="images/production/1-7/02_new_empty.png" alt="작업장 상세 — 신규 빈 폼 (집계구분 미선택 상태)" /></p>
+<p>작업장 상세 — 신규 빈 폼 (집계구분 미선택 상태)</p>
+<ul>
+<li>① 작업장 코드 — [자동] 체크 시 자동 채번. 해제하면 직접 입력.</li>
+<li>② 소속공장 / <strong>코스트센터</strong> — 코스트센터는 검색 팝업으로 선택. 선택 결과가 외주여부를 자동 결정합니다(아래 참조).</li>
+<li>③ 외주여부 — 여 / 부. 코스트센터 선택에 따라 자동 세팅되며, 사용자가 직접 바꿀 수도 있습니다.</li>
+<li>④ 생산능력 집계구분 — 사람 / 기계 / 혼합. <strong>선택 전에는 하위 입력 영역이 나타나지 않습니다.</strong></li>
+<li>하단 공통 — 교대코드 / 작업장 생산달력 / 생산효율(%) / 표준UPH / 정격UPH / 대기시간(m) / 이동시간(m) / 기본 스크랩(%)</li>
+</ul>
+<h3>코스트센터 선택 — 내부 vs 외주</h3>
+<p>코스트센터 검색(돋보기) → ‘코스트센터 조회’ 팝업. 유형 컬럼으로 직접/간접/판관/직접(외주)을 구분합니다.</p>
+<p><img loading="lazy" src="images/production/1-7/03_cc_popup.png" alt="코스트센터 조회 — 유형 컬럼(직접/간접/판관/직접(외주))" /></p>
+<p>코스트센터 조회 — 유형 컬럼(직접/간접/판관/직접(외주))</p>
+<ul>
+<li><strong>① 유형 —</strong> 직접 / 간접 / 판관 / <strong>직접(외주)</strong>. 작업장에는 ‘직접’ 또는 ‘직접(외주)’ 코스트센터를 연결합니다.</li>
+<li>직접(외주) 코스트센터(예: COC012 도장외주)는 외주거래처가 연결되어 있어, 선택 시 작업장이 자동으로 외주 작업장으로 전환됩니다.</li>
+</ul>
+<h3>외주 코스트센터 자동 맵핑</h3>
+<p>외주 코스트센터를 선택하면 외주 관련 필드가 자동으로 채워집니다.</p>
+<p><img loading="lazy" src="images/production/1-7/04_cc_automap.png" alt="외주 CC(COC012 도장외주) 선택 → 외주여부 자동 ‘여’ + 외주거래처 자동 맵핑" /></p>
+<p>외주 CC(COC012 도장외주) 선택 → 외주여부 자동 ‘여’ + 외주거래처 자동 맵핑</p>
+<ul>
+<li>① 코스트센터 = 직접(외주) 유형 선택</li>
+<li>② 외주여부 자동 <strong>‘여’ 체크</strong> + 외주구분(사내/사외) 입력란 표시</li>
+<li><strong>③ 외주거래처 자동 맵핑</strong> — 코스트센터에 연결된 거래처(예: V-001 도장외주㈜)가 자동 입력됨</li>
+</ul>
+<div class="callout">
+<p>🔄 반대로, 외주가 아닌 코스트센터(직접/간접)를 선택하면 외주여부가 자동 ‘부’로 바뀌고 외주거래처·외주창고 입력란이 사라집니다.</p>
+</div>
+<h3>입력 케이스 ① 사람 (자체작업·사내외주)</h3>
+<p>외주여부 ‘부’(자체작업) 또는 ‘여/사내’(사내외주)에서 생산능력 집계구분을 <strong>사람</strong>으로 선택하면 부서 기반 입력란이 나타납니다.</p>
+<p><img loading="lazy" src="images/production/1-7/06_labor.png" alt="사람 케이스 (WKC002 조립작업장) — 부서선택 + 표준노무세팅시간 + 근태율" /></p>
+<p>사람 케이스 (WKC002 조립작업장) — 부서선택 + 표준노무세팅시간 + 근태율</p>
+<ul>
+<li>① 생산능력 집계구분 = 사람</li>
+<li>② 부서선택 테이블 — [추가]로 부서 연결. 부서코드 / 부서명 / 인원수. <strong>한 부서는 한 작업장에만 연결됩니다.</strong></li>
+<li>③ 표준노무세팅시간(m) / 근태율(%) — 노무 가용시간·세팅시간 계산에 사용</li>
+</ul>
+<p>[추가] 클릭 시 ‘부서 조회’ 팝업 — 해당 코스트센터 하위 부서 중 <strong>다른 작업장에 연결되지 않은 부서만</strong> 표시됩니다.</p>
+<h3>입력 케이스 ② 기계 (자체작업·사내외주)</h3>
+<p>생산능력 집계구분을 <strong>기계</strong>로 선택하면 설비 기반 입력란이 나타납니다.</p>
+<p><img loading="lazy" src="images/production/1-7/07_machine.png" alt="기계 케이스 (WKC004 포장설비작업장) — 설비선택 + 표준설비세팅시간 + 가동율" /></p>
+<p>기계 케이스 (WKC004 포장설비작업장) — 설비선택 + 표준설비세팅시간 + 가동율</p>
+<ul>
+<li>① 생산능력 집계구분 = 기계</li>
+<li>② 설비 테이블 — [추가]로 설비 연결. 설비코드 / 설비명 / 모델명 / 시리얼No.</li>
+<li>③ 표준설비세팅시간(m) / 가동율(%) — 설비 가용시간·세팅시간 계산에 사용</li>
+</ul>
+<h3>입력 케이스 ③ 혼합 (사람 + 기계)</h3>
+<p>생산능력 집계구분을 <strong>혼합</strong>으로 선택하면 설비 + 부서 입력란이 모두 나타납니다.</p>
+<p><img loading="lazy" src="images/production/1-7/08_mix.png" alt="혼합 케이스 — 설비 테이블 + 부서선택 테이블 둘 다 + 표준설비/노무 세팅시간·가동율·근태율" /></p>
+<p>혼합 케이스 — 설비 테이블 + 부서선택 테이블 둘 다 + 표준설비/노무 세팅시간·가동율·근태율</p>
+<ul>
+<li>① 생산능력 집계구분 = 혼합</li>
+<li>② 설비 테이블 + 표준설비세팅시간 + 가동율</li>
+<li>③ 부서선택 테이블 + 표준노무세팅시간 + 근태율</li>
+</ul>
+<h3>입력 케이스 ④ 사외외주</h3>
+<p>외주여부 ‘여’ + 외주구분 ‘사외’인 경우. 생산능력 집계구분(사람/기계/혼합)은 <strong>선택하지 않으며</strong>, 대신 외주거래처·외주창고를 입력합니다.</p>
+<p><img loading="lazy" src="images/production/1-7/05_external.png" alt="사외외주 케이스 (WKC003 도장작업장) — 외주거래처 + 외주창고, 집계구분 없음" /></p>
+<p>사외외주 케이스 (WKC003 도장작업장) — 외주거래처 + 외주창고, 집계구분 없음</p>
+<ul>
+<li>① 외주여부 ‘여’ / 외주구분 ‘사외’ (외주 CC 선택 시 외주여부는 잠금)</li>
+<li><strong>② 외주거래처 + 외주창고 —</strong> 외주창고는 필수입력. 입고/출고 전표가 이 외주창고로 자동 작성됩니다.</li>
+</ul>
+<div class="callout">
+<p>⚠️ 외주창고 미입력 시 저장 차단 — <strong>‘외주작업장 등록 시 외주창고는 필수입력값입니다. 외주창고를 등록 후 다시 시도해주세요.’</strong> a가 표시됩니다. 외주창고가 없다면 [창고관리]에서 먼저 외주창고를 등록하세요.</p>
+</div>
+<p><img loading="lazy" src="images/production/1-7/09_alert.png" alt="외주창고 미입력 시 저장 차단 alert" /></p>
+<p>외주창고 미입력 시 저장 차단 alert</p>
+<h3>주요 필드 설명</h3>
+<table>
+<thead>
+<tr class="header">
+<th>필드</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>표준UPH / 정격UPH</td>
+<td>시간당 생산량(Units Per Hour). 정격=설비/인력의 이론 속도, 표준=운영 기준</td>
+</tr>
+<tr class="even">
+<td>생산효율(%)</td>
+<td>정격 대비 실제 평균 UPH 비율. 부하·일정·원가 계산에 곱해지는 현실 계수</td>
+</tr>
+<tr class="odd">
+<td>근태율(%)</td>
+<td>(사람) 계획 근무시간 대비 실제 근무시간 비율 → 노무 가용시간 산출</td>
+</tr>
+<tr class="even">
+<td>가동율(%)</td>
+<td>(기계) 정규 근무 일정 중 설비가 실제 가동 가능한 시간 비율 → 설비 가용시간 산출</td>
+</tr>
+<tr class="odd">
+<td>표준노무/설비 세팅시간(m)</td>
+<td>제품과 무관하게 작업장 공통으로 필요한 준비·점검 시간</td>
+</tr>
+<tr class="even">
+<td>대기시간 / 이동시간(m)</td>
+<td>공정 간 WIP 대기 / 다음 작업장 이동시간 (선택)</td>
+</tr>
+<tr class="odd">
+<td>기본 스크랩(%)</td>
+<td>이 작업장의 평균 로스율. BOM Scrap 수량 계산에 사용</td>
+</tr>
+<tr class="even">
+<td>기본 창고</td>
+<td>생산지시·실적 시 GI/GR 전표가 자동 작성될 기본 입출고 창고</td>
+</tr>
+</tbody>
+</table>
+<h3>등록 절차 요약</h3>
+<ol type="1">
+<li>[등록] 클릭 → ‘작업장 상세’ 팝업</li>
+<li>작업장명 입력 (코드는 [자동] 채번 권장)</li>
+<li>소속공장 + 코스트센터 선택 — 외주 CC면 외주여부·외주거래처 자동 세팅</li>
+<li>교대코드 / 작업장 생산달력 선택</li>
+<li>생산능력 집계구분 선택 — 사람(부서) / 기계(설비) / 혼합(둘 다). 사외외주는 외주거래처·외주창고 입력</li>
+<li>부서/설비 [추가] → 조회 팝업에서 미연결 항목 선택</li>
+<li>세팅시간·근태율/가동율·UPH·효율·스크랩 입력 → [저장]</li>
+</ol>
+<h3>기타 기능</h3>
+<ul>
+<li>복사 등록 — 기존 작업장을 복제해 일부 필드만 수정하여 신규 등록 (같은 그룹 작업장 빠른 생성)</li>
+<li>다운로드 / 업로드 — 작업장 목록 Excel 내보내기 / 대량 등록</li>
+<li>삭제 — 공정·생산지시에 연결되지 않은 작업장만 삭제 가능</li>
+</ul>
+<h3>관련 메뉴</h3>
+<ul>
+<li><code>[기준정보] ▸ [공장관리] / [창고관리] / [설비관리] / [교대근무관리] / [캘린더관리]</code> — 작업장이 참조하는 기준정보</li>
+<li><code>[기준정보] ▸ [공정관리] / [작업관리] / [공정순서(라우팅)]</code> — 작업장을 공정에 연결</li>
+<li><code>[원가관리] ▸ [코스트센터]</code> — 작업장의 원가 귀속처. 외주 CC는 외주거래처와 연결</li>
+</ul>
+</section><section class="page" id="production-1-8"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">1.8. 생산품목관리</h1><h1>1. 기준정보</h1>
+<h2>1.8. 생산품목관리</h2>
+<p>생산 관점에서 품목의 안전재고량·창고·리드타임·Lot크기·조달유형 등을 일괄 설정·변경하는 화면입니다.</p>
+<div class="callout">
+<p>⚠️ 이 화면에서는 품목을 새로 등록할 수 없습니다. 품목 자체는 [기초정보]-[정보관리]-[품목정보]에서 등록해야 하며, 등록된 품목의 생산 관련 속성을 이 화면에서 일괄로 채워 넣습니다.</p>
+</div>
+<div class="callout">
+<p>✅ 리스트의 행을 1개 이상 체크해야 [일괄적용] 버튼이 활성화됩니다. 체크 없으면 버튼이 비활성 상태(회색).</p>
+</div>
+<p><img loading="lazy" src="images/production/1-8/01_list.png" alt="생산품목관리 메뉴 진입 화면" /></p>
+<p>생산품목관리 메뉴 진입 화면</p>
+<p><strong>① 기능 버튼</strong></p>
+<ul>
+<li><strong>일괄적용</strong>: 리스트에서 체크한 품목들의 생산 정보 5개 필드(안전재고량/공장·창고/리드타임/Lot크기/조달유형)를 한 번에 같은 값으로 일괄 설정합니다.</li>
+<li><strong>다운로드</strong>: 현재 리스트를 엑셀 파일로 내려받습니다. 외부에서 수정한 후 업로드로 일괄 반영할 수 있습니다.</li>
+<li><strong>업로드</strong>: 엑셀 파일을 업로드해 다수 품목의 생산 정보를 한 번에 변경합니다.</li>
+</ul>
+<p><em>이 화면에는 [등록]·[수정]·[삭제] 버튼이 없습니다. 품목 자체에 대한 등록/수정/삭제는</em> <strong>[기초정보] - [정보관리] - [품목정보]</strong> <em>메뉴에서 진행합니다.</em></p>
+<p><strong>② 검색 영역</strong></p>
+<ul>
+<li><strong>검색기준 + 키워드</strong>: 품목코드·품목명 등으로 리스트 필터링.</li>
+</ul>
+<p><strong>③ 리스트 영역</strong></p>
+<ul>
+<li><strong>품목코드 / 품목명 / 별칭 / 품목유형 / 규격 / 단위</strong><em>: 기초정보 화면에서 등록된 값. 이 화면에서는</em> <strong>조회만 가능</strong>.</li>
+<li><strong>안전재고량</strong>: 품목별 최소 보관 기준. MRP·발주 계산의 임계치로 사용.</li>
+<li><strong>공장/창고</strong>: 기본 보관 위치. 등록된 창고 중에서 매핑.</li>
+<li><strong>리드타임(일)</strong>: 발주 또는 생산 지시부터 입고까지 걸리는 표준 일수.</li>
+<li><strong>Lot크기</strong>: 1회 생산/발주 단위 수량.</li>
+<li><strong>조달유형</strong>: ‘내부 제조’ 또는 외부 구매 등 조달 방식 구분.</li>
+</ul>
+<hr />
+<h3>⊙ 입력 예제</h3>
+<h3>1.8.1. 다수 품목의 생산 정보 일괄 변경하기</h3>
+<p>여러 품목에 동일한 안전재고량/창고/리드타임/Lot크기/조달유형을 한 번에 적용하고 싶을 때 사용합니다.</p>
+<p><strong>진행 순서:</strong> 리스트에서 변경할 품목들의 <strong>체크박스</strong> 선택 → 상단 <strong>[일괄적용]</strong> 클릭 → 팝업에서 변경할 필드의 체크박스 ON + 값 입력 → <strong>[확인]</strong> 클릭</p>
+<p><img loading="lazy" src="images/production/1-8/02_batch_apply.png" alt="일괄적용 팝업 - 5개 생산 정보 필드" /></p>
+<p>일괄적용 팝업 - 5개 생산 정보 필드</p>
+<p><strong>입력 항목</strong></p>
+<ul>
+<li><strong>① 안전재고량</strong>: 좌측 체크박스 ON 후 숫자 입력. 체크된 모든 품목의 안전재고량이 같은 값으로 변경됩니다.</li>
+<li><strong>② 공장/창고</strong>: 좌측 체크박스 ON 후 돋보기로 창고 검색·선택. (예: 기본 공장의 원재료 창고)</li>
+<li><strong>③ 리드타임(일)</strong>: 좌측 체크박스 ON 후 일수 입력.</li>
+<li><strong>④ Lot크기</strong>: 좌측 체크박스 ON 후 수량 입력.</li>
+<li><strong>⑤ 조달유형</strong>: 좌측 체크박스 ON 후 드롭다운에서 조달 방식 선택. 기본값은 ‘내부 제조’.</li>
+</ul>
+<blockquote>
+<p>※ 각 필드 좌측 체크박스가 켜진 항목만 일괄 변경됩니다. 체크 해제된 필드는 기존 값을 유지합니다.</p>
+</blockquote>
+<hr />
+<h3>1.8.2. 다운로드 / 업로드로 대량 변경</h3>
+<p>화면에서 직접 일괄적용하기 어려운 대량 변경(수십~수백 건)은 엑셀로 처리합니다.</p>
+<ul>
+<li><strong>[다운로드]</strong> 클릭 → 현재 리스트가 엑셀로 다운로드됨</li>
+<li>엑셀 파일에서 안전재고량·창고·리드타임·Lot크기·조달유형 컬럼을 수정</li>
+<li><strong>[업로드]</strong> 클릭 → 수정한 엑셀 파일 선택 → 변경 사항이 일괄 반영됨</li>
+</ul>
+<blockquote>
+<p>※ 엑셀 양식의 열 순서·헤더는 다운로드한 그대로 유지해야 업로드 시 정상 처리됩니다.</p>
+</blockquote>
+</section><section class="page" id="production-1-9"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">1.9. 공정관리</h1><h1>1. 기준정보</h1>
+<h2>1.9. 공정관리</h2>
+<p>생산에 사용되는 표준 공정을 등록·관리하는 화면입니다.</p>
+<p>등록한 공정은 <strong>[생산관리] - [기준정보] - [작업관리]</strong> 및 <strong>[생산관리] - [기준정보] - [공정순서(라우팅)]</strong> 등에서 라우팅·작업 연결의 기준으로 사용됩니다.</p>
+<div class="callout">
+<p>✅ 공정ID는 등록 시 비워두면 시스템이 자동 채번(RTG####)합니다. 직접 지정하려면 영문/숫자만 최대 20자까지 입력합니다.</p>
+</div>
+<div class="callout">
+<p>📋 공정관리는 화면 형태가 단순하지만, 등록 팝업은 한 번에 여러 공정을 그리드 형식으로 입력할 수 있는 구조입니다. 한 건씩 추가/저장하지 않고 [+ 추가]로 행을 여러 개 만든 뒤 한 번에 저장합니다.</p>
+</div>
+<p><img loading="lazy" src="images/production/1-9/01_list.png" alt="공정관리 메뉴 진입 화면" /></p>
+<p>공정관리 메뉴 진입 화면</p>
+<p><strong>① 기능 버튼</strong></p>
+<ul>
+<li><strong>등록</strong>: [공정 등록] 팝업을 열어 새 공정을 추가합니다. 한 번에 여러 건 입력 가능.</li>
+<li><strong>수정</strong>: 리스트에서 공정을 선택(체크박스)한 후 활성화. 선택한 공정 정보를 그리드 형식 팝업에서 수정합니다.</li>
+<li><strong>삭제</strong>: 선택한 공정을 삭제합니다. 다른 화면에서 사용 중인 공정은 삭제 거부 안내가 나옵니다.</li>
+<li><strong>다운로드 / 업로드</strong>: 엑셀 양식으로 일괄 등록·변경 가능. (양식: 공정ID + ★공정명, 최대 5,000건)</li>
+</ul>
+<p><strong>② 리스트 영역</strong></p>
+<ul>
+<li><strong>공정ID</strong>: RTG#### 형식 (예: RTG0003)</li>
+<li><strong>공정명</strong>: 공정의 이름 (예: 가공(재단), 조립(봉제), 도장(외주), 포장(Packaging))</li>
+</ul>
+<hr />
+<h3>⊙ 입력 예제</h3>
+<h3>1.9.1. 공정 등록하기</h3>
+<p>리스트 화면에서 <strong>[등록]</strong> 버튼을 클릭하면 [공정 등록] 팝업이 빈 그리드 상태로 열립니다.</p>
+<p><img loading="lazy" src="images/production/1-9/02_register.png" alt="공정 등록 팝업 - 빈 상태" /></p>
+<p>공정 등록 팝업 - 빈 상태</p>
+<p>팝업 안에서 <strong>[+ 추가]</strong> 버튼을 누를 때마다 그리드에 빈 행이 한 줄씩 추가됩니다. 잘못 추가한 행은 좌측 체크박스를 선택한 후 <strong>[🗑 삭제]</strong>로 제거합니다.</p>
+<p><img loading="lazy" src="images/production/1-9/03_register_row.png" alt="공정 등록 팝업 - 행 추가됨" /></p>
+<p>공정 등록 팝업 - 행 추가됨</p>
+<p><strong>입력 항목</strong></p>
+<ul>
+<li><strong>공정ID</strong>: 영문·숫자만 최대 20자. 비워두면 RTG####로 자동 채번. 직접 지정 가능.</li>
+<li><strong>공정명</strong> *: 한글·영문·숫자 최대 100자. (필수)</li>
+</ul>
+<p><strong>진행 순서:</strong> [+ 추가] 클릭 → 그리드 행에서 공정ID(선택)·공정명 입력 → 추가 행 필요 시 반복 → <strong>[확인]</strong> 클릭</p>
+<hr />
+<h3>1.9.2. 공정 수정하기</h3>
+<p>리스트에서 수정할 공정을 체크박스로 선택한 후 [수정]을 클릭하면, 단일 행만 표시되는 [공정 수정] 팝업이 열립니다.</p>
+<p><img loading="lazy" src="images/production/1-9/04_edit.png" alt="공정 수정 팝업 - 선택한 공정 데이터 표시" /></p>
+<p>공정 수정 팝업 - 선택한 공정 데이터 표시</p>
+<ul>
+<li>공정ID는 수정할 수 없습니다.</li>
+<li>공정명만 변경 후 [확인] 클릭으로 저장합니다.</li>
+</ul>
+<hr />
+<h3>1.9.3. 엑셀 양식으로 일괄 등록하기</h3>
+<p>대량의 공정을 한 번에 등록할 때는 엑셀 업로드가 효율적입니다.</p>
+<ul>
+<li><strong>[다운로드]</strong> 클릭 → 현재 리스트와 동일한 컬럼의 엑셀 파일 다운로드</li>
+<li>또는 별도로 제공되는 ‘공정관리 엑셀 일괄 업로드 양식’ 사용 (최대 5,000건)</li>
+<li>*엑셀에서 공정ID(선택, 영문/숫자 20자) / *공정명(필수, 한글/영문/숫자 100자)*를 채운 후 저장</li>
+<li><strong>[업로드]</strong> 클릭 → 작성한 엑셀 파일 선택 → 일괄 반영</li>
+</ul>
+<blockquote>
+<p>※ 본 서식을 변형하지 말고 그대로 작성하세요. 파란색으로 표시된 항목(공정명)은 필수입력. 공정ID 미입력 시 시스템이 자동 채번합니다.</p>
+</blockquote>
+</section><section class="page" id="production-1-10"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">1.10. 작업관리</h1><h1>1. 기준정보</h1>
+<h2>1.10. 작업관리</h2>
+<p>공정 하위에서 실행되는 표준 작업을 등록하고, 각 작업에 발생 가능한 불량코드를 매핑하는 화면입니다.</p>
+<p>등록한 작업은 <strong>[생산관리] - [기준정보] - [공정순서(라우팅)]</strong> 에서 공정의 세부 단계로 연결되어 사용됩니다.</p>
+<div class="callout">
+<p>✅ 작업ID는 등록 시 비워두면 시스템이 자동 채번(OPR####)합니다. 직접 지정하려면 영문/숫자만 최대 20자까지 입력합니다.</p>
+</div>
+<div class="callout">
+<p>🔀 작업관리 화면은 좌우 2분할 구조입니다. 좌측에서 작업을 등록·선택하면, 우측에 해당 작업과 매핑된 불량코드 목록이 표시됩니다. 작업과 불량코드 매핑은 좌측 작업 선택 후 우측 [등록]에서 진행합니다.</p>
+</div>
+<p><img loading="lazy" src="images/production/1-10/01_list.png" alt="작업관리 메뉴 진입 화면 - 좌우 2분할 구조" /></p>
+<p>작업관리 메뉴 진입 화면 - 좌우 2분할 구조</p>
+<p><strong>① 작업 관리 영역 (좌측)</strong></p>
+<ul>
+<li><strong>작업 검색 / 조회</strong>: 작업명·작업ID로 필터링</li>
+<li><strong>등록 / 수정 / 삭제</strong>: 작업 자체에 대한 CRUD</li>
+<li><strong>다운로드 / 업로드</strong>: 엑셀 양식 일괄 처리</li>
+<li><strong>리스트</strong>: ‘작업ID / 작업명’ 컬럼. 행을 선택하면 우측 영역이 활성화됩니다.</li>
+</ul>
+<p><strong>② 불량 코드 영역 (우측)</strong></p>
+<ul>
+<li><strong>좌측에서 작업 미선택 상태</strong>: 우측은 ‘조회된 데이터가 없습니다’ 표시, [등록]/[삭제] 버튼 비활성</li>
+<li><strong>좌측에서 작업 선택</strong>: 우측에 그 작업에 매핑된 불량코드 목록이 표시되고 [등록]/[삭제] 버튼이 활성화됩니다.</li>
+<li><strong>리스트</strong>: ‘불량코드 / 불량유형’ 컬럼</li>
+</ul>
+<p><img loading="lazy" src="images/production/1-10/02_list_selected.png" alt="작업 선택 시 - 우측 영역 활성화" /></p>
+<p>작업 선택 시 - 우측 영역 활성화</p>
+<hr />
+<h3>⊙ 입력 예제</h3>
+<h3>1.10.1. 작업 등록하기</h3>
+<p>좌측 <strong>[등록]</strong> 버튼을 클릭하면 [작업 등록] 팝업이 그리드 형식으로 열립니다.</p>
+<p><img loading="lazy" src="images/production/1-10/03_register.png" alt="작업 등록 팝업" /></p>
+<p>작업 등록 팝업</p>
+<p><strong>입력 항목</strong></p>
+<ul>
+<li><strong>작업ID</strong>: 영문·숫자 최대 20자. 비워두면 OPR####로 자동 채번.</li>
+<li><strong>작업명</strong> *: 한글·영문·숫자 최대 100자. (필수)</li>
+</ul>
+<p><strong>진행 순서:</strong> [+ 추가] 클릭 → 그리드 행에서 작업ID(선택)·작업명 입력 → 추가 행 반복 → <strong>[확인]</strong> 클릭</p>
+<blockquote>
+<p>※ 작업 등록 시점에는 불량코드를 매핑하지 않습니다. 저장 후 좌측 리스트에서 해당 작업을 선택한 뒤 우측에서 매핑합니다.</p>
+</blockquote>
+<hr />
+<h3>1.10.2. 작업에 불량코드 매핑하기</h3>
+<p>등록한 작업이 발생시킬 수 있는 불량 종류를 미리 지정해두면, 생산 실적 입력 시 해당 작업에서 선택할 수 있는 불량코드가 자동 필터링됩니다.</p>
+<p><strong>진행 순서:</strong> 좌측 리스트에서 작업 행 클릭(선택) → 우측 <strong>[등록]</strong> 클릭 → [불량 코드 등록] 팝업에서 매핑할 코드 체크 → <strong>[확인]</strong> 클릭</p>
+<p><img loading="lazy" src="images/production/1-10/04_defect_register.png" alt="불량 코드 등록 팝업 - 전체 불량코드 목록에서 체크박스로 선택" /></p>
+<p>불량 코드 등록 팝업 - 전체 불량코드 목록에서 체크박스로 선택</p>
+<ul>
+<li>① 회사에 등록된 전체 불량코드(불량코드 / 불량유형 / 불량명)가 표시됩니다.</li>
+<li>② 매핑할 코드의 좌측 체크박스를 ON. 다수 선택 가능.</li>
+<li>[확인]을 누르면 선택한 코드들이 해당 작업에 매핑되어 우측 불량코드 그리드에 표시됩니다.</li>
+</ul>
+<blockquote>
+<p>※ 이미 매핑된 코드를 해제하려면 우측 그리드에서 코드를 선택 후 [삭제]를 클릭합니다.</p>
+</blockquote>
+<hr />
+<h3>1.10.3. 작업 수정하기</h3>
+<p>리스트에서 작업을 체크박스로 선택한 후 [수정]을 클릭하면 작업 등록 팝업과 동일한 그리드 구조의 [작업 수정] 팝업이 열리고, 선택한 단일 행이 표시됩니다.</p>
+<ul>
+<li>작업ID는 수정할 수 없습니다.</li>
+<li>작업명만 변경한 후 [확인] 클릭으로 저장합니다.</li>
+<li>불량코드 매핑은 수정 팝업이 아니라 좌측 리스트에서 작업 선택 후 우측 영역에서 별도로 관리합니다.</li>
+</ul>
+<hr />
+<h3>1.10.4. 엑셀 양식으로 일괄 등록하기</h3>
+<p>대량의 작업을 한 번에 등록하면서 불량코드 매핑까지 같이 처리할 때 사용합니다.</p>
+<ul>
+<li>‘작업관리 엑셀 일괄 업로드 양식’ 사용 (최대 5,000건)</li>
+<li><strong>작업ID(선택, 영문/숫자 20자) / *작업명(필수, 한글/영문/숫자 100자) / 불량코드</strong></li>
+<li><strong>불량코드 컬럼</strong><em>:</em> <strong>콤마(,)로 구분</strong><em>하여 여러 개 입력 가능. 예:</em> DEF001,DEF002,DEF004</li>
+<li><strong>미입력 시</strong><em>: 회사에 등록된</em> <strong>전체 불량코드</strong><em>를 매핑한 것으로 처리됩니다.</em></li>
+</ul>
+<blockquote>
+<p>※ 양식을 변형하지 말고 그대로 작성. 파란색으로 표시된 작업명만 필수, 작업ID는 미입력 시 자동 채번.</p>
+</blockquote>
+</section><section class="page" id="production-1-11"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">1.11. 공정순서(라우팅)</h1><h1>1. 기준정보</h1>
+<h2>1.11. 공정순서(라우팅)</h2>
+<h3>개요</h3>
+<p>제품을 생산할 때 어떤 공정을 어떤 순서로 거치는지 정의하는 <strong>라우팅(Routing)</strong>을 등록·관리하는 화면입니다. 하나의 라우팅은 <strong>공정순서(라우팅)</strong> 하나에 <strong>여러 공정(Routing Operation)</strong>이 순서대로 묶이고, 각 공정은 다시 <strong>작업(Work Operation)</strong>을 포함합니다.</p>
+<div class="callout">
+<p>🧱 선행 작업: 품목 · 공장 · 작업장 · 활동(Activity)이 먼저 등록되어 있어야 합니다. 라우팅은 등록된 작업장·활동을 참조하여 작업 단위를 정의합니다.</p>
+</div>
+<h3>화면 진입</h3>
+<p>좌측 사이드바 <code>[생산관리] ▸ [기준정보] ▸ [공정순서(라우팅)]</code> 메뉴를 클릭합니다.</p>
+<h3>목록 화면</h3>
+<p>화면은 좌상단 ‘공정순서(라우팅)’ / 우상단 ‘공정’ / 하단 ‘작업 상세정보’ 세 영역으로 구성됩니다.</p>
+<p><img loading="lazy" src="images/production/1-11/01_list.png" alt="공정(라우팅)관리 목록 화면" /></p>
+<p>공정(라우팅)관리 목록 화면</p>
+<ul>
+<li><strong>①</strong> 기능 버튼 — <code>[등록]</code> / <code>[복사해서 등록]</code> / <code>[수정]</code> / <code>[삭제]</code> / <code>[다운로드]</code>. 좌측 그리드에서 공정순서(라우팅)을 선택한 뒤 사용합니다.</li>
+<li><strong>②</strong> 공정순서(라우팅) — 라우팅 단위. 한 건은 <code>코드 · 품목 · 규격 · 단위 · 공장 · 상태 · 버전 · 사용여부</code>를 가집니다.</li>
+<li><strong>③</strong> 작업 상세정보 — 우측에서 선택한 공정에 등록된 작업의 <code>작업명 · 작업장 · 표준세팅시간 · 활동ID · 표준공수 · 표준기계/건수 · 스크랩율(%)</code>을 표시합니다.</li>
+<li><strong>④</strong> 공정 — 좌측 공정순서(라우팅)에 속한 공정들의 목록입니다. 공정을 선택하면 하단(③)에 그 공정의 작업이 표시됩니다.</li>
+</ul>
+<div class="callout">
+<p>📌 표시 데이터 예시 — 공정순서(라우팅) RTG-A01 / 품목 [FG-A01] 캔버스 에코백 / 공장 [PLT001] 기본 공장. 공정 4개: 가공(재단) → 조립(봉제) → 도장(외주) → 포장(Packaging). 선택된 공정의 작업 1개: [DL04001] 가공노무작업, 표준공수 10분.</p>
+</div>
+<h3>등록 절차</h3>
+<p>라우팅 등록은 다음 순서로 진행합니다.</p>
+<ol type="1">
+<li>공정순서(라우팅)을 먼저 만들고 (라우팅 헤더)</li>
+<li>그 안에 공정들을 순서대로 추가한 뒤</li>
+<li>각 공정에 작업을 등록</li>
+</ol>
+<h3>1단계: 공정순서(라우팅) 등록</h3>
+<p>상단 <code>[등록]</code> 버튼을 클릭하면 <strong>공정순서(라우팅) 등록</strong> 팝업이 열립니다.</p>
+<p><img loading="lazy" src="images/production/1-11/02_register.png" alt="공정그룹 등록 팝업" /></p>
+<p>공정그룹 등록 팝업</p>
+<ul>
+<li><strong>①</strong> 공정순서(라우팅)명* — 라우팅 코드를 직접 입력 (예: <code>RTG-A01</code>)</li>
+<li><strong>②</strong> 품목* — 돋보기 클릭 → 품목 조회 팝업에서 대상 완제품/반제품 선택</li>
+<li><strong>③</strong> 공장* — 라우팅이 적용될 공장 선택</li>
+</ul>
+<p>필수 항목을 채우고 <code>[저장]</code> 클릭하면 공정순서(라우팅)이 생성되고, 다음 단계(공정 추가)로 진행할 수 있습니다.</p>
+<h3>2단계: 공정 추가</h3>
+<p>목록에서 방금 만든 공정순서(라우팅)을 체크박스로 선택한 뒤 <code>[수정]</code> 버튼을 클릭하면 <strong>공정/작업 상세</strong> 팝업이 열립니다.</p>
+<p><img loading="lazy" src="images/production/1-11/03_edit.png" alt="공정/작업 상세 — 공정그룹 상세정보 표시" /></p>
+<p>공정/작업 상세 — 공정그룹 상세정보 표시</p>
+<ul>
+<li><strong>①</strong> 상단 액션 — <code>[공정등록]</code> / <code>[작업등록]</code> / <code>[수정]</code> / <code>[삭제]</code>. 좌측 트리에서 선택한 노드 종류에 따라 활성/비활성됩니다.</li>
+<li><strong>②</strong> 트리 — 공정순서(라우팅)(루트) ▸ 공정 ▸ 작업의 3단 계층. 화살표를 클릭하면 펼쳐집니다.</li>
+<li><strong>③</strong> 우측 상세 — 현재 트리에서 선택한 노드(공정순서(라우팅)/공정/작업)의 상세정보가 표시됩니다.</li>
+</ul>
+<p>루트(공정순서(라우팅))를 선택한 상태에서 <code>[공정등록]</code> 클릭 → 다음 팝업이 열립니다.</p>
+<p><img loading="lazy" src="images/production/1-11/06_process_register.png" alt="공정 등록 팝업" /></p>
+<p>공정 등록 팝업</p>
+<ul>
+<li><strong>①</strong> 공정* — 돋보기 클릭 → <code>기준 공정 조회</code> 팝업에서 등록된 공정(예: <code>[RTG0003] 가공 (재단)</code>)을 선택</li>
+<li><strong>②</strong> 특이사항 — 해당 공정에서 수행할 구체 내용을 자유 입력 (예: ‘캔버스 원단을 본체 패턴대로 재단’)</li>
+</ul>
+<p><code>[저장]</code> 클릭하면 트리에 공정이 추가됩니다. 순서대로 여러 공정을 반복 등록합니다.</p>
+<p><img loading="lazy" src="images/production/1-11/04_edit_expanded.png" alt="공정 선택 시 우측에 공정 상세정보(특이사항)가 표시됨" /></p>
+<p>공정 선택 시 우측에 공정 상세정보(특이사항)가 표시됨</p>
+<h3>3단계: 작업 추가</h3>
+<p>트리에서 작업을 추가할 <strong>공정 노드를 선택</strong> 한 뒤 <code>[작업등록]</code> 클릭하면 작업 등록 팝업이 열립니다.</p>
+<p><img loading="lazy" src="images/production/1-11/07_task_register.png" alt="작업 등록 팝업" /></p>
+<p>작업 등록 팝업</p>
+<ul>
+<li><strong>①</strong> 작업명* / 작업순번* — 작업명은 돋보기로 기준 작업 선택, 작업순번은 자동 부여(수정 가능)</li>
+<li><strong>②</strong> 작업장* / 생산능력집계구분 — 작업장은 돋보기로 선택, 생산능력집계구분은 자동 표시(예: <code>[LAB] 사람</code>)</li>
+<li><strong>③</strong> 활동ID* — 돋보기 → 활동 조회 팝업에서 표준 활동 선택 (예: <code>[DL04001] 가공노무작업</code>)</li>
+<li><strong>④</strong> 작업내용/설명 — 작업의 구체 내용을 자유 입력</li>
+</ul>
+<p><code>[저장]</code> 클릭 시 트리의 해당 공정 아래에 작업 노드가 추가됩니다. 표준공수(분), 표준기계, 표준건수, 스크랩율(%) 등 세부 수치는 작업 등록 후 <code>[수정]</code>으로 보완합니다.</p>
+<p><img loading="lazy" src="images/production/1-11/05_edit_task_detail.png" alt="작업 선택 시 우측에 작업 상세정보(작업명·작업장·활동ID·표준공수 등)가 표시됨" /></p>
+<p>작업 선택 시 우측에 작업 상세정보(작업명·작업장·활동ID·표준공수 등)가 표시됨</p>
+<h3>트리 우클릭으로 하위 레벨 바로 추가</h3>
+<p>공정/작업 상세 팝업의 좌측 트리에서 노드를 <strong>우클릭(마우스 오른쪽 버튼)</strong> 하면, 상단 [공정등록]/[작업등록] 버튼을 거치지 않고 그 자리에서 바로 <strong>한 단계 아래 레벨을 추가</strong>할 수 있습니다. 우클릭한 노드의 레벨에 따라 메뉴의 활성 항목이 달라집니다.</p>
+<div class="callout">
+<p>💡 우클릭 메뉴는 상단 액션 버튼과 같은 기능입니다 — 클릭한 위치에 바로 메뉴가 떠 더 빠르게 추가할 수 있습니다. <strong>선택한 노드의 한 단계 아래만 추가되며, 나머지 추가 항목은 비활성됩니다.</strong></p>
+</div>
+<ul>
+<li><strong>제품(공정순서(라우팅)) 루트 노드</strong> 우클릭 → <code>[+ 공정 등록]</code> 으로 하위 <strong>공정</strong>을 추가 (<code>[+ 작업 등록]</code> 은 비활성)</li>
+<li><strong>공정 노드</strong> 우클릭 → <code>[+ 작업 등록]</code> 으로 하위 <strong>작업</strong>을 추가 (<code>[+ 공정 등록]</code> 은 비활성)</li>
+<li>메뉴의 <code>[+ 수정]</code> / <code>[- 삭제]</code> 로 선택한 노드를 그 자리에서 바로 수정·삭제할 수도 있습니다.</li>
+</ul>
+<p><img loading="lazy" src="images/production/1-11/ctx_root.png" alt="① 루트(공정순서(라우팅)) 노드 우클릭 → ② [+ 공정 등록] 으로 하위 공정 추가 (작업 등록은 비활성)" /></p>
+<p>① 루트(공정순서(라우팅)) 노드 우클릭 → ② [+ 공정 등록] 으로 하위 공정 추가 (작업 등록은 비활성)</p>
+<p><img loading="lazy" src="images/production/1-11/ctx_process.png" alt="① 공정([RTG0005] 도장) 노드 우클릭 → ② [+ 작업 등록] 으로 하위 작업 추가 (공정 등록은 비활성)" /></p>
+<p>① 공정([RTG0005] 도장) 노드 우클릭 → ② [+ 작업 등록] 으로 하위 작업 추가 (공정 등록은 비활성)</p>
+<h3>수정 · 삭제</h3>
+<ul>
+<li>수정 — 트리에서 공정순서(라우팅)/공정/작업 노드를 선택한 후 <code>[수정]</code> 버튼 클릭. 우측에 표시되던 상세정보가 입력 가능한 폼으로 전환됩니다.</li>
+<li>삭제 — 트리에서 노드 선택 후 <code>[삭제]</code>. 공정순서(라우팅)을 삭제하면 하위 공정·작업이 모두 함께 삭제되므로 주의합니다.</li>
+</ul>
+<h3>기타 기능</h3>
+<ul>
+<li>사용여부 토글 — 목록 그리드의 <code>사용여부</code> 컬럼 토글로 라우팅 활성/비활성 전환. 비활성 라우팅은 생산지시·MRP 등 후속 화면의 선택 대상에서 제외됩니다.</li>
+<li>복사해서 등록 — 기존 라우팅을 선택 후 클릭하면 같은 내용으로 새 공정순서(라우팅)을 만듭니다. 유사한 제품의 라우팅을 빠르게 복제할 때 유용합니다.</li>
+<li>다운로드 — 현재 조회된 라우팅 그리드를 엑셀로 내려받습니다.</li>
+<li>버전 / 상태 — <code>버전</code>은 라우팅이 변경될 때마다 올라가는 식별자, <code>상태</code>는 결재/배포 단계(예: <code>R</code> = Released = 배포)를 의미합니다.</li>
+</ul>
+</section><section class="page" id="production-1-12"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">1.12. E-BOM관리</h1><h1>1. 기준정보</h1>
+<h2>1.12. E-BOM관리</h2>
+<h3>개요</h3>
+<p>E-BOM(Engineering BOM, 설계 BOM)은 제품을 <strong>설계 관점에서 ‘무엇으로 구성되는가’</strong>를 정의하는 자재명세서입니다. 완제품·반제품이 어떤 부품·자재로 이뤄지는지 다단계 구조로 표현하며, 연구소·설계팀이 등록·관리합니다.</p>
+<div class="callout">
+<p>🔗 E-BOM과 M-BOM은 동일한 데이터 구조를 가집니다. E-BOM(설계)에서 제품 구조를 확정하면, 이를 참조해 <code>[1.13. M-BOM관리]</code>)에서 공장·공정 정보를 입힌 제조용 M-BOM을 생성합니다. (의사결정: E-BOM → M-BOM 이관)</p>
+</div>
+<h3>화면 진입</h3>
+<p>좌측 사이드바 [생산관리] ▸ [기준정보] ▸ [E-BOM관리]</p>
+<h3>목록 화면 — 기본 정보(헤더) + 구성 부품</h3>
+<p><img loading="lazy" src="images/production/1-12/01_list.png" alt="E-BOM관리 — 상단 기본 정보(헤더) + 하단 구성 부품(다단계 라인)" /></p>
+<p>E-BOM관리 — 상단 기본 정보(헤더) + 하단 구성 부품(다단계 라인)</p>
+<ul>
+<li>① 기능 버튼 — [등록] / [수정] / [삭제] / [복사] / [다운로드] / [업로드]</li>
+<li><strong>② 기본 정보(헤더) —</strong> 제품코드 / 제품명 / 규격 / 단위 / <strong>Revision</strong>(설계 개정 A·B·…) / E-BOM 명칭 / <strong>설계 변경 번호</strong> / 비고. 한 제품 + Revision이 BOM 1건입니다.</li>
+<li><strong>③ 구성 부품(라인) —</strong> 상단에서 선택한 BOM의 부품 목록. 구성부품 코드 / 구성부품명 / <strong>상위품목코드·상위품목명</strong>(다단계 계층) / 순번 / 모품 1EA당 소요량 / 규격 / 단위 / 설계 스크랩율(%)</li>
+</ul>
+<div class="callout">
+<p>🌳 다단계(Multi-level) BOM — 구성부품이 또 다른 반제품이면 그 반제품이 다시 자신의 하위 부품을 갖습니다. 위 예시: FG-A01(완제품) → SFG-A01(봉제완료 본체, 반제품) → RM-A01 캔버스원단 + RM-A02 면손잡이끈 / + RM-A03 실크프린트잉크(완제품 직접 투입). 상위품목코드로 부모-자식 관계를 표현합니다.</p>
+</div>
+<h3>BOM 헤더 등록</h3>
+<p>상단 <code>[등록]</code> → ‘E-BOM 기본정보 등록’ 팝업.</p>
+<p><img loading="lazy" src="images/production/1-12/02_new_header.png" alt="E-BOM 기본정보 등록 — 제품 검색 + Revision/설계변경번호/E-BOM명칭" /></p>
+<p>E-BOM 기본정보 등록 — 제품 검색 + Revision/설계변경번호/E-BOM명칭</p>
+<ul>
+<li>① 제품 검색 — 상단 돋보기로 BOM을 만들 제품(완제품/반제품)을 선택</li>
+<li><strong>② Revision —</strong> 설계 개정 차수(A, B, …). 제품코드 + Revision이 BOM의 Key. 설계 변경 시 새 Revision으로 이력을 보존합니다.</li>
+<li><strong>③ 설계 변경 번호 —</strong> 자동 채번(001→002…). 설계변경(ECO) 추적용</li>
+<li>④ E-BOM 명칭 / 비고 — 식별용 이름과 메모</li>
+</ul>
+<h3>제품 조회 팝업</h3>
+<p><img loading="lazy" src="images/production/1-12/03_product_popup.png" alt="품목 조회 — 품목유형 탭(전체/상품/원재료/제품/반제품…)으로 BOM 대상 제품 선택" /></p>
+<p>품목 조회 — 품목유형 탭(전체/상품/원재료/제품/반제품…)으로 BOM 대상 제품 선택</p>
+<ul>
+<li><strong>품목유형 탭</strong>으로 필터링. E-BOM은 보통 제품(FG)·반제품(SFG)에 대해 만듭니다. ‘전용품목 보기’ 체크로 범위를 좁힐 수 있습니다.</li>
+</ul>
+<h3>E-BOM 상세 — 다단계 트리 편집</h3>
+<p>목록에서 BOM 행을 더블클릭 → ‘E-BOM 상세’ 화면. 좌측 트리로 다단계 구조를 보고, 노드를 선택해 우측에서 상세를 확인·편집합니다.</p>
+<p><img loading="lazy" src="images/production/1-12/04_detail.png" alt="E-BOM 상세 — 좌측 다단계 트리 + 우측 구성부품 정보" /></p>
+<p>E-BOM 상세 — 좌측 다단계 트리 + 우측 구성부품 정보</p>
+<ul>
+<li><strong>① 편집 버튼 —</strong> [구성부품등록] / [수정] / [중간삭제] / [삭제]. 트리에서 부모 노드를 선택하고 [구성부품등록]하면 그 하위에 부품이 추가됩니다.</li>
+<li>② 다단계 BOM 트리 — 완제품 → 반제품 → 원자재 계층을 펼쳐서 확인</li>
+<li>③ 구성부품 정보 — 선택한 노드의 순번 / 구성부품 / 모품 1EA당 소요량 / 단위 / 설계 스크랩율</li>
+</ul>
+<h3>구성부품 등록</h3>
+<p><code>[구성부품등록]</code> → ‘E-BOM 구성부품 상세’ 팝업. 선택한 부모 노드 하위에 부품을 추가합니다.</p>
+<p><img loading="lazy" src="images/production/1-12/05_comp_register.png" alt="E-BOM 구성부품 상세 — 순번(자동)/구성부품(검색)/소요량/단위/설계 스크랩율" /></p>
+<p>E-BOM 구성부품 상세 — 순번(자동)/구성부품(검색)/소요량/단위/설계 스크랩율</p>
+<ul>
+<li>① 순번 — 자동 채번(L01-10, L02-02 등 계층 반영)</li>
+<li>② 구성부품 — 검색으로 부품(자재·반제품) 선택</li>
+<li>③ 모품 1EA당 소요량 / 단위(자동) / <strong>설계 스크랩율(%)</strong> — 모품 1개 생산에 필요한 수량 + 설계 단계 예상 로스율</li>
+</ul>
+<h3>주요 필드 설명</h3>
+<table>
+<thead>
+<tr class="header">
+<th>필드</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Revision</td>
+<td>설계 개정 차수(A·B…). 제품코드 + Revision = BOM Key. 변경 이력 보존</td>
+</tr>
+<tr class="even">
+<td>설계 변경 번호</td>
+<td>ECO(설계변경) 추적 번호. 자동 채번</td>
+</tr>
+<tr class="odd">
+<td>상위품목코드</td>
+<td>다단계 계층에서 이 부품의 부모(반제품) 코드</td>
+</tr>
+<tr class="even">
+<td>모품 1EA당 소요량</td>
+<td>부모 1개 생산 시 필요한 이 부품 수량</td>
+</tr>
+<tr class="odd">
+<td>설계 스크랩율(%)</td>
+<td>설계 단계에서 예상하는 폐기·로스 비율. MRP 소요량 계산에 반영</td>
+</tr>
+</tbody>
+</table>
+<h3>등록 절차 요약</h3>
+<ol type="1">
+<li>[등록] → 제품 검색·선택 → Revision / E-BOM 명칭 입력 → [저장] (헤더 생성)</li>
+<li>목록에서 해당 BOM 더블클릭 → ‘E-BOM 상세’ 트리 화면</li>
+<li>트리에서 부모 노드(완제품/반제품) 선택 → [구성부품등록]</li>
+<li>구성부품 검색·선택 + 소요량 + 설계 스크랩율 입력 → [저장]</li>
+<li>다단계 구조면 하위 반제품 노드를 선택해 동일하게 부품 추가</li>
+</ol>
+<h3>복사 등록 — 기존 BOM 복제</h3>
+<p>구성이 완료된 BOM 한 건을 골라 <strong>다른 품목으로 통째로 복제</strong>하는 기능입니다. 대상 품목에 <strong>원본의 구성부품이 1차로 그대로 들어오고</strong>, 이를 기반으로 추가·수정·삭제해 새 BOM을 빠르게 완성합니다.</p>
+<div class="callout">
+<p>📋 활용 — 유사한 제품의 BOM을 처음부터 만들지 않고 기존 BOM을 복제한 뒤 차이 나는 자재만 교체합니다. 비슷한 구조의 제품군에서 등록 시간을 크게 줄입니다.</p>
+</div>
+<p><strong>동작 흐름</strong></p>
+<p><img loading="lazy" src="images/production/1-12/06_copy_product.png" alt="① 원본 BOM 체크 → [복사] → 품목 조회에서 복제 대상 품목 선택 (예: FG-B01 원목 미니 책꽂이)" /></p>
+<p>① 원본 BOM 체크 → [복사] → 품목 조회에서 복제 대상 품목 선택 (예: FG-B01 원목 미니 책꽂이)</p>
+<p><img loading="lazy" src="images/production/1-12/07_copy_modal.png" alt="② ‘E-BOM 복사’ 모달 — 대상 품목과 원본 Revision이 채워진 상태에서 E-BOM 명칭 입력" /></p>
+<p>② ‘E-BOM 복사’ 모달 — 대상 품목과 원본 Revision이 채워진 상태에서 E-BOM 명칭 입력</p>
+<p><img loading="lazy" src="images/production/1-12/08_copy_result.png" alt="③ 저장 후 — 원본(FG-A01)의 구성부품이 대상 품목(FG-B01)으로 그대로 복제됨" /></p>
+<p>③ 저장 후 — 원본(FG-A01)의 구성부품이 대상 품목(FG-B01)으로 그대로 복제됨</p>
+<ol type="1">
+<li>목록에서 원본 BOM 체크 → <code>[복사]</code></li>
+<li>품목 조회 팝업에서 복제 대상 품목 선택 → [확인]</li>
+<li>‘E-BOM 복사’ 모달에 원본 Revision이 가져와짐 → <strong>E-BOM 명칭</strong> 입력 → [저장]</li>
+<li>저장 즉시 원본의 구성부품 전체가 대상 품목으로 복제됨</li>
+<li>복제된 BOM을 더블클릭 → 트리에서 <strong>구성부품 추가·수정·중간삭제·삭제</strong>로 대상 품목에 맞게 조정</li>
+</ol>
+<h3>기타 기능</h3>
+<ul>
+<li>다운로드 / 업로드 — BOM Excel 내보내기 / 대량 등록</li>
+</ul>
+<h3>관련 메뉴</h3>
+<ul>
+<li><code>[1.13. M-BOM관리]</code> — E-BOM을 참조해 공장·공정 정보를 입힌 제조용 BOM 생성</li>
+<li><code>[1.8. 생산품목관리]</code> — BOM의 제품·구성부품이 되는 품목 마스터</li>
+<li><code>[1.14. 공정별 BOM관리]</code> — 공정 단위로 BOM을 매핑</li>
+</ul>
+</section><section class="page" id="production-1-13"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">1.13. M-BOM관리</h1><h1>1. 기준정보</h1>
+<h2>1.13. M-BOM관리</h2>
+<h3>개요</h3>
+<p>M-BOM(Manufacturing BOM, 제조 BOM)은 E-BOM(설계 구조)을 <strong>실제 제조 관점으로 구체화</strong>한 자재명세서입니다. ‘어느 공장에서, 어떤 공정에 어떤 자재를 투입하는가’를 담아 MRP·생산지시·원가계산에 직접 쓰입니다.</p>
+<div class="callout">
+<p>🔗 M-BOM은 E-BOM과 동일한 다단계 구조를 가지되, <strong>공장·참조E-BOM·상태·투입 공정작업·공정 스크랩율</strong>이 추가됩니다. 보통 <code>[1.12. E-BOM관리]</code>)에서 설계 BOM을 확정한 뒤 이를 참조해 공장별 M-BOM을 만듭니다.</p>
+</div>
+<h3>E-BOM과의 차이</h3>
+<table>
+<thead>
+<tr class="header">
+<th>구분</th>
+<th>E-BOM (설계)</th>
+<th>M-BOM (제조)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>관점</td>
+<td>제품 기능·사양</td>
+<td>공장·공정 실행</td>
+</tr>
+<tr class="even">
+<td>공장</td>
+<td>없음 (설계는 공장 무관)</td>
+<td><strong>공장별 관리 ✓</strong></td>
+</tr>
+<tr class="odd">
+<td>참조 E-BOM</td>
+<td>—</td>
+<td>참조한 E-BOM 코드 ✓</td>
+</tr>
+<tr class="even">
+<td>스크랩율</td>
+<td>설계 스크랩율</td>
+<td>공정 스크랩율 ✓</td>
+</tr>
+<tr class="odd">
+<td>라인 추가 정보</td>
+<td>—</td>
+<td>투입 공정작업 / 상태(P·R·E) ✓</td>
+</tr>
+</tbody>
+</table>
+<h3>화면 진입</h3>
+<p>좌측 사이드바 [생산관리] ▸ [기준정보] ▸ [M-BOM관리]</p>
+<h3>목록 화면 — 기본 정보(헤더) + 구성 부품</h3>
+<p><img loading="lazy" src="images/production/1-13/01_list.png" alt="M-BOM관리 — 헤더(공장/참조E-BOM/상태) + 구성 부품(투입 공정작업/공정 스크랩율)" /></p>
+<p>M-BOM관리 — 헤더(공장/참조E-BOM/상태) + 구성 부품(투입 공정작업/공정 스크랩율)</p>
+<ul>
+<li>① 기능 버튼 — [등록] / [수정] / [삭제] / [복사] / [다운로드] / [업로드]</li>
+<li><strong>② 기본 정보(헤더) —</strong> 제품코드 / 제품명 / 규격 / 단위 / <strong>공장</strong> / Revision / M-BOM 명칭 / <strong>참조 E-BOM</strong> / <strong>상태</strong>([P]계획·[R]배포·[E]종료). 같은 제품도 공장·Revision별로 여러 M-BOM 가능.</li>
+<li><strong>③ 구성 부품(라인) —</strong> 순번 / <strong>투입 공정작업</strong>(어느 공정에 투입되는가) / 구성부품 코드·명 / 규격 / 단위 / 상위 1EA당 소요량 / <strong>공정 스크랩율(%)</strong></li>
+</ul>
+<h3>M-BOM 헤더 등록</h3>
+<p>상단 <code>[등록]</code> → ‘M-BOM 기본정보 등록’ 팝업.</p>
+<p><img loading="lazy" src="images/production/1-13/02_new_header.png" alt="M-BOM 기본정보 등록 — 참조 E-BOM / 공장 / Revision / M-BOM명칭 / 상태" /></p>
+<p>M-BOM 기본정보 등록 — 참조 E-BOM / 공장 / Revision / M-BOM명칭 / 상태</p>
+<ul>
+<li><strong>① 참조 E-BOM —</strong> 기반이 되는 E-BOM 선택(없으면 비움). E-BOM 구조를 가져와 제조용으로 확장</li>
+<li><strong>② 공장 —</strong> 이 M-BOM이 적용될 제조 공장. 공장별 가용자재·설비·스크랩율이 다르므로 공장 단위로 관리</li>
+<li>③ Revision — 제조 개정 차수</li>
+<li>④ M-BOM 명칭 / <strong>상태</strong> — 식별 이름 + 상태([P]계획/[R]배포/[E]종료)</li>
+</ul>
+<h3>M-BOM 상세 — 다단계 트리</h3>
+<p>목록에서 BOM 행을 더블클릭 → ‘M-BOM 상세’. E-BOM과 동일하게 좌측 다단계 트리 + 우측 정보, [구성부품등록/수정/중간삭제/삭제] 버튼으로 편집합니다.</p>
+<p><img loading="lazy" src="images/production/1-13/03_detail.png" alt="M-BOM 상세 — 다단계 트리(2단계 반제품) + 우측 BOM 기본정보(참조E-BOM/공장)" /></p>
+<p>M-BOM 상세 — 다단계 트리(2단계 반제품) + 우측 BOM 기본정보(참조E-BOM/공장)</p>
+<ul>
+<li>① 다단계 BOM 트리 — 완제품 → 반제품(여러 단계) → 원자재. 제조 실제 구조 반영(예: 봉제완료 본체 + 실크프린트 완료품 두 반제품)</li>
+<li><strong>② BOM 기본 정보 —</strong> 참조 E-BOM / 제품코드·명 / 공장 / Revision / M-BOM 명칭 / 상태. 구성부품 노드를 선택하면 순번·투입공정작업·소요량·공정 스크랩율이 표시됩니다.</li>
+</ul>
+<h3>주요 필드 설명</h3>
+<table>
+<thead>
+<tr class="header">
+<th>필드</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>공장</td>
+<td>M-BOM이 적용되는 제조 공장. 공장별로 자재·공정·스크랩율이 달라 별도 관리</td>
+</tr>
+<tr class="even">
+<td>참조 E-BOM</td>
+<td>이 M-BOM의 기반이 된 설계 BOM. E-BOM 변경 추적의 연결고리</td>
+</tr>
+<tr class="odd">
+<td>투입 공정작업</td>
+<td>구성부품이 투입·소모되는 공정(Operation). MRP 불출·원가배부의 기준</td>
+</tr>
+<tr class="even">
+<td>공정 스크랩율(%)</td>
+<td>해당 공정에서 예상되는 로스율(설계 스크랩율과 별개)</td>
+</tr>
+<tr class="odd">
+<td>상위 1EA당 소요량</td>
+<td>부모 1개 생산 시 필요한 이 부품 수량</td>
+</tr>
+<tr class="even">
+<td>상태</td>
+<td>[P]계획 → [R]배포(생산 사용) → [E]종료(사용 중단)</td>
+</tr>
+</tbody>
+</table>
+<h3>상태 흐름</h3>
+<p>계획(P) → 배포(R) → 종료(E)</p>
+<ul>
+<li>계획(P) — 작성 중. 아직 생산에 사용 안 함</li>
+<li>배포(R) — 승인·배포되어 생산지시·MRP에서 실제 사용</li>
+<li>종료(E) — Revision 교체 등으로 사용 중단. 이력은 보존</li>
+</ul>
+<h3>등록 절차 요약</h3>
+<ol type="1">
+<li>[등록] → 참조 E-BOM 선택 + 공장 + Revision + M-BOM 명칭 + 상태 → [저장]</li>
+<li>목록에서 해당 M-BOM 더블클릭 → ‘M-BOM 상세’ 트리</li>
+<li>부모 노드 선택 → [구성부품등록] → 구성부품 + 투입 공정작업 + 소요량 + 공정 스크랩율 입력 → [저장]</li>
+<li>다단계 반제품은 하위 노드를 선택해 동일하게 부품 추가</li>
+<li>완성되면 상태를 [R]배포로 전환해 생산에서 사용</li>
+</ol>
+<h3>복사 등록 — 기존 BOM 복제</h3>
+<p>E-BOM과 동일하게, 구성이 완료된 M-BOM 한 건을 다른 품목으로 복제합니다. 대상 품목에 <strong>원본의 구성부품 + 투입 공정작업 + 공정 스크랩율이 그대로 복제</strong>되며, 이를 추가·수정해 완성합니다.</p>
+<p><img loading="lazy" src="images/production/1-13/04_copy_modal.png" alt="M-BOM 복사 모달 — 대상 품목 + 참조 E-BOM / 공장 / Revision / 상태 (E-BOM 복사보다 공장·참조E-BOM·상태가 추가)" /></p>
+<p>M-BOM 복사 모달 — 대상 품목 + 참조 E-BOM / 공장 / Revision / 상태 (E-BOM 복사보다 공장·참조E-BOM·상태가 추가)</p>
+<div class="callout">
+<p>🏭 M-BOM 복사 시 공장·상태는 새로 지정합니다 — 같은 제품이라도 공장이 다르면 가용자재·공정이 달라지므로, 복제 후 대상 공장에 맞게 구성부품·투입 공정작업을 조정합니다.</p>
+</div>
+<ol type="1">
+<li>목록에서 원본 M-BOM 체크 → <code>[복사]</code></li>
+<li>품목 조회 팝업에서 복제 대상 품목 선택 → [확인]</li>
+<li>‘M-BOM 복사’ 모달에서 공장 / Revision / M-BOM 명칭 / 상태 입력 → [저장]</li>
+<li>저장 즉시 원본의 구성부품(투입 공정작업·공정 스크랩율 포함)이 대상 품목으로 복제됨</li>
+<li>복제된 M-BOM을 더블클릭 → 트리에서 구성부품·투입 공정작업을 대상 공장에 맞게 조정</li>
+</ol>
+<h3>관련 메뉴</h3>
+<ul>
+<li><code>[1.12. E-BOM관리]</code> — M-BOM이 참조하는 설계 BOM</li>
+<li><code>[1.11. 공정순서(라우팅)] / [1.10. 작업관리]</code> — 투입 공정작업의 정의처</li>
+<li><code>[1.14. 공정별 BOM관리]</code> — 공정 단위로 BOM을 매핑</li>
+<li><code>[생산계획] ▸ [MRP]</code> — M-BOM으로 자재 소요량 자동 계산</li>
+<li><code>[5.4. BOM 대비 실적 차이]</code> — M-BOM 표준 대비 실제 투입 차이 분석</li>
+</ul>
+</section><section class="page" id="production-1-14"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">1.14. 공정별 BOM관리</h1><h1>1. 기준정보</h1>
+<h2>1.14. 공정별 BOM관리</h2>
+<div class="callout">
+<p>📒 <strong>공정별 BOM관리</strong>는 M-BOM의 구성부품을 <strong>각 공정·작업에 어떤 부품이 투입되는지</strong> 연결(할당)하는 화면입니다. M-BOM이 ‘무엇이 얼마나 필요한가’, 공정(라우팅)이 ‘어떤 순서로 만드는가’를 정의한다면, 공정별 BOM은 그 둘을 이어 <strong>‘어느 공정·작업에서 그 부품을 쓰는가’</strong>를 확정합니다.</p>
+</div>
+<h3><strong>1) 개요 — 공정별 BOM관리란</strong></h3>
+<p>M-BOM에 등록된 제품 구성부품을, 해당 제품을 만드는 공정(라우팅)의 <strong>개별 공정·작업 단위로 배치</strong>합니다. 예를 들어 ‘실크 프린트 잉크’는 도장 공정의 실크 프린트 작업에, ‘포장지’는 포장 공정의 완제품 포장 작업에 연결하는 식입니다.</p>
+<div class="callout">
+<p>💡 <strong>왜 필요한가 —</strong> 생산지시·생산실적에서 <strong>공정별 자재 투입/출고와 재공(WIP) 원가 집계</strong>가 이 연결을 기준으로 이뤄집니다. 부품이 어느 공정에서 소비되는지 정해져 있어야 공정별 투입수량·원가를 정확히 계산할 수 있습니다.</p>
+</div>
+<p><strong>핵심 개념</strong></p>
+<ul>
+<li><strong>품목 · 공장 · 공정순서(라우팅) · BOM Rev.</strong> 단위로 ‘공정별 자재 연결’ 한 건을 만든다.</li>
+<li>그 안에서 M-BOM 구성부품을 <strong>공정(라우팅)의 각 공정·작업에 연결</strong>한다.</li>
+<li>제품을 구성하는 부품은 <strong>빠짐없이 모두</strong> 어느 한 작업에 연결되어야 한다(아래 정책 참조).</li>
+</ul>
+<h3><strong>2) 화면 진입 / 선행 조건</strong></h3>
+<ul>
+<li><strong>메뉴 경로 :</strong> [생산관리] › [기준정보] › [공정별 BOM관리]</li>
+<li><strong>선행 등록 :</strong> 생산품목(제품·반제품), 공정(라우팅), M-BOM이 먼저 등록되어 있어야 한다. 공정별 BOM은 이 셋을 연결하는 단계다.</li>
+</ul>
+<h3><strong>3) 목록 화면</strong></h3>
+<p><img loading="lazy" src="images/production/1-14/01_list.png" alt="공정별 BOM관리 목록 — ① 기능 버튼 ② 등록된 공정별 자재 연결 목록 ③ 상태·대표·사용여부" /></p>
+<p>공정별 BOM관리 목록 — ① 기능 버튼 ② 등록된 공정별 자재 연결 목록 ③ 상태·대표·사용여부</p>
+<p><strong>주요 버튼</strong></p>
+<ul>
+<li><strong>조회 / 상세검색</strong> — 품목·공장 등 조건으로 목록 조회</li>
+<li><strong>등록 / 수정 / 삭제</strong> — 연결 건 신규·편집·삭제 (행 더블클릭 또는 [수정]으로 상세 진입)</li>
+<li><strong>다운로드 / 결재상신</strong> — 목록 엑셀 다운로드, 작성된 연결의 전자결재 상신</li>
+</ul>
+<p><strong>주요 컬럼</strong></p>
+<ul>
+<li><strong>품목 · 규격 · 단위</strong> — 연결 대상 제품/반제품</li>
+<li><strong>공정순서(라우팅) · 공장 · BOM Rev.</strong> — 어떤 공정(라우팅)·공장·M-BOM 리비전에 대한 연결인지</li>
+<li><strong>문서번호 · 결재상태 · 상태</strong> — 채번/전자결재 상태/연결 진행 상태</li>
+<li><strong>대표공정 · 사용여부</strong> — 대표 연결 지정 여부, 사용/미사용</li>
+</ul>
+<h3><strong>4) 등록 절차</strong></h3>
+<ol type="1">
+<li><code>[등록]</code> → ‘공정별 자재 연결 기본정보’ 팝업에서 품목·공장·공정순서(라우팅)·BOM Rev. 입력</li>
+<li>저장하면 상세 화면이 열리고, 공정(라우팅)의 공정·작업이 표시됨</li>
+<li>각 작업의 <strong>투입 부품(BOM)</strong> 칸에서 검색(돋보기)을 눌러 ‘구성부품 선택’ 팝업으로 부품을 연결</li>
+<li>모든 부품을 빠짐없이 연결한 뒤 저장 → 필요 시 [결재상신]</li>
+</ol>
+<h3><strong>4-1) 기본정보 입력</strong></h3>
+<p><img loading="lazy" src="images/production/1-14/02_new_header.png" alt="공정별 자재 연결 ‘기본정보’ 팝업 — 4개 필수값으로 연결 대상 1건을 정의" /></p>
+<p>공정별 자재 연결 ‘기본정보’ 팝업 — 4개 필수값으로 연결 대상 1건을 정의</p>
+<table>
+<thead>
+<tr class="header">
+<th>필드</th>
+<th>필수</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>품목</td>
+<td>필수</td>
+<td>공정별 BOM을 연결할 제품·반제품</td>
+</tr>
+<tr class="even">
+<td>공장</td>
+<td>필수</td>
+<td>해당 제품을 생산하는 공장</td>
+</tr>
+<tr class="odd">
+<td>공정순서(라우팅)</td>
+<td>필수</td>
+<td>적용할 공정(라우팅) 그룹 — 공정·작업 구조를 가져옴</td>
+</tr>
+<tr class="even">
+<td>BOM Rev.</td>
+<td>필수</td>
+<td>연결 기준이 되는 M-BOM 리비전(A, B …)</td>
+</tr>
+</tbody>
+</table>
+<div class="callout">
+<p>📌 이 4개 값이 ‘무엇을 · 어디서 · 어떤 공정으로 · 어떤 BOM 버전 기준으로’ 연결하는지를 결정합니다. <strong>같은 품목이라도 공장·공정순서(라우팅)·Rev.가 다르면 별도의 연결 건</strong>이 됩니다.</p>
+</div>
+<h3><strong>4-2) 공정·작업별 부품 연결 (상세)</strong></h3>
+<p><img loading="lazy" src="images/production/1-14/03_detail.png" alt="공정별 자재 연결 상세 — 좌측 공정·작업 목록, 작업마다 투입 부품(BOM) 연결" /></p>
+<p>공정별 자재 연결 상세 — 좌측 공정·작업 목록, 작업마다 투입 부품(BOM) 연결</p>
+<p>상세 팝업 상단에는 품목·공정순서(라우팅)·공장·BOM Rev.·상태가 표시되고, 아래 그리드에 공정(라우팅)의 <strong>공정 · 작업순번 · 작업명 · 작업 내용</strong>이 나열됩니다. 각 작업 행의 <strong>투입 부품(BOM)</strong> 칸에 그 작업에서 소비되는 부품을 연결합니다.</p>
+<table>
+<thead>
+<tr class="header">
+<th>공정</th>
+<th>작업(순번)</th>
+<th>작업 내용</th>
+<th>투입 부품(BOM)</th>
+<th>수량·단위</th>
+<th>스크랩율</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>도장 (외주)</td>
+<td>실크 프린트 (10)</td>
+<td>외주 도장처에서 실크 프린트 (사외외주)</td>
+<td>[RM-A03] 실크 프린트 잉크</td>
+<td>1.00 EA</td>
+<td>0.00%</td>
+</tr>
+<tr class="even">
+<td>포장 (Packaging)</td>
+<td>완제품 포장 (10)</td>
+<td>자동 포장기로 캔버스 에코백 100EA 포장</td>
+<td>[SFG-A01] 봉제완료 본체</td>
+<td>1.00 EA</td>
+<td>0.00%</td>
+</tr>
+<tr class="odd">
+<td>〃</td>
+<td>〃</td>
+<td>〃</td>
+<td>[RM-A04] 포장지</td>
+<td>1.00 ea</td>
+<td>0.00%</td>
+</tr>
+</tbody>
+</table>
+<h3><strong>4-3) 구성부품 선택 + 연결 정책 ★</strong></h3>
+<p>투입 부품(BOM) 칸의 <strong>검색(돋보기) 버튼</strong>을 누르면 ‘구성부품 선택’ 팝업이 열립니다. 좌측에는 해당 M-BOM의 <strong>전체 구성부품 트리</strong>가, 우측에는 현재 공정·작업과 ‘연결 자재’가 표시됩니다. 트리에서 부품을 체크하면 그 작업의 투입 부품으로 등록됩니다.</p>
+<p><img loading="lazy" src="images/production/1-14/04_component_select.png" alt="구성부품 선택 팝업 — ① 전체 구성부품 트리 ② Assay 선택 시 하위 개별부품 비활성 ③ 연결 자재로 등록 ④ 확인" /></p>
+<p>구성부품 선택 팝업 — ① 전체 구성부품 트리 ② Assay 선택 시 하위 개별부품 비활성 ③ 연결 자재로 등록 ④ 확인</p>
+<div class="callout">
+<p>🔒 <strong>부품 연결 정책 — 구성부품 선택 시 반드시 적용되는 규칙</strong></p>
+</div>
+<ul>
+<li><strong>① 모든 부품을 빠짐없이 연결 :</strong> 제품을 구성하는 BOM 부품은 <strong>전부 어느 한 공정·작업에 연결</strong>되어야 하며, 빠진 부품이 있으면 안 됩니다.</li>
+<li><strong>② 한 부품은 한 작업에만(재사용 불가) :</strong> 이미 다른 작업에 연결된 부품은 트리에서 <code>비활성(disabled)</code> 처리되어 다른 작업에 중복 연결할 수 없습니다.</li>
+<li><strong>③ Assay(하위를 가진 반제품·모듈) 선택 시 하위 비활성 :</strong> 상위 Assay를 선택하면 그 하위 개별부품은 선택 불가가 되고, 투입 부품에는 <strong>상위 Assay만</strong> 등록됩니다.</li>
+<li><strong>④ 개별부품 먼저 선택 시 상위 Assay 비활성 :</strong> 반대로 하위 개별부품을 먼저 선택하면 그 상위 Assay·모듈이 모두 비활성됩니다. → 한 묶음은 <strong>‘Assay 통째로’ 또는 ‘개별부품 각각’ 중 한 방식</strong>으로만 연결됩니다.</li>
+</ul>
+<p><strong>위 화면 예시 :</strong> 좌측은 [FG-A01_A] 캔버스에코백 M-BOM의 전체 구성부품 트리입니다(①). [SFG-A01] 봉제완료 본체(반제품=Assay)가 선택되어 그 하위 [RM-A01]·[RM-A02]는 비활성 처리됐고(②), 선택한 [RM-A03] 실크 프린트 잉크가 우측 ‘연결 자재’의 투입 부품(BOM)으로 등록됐습니다(③). [확인](④)을 누르면 해당 공정·작업에 연결이 저장됩니다.</p>
+<div class="callout">
+<p>⚠️ <strong>주의사항 (매우 중요) — 사외외주 작업장의 BOM 연결</strong></p>
+</div>
+<p>라우팅(공정·작업) 중 <strong>사외외주(사외 외주가공) 작업장</strong>에 부품을 연결할 때는, 일반 원자재가 아니라 <strong>외주제작품(외주 결과물로 입고되는 품목)</strong>을 투입 부품(BOM)으로 선택해야 합니다.</p>
+<ul>
+<li><strong>외주제작품이란</strong> — 외주가공을 거쳐 <strong>결과물로 입고되는 품목</strong>(대개 반제품)입니다. 사외외주 작업의 투입 부품(BOM)으로는 반드시 이 외주제작품을 선택합니다.</li>
+<li><strong>사급자재 자동 인식</strong> — 외주제작품을 선택하면, 시스템이 해당 품목의 <strong>BOM 트리 1레벨 아래(직하위) 구성품들을 사급자재</strong>(외주처에 지급하는 자재)로 자동 인식합니다.</li>
+<li><strong>연결 방식</strong> — 따라서 사외외주 작업에서는 하위 원자재를 하나씩 연결하지 않고, <strong>외주제작품 1건만 연결</strong>하면 그 직하위 부품이 사급 관계로 설정됩니다.</li>
+<li><strong>확인 필수</strong> — 외주제작품(및 그 직하위 사급 구성)을 잘못 지정하면 <strong>외주 사급 출고·입고와 원가 집계가 어긋나므로</strong> 반드시 확인합니다.</li>
+</ul>
+<h3><strong>5) 상태 · 대표 · 사용여부</strong></h3>
+<ul>
+<li><strong>상태</strong> — 연결 작업의 진행 상태(예: 확정 / 연결완료). 작성 후 [결재상신]으로 전자결재를 올립니다.</li>
+<li><strong>대표공정(대표 여부)</strong> — 같은 품목에 연결 건이 여러 개(예: Rev. A·B)일 때 대표로 사용할 연결을 지정합니다.</li>
+<li><strong>사용여부</strong> — 해당 연결의 사용/미사용 토글. 미사용 건은 생산에서 참조되지 않습니다.</li>
+</ul>
+<h3><strong>6) 실제 등록 예시</strong></h3>
+<p>실제 서비스에 등록된 공정별 자재 연결 예시입니다(목록 기준).</p>
+<table>
+<thead>
+<tr class="header">
+<th>품목</th>
+<th>공정순서(라우팅)</th>
+<th>공장</th>
+<th>BOM Rev.</th>
+<th>상태</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>[FG-A01] 캔버스 에코백</td>
+<td>FG-A01 (최종)</td>
+<td>PLT001 기본공장</td>
+<td>A</td>
+<td>연결완료</td>
+</tr>
+<tr class="even">
+<td>[FG-A01] 캔버스 에코백</td>
+<td>FG-A01 (최종)</td>
+<td>PLT001 기본공장</td>
+<td>B</td>
+<td>확정</td>
+</tr>
+<tr class="odd">
+<td>[SFG-A01] 봉제완료 본체</td>
+<td>[반제품] 봉제완료 공정</td>
+<td>PLT001 기본공장</td>
+<td>A</td>
+<td>확정</td>
+</tr>
+</tbody>
+</table>
+<div class="callout">
+<p>🧷 같은 품목(FG-A01)이라도 <strong>BOM Rev.가 다르면(A·B) 각각 별도 연결</strong>로 관리됩니다. 반제품(SFG-A01)도 자신을 만드는 공정에 대해 별도의 공정별 BOM을 가집니다.</p>
+</div>
+<h3><strong>7) 관련 메뉴</strong></h3>
+<ul>
+<li><a href="production.html#production-1-13">1.13. M-BOM관리</a> — 구성부품·소요량의 원천(이 화면의 부품은 M-BOM에서 가져옴)</li>
+<li><a href="production.html#production-1-12">1.12. E-BOM관리</a> — 설계 BOM(M-BOM의 상위 기준)</li>
+<li><a href="production.html#production-1-11">1.11. 공정순서(라우팅)</a> — 공정·작업 구조의 원천(공정 순서 정의)</li>
+<li><a href="production.html#production-1-8">1.8. 생산품목관리</a> — 품목/반제품 기준정보</li>
+<li><a href="production.html#production-5-4">5.4. BOM 대비 실적 차이</a> — 연결된 BOM 대비 실제 투입 실적 비교</li>
+</ul>
+</section><section class="page" id="production-2-1"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">2.1. 연간생산계획</h1><h1>2. 생산계획</h1>
+<h2>2.1. 연간생산계획</h2>
+<p>한 해 동안 공장에서 생산할 완제품의 <strong>연간·월별 생산 계획</strong>을 수립하고 관리하는 화면입니다. 연간 단위로 품목별 판매·재고·생산 수량을 계획하면, 이후 [생산관리]-[생산계획]-[월간생산계획]·[주간생산계획]에서 이를 기준으로 세부 계획을 전개합니다.</p>
+<p>[연간영업계획]을 반영하면 선택한 영업계획의 내용을 가져와 월별 [판매계획수량] 입력의 기준으로 활용할 수 있습니다.</p>
+<div class="callout">
+<p>✅ 생산계획번호(예: PP2026083)는 [확인]을 눌러 최종 저장될 때 시스템이 자동으로 부여하며, 직접 입력하거나 수정할 수 없습니다.</p>
+</div>
+<div class="callout">
+<p>💡 [연간영업계획]을 반영하려면 사전에 영업계획이 등록되어 있어야 합니다. 영업계획 없이도 생산계획을 직접 수립할 수 있습니다.</p>
+</div>
+<p><img loading="lazy" src="images/production/2-1/01_list.png" /></p>
+<p><strong>① 기능 버튼</strong></p>
+<ul>
+<li><strong>등록</strong>: 새로운 연간생산계획을 등록합니다. [연간생산계획 기본정보] 팝업이 열립니다.</li>
+<li><strong>수정</strong>: 리스트(기본 정보)에서 계획을 선택한 후 클릭하면 [연간생산계획 상세] 팝업이 열려 내용을 수정할 수 있습니다.</li>
+<li><strong>삭제</strong>: 선택한 연간생산계획을 삭제합니다.</li>
+<li><strong>다운로드</strong>: 현재 조회된 기본 정보·상세정보를 엑셀 파일로 내려받습니다.</li>
+<li><strong>결재상신</strong>: 선택한 계획을 결재 상신합니다. (결재 기능을 사용하는 경우에만 표시됩니다.)</li>
+</ul>
+<p><strong>② 검색 영역</strong></p>
+<ul>
+<li><strong>계획연도</strong>: 조회할 계획연도를 선택합니다. 기본값은 [전체]입니다.</li>
+<li><strong>상세검색</strong>: 클릭하면 <strong>생산계획번호</strong>, <strong>공장</strong> 검색 조건이 펼쳐집니다.</li>
+<li><strong>조회 / 초기화</strong>: 입력한 조건으로 리스트를 조회하거나, 검색 조건을 초기화합니다.</li>
+</ul>
+<p><strong>③ 기본 정보</strong></p>
+<p>등록된 연간생산계획의 머리 정보 목록입니다. 행을 선택하면 아래 ④ 상세정보와 ⑤ 월별 생산 계획에 해당 계획의 내용이 표시됩니다.</p>
+<ul>
+<li><strong>생산계획번호</strong>: 시스템이 자동 부여한 계획 고유번호입니다 (예: PP2026083).</li>
+<li><strong>계획연도</strong>: 계획 대상 연도.</li>
+<li><strong>공장</strong>: 계획이 적용되는 공장입니다 (예: [PLT001] 기본 공장).</li>
+<li><strong>계획시작일 / 계획종료일</strong>: 계획 적용 기간.</li>
+<li><strong>참조</strong>: 반영한 연간영업계획 문서입니다 (예: 영업계획(PS2026001)). 링크를 클릭하면 참조한 문서를 확인할 수 있습니다.</li>
+<li><strong>확정여부</strong>: 계획의 확정 상태를 표시합니다 (예: 확정). 확정 상태에 따라 일부 기능이 제한될 수 있습니다.</li>
+<li><strong>작성자</strong>: 계획을 등록한 사원이 이름(사번) 형태로 표시됩니다 (예: 고성민(26051301)).</li>
+<li><strong>부서</strong>: 작성자의 소속 부서입니다 (예: 생산총괄).</li>
+<li><strong>문서번호 / 결재상태</strong>: 결재 기능 사용 시 부여되는 결재 문서번호와 결재 상태.</li>
+<li><strong>비고</strong>: 메모.</li>
+</ul>
+<p><strong>④ 상세정보</strong></p>
+<p>③에서 선택한 계획의 품목별 수량 요약입니다. 그리드 맨 아래 [합계] 행에 품목 전체 합계가 표시됩니다.</p>
+<ul>
+<li><strong>품목 / 규격 / 단위</strong>: 생산 대상 완제품 정보.</li>
+<li><strong>판매계획수량</strong>: 해당 품목의 연간 판매 계획 수량.</li>
+<li><strong>기초재고수량 / 기말재고수량</strong>: 연초 보유 재고와 연말 목표 재고.</li>
+<li><strong>생산계획수량</strong>: 월별 생산 계획의 1~12월 [생산계획수량]을 합산한 연간 생산 계획 수량입니다 (예: 80,614).</li>
+<li><strong>비고</strong>: 메모.</li>
+</ul>
+<p><strong>⑤ 월별 생산 계획</strong></p>
+<p>④에서 선택한 품목의 1~12월 월별 내역입니다. 그리드 맨 아래 [합계] 행에 12개월 합계가 표시됩니다.</p>
+<ul>
+<li><strong>월</strong>: 계획연도의 각 월입니다. 첫 행에는 연도가 함께 표시됩니다 (예: 2026년 1월).</li>
+<li><strong>판매계획수량</strong>: 월별 판매 계획 수량.</li>
+<li><strong>기초재고 / 기말재고</strong>: 월별 재고 수량.</li>
+<li><strong>스크랩 반영 전 생산계획수량</strong>: 스크랩을 고려하기 전의 필요 생산 수량으로, 판매계획수량 + 기말재고 − 기초재고로 산출됩니다.</li>
+<li><strong>스크랩율(%)</strong>: 해당 월에 적용되는 스크랩율.</li>
+<li><strong>생산계획수량</strong>: 스크랩을 감안해 목표 수량을 확보하도록 [스크랩 반영 전 생산계획수량]을 (1 − 스크랩율)로 나눈 뒤 올림한 값입니다. 예) 스크랩 반영 전 10,000개, 스크랩율 1%이면 10,000 ÷ (1 − 0.01) ≈ 10,101 → 올림하여 10,102개로 산출됩니다.</li>
+</ul>
+<hr />
+<h3>⊙ 입력 예제</h3>
+<h3>2.1.1. 연간생산계획 등록하기</h3>
+<p>리스트 화면에서 [등록] 버튼을 클릭하면 [연간생산계획 기본정보] 팝업이 열립니다. 여기서 계획의 머리 정보를 먼저 입력합니다.</p>
+<p><img loading="lazy" src="images/production/2-1/02_register_basic.png" /></p>
+<p><strong>입력 항목</strong></p>
+<ul>
+<li><strong>① 참조</strong>: [연간영업계획] 체크박스를 체크하면 영업계획의 내용을 생산계획 수립에 반영할 수 있습니다. 체크 시 [연간영업계획 반영하기] 팝업이 열립니다. ([참조] 라벨 옆 ⓘ 아이콘에 마우스를 올리면 안내가 표시됩니다.)</li>
+<li><strong>② 영업계획문서</strong>: 읽기 전용 필드입니다. 영업계획을 반영하기 전에는 [자동부여]로 표시되며, ①을 반영하면 선택한 영업계획 문서번호가 자동으로 채워집니다.</li>
+<li><strong>③ 계획연도</strong> *: 생산계획을 수립할 연도입니다. (필수) 기본값은 다음 해이며, 우측 캘린더 아이콘으로 연도를 선택할 수 있습니다. 연간영업계획을 반영하면 영업계획의 계획연도로 채워진 뒤 읽기 전용으로 고정됩니다.</li>
+<li><strong>④ 공장</strong> *: 계획을 적용할 공장을 선택합니다. (필수)</li>
+<li><strong>⑤ 계획시작일 / ⑥ 계획종료일</strong>: 계획 적용 기간입니다. 기본값은 해당 연도 1월 1일 ~ 12월 31일이며, 필요 시 변경할 수 있습니다.</li>
+<li><strong>⑦ 비고</strong>: 메모를 입력합니다.</li>
+</ul>
+<p><strong>진행 순서</strong>: (필요 시 ① 연간영업계획 반영) → ③ 계획연도 확인 → ④ 공장 선택 → [다음] 클릭</p>
+<p><strong>연간영업계획 반영하기</strong></p>
+<p>① 참조의 [연간영업계획] 체크박스를 체크하면 [연간영업계획 반영하기] 팝업이 열립니다.</p>
+<p><img loading="lazy" src="images/production/2-1/02b_sales_reflect.png" /></p>
+<ul>
+<li><strong>① 영업계획 선택</strong>: 목록에서 반영할 연간영업계획 한 건을 선택합니다 (단일 선택). 영업계획번호·계획연도·매출계획 금액·비고가 표시됩니다.</li>
+<li><strong>② 반영</strong>: [반영] 버튼을 클릭하면 선택한 영업계획이 기본정보에 반영되어, 계획연도와 영업계획문서가 자동으로 채워집니다.</li>
+</ul>
+<blockquote>
+<p>※ [연간영업계획] 체크를 해제하면 영업계획에서 자동으로 채워진 영업계획문서·계획연도 값이 초기화됩니다.</p>
+</blockquote>
+<hr />
+<h3>2.1.2. 월별 생산계획 입력하기</h3>
+<p>[연간생산계획 기본정보] 팝업에서 [다음]을 클릭하면 [연간생산계획 상세] 팝업이 열립니다. 선택한 공장의 완제품(사용 중) 품목이 자동으로 불러와지며, 품목별 월별 생산 계획을 입력합니다.</p>
+<p><img loading="lazy" src="images/production/2-1/03_detail.png" /></p>
+<ul>
+<li><strong>① 작성자 · 부서</strong>: [작성자]·[부서] 우측의 돋보기 아이콘을 클릭하면 검색 팝업이 열립니다. [작성자]는 로그인 사원이 기본 표시되며, [부서]는 직접 선택해야 하는 <strong>필수 항목</strong>입니다.</li>
+<li><strong>② 기본 정보</strong>: 이전 단계에서 입력한 계획 머리 정보(계획연도·생산계획버전·공장·계획시작일·계획종료일·참조·비고)가 표시됩니다. 생산계획버전은 시스템이 자동으로 부여합니다. ([생산계획번호]는 아직 비어 있으며, 저장 시 부여됩니다.)</li>
+<li><strong>③ 상세정보</strong>: 선택한 공장의 완제품 품목이 자동으로 표시됩니다. 품목별 판매계획수량·기초/기말재고수량·생산계획수량을 입력·확인합니다.</li>
+<li><strong>④ 추가 / 삭제</strong>: 상세정보의 품목을 추가하거나, 선택한 품목을 삭제합니다. 선택한 공장에서 생산하지 않는 품목은 추가할 수 없습니다.</li>
+<li><strong>⑤ 월별 생산 계획</strong>: ③에서 선택한 품목의 1~12월 월별 계획을 입력합니다. 판매계획수량·기초/기말재고를 입력하면 시스템이 스크랩율을 반영한 [생산계획수량]을 자동으로 산출합니다.</li>
+<li><strong>⑥ 취소 / 확인</strong>: [확인]을 클릭하면 연간생산계획이 저장되고, [생산계획번호]가 정식으로 부여됩니다.</li>
+</ul>
+<p><strong>진행 순서</strong>: ① 작성자·부서 선택([부서] 필수) → 품목·월별 수량 확인/입력 → [확인] 클릭 → 저장</p>
+<div class="callout">
+<p>⚠️ 필수 항목인 [부서]를 입력하지 않고 [확인]을 누르면 "필수값을 입력해주세요. 항목: 부서" 안내 팝업이 표시됩니다.</p>
+</div>
+</section><section class="page" id="production-2-2"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">2.2. 월간생산계획</h1><h1>2. 생산계획</h1>
+<h2>2.2. 월간생산계획</h2>
+<p>한 달(월) 단위로 공장에서 생산할 완제품·반제품의 <strong>월별 생산 계획</strong>을 수립하고 관리하는 화면입니다. 연간생산계획을 더 짧은 월 단위로 구체화한 계획으로, 이후 [생산관리]-[생산계획]-[주간생산계획]·[부하분석(MPS)]에서 이를 기준으로 세부 계획을 전개합니다.</p>
+<p>계획 수립 시 <strong>참조</strong> 방식([자체]/[영업계획]/[생산요청])을 선택할 수 있으며, [영업계획] 또는 [생산요청]을 반영하면 해당 문서의 내용을 가져와 [판매계획수량] 입력의 기준으로 활용할 수 있습니다.</p>
+<div class="callout">
+<p>✅ 생산계획번호(예: PP202605004)는 [확인]을 눌러 최종 저장될 때 시스템이 자동으로 부여하며, 직접 입력하거나 수정할 수 없습니다.</p>
+</div>
+<div class="callout">
+<p>💡 [영업계획]·[생산요청]을 반영하려면 사전에 해당 문서가 등록되어 있어야 합니다. [자체]를 선택하면 참조 없이 생산계획을 직접 수립합니다.</p>
+</div>
+<div class="callout">
+<p>🗂️ 월간생산계획은 [생산계획버전]으로 관리되어, 조건이 다른 여러 버전을 비교·조정할 수 있습니다.</p>
+</div>
+<p><img loading="lazy" src="images/production/2-2/01_list.png" /></p>
+<p><strong>① 기능 버튼</strong></p>
+<ul>
+<li><strong>등록</strong>: 새로운 월간생산계획을 등록합니다. [월간 생산계획 기본정보] 팝업이 열립니다.</li>
+<li><strong>수정</strong>: 리스트(기본 정보)에서 계획을 선택한 후 클릭하면 [월간생산계획 상세] 팝업이 열려 내용을 확인·수정할 수 있습니다.</li>
+<li><strong>삭제</strong>: 선택한 월간생산계획을 삭제합니다.</li>
+<li><strong>다운로드</strong>: 현재 조회된 기본 정보·상세정보를 엑셀 파일로 내려받습니다.</li>
+<li><strong>결재상신</strong>: 선택한 계획을 결재 상신합니다. (결재 기능을 사용하는 경우에만 표시됩니다.)</li>
+</ul>
+<p><strong>② 검색 영역</strong></p>
+<ul>
+<li><strong>계획월</strong>: 조회할 계획월의 범위(시작월 ~ 종료월)를 선택합니다.</li>
+<li><strong>상세검색</strong>: 클릭하면 <strong>생산계획번호</strong>, <strong>공장</strong> 검색 조건이 펼쳐집니다.</li>
+<li><strong>조회 / 초기화</strong>: 입력한 조건으로 리스트를 조회하거나, 검색 조건을 초기화합니다.</li>
+</ul>
+<p><strong>③ 기본 정보</strong></p>
+<p>등록된 월간생산계획의 머리 정보 목록입니다. 행을 선택하면 아래 ④ 상세정보와 ⑤ 월별 생산 계획에 해당 계획의 내용이 표시됩니다.</p>
+<ul>
+<li><strong>생산계획번호</strong>: 시스템이 자동 부여한 계획 고유번호입니다 (예: PP202605004).</li>
+<li><strong>계획월</strong>: 계획 대상 월 (예: 2026-05).</li>
+<li><strong>공장</strong>: 계획이 적용되는 공장입니다 (예: [PLT001] 기본 공장).</li>
+<li><strong>반영 참조</strong>: 반영한 참조 문서입니다 (예: 영업계획(PS202605001)). 링크를 클릭하면 참조한 문서를 확인할 수 있습니다.</li>
+<li><strong>확정여부</strong>: 계획의 확정 상태를 표시합니다 (예: 확정).</li>
+<li><strong>작성자</strong>: 계획을 등록한 사원이 이름(사번) 형태로 표시됩니다 (예: 구자영(결재)(26052301) — 결재자에게는 (결재) 표기가 덧붙습니다).</li>
+<li><strong>부서</strong>: 작성자의 소속 부서입니다 (예: 생산).</li>
+<li><strong>문서번호 / 결재상태</strong>: 결재 기능 사용 시 부여되는 결재 문서번호와 결재 상태입니다. 결재 기능을 사용하지 않으면 공란으로 표시됩니다.</li>
+<li><strong>비고</strong>: 메모.</li>
+</ul>
+<p><strong>④ 상세정보</strong></p>
+<p>③에서 선택한 계획의 품목별 수량 요약입니다. 선택한 공장에서 생산하는 완제품·반제품 품목이 자동으로 표시됩니다. 그리드 맨 아래 [합계] 행에 품목 전체 합계가 표시됩니다.</p>
+<ul>
+<li><strong>품목 / 규격 / 단위</strong>: 생산 대상 품목 정보 (예: [FG-A01] 캔버스 에코백 / 300×400mm…, [SFG-A01] 봉제완료 본체 / 캔버스 14oz…).</li>
+<li><strong>판매계획수량</strong>: 해당 품목의 월 판매 계획 수량입니다. [영업계획]이나 [생산요청]을 반영한 경우 자동으로 채워지며, [자체]로 수립한 경우 직접 입력합니다.</li>
+<li><strong>기초재고수량 / 기말재고수량</strong>: 월초 보유 재고와 월말 목표 재고.</li>
+<li><strong>생산계획수량</strong>: 판매 계획과 재고, 스크랩율을 반영해 산출된 생산 계획 수량.</li>
+</ul>
+<p><strong>⑤ 월별 생산 계획</strong></p>
+<p>④에서 선택한 품목의 월별 내역입니다. 월간생산계획은 한 달을 대상으로 하므로 해당 계획월 한 행이 표시됩니다. 그리드 맨 아래 [합계] 행에 합계가 표시됩니다.</p>
+<ul>
+<li><strong>월</strong>: 계획 대상 월입니다. 목록에서는 2026년 05월, 상세 팝업에서는 5월 형태로 표시됩니다.</li>
+<li><strong>판매계획수량</strong>: 월 판매 계획 수량.</li>
+<li><strong>기초재고 / 기말재고</strong>: 월별 재고 수량.</li>
+<li><strong>스크랩 반영 전 생산계획수량</strong>: 스크랩을 고려하기 전의 필요 생산 수량으로, 판매계획수량 + 기말재고 − 기초재고로 산출됩니다.</li>
+<li><strong>스크랩율(%)</strong>: 해당 월에 적용되는 스크랩율.</li>
+<li><strong>생산계획수량</strong>: 스크랩을 감안해 목표 수량을 확보하도록 [스크랩 반영 전 생산계획수량]을 (1 − 스크랩율)로 나눈 뒤 올림한 값입니다. 예) 스크랩율이 1%이면 10,000 ÷ (1 − 0.01) ≈ 10,101 → 올림하여 10,102개로 산출됩니다. (위 예시처럼 스크랩율이 0%이면 [스크랩 반영 전 생산계획수량]과 같습니다.)</li>
+</ul>
+<hr />
+<h3>⊙ 입력 예제</h3>
+<h3>2.2.1. 월간생산계획 등록하기</h3>
+<p>리스트 화면에서 [등록] 버튼을 클릭하면 [월간 생산계획 기본정보] 팝업이 열립니다. 여기서 계획의 머리 정보를 먼저 입력합니다.</p>
+<p><img loading="lazy" src="images/production/2-2/02_register_basic.png" /></p>
+<p><strong>입력 항목</strong></p>
+<ul>
+<li><strong>① 참조</strong>: 계획 수립 방식을 [자체] / [영업계획] / [생산요청] 중 하나로 선택합니다(단일 선택). [영업계획]을 선택하면 [월간영업계획 반영하기] 팝업이, [생산요청]을 선택하면 생산요청 선택 팝업이 열립니다. [자체]는 참조 없이 직접 수립합니다. ([참조] 옆 ⓘ 아이콘에 마우스를 올리면 안내가 표시됩니다.)</li>
+<li><strong>② 참조문서번호</strong>: 읽기 전용 필드입니다. 참조를 반영하기 전에는 [자동부여]로 표시되며, 영업계획/생산요청을 반영하면 선택한 문서번호가 자동으로 채워집니다.</li>
+<li><strong>③ 계획월</strong> *: 생산계획을 수립할 월입니다. (필수) 기본값은 다음 달이며, 우측 캘린더 아이콘으로 월을 선택할 수 있습니다. 영업계획을 반영하면 영업계획의 계획월로 채워진 뒤 읽기 전용으로 고정됩니다.</li>
+<li><strong>④ 공장</strong> *: 계획을 적용할 공장을 선택합니다. (필수)</li>
+<li><strong>⑤ 비고</strong>: 메모를 입력합니다.</li>
+</ul>
+<p><strong>진행 순서</strong>: ① 참조 방식 선택 → (영업계획·생산요청이면 문서 반영) → ③ 계획월 확인 → ④ 공장 선택 → [다음] 클릭</p>
+<p><strong>영업계획 반영하기</strong> ([참조]에서 [영업계획] 선택 시)</p>
+<p>[영업계획]을 선택하면 [월간영업계획 반영하기] 팝업이 열립니다.</p>
+<p><img loading="lazy" src="images/production/2-2/02b_sales_reflect.png" /></p>
+<ul>
+<li><strong>① 영업계획 선택</strong>: [기준월]을 입력하고 [조회]하면 해당 기준월의 월간영업계획이 표시됩니다. 목록에서 반영할 영업계획 한 건을 선택합니다(단일 선택). 영업계획번호·계획월·매출계획 금액·비고가 표시됩니다.</li>
+<li><strong>② 반영</strong>: [반영] 버튼을 클릭하면 선택한 영업계획이 기본정보에 반영되어, 계획월과 참조문서번호가 자동으로 채워집니다.</li>
+</ul>
+<hr />
+<h3>2.2.2. 월별 생산계획 입력·확인하기</h3>
+<p>[월간 생산계획 기본정보] 팝업에서 [다음]을 클릭하거나, 리스트에서 계획을 선택해 [수정]하면 [월간생산계획 상세] 팝업이 열립니다. 선택한 공장의 완제품·반제품 품목이 자동으로 불러와지며, 품목별 월 생산 계획을 입력·확인합니다.</p>
+<div class="callout">
+<p>ℹ️ 아래 화면은 이미 [확정]된 계획을 [수정]으로 조회한 예시여서 [확인] 버튼이 비활성(회색) 상태입니다. 신규 등록이나 미확정 계획 수정 시에는 [확인]이 활성화되어, 클릭하면 저장됩니다.</p>
+</div>
+<p><img loading="lazy" src="images/production/2-2/03_detail.png" /></p>
+<ul>
+<li><strong>① 작성자 · 부서</strong>: [작성자]·[부서] 우측의 돋보기 아이콘을 클릭하면 검색 팝업이 열립니다. [작성자]는 로그인 사원이 기본 표시되며, [부서]는 직접 선택해야 하는 <strong>필수 항목</strong>입니다.</li>
+<li><strong>② 기본 정보</strong>: 계획 머리 정보(생산계획번호·계획월·생산계획버전·공장·확정여부·참조·비고)가 표시됩니다. [생산계획버전]은 시스템이 자동으로 부여합니다. [생산계획번호]는 신규 등록 시 [확인] 저장 후 부여되며, 이미 저장·확정된 계획을 조회하면 부여된 번호(예: PP202605004)가 표시됩니다.</li>
+<li><strong>③ 상세정보</strong>: 선택한 공장에서 생산하는 완제품·반제품 품목이 자동으로 표시됩니다. 품목별 판매계획수량·기초/기말재고수량·생산계획수량을 입력·확인합니다.</li>
+<li><strong>④ 추가 / 삭제</strong>: 상세정보의 품목을 추가하거나, 선택한 품목을 삭제합니다. 선택한 공장에서 생산하지 않는 품목은 추가할 수 없습니다.</li>
+<li><strong>⑤ 월별 생산 계획</strong>: ③에서 선택한 품목의 월별 계획을 입력합니다. [자체]로 수립한 경우 판매계획수량·기초/기말재고를 직접 입력하면 시스템이 스크랩율을 반영한 [생산계획수량]을 자동으로 산출합니다. ([영업계획]·[생산요청]을 반영한 경우 [판매계획수량]은 자동으로 채워집니다.)</li>
+<li><strong>⑥ 취소 / 확인</strong>: 신규 등록(또는 미확정 계획 수정) 시 [확인]을 클릭하면 월간생산계획이 저장되고, [생산계획번호]가 정식으로 부여됩니다.</li>
+</ul>
+<p><strong>진행 순서</strong>: ① 작성자·부서 선택([부서] 필수) → 품목·월 수량 확인/입력 → [확인] 클릭 → 저장</p>
+<div class="callout">
+<p>⚠️ 필수 항목인 [부서]를 입력하지 않고 [확인]을 누르면 필수값 입력 안내 팝업이 표시됩니다.</p>
+</div>
+</section><section class="page" id="production-2-3"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">2.3. 주간생산계획</h1><h1>2. 생산계획</h1>
+<h2>2.3. 주간생산계획</h2>
+<p>한 주(주 단위)에 공장에서 생산할 완제품·반제품의 <strong>요일별 생산 계획</strong>을 수립·관리하는 화면입니다. 월간생산계획을 일자별로 배분해 주차·요일 단위로 구체화한 계획입니다. 주간생산계획에서 <strong>부하분석</strong>을 실행·확정하면 그 확정된 계획을 <strong>MPS(기준생산계획, Master Production Schedule)</strong>라고 하며, 이후 [생산관리]-[생산실행]-[생산지시서]의 기준이 됩니다.</p>
+<p>계획 수립 후 <strong>부하분석 실행 → 부하분석 확정(= MPS 확정) → MRP 실행</strong>의 흐름으로 자재 소요 계획(MRP)까지 연결할 수 있습니다.</p>
+<div class="callout">
+<p>✅ 생산계획번호(예: PP202619W005 — 가운데 19가 주차를 나타냅니다)는 저장 시 시스템이 자동으로 부여하며, 직접 입력하거나 수정할 수 없습니다.</p>
+</div>
+<div class="callout">
+<p>💡 월간생산계획을 반영하면 월 목표 수량이 계획 주의 일자별로 자동 배분됩니다. 월간생산계획 없이 [자체]로 직접 수립할 수도 있습니다.</p>
+</div>
+<div class="callout">
+<p>🗂️ 주차는 연중 절대주차로 표시됩니다 (예: 19주차 = 2026-05-04 ~ 05-10).</p>
+</div>
+<p><img loading="lazy" src="images/production/2-3/01_list.png" /></p>
+<p><strong>① 기능 버튼</strong></p>
+<ul>
+<li><strong>등록</strong>: 새로운 주간생산계획을 등록합니다. [주간생산계획 기본정보] 팝업이 열립니다.</li>
+<li><strong>수정</strong>: 리스트에서 계획을 선택한 후 클릭하면 [주간생산계획 상세] 팝업이 열려 내용을 확인·수정할 수 있습니다.</li>
+<li><strong>삭제</strong>: 선택한 주간생산계획을 기본정보·상세정보와 함께 삭제합니다.</li>
+<li><strong>다운로드</strong>: 현재 조회된 기본 정보·상세정보를 엑셀 파일로 내려받습니다.</li>
+<li><strong>부하분석 실행</strong>: 선택한 주간생산계획의 부하분석을 실행합니다. 실행 결과는 ③ 기본 정보의 [부하분석] 영역(상태·실행번호)에 표시됩니다.</li>
+<li><strong>부하분석 삭제</strong>: 실행한 부하분석 결과를 삭제합니다.</li>
+<li><strong>부하분석 확정/확정취소</strong>: 실행한 부하분석을 확정하거나, 확정된 부하분석을 확정 취소합니다. 확정된 부하분석이 MPS(기준생산계획)가 됩니다.</li>
+<li><strong>MRP 실행</strong>: 확정된 부하분석을 기준으로 MRP(자재 소요 계획)를 실행합니다. 결과는 ③ 기본 정보의 [MRP] 영역에 표시됩니다.</li>
+<li><strong>결재상신</strong>: 선택한 계획을 결재 상신합니다. (결재 기능을 사용하는 경우에만 표시됩니다.)</li>
+</ul>
+<p><strong>② 검색 영역</strong></p>
+<ul>
+<li><strong>계획월</strong>: 조회할 계획월을 선택합니다. 입력하면 해당 월의 계획버전·주차 조회가 가능해집니다.</li>
+<li><strong>상세검색</strong>: 클릭하면 <strong>계획버전</strong>, <strong>주차</strong>, <strong>생산계획번호</strong> 검색 조건이 펼쳐집니다.</li>
+<li><strong>조회 / 초기화</strong>: 입력한 조건으로 리스트를 조회하거나, 검색 조건을 초기화합니다.</li>
+</ul>
+<p><strong>③ 기본 정보</strong></p>
+<p>등록된 주간생산계획의 머리 정보 목록입니다. 행을 선택하면 아래 ④ 상세정보에 해당 계획의 요일별 내역이 표시됩니다.</p>
+<ul>
+<li><strong>생산계획번호</strong>: 시스템이 자동 부여한 계획 고유번호입니다 (예: PP202619W005).</li>
+<li><strong>계획월 / 주차</strong>: 계획 대상 월과 연중 절대주차 (예: 2026-05, 19주차).</li>
+<li><strong>계획시작일 / 계획종료일</strong>: 해당 주차의 시작일·종료일 (예: 2026-05-04 ~ 2026-05-10).</li>
+<li><strong>공장</strong>: 계획이 적용되는 공장 (예: [PLT001] 기본 공장).</li>
+<li><strong>참조</strong>: 반영한 월간생산계획 문서입니다 (예: 영업계획(PP202605004)). [자체]로 수립한 경우 공란(-)으로 표시됩니다.</li>
+<li><strong>부하분석 (상태 / 실행번호)</strong>: 부하분석 실행 상태와 실행번호입니다 (예: 확정 / MPS202619W005 — 실행번호는 MPS로 채번됩니다).</li>
+<li><strong>MRP (상태 / 실행번호)</strong>: MRP 실행 상태와 실행번호.</li>
+<li><strong>확정여부</strong>: 주간생산계획의 확정 상태 (예: 확정, 작성중).</li>
+<li><strong>문서번호 / 결재상태</strong>: 결재 기능 사용 시 부여되는 결재 문서번호와 상태입니다. 사용하지 않으면 공란입니다.</li>
+<li><strong>작성자</strong>: 계획을 등록한 사원이 이름(부서/구분)(사번) 형태로 표시됩니다 (예: 클로드(매뉴얼)(26052101)).</li>
+</ul>
+<p><strong>④ 상세정보</strong></p>
+<p>③에서 선택한 계획의 품목·공정별 요일별 수량입니다. 그리드 맨 아래 [합계] 행에 합계가 표시됩니다. (상세정보는 조회 전용이며, 입력·수정은 [수정](상세 팝업)에서 처리합니다.)</p>
+<ul>
+<li><strong>품목 / 규격 / 단위</strong>: 생산 대상 품목 정보입니다. 품목별로 여러 행이 표시됩니다 (예: [FG-A01] 캔버스 에코백, [SFG-A01] 봉제완료 본체).</li>
+<li><strong>공정그룹</strong>: 해당 품목의 공정그룹 (예: [RGP0002] [반제품] 봉제완료 공정).</li>
+<li><strong>주간합계</strong>: 그 주의 요일별 생산계획수량 합계 (예: 2,500). 생산 계획이 없는 품목은 0으로 표시될 수 있습니다.</li>
+<li><strong>생산계획수량 (요일별)</strong>: 계획 주의 요일별(예: 05-04(월) ~ 05-10(일)) 생산계획수량입니다.</li>
+</ul>
+<hr />
+<h3>⊙ 입력 예제</h3>
+<h3>2.3.1. 주간생산계획 등록하기</h3>
+<p>리스트 화면에서 [등록] 버튼을 클릭하면 [주간생산계획 기본정보] 팝업이 열립니다. 여기서 계획의 머리 정보를 먼저 입력합니다.</p>
+<p><img loading="lazy" src="images/production/2-3/02_register_basic.png" /></p>
+<p><strong>입력 항목</strong></p>
+<ul>
+<li><strong>① 월간계획반영</strong>: [월간생산계획 반영] 체크박스를 체크하면 [월간생산계획 선택] 팝업이 열립니다. 체크하지 않으면 참조 없이 직접 수립합니다. ([월간계획반영] 옆 ⓘ 아이콘에 마우스를 올리면 안내가 표시됩니다.)</li>
+<li><strong>② 월간생산계획번호</strong>: 읽기 전용 필드입니다. 반영하기 전에는 [자동부여]로 표시되며, ①에서 월간생산계획을 반영하면 선택한 문서번호가 자동으로 채워집니다.</li>
+<li><strong>③ 계획월</strong> *: 생산계획을 수립할 월입니다. (필수) 우측 캘린더 아이콘으로 월을 선택할 수 있습니다.</li>
+<li><strong>④ 공장</strong> *: 계획을 적용할 공장을 선택합니다. (필수)</li>
+<li><strong>⑤ 계획주차</strong> *: 선택한 계획월의 주차가 기간과 함께 표시됩니다 (예: 2026-06 23주차 (06-01 ~ 06-07)). 생산계획을 생성할 주차를 체크해서 선택합니다. (이미 지난 주차는 선택할 수 없습니다. 월간생산계획을 반영하는 경우에는 주차를 별도로 선택하지 않습니다.)</li>
+</ul>
+<p><strong>진행 순서</strong>: 월간계획 반영 여부 선택 → 계획월 선택 → 공장 선택 → 생성할 주차 선택(월간계획 반영 시에는 월간계획 선택) → [다음] 클릭</p>
+<p><strong>월간생산계획 반영하기</strong> ([월간생산계획 반영] 체크 시)</p>
+<p>[월간생산계획 반영]을 체크하면 [월간생산계획 선택] 팝업이 열립니다.</p>
+<p><img loading="lazy" src="images/production/2-3/02b_monthly_select.png" /></p>
+<ul>
+<li><strong>① 월간생산계획 선택</strong>: [계획월]을 입력하면 해당 월의 월간생산계획이 표시됩니다. 적용할 월간생산계획 한 건을 선택(단일 선택)한 뒤 [확인]을 클릭합니다. (생산계획번호·계획연도·계획월·참조·공장이 표시됩니다.)</li>
+<li>선택한 월간생산계획의 월 목표 수량이 <strong>계획 주의 일자별로 자동 배분</strong>되어, 다음 단계의 상세정보에 요일별 생산계획수량으로 반영됩니다.</li>
+</ul>
+<hr />
+<h3>2.3.2. 요일별 생산계획 입력·확인하기</h3>
+<p>[주간생산계획 기본정보] 팝업에서 [다음]을 클릭하거나, 리스트에서 계획을 선택해 [수정]하면 [주간생산계획 상세] 팝업이 열립니다. 여기서 품목·공정별 요일별 생산계획수량을 입력·확인합니다.</p>
+<p><img loading="lazy" src="images/production/2-3/03_detail.png" /></p>
+<ul>
+<li><strong>① 작성자 · 부서</strong>: 우측 돋보기 아이콘으로 검색해 지정·변경할 수 있습니다. [작성자]는 계획을 작성하는 사원이 기본 표시됩니다.</li>
+<li><strong>② 기본 정보</strong>: 이전 단계에서 입력한 계획 머리 정보(생산계획번호·계획월·주차·계획시작일·계획종료일·공장·참조·비고)가 표시됩니다. 선택한 주차만큼 여러 행이 생성됩니다 (예: 19·20·21주차). [생산계획번호]는 저장 전에는 [자동생성]으로 표시되며, [확인] 저장 시 정식 번호가 부여됩니다. [참조]에는 반영한 문서번호가 표시됩니다 (예: PP202605004).</li>
+<li><strong>③ 상세정보</strong>: 선택한 공장에서 생산 가능한 완제품·반제품 품목이 자동으로 표시됩니다 (예: [FG-A01] 캔버스 에코백, [SFG-A01] 봉제완료 본체). 사용자는 품목을 직접 추가하지 않고, 각 품목의 [공정그룹]별 요일별(월~일) 생산계획수량을 입력·확인합니다. 월간생산계획을 반영하면 월 목표 수량이 일자별로 자동 배분되어 표시되며 (예: 주간합계 2,254 = 일 322 × 7일), [자체]로 수립한 경우 직접 입력합니다. 맨 아래 [합계] 행에 전체 합계가 표시됩니다.</li>
+<li><strong>④ 취소 / 확인</strong>: [확인]을 클릭하면 주간생산계획이 저장되고 [생산계획번호]가 정식으로 부여됩니다.</li>
+</ul>
+<hr />
+<h3>2.3.3. 부하분석 실행·확정 및 MRP 실행</h3>
+<p>주간생산계획을 등록한 뒤, 리스트에서 계획을 선택해 부하분석과 MRP를 실행합니다.</p>
+<p><strong>진행 순서</strong>: 계획 선택 → [부하분석 실행] → [부하분석 확정/확정취소]로 부하분석 확정 → [MRP 실행]</p>
+<p><strong>※ [MRP 실행]은 부하분석이 [확정] 상태일 때만 동작합니다.</strong></p>
+<ul>
+<li><strong>부하분석 실행</strong>: 선택한 주간생산계획의 부하분석을 실행하면 [부하분석] 상태가 [실행]으로 바뀌고 실행번호가 부여됩니다 (예: MPS202619W005).</li>
+<li><strong>부하분석 확정/확정취소</strong>: 실행한 부하분석을 확정하면 [부하분석] 상태가 [확정]으로 바뀌며, 확정된 부하분석이 MPS(기준생산계획)가 됩니다.</li>
+<li><strong>MRP 실행</strong>: 부하분석이 확정된 상태에서 [MRP 실행]을 클릭하면 자재 소요 계획(MRP)이 실행되어 [MRP] 영역에 결과가 표시됩니다.</li>
+</ul>
+<div class="callout">
+<p>⚠️ 부하분석이 확정되어야 [MRP 실행]이 가능합니다.</p>
+</div>
+</section><section class="page" id="production-2-4"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">2.4. 부하분석(MPS)</h1><h1>2. 생산계획</h1>
+<h2>2.4. 부하분석</h2>
+<p>주간생산계획에서 수립한 생산 계획을 <strong>작업장의 능력(Capacity)으로 감당할 수 있는지 분석</strong>하는 화면입니다. 일자별·작업장별로 생산에 <strong>필요한 시간(필요시간)</strong>과 <strong>가용 능력(가용시간)</strong>을 비교해 <strong>과부족</strong>을 확인하고, 필요하면 일정·수량을 조정한 뒤 주간생산계획으로 반영합니다.</p>
+<p>부하분석은 [생산관리]-[생산계획]-[주간생산계획] 화면에서 <strong>[부하분석 실행]</strong>을 해야 데이터가 생성됩니다. 부하분석을 실행하면 MPS실행번호 단위로 결과가 생성되며(화면에는 MPS실행일자·MPS실행번호로 표기), 그 결과를 이 화면에서 조회·조정합니다. 확정된 부하분석은 MRP(자재 소요 계획)의 기준이 됩니다.</p>
+<div class="callout">
+<p>💡 부하분석 데이터는 [생산관리]-[생산계획]-[주간생산계획]에서 [부하분석 실행]을 해야 생성됩니다. 이 화면은 그 실행 결과를 조회·조정·반영하는 화면입니다.</p>
+</div>
+<div class="callout">
+<p>⚠️ 부하분석을 확정해야 주간생산계획 반영과 [MRP 실행]이 가능합니다. MRP가 확정된 상태에서는 부하분석 확정취소가 불가합니다. (부하분석의 실행·확정·확정취소는 [생산관리]-[생산계획]-[주간생산계획] 화면에서 수행합니다.)</p>
+</div>
+<p><img loading="lazy" src="images/production/2-4/01_list.png" /></p>
+<p><strong>① 기능 버튼</strong></p>
+<ul>
+<li><strong>주간생산계획으로 반영하기</strong>: 조정한 부하분석 내용을 주간생산계획에 반영합니다. 반영 시 주간생산계획의 새 버전이 확정 상태로 생성됩니다.</li>
+<li><strong>새버전 생성</strong>: 선택한 부하분석(MPS) 데이터를 동일하게 새로 채번하여 새 버전으로 생성합니다(버전업).</li>
+<li><strong>다운로드</strong>: 현재 조회된 내용을 엑셀 파일로 내려받습니다.</li>
+</ul>
+<p><strong>② 검색 영역</strong></p>
+<ul>
+<li><strong>MPS실행일자</strong>: 조회할 부하분석(MPS) 실행일자의 범위(시작일 ~ 종료일)를 선택합니다. 기본값은 당월입니다.</li>
+<li><strong>상세검색</strong>: 클릭하면 MPS실행번호·작업장·제품 등 추가 검색 조건이 펼쳐집니다. [작업장]·[제품]은 조회 팝업에서 선택합니다.</li>
+<li><strong>조회 / 초기화</strong>: 입력한 조건으로 조회하거나, 검색 조건을 초기화합니다.</li>
+</ul>
+<p><strong>③ MPS 실행 정보</strong></p>
+<p>부하분석을 실행한 내역 목록입니다. 행을 선택하면 아래 ④·⑤ 영역에 해당 실행 결과의 부하 분석 내용이 표시됩니다.</p>
+<ul>
+<li><strong>MPS실행일자 / MPS실행번호</strong>: 부하분석을 실행한 일자와 실행번호 (예: 2026-05-27 / MPS202619W005).</li>
+<li><strong>주간생산계획번호</strong>: 부하분석의 기준이 된 주간생산계획 번호 (예: PP202619W005).</li>
+<li><strong>계획월 / 주차 / 계획시작일 / 계획종료일</strong>: 해당 주간생산계획의 대상 월·주차·기간 (예: 2026-05, 19주차, 2026-05-04 ~ 2026-05-10).</li>
+<li><strong>공장</strong>: 계획이 적용되는 공장 (예: [PLT001] 기본 공장).</li>
+<li><strong>상태</strong>: 부하분석 실행 결과의 상태입니다 (예: 확정). 주간생산계획에 반영해 확정되기 전에는 실행완료 등으로 표시됩니다(설계 기준).</li>
+</ul>
+<p><strong>④ 분석 탭</strong></p>
+<p>③에서 선택한 부하분석 결과를 두 가지 관점으로 조회합니다.</p>
+<ul>
+<li><strong>작업장별 과부족</strong>: 일자·작업장별 필요시간과 가용시간을 비교해 과부족을 보여줍니다. (⑤)</li>
+<li><strong>제품별 공정/작업 매핑 &amp; 작업장별 제품별 필요시간</strong>: 제품별 공정·작업 매핑 정보와, 작업장별·제품별 필요시간 계산 내역을 보여줍니다. (아래 별도 캡처)</li>
+</ul>
+<p><strong>⑤ 작업장별 과부족</strong></p>
+<p>작업장별 과부족 시간 계산(필요시간 vs. 가용시간 비교) 결과입니다.</p>
+<ul>
+<li><strong>일자</strong>: 분석 대상 일자 (예: 2026-05-04).</li>
+<li><strong>작업장</strong>: 분석 대상 작업장 (예: [WKC001] 가공작업장(재단), [WKC002] 조립작업장(봉제)).</li>
+<li><strong>필요시간(분)</strong>: 해당 일자에 그 작업장에서 생산하는 데 필요한 시간입니다 (예: [WKC001] 가공작업장 5,000).</li>
+<li><strong>가용시간(분)</strong>: 해당 작업장이 그 일자에 투입 가능한 시간입니다 (예: [WKC001] 1,920).</li>
+<li><strong>과부족 시간(분)</strong>: 가용시간 − 필요시간입니다. 값이 음수이면 빨간색으로 표시되며 능력이 부족하다는 의미입니다 (예: 1,920 − 5,000 = -3,080).</li>
+<li><strong>과부족 상태</strong>: 능력 충족 여부를 표시합니다. 가용시간이 필요시간 이상이면 🟢 여유, 미만이면 🔴 부족으로 표시됩니다. (일치 상태도 있습니다 — 설계 기준.)</li>
+</ul>
+<p><strong>제품별 공정/작업 매핑 &amp; 작업장별 제품별 필요시간 탭</strong></p>
+<p><img loading="lazy" src="images/production/2-4/02_tab2.png" /></p>
+<ul>
+<li><strong>① 제품별 공정/작업 매핑 정보</strong>: 제품이 어떤 공정·작업을 거쳐 어느 작업장에서 생산되는지를 보여줍니다 (일자·제품·공정그룹·공정명·작업명·작업장).</li>
+<li><strong>② 작업장별 제품별 필요시간 계산</strong>: 작업장별·제품별 필요시간 계산 내역입니다 (일자·작업장·제품·표준노무시간(분)·생산계획수량·필요시간(분)). <strong>필요시간(분) = 생산계획수량 × 표준노무시간(분)</strong>으로 계산됩니다 (예: 100,000 × 2 = 200,000). 이렇게 합산된 작업장·일자별 필요시간이 ⑤ 작업장별 과부족의 [필요시간]이 됩니다.</li>
+</ul>
+<hr />
+<h3>⊙ 입력 예제</h3>
+<h3>2.4.1. 부하분석 조회·조정하기</h3>
+<p>① [생산관리]-[생산계획]-[주간생산계획]에서 계획을 선택해 [부하분석 실행] → ② 본 [부하분석] 화면에서 MPS실행일자로 조회 → ③ MPS 실행 정보에서 대상 건을 선택해 작업장별 과부족을 확인합니다.</p>
+<ul>
+<li><strong>과부족 조정</strong>: 작업장별 과부족에서 과부족 상태를 클릭하면 [작업장 제품별 생산일정/수량 조정] 팝업이 열립니다. 작업장 정보와 제품별 생산 일정(일자·제품·규격·단위·공정그룹·표준노무시간(분)·생산계획수량·필요시간(분))이 표시되며, 일자·생산계획수량을 조정·추가·삭제해 부하를 분산할 수 있습니다. [확인] 시 변경 내용이 부하분석에 반영됩니다.</li>
+<li><strong>생산 시작일자 변경</strong>: MPS 실행 정보에서 대상 건을 선택하고 [수정]하면 [생산 시작일자 변경] 팝업이 열려, 제품별 공정·작업 매핑의 일자를 조정·저장할 수 있습니다. 저장하면 [제품별 공정/작업 매핑] 탭의 일자에 반영됩니다. (설계 기준)</li>
+</ul>
+<hr />
+<h3>2.4.2. 부하분석 → 주간생산계획 반영 → MRP 흐름</h3>
+<p>부하분석은 주간생산계획·MRP와 다음과 같은 흐름으로 연결됩니다.</p>
+<ul>
+<li><strong>부하분석 실행</strong>: 주간생산계획에서 실행하면 원본 데이터는 유지되고, 부하분석 결과가 생성됩니다.</li>
+<li><strong>조정 후 반영</strong>: 부하분석 데이터를 조정한 뒤 [주간생산계획으로 반영하기]를 하면, 주간생산계획의 <strong>새 버전</strong>이 <strong>확정 상태</strong>로 생성됩니다. ([새버전 생성]으로 부하분석 자체의 버전을 올릴 수도 있습니다.) 단, 같은 주차·같은 공장에 이미 확정 상태의 부하분석 건이 있으면 새로 생성할 수 없습니다. (설계 기준)</li>
+<li><strong>MRP 실행</strong>: 부하분석이 <strong>확정</strong>되어야 주간생산계획에서 [MRP 실행]을 할 수 있습니다.</li>
+</ul>
+<div class="callout">
+<p>⚠️ MRP 확정 시 구매요청(PR)이 자동 생성됩니다. MRP를 확정 취소하려면 연결된 PR이 작성중 상태여야 합니다. 부하분석을 확정 취소하려면 연결된 MRP가 확정 상태가 아니어야 하며(MRP 확정 시 부하분석 확정취소 불가), 확정 취소 시 연결된 MRP 내역이 함께 삭제됩니다. (설계 기준)</p>
+</div>
+</section><section class="page" id="production-2-5"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">2.5. 생산요청서</h1><h1>2. 생산계획</h1>
+<h2>2.5. 생산요청서</h2>
+<p>생산요청서는 영업에서 수주한 내역 또는 직접 입력한 내용을 바탕으로, 어떤 품목을 언제까지 얼마나 생산할지를 생산 부서에 요청하는 문서입니다. 작성된 생산요청서는 [생산계획]-[월간생산계획]에서 참조되어 생산 일정 수립의 기초가 됩니다.</p>
+<p>메뉴 경로: [생산관리]-[생산계획]-[생산요청서]</p>
+<div class="callout">
+<p>✅ 생산요청서는 두 가지 방법으로 작성할 수 있습니다. ① 수주서로 등록 — 영업 수주서를 불러와 작성 / ② 직접 등록 — 품목을 직접 선택해 작성.</p>
+</div>
+<p><img loading="lazy" src="images/production/2-5/01_list.png" /></p>
+<p><strong>① 검색 조건</strong></p>
+<ul>
+<li>생산요청번호·공장·작성일자·상태로 생산요청서를 조회합니다. 작성일자 기본값은 당월 1일 ~ 당일입니다. [조회] 클릭 시 결과가 기본 정보·요청 상세정보 영역에 표시됩니다.</li>
+</ul>
+<p><strong>② 기능 버튼</strong></p>
+<ul>
+<li>수주서로 등록: 수주서를 불러와 생산요청서를 작성합니다. (→ 입력 예제 1)</li>
+<li>등록: 품목을 직접 선택해 생산요청서를 작성합니다. (→ 입력 예제 2)</li>
+<li>수정 / 삭제: 선택한 생산요청서를 수정하거나 삭제합니다.</li>
+<li>다운로드: 조회된 기본정보·상세정보를 엑셀 파일로 내려받습니다.</li>
+<li>결재상신: 선택한 생산요청서를 결재 상신합니다. (결재 기능을 사용하는 경우에만 표시됩니다.)</li>
+</ul>
+<p><strong>③ 기본 정보</strong></p>
+<ul>
+<li>조회된 생산요청서 목록입니다. 행을 선택하면 ④ 요청 상세정보에 해당 생산요청서의 품목 내역이 표시됩니다.</li>
+<li>참조: 수주서 링크를 클릭하면 이 생산요청서가 참조한 원본 수주서를 확인할 수 있습니다. (→ 참조 수주서 확인)</li>
+<li>상태: 생산요청서의 진행 상태를 표시합니다. (작성 직후에는 ‘작성중’으로 표시됩니다.)</li>
+<li>작성자 · 부서: 생산요청서를 작성한 사용자와 소속 부서가 자동 표시됩니다.</li>
+<li>문서번호 · 결재상태: 결재 기능 사용 시에만 표시되는 컬럼으로, 상신 전에는 공란이며 상신 후 문서번호·결재 상태가 표시됩니다.</li>
+</ul>
+<p><strong>④ 요청 상세정보</strong></p>
+<ul>
+<li>③에서 선택한 생산요청서의 품목별 생산요청수량 · 생산요청기한이 표시됩니다.</li>
+</ul>
+<h3>⊙ 입력 예제 1 — 수주서로 등록</h3>
+<p>영업에서 등록한 수주서를 불러와 생산요청서를 작성하는 방법입니다.</p>
+<p><strong>진행 순서: ① [수주서로 등록] → ② 수주일자·공장 조회 → ③ 수주서 선택 → ④ 생산요청수량·기한 입력 → ⑤ [확인]</strong></p>
+<p><strong>1) 수주서 조회 · 선택</strong></p>
+<p>[수주서로 등록] 버튼을 클릭하면 수주서 선택 팝업이 열립니다. 수주일자(예: 2026-05-01 ~ 2026-05-31)와 공장을 지정하고 [조회]하면 수주서 조회 팝업이 나타나 조건에 맞는 수주서 목록을 보여줍니다. 대상 수주서를 선택하고 [확인]합니다.</p>
+<p><img loading="lazy" src="images/production/2-5/03_order_search_popup.png" /></p>
+<div class="callout">
+<p>ℹ️ 공장을 선택하지 않고 조회하면 “공장 선택 후 조회하세요.” 안내가 표시됩니다.</p>
+</div>
+<p><strong>2) 생산요청수량 · 기한 입력</strong></p>
+<p>수주서를 선택하면 수주정보와, 선택한 공장에서 생산하는 품목의 상세품목정보가 표시됩니다.</p>
+<p><img loading="lazy" src="images/production/2-5/05_order_select_input.png" /></p>
+<ul>
+<li>① 검색 조건: 수주일자 · 공장. (수주서 조회 시 사용한 조건)</li>
+<li>② 수주정보: 선택한 수주서의 정보(수주번호·수주일자·거래처·납기일자·공장)가 표시됩니다.</li>
+<li>③ 상세품목정보: 수주서 품목 중 선택한 공장에 해당하는 품목만 표시됩니다. 품목·규격·단위·수주수량은 자동 표시(읽기 전용)이며, 생산요청수량은 수주수량 범위 내에서, 생산요청기한은 직접 입력합니다. (수주수량 초과 시 안내가 표시되고, 0으로 두면 해당 품목은 제외됩니다.)</li>
+<li>④ 확인: 입력 내용을 저장하고 생산요청서가 등록됩니다. (예: 캔버스 에코백 200 / 아로마 향초 500, 기한 2026-06-09)</li>
+</ul>
+<div class="callout">
+<p>✅ 이미 생산요청이 등록된 수주 품목은 기존 생산요청번호·기생산요청수량이 함께 표시되어, 남은 수량만 추가로 요청할 수 있습니다.</p>
+</div>
+<p><strong>3) 참조 수주서 확인</strong></p>
+<p>조회 화면 ③ 기본 정보의 참조 컬럼에서 수주서 링크를 클릭하면 이 생산요청서가 참조한 원본 수주서를 확인할 수 있습니다.</p>
+<p><img loading="lazy" src="images/production/2-5/06_order_detail_popup.png" /></p>
+<ul>
+<li>① 수주정보: 참조한 수주서의 기본 정보입니다.</li>
+<li>② 상세정보: 수주서의 전체 품목이 표시되며, 이 생산요청서에 포함된 품목만 생산요청수량·생산요청기한이 채워집니다. 다른 공장 품목 등 생산요청 대상이 아닌 품목은 생산요청수량이 ‘---’로 표시됩니다.</li>
+</ul>
+<h3>⊙ 입력 예제 2 — 직접 등록</h3>
+<p>수주서 없이 품목을 직접 선택해 생산요청서를 작성하는 방법입니다.</p>
+<p><strong>진행 순서: ① [등록] → ② 품목 선택 → ③ 생산요청수량·기한 입력 → ④ [확인]</strong></p>
+<p>[등록] 버튼을 클릭하면 생산요청 상세 팝업이 열립니다.</p>
+<p><img loading="lazy" src="images/production/2-5/10_direct_register_popup.png" /></p>
+<ul>
+<li>① 기본정보: 생산요청번호(저장 시 자동 채번)·공장·작성자·부서가 표시됩니다. 공장은 필수 항목이며, 작성자·부서는 로그인 사용자 정보로 자동 입력됩니다.</li>
+<li>② 요청 상세정보: [등록] 버튼으로 품목 조회 창을 열어 생산할 품목을 선택하면 목록에 추가됩니다. 품목·규격·단위는 자동 표시되며, 생산요청수량·생산요청기한을 직접 입력합니다. 잘못 추가한 품목은 체크 후 [삭제]로 제거합니다. 입력을 마치고 [확인]하면 생산요청서가 등록됩니다.</li>
+</ul>
+</section><section class="page" id="production-2-6"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">2.6. MRP</h1><h1>2. 생산계획</h1>
+<h2>2.6. MRP</h2>
+<p>MRP(자재소요량계획, Material Requirements Planning)는 확정된 주간생산계획(MPS)을 기준으로, 생산에 필요한 원·부자재를 언제 얼마나 조달해야 하는지 계산하는 화면입니다. 부품별·일자별로 필요수량과 가용수량을 산출해 부족분(신규 구매요청 필요수량)을 도출하며, 이 부족분이 구매요청으로 이어집니다.</p>
+<p>메뉴 경로: [생산관리]-[생산계획]-[MRP]</p>
+<div class="callout">
+<p>💡 MRP 실행(계산)은 이 화면이 아니라 [생산관리]-[생산계획]-[주간생산계획]에서 [MRP 실행] 버튼으로 수행합니다. 이 MRP 화면은 실행된 결과(실행내역)를 조회·확인하는 화면입니다. (→ 맨 아래 ‘MRP 실행 방법’ 참고)</p>
+</div>
+<h3>화면 구성</h3>
+<p><img loading="lazy" src="images/production/2-6/01_main.png" /></p>
+<p><strong>① 검색 조건</strong></p>
+<ul>
+<li>계획월을 선택하고 [조회]하면 해당 월에 실행된 MRP 내역이 표시됩니다. [상세 검색]으로 주차·공장·MPS문서번호 조건을 추가할 수 있습니다. (→ 상세 검색)</li>
+</ul>
+<p><strong>② 기능 버튼</strong></p>
+<ul>
+<li>다운로드: 조회된 실행내역과 실행결과를 엑셀 파일로 내려받습니다.</li>
+<li>결재상신: 선택한 MRP 실행건을 결재 상신합니다. (결재 기능을 사용하는 경우에만 활성화됩니다.)</li>
+</ul>
+<p><strong>③ MRP 실행내역</strong></p>
+<ul>
+<li>주간생산계획에서 실행된 MRP 목록입니다. 한 행을 선택하면 하단 ④ 실행결과에 해당 MRP의 부품별 소요·가용 내역이 표시됩니다.</li>
+<li>MRP실행번호 · 실행일시: MRP가 실행된 번호와 일시입니다.</li>
+<li>계획월 · MPS문서번호 · 주차 · 공장: 이 MRP가 참조한 주간생산계획(MPS)의 정보입니다.</li>
+<li>예외사항: 조달 일정상 문제가 있는 항목 수가 ‘N건’ 링크로 표시됩니다. 클릭하면 예외사항 팝업이 열립니다. (→ 예외사항 확인)</li>
+<li>MRP확정: MRP 실행건의 진행 상태(예: ‘실행’)를 표시합니다.</li>
+<li>작성자 · 부서 · 문서번호 · 결재상태: 실행한 사용자·부서와, 결재 기능 사용 시의 문서번호·결재 상태가 표시됩니다.</li>
+</ul>
+<p><strong>④ 실행결과</strong></p>
+<ul>
+<li>③에서 선택한 MRP의 계산 결과입니다. [일자별]·[부품별] 두 탭으로 나뉘어 표시됩니다. (→ 일자별 실행결과 / 부품별 실행결과)</li>
+</ul>
+<h3>상세 검색</h3>
+<p>[상세 검색]을 펼치면 추가 조회 조건이 표시됩니다.</p>
+<p><img loading="lazy" src="images/production/2-6/02_detail_search.png" /></p>
+<ul>
+<li>주차: 계획월 내 특정 주차로 좁혀 조회합니다.</li>
+<li>공장: 특정 공장의 MRP만 조회합니다.</li>
+<li>MPS문서번호: 특정 주간생산계획(MPS) 문서번호로 조회합니다.</li>
+</ul>
+<h3>일자별 실행결과</h3>
+<p>부품별로 ‘필요수량’과 ‘가용재고’를 일자 단위로 보여줍니다. (화면 구성 ④ 영역 참고)</p>
+<ul>
+<li>부품 · 규격 · 단위: 소요가 발생한 원·부자재 정보입니다.</li>
+<li>일자별 필요수량: 해당 일자에 필요한 수량입니다.</li>
+<li>일자별 가용재고: 해당 일자에 사용 가능한 재고 수량입니다.</li>
+<li>합계: 부품별 일자 필요수량·가용재고의 합계 행입니다.</li>
+</ul>
+<h3>부품별 실행결과 — 필요수량·가용수량 계산 근거</h3>
+<p>부품별 탭에서는 필요수량과 가용수량이 어떤 항목으로 구성되는지 세부 내역까지 보여줍니다.</p>
+<p><img loading="lazy" src="images/production/2-6/03_part.png" /></p>
+<ul>
+<li>필요수량 = 생산계획수량 기반 총 소요수량 + 안전재고 + LOT으로 인한 추가필요수량 → ‘필요수량 합계’</li>
+<li>가용수량 = 현재고량 + 구매요청 미전환수량 + 구매오더 미입고 수량 + 창고이동 요청수량 → ‘가용수량 합계’</li>
+<li>신규 구매요청 필요수량 = 필요수량 합계 − 가용수량 합계. 즉 현재 확보 가능한 수량으로 부족한 부분이며, 이 수량이 신규 구매요청 대상이 됩니다.</li>
+</ul>
+<div class="callout">
+<p>✅ 부품별 결과는 각 부품에 대해 일자별 행으로 펼쳐지며, 위 계산식에 따라 일자별 부족분(신규 구매요청 필요수량)을 한눈에 확인할 수 있습니다.</p>
+</div>
+<h3>예외사항 확인</h3>
+<p>실행내역 그리드의 예외사항 ‘N건’ 링크를 클릭하면 MRP 예외사항 팝업이 열립니다.</p>
+<p><img loading="lazy" src="images/production/2-6/04_exception.png" /></p>
+<ul>
+<li>일자 · 품목 · 규격 · 단위: 예외가 발생한 항목 정보입니다.</li>
+<li>필요수량 · 부족수량: 해당 일자의 필요수량과 부족수량입니다.</li>
+<li>예외코드 · 메시지: 예외 유형과 안내 메시지입니다. 예) NEED_DATE_PAST — “부품 준비일(생산일자 전일)이 이미 경과. 주간생산계획 조정 및 MPS 재확정이 필요합니다.”</li>
+</ul>
+<div class="callout">
+<p>ℹ️ 예외사항이 있으면 조달 일정이 이미 지났다는 의미이므로, 주간생산계획(MPS)을 조정하고 다시 확정·MRP 실행하는 것이 좋습니다.</p>
+</div>
+<h3>MRP 실행 방법 (주간생산계획)</h3>
+<p>MRP는 [생산관리]-[생산계획]-[주간생산계획] 화면에서 실행합니다. 주간생산계획을 작성한 뒤 [MPS실행] → [MPS확정/확정취소]로 확정하고, [MRP 실행] 버튼을 클릭하면 MRP가 계산됩니다.</p>
+<p><img loading="lazy" src="images/production/2-6/05_weekly_run.png" /></p>
+<ul>
+<li>주간생산계획 기본정보 그리드에는 행별로 MPS 상태·실행번호와 MRP 상태·실행번호가 표시되어, 어느 주간계획에 대해 MRP가 실행되었는지 확인할 수 있습니다.</li>
+<li>[MRP 실행]으로 생성된 결과가 이 MRP 화면의 ‘MRP 실행내역’에 표시됩니다.</li>
+</ul>
+</section><section class="page" id="production-3-1"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">3.1. 생산지시서</h1><h1><strong>3. 생산실행</strong></h1>
+<h2><strong>3.1. 생산지시서</strong></h2>
+<div class="callout">
+<p>🏭 생산지시서는 확정된 생산계획(계획오더)이나 수주를 실제 생산을 위한 ‘<strong>생산지시</strong>’로 만들어, <strong>어떤 제품을 · 언제 · 얼마나 · 어느 공정/작업장에서</strong> 생산할지 지시하는 문서입니다. 자재이동·생산실적·원가집계 등 생산실행의 모든 출발점이 됩니다.</p>
+</div>
+<h3><strong>1) 개요 — 생산지시서란</strong></h3>
+<p>주간생산계획에서 확정된 계획을 그대로 실행하거나(직접 입력), 계획 단계의 계획오더(MPS)를 불러와 생산지시로 전환합니다. 생산지시서가 발행되면 그 제품의 BOM · 공정순서(라우팅) · 작업장 · 표준공수가 함께 확정되어, 이후 자재이동요청 · 생산실적 · 원가집계가 모두 이 지시서를 기준으로 처리됩니다.</p>
+<div class="callout">
+<p>💡 <strong>왜 필요한가 —</strong> 생산지시서가 있어야 ① 어떤 자재를 공정창고로 보낼지(자재이동요청), ② 어떤 공정에서 얼마를 만들지(생산실적), ③ 제품별 재공(WIP)·원가가 얼마인지를 추적할 수 있습니다. 생산지시 한 건 = 완제품/반제품 1종을 한 번 생산하는 단위입니다.</p>
+</div>
+<p><strong>핵심 개념</strong></p>
+<ul>
+<li><strong>생산지시 헤더 — 무엇을·언제·얼마나:</strong> 품목 · 라우팅 · 총생산목표수량 · 시작/완료일 · 발행일자 · 상태. 생산지시번호(<code>PIR…</code>)로 식별됩니다.</li>
+<li><strong>생산지시 상세(공정) — 어디서·어떻게:</strong> 라우팅에 정의된 공정·작업·작업장·근무조 단위로 전개되며, 공정별 생산지시수량과 공정 시작/종료 일시를 가집니다.</li>
+<li><strong>직접 / MPS 참조:</strong> 계획 없이 바로 입력(직접)하거나, 주간생산계획에서 만든 계획(MPS실행번호)을 불러와 전환(MPS 참조)합니다.</li>
+<li><strong>상태:</strong> 생산지시는 발행 → 진행 → 완료 → 정산 단계를 거치며, 단계에 따라 후속 작업(자재투입·실적·원가)이 진행됩니다.</li>
+</ul>
+<h3><strong>2) 화면 진입</strong></h3>
+<p>좌측 사이드바 <strong>[생산관리] ▸ [생산실행] ▸ [생산지시서]</strong> 메뉴를 클릭합니다.</p>
+<h3><strong>3) 목록 화면</strong></h3>
+<p>화면은 상단 <strong>조회 조건</strong>, 가운데 <strong>기본정보(생산지시서 목록)</strong>, 하단 <strong>생산지시 상세정보(선택한 지시서의 공정별 작업)</strong> 로 구성됩니다. 목록의 행을 선택하면 하단에 그 지시서의 공정이 표시됩니다.</p>
+<p><img loading="lazy" src="images/production/3-1/01_list.png" alt="생산지시서 목록 — 생산계획일자 기간으로 조회한 결과 (예: 2026-05)" /></p>
+<p>생산지시서 목록 — 생산계획일자 기간으로 조회한 결과 (예: 2026-05)</p>
+<ul>
+<li><strong>① 조회 조건 —</strong> 생산계획일자(기간) · 공장 으로 조회합니다. [조회] / [초기화].</li>
+<li><strong>② 툴바 —</strong> [마감] [다운로드] [출력] [등록] [수정] [삭제] [결재상신]. [등록]으로 새 생산지시를 만들고, [출력]으로 생산지시서를 인쇄합니다.</li>
+<li><strong>③ 기본정보(생산지시 목록) —</strong> 생산지시번호 · 공장 · 품목 · 규격 · 단위 · 라우팅 · 총생산목표수량 · 시작/완료일 · 발행일자 · MPS실행번호 · 상태 · 작성자 등. 행을 선택하면 하단 상세가 갱신됩니다.</li>
+<li><strong>④ 생산지시 상세정보 —</strong> 선택한 지시서를 라우팅 공정 단위로 전개한 작업 목록(공정 · 작업 · 작업장 · 근무조 · 수량 · 공정 시작/종료).</li>
+</ul>
+<div class="callout">
+<p>📋 <strong>표시 데이터 예시 —</strong> 2026-05 기간 조회 시 <code>PIR2026050015~021</code>(캔버스 에코백 FG-A01, 봉제완료 본체 반제품 등) 7건이 모두 ‘진행중’ 상태로 표시됩니다.</p>
+</div>
+<h3><strong>4) 상세정보 — 공정별 작업 읽기</strong></h3>
+<p><img loading="lazy" src="images/production/3-1/02_detail.png" alt="선택한 생산지시서의 공정 상세 — 라우팅 공정 순서대로 전개" /></p>
+<p>선택한 생산지시서의 공정 상세 — 라우팅 공정 순서대로 전개</p>
+<p>선택한 생산지시서가 라우팅에 정의된 <strong>공정 순서대로</strong> 펼쳐집니다. 각 공정의 작업장·근무조·생산지시수량·생산실적수량과 공정 시작/종료 일시를 확인합니다.</p>
+<ul>
+<li><strong>① 공정 · 작업 · 작업장 —</strong> 라우팅(공정순서)에 정의된 공정/작업과 수행 작업장. (예: 도장(외주) → 포장)</li>
+<li><strong>② 근무조 · 수량 —</strong> 근무조(교대)와 공정별 생산지시수량 / 생산실적수량. 실적은 생산 실적 입력 전이면 0.</li>
+<li><strong>③ 공정시작 —</strong> 공정 시작 예정 일자 · 시 · 분.</li>
+<li><strong>④ 공정종료 —</strong> 공정 종료 예정 일자 · 시 · 분.</li>
+</ul>
+<h3><strong>5) 생산지시 등록</strong></h3>
+<p>툴바 <strong>[등록]</strong> 을 누르면 <strong>생산지시서 상세</strong> 팝업이 열립니다. 헤더(기본정보)와 공정(상세정보)을 입력해 새 생산지시를 만듭니다.</p>
+<p><img loading="lazy" src="images/production/3-1/03_register.png" alt="생산지시 등록 팝업 ‘생산지시서 상세’ — 빈 양식 (별표(*)는 필수 항목)" /></p>
+<p>생산지시 등록 팝업 ‘생산지시서 상세’ — 빈 양식 (별표(*)는 필수 항목)</p>
+<ul>
+<li><strong>① 작성자 · 부서 —</strong> 지시를 생성하는 담당자 / 부서.</li>
+<li><strong>② 구분 —</strong> [직접] / [MPS 참조] 중 선택(필수). [직접] 선택 시 ‘생산 지시 품목 선택’ 팝업이 열려 공장·품목을 고르고, [MPS 참조] 선택 시 ‘주간생산계획(MPS) 선택’ 팝업이 열려 계획(<code>MPS실행번호</code>)을 골라 불러옵니다. 기존 건을 수정할 때는 구분 영역이 숨겨집니다.</li>
+<li><strong>③ 기본정보 —</strong> [추가](<strong>‘직접’일 때만 표시</strong>)로 행을 만들어 품목 · 라우팅 · 총생산목표수량 · 시작일 · 완료일 · 발행일자 를 입력합니다. 품목·라우팅을 고르면 단위·공장 등이 자동 채워지고, 생산지시번호는 저장 시 <strong>자동 채번</strong>됩니다. <strong>발행일자</strong>는 기본값이 <strong>오늘 날짜</strong>이며 직접 수정할 수 있습니다. 공정별 생산지시수량은 총생산목표수량과 동일하게 자동 적용(읽기전용)됩니다.</li>
+<li><strong>④ 생산지시 상세정보 —</strong> 선택한 라우팅의 공정이 자동 전개됩니다. 공정별 생산지시수량과 공정 시작/종료(일자·시·분)를 입력합니다.</li>
+<li><strong>⑤</strong> [확인] 으로 저장합니다(취소는 [취소]).</li>
+</ul>
+<div class="callout">
+<p>ℹ️ <strong>직접 vs MPS 참조 —</strong> 반복 생산이나 긴급 건은 [직접]으로 바로 입력하고, 주간생산계획으로 수립한 계획은 [MPS 참조]로 불러와 계획–실적을 연결합니다.</p>
+</div>
+<div class="callout">
+<p>🔎 <strong>선택 팝업 —</strong> [직접]은 ‘생산 지시 품목 선택’ 팝업(공장·품목·규격·단위·라우팅 확인 후 선택), [MPS 참조]는 ‘주간생산계획(MPS) 선택’ 팝업(MPS실행일자·공장·품목·생산기간으로 조회 → 라우팅 단위로 선택)에서 대상을 고릅니다. MPS 참조로 고르면 참조한 <code>MPS실행번호</code>가 기본정보에 함께 표시됩니다. (MPS 조회 기간은 1개월 이내로 지정)</p>
+</div>
+<div class="callout">
+<p>📅 <strong>발행일자</strong> (2026-06 추가) — 생산지시 <strong>등록 시 기본값은 오늘 날짜</strong>이며 직접 수정할 수 있습니다. 발행일자는 목록과 등록 팝업의 기본정보에 컬럼으로 표시됩니다.</p>
+</div>
+<h3><strong>6) 생산지시 상태 흐름</strong></h3>
+<p>생산지시는 생성 후 발행 · 진행 · 완료 · 정산 단계를 거칩니다. 목록의 ‘상태’ 컬럼에서 현재 단계를 확인합니다(예시 데이터는 모두 ‘진행중’).</p>
+<table>
+<thead>
+<tr class="header">
+<th>코드</th>
+<th>단계</th>
+<th>설명 · 전환 시점</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>생성 (CR)</td>
+<td>작성</td>
+<td>생산지시서를 만들고 저장한 단계. 아직 작업장 배포 전.</td>
+</tr>
+<tr class="even">
+<td>배포 (RL)</td>
+<td>발행</td>
+<td>작업장에 배포되어 실행 가능. 이때 BOM도 함께 배포되어 자재투입·외주발주가 가능.</td>
+</tr>
+<tr class="odd">
+<td>진행중 (PG)</td>
+<td>진행</td>
+<td>발행 후 시작일이 도래하고 생산실적이 입력되면 자동 전환.</td>
+</tr>
+<tr class="even">
+<td>생산완료 (TE)</td>
+<td>완료</td>
+<td>모든 공정의 실적수량(ACT_QTY)이 완료된 상태. 추가 자원 투입·실적 입력 불가.</td>
+</tr>
+<tr class="odd">
+<td>정산완료 (CL)</td>
+<td>정산</td>
+<td>회계·원가 전표 생성(원가마감)까지 끝난 최종 종료 상태.</td>
+</tr>
+</tbody>
+</table>
+<div class="callout">
+<p>📌 <strong>자재 가용성 확인 후 확정 —</strong> 생산지시를 확정(발행)하려면 그 제품 BOM의 소요 자재 재고가 부족하지 않아야 합니다. 부족하면 자재이동요청 등으로 재고를 보충한 뒤 확정할 수 있습니다.</p>
+</div>
+<h3><strong>관련 메뉴</strong></h3>
+<ul>
+<li><a href="production.html#production-2-3">2.3. 주간생산계획</a> — 생산지시의 원천이 되는 계획(MPS 참조 대상)</li>
+<li><a href="production.html#production-3-2">3.2. 자재이동요청</a> — 생산지시서 공장의 공정창고로 원·부자재 이동</li>
+<li><a href="production.html#production-1-11">1.11. 공정순서(라우팅)</a> — 공정·작업·작업장 전개의 기준(라우팅)</li>
+<li><a href="production.html#production-1-14">1.14. 공정별 BOM관리</a> — 공정별 투입 자재 정의</li>
+<li><a href="production.html#production-3-4">3.4. 생산실적</a> — 생산지시 대비 실제 실적 입력</li>
+</ul>
+</section><section class="page" id="production-3-2"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">3.2. 자재이동요청</h1><h1>3. 생산실행</h1>
+<h2>3.2. 자재이동요청</h2>
+<div class="callout">
+<p>📦 자재이동요청은 생산에 필요한 원·부자재를 각 보관 창고에서 <strong>해당 생산지시서 공장의 ‘공정창고’로 이동</strong>시키는 작업입니다. (공정창고는 공장마다 기본으로 하나씩 존재) 생산지시서 단위로 ‘어떤 자재를 공정창고로 보낼지’를 요청하면, <strong>입출고요청서에 ‘이동요청’으로 쌓이고 → [이동실행]에서 실제 재고가 옮겨집니다.</strong></p>
+</div>
+<h3>1) 개요 — 자재이동요청이란</h3>
+<p>생산을 시작하려면 BOM상의 원·부자재가 그 제품을 만드는 공장의 <strong>공정창고</strong>에 있어야 합니다. 자재이동요청은 원자재 창고 등에 보관된 자재를, 생산지시서가 지정한 공장의 공정창고로 옮기도록 요청하는 화면입니다.</p>
+<div class="callout">
+<p>💡 왜 필요한가 — 자재가 공정창고로 이동되어 있어야 생산실적 집계와 재공(WIP) 원가가 정확히 잡힙니다. 생산지시서별로 필요한 자재 수량이 자동 표시되어, 그대로 출고(이동)를 요청합니다.</p>
+</div>
+<p><strong>핵심 개념</strong></p>
+<ul>
+<li><strong>출고요청(자재이동요청)</strong> — <strong>원·부자재 창고 → 공정창고</strong> 로 자재를 보내는 요청. 입고(공장·창고)는 생산지시서 공장의 공정창고로 자동 고정됩니다.</li>
+<li><strong>반납요청</strong> — <strong>공정창고 → 원자재 창고</strong> 로 되돌리는 요청. 공정창고의 과불출·미사용 자재를 반납합니다. 출고(공장·창고)가 공정창고로 자동 고정됩니다.</li>
+<li>두 요청 모두 <strong>입출고요청서에 ‘이동요청’으로 쌓이며</strong>, [이동실행]에서 실제 재고가 이동합니다.</li>
+<li><strong>분할 요청 가능</strong> — 한 번에 전량을 요청하지 않고 <code>잔여수량</code> 범위에서 여러 번 나눠 요청할 수 있습니다.</li>
+</ul>
+<h3>2) 화면 진입</h3>
+<p>좌측 사이드바 <code>[생산관리] ▸ [생산실행] ▸ [자재이동요청]</code> 메뉴를 클릭합니다.</p>
+<h3>3) 목록 화면</h3>
+<p>화면은 상단 <strong>조회 조건</strong>, 가운데 <strong>기본 정보(생산지시서 목록)</strong>, 하단 <strong>자재이동요청 상세정보(선택한 지시서의 자재별 수량)</strong> 로 구성됩니다.</p>
+<p><img loading="lazy" src="images/production/3-2/01_list.png" alt="자재이동요청 목록 — ‘생산 지시서 발행일’ 기간으로 조회한 결과 (예: 2026-05)" /></p>
+<p>자재이동요청 목록 — ‘생산 지시서 발행일’ 기간으로 조회한 결과 (예: 2026-05)</p>
+<ul>
+<li><strong>① 조회 조건</strong> — <code>생산 지시서 발행일</code>(기간) · <code>생산지시서번호</code> 로 조회</li>
+<li><strong>② 다운로드 / 출력</strong> — 조회 결과를 엑셀 다운로드 / 출력</li>
+<li><strong>③ 기본 정보</strong> — 자재 이동이 필요한 <strong>생산지시서 목록</strong>(생산지시번호·발행일·작성자·부서·비고). 행을 선택하면 하단에 자재 목록이 표시됩니다.</li>
+<li><strong>④ 자재이동요청 상세정보</strong> — 선택한 생산지시서에 투입될 <strong>자재별 수량</strong>(총 지시수량 / 기 출고요청수량 / 잔여수량 / 반납수량)</li>
+<li>⑤ <code>[+ 자재이동요청]</code> / <code>[+ 반납요청]</code> — 상세에서 자재를 선택한 뒤 출고(이동) 또는 반납 요청 팝업을 엽니다.</li>
+</ul>
+<div class="callout">
+<p>📋 표시 데이터 예시 — 생산지시서 <code>PIR2026050020</code>(22주차 SFG)의 자재: <strong>[RM-A01] 캔버스 원단 2,500 / [RM-A02] 면 손잡이 끈 5,000</strong>. 기 출고요청수량 = 총 지시수량이면 잔여수량 0 → 이미 전량 요청된 상태입니다.</p>
+</div>
+<h3>4) 상세정보 — 자재별 수량 읽기</h3>
+<p><img loading="lazy" src="images/production/3-2/02_detail.png" alt="자재이동요청 상세정보 — 선택한 생산지시서의 자재별 수량 컬럼" /></p>
+<p>자재이동요청 상세정보 — 선택한 생산지시서의 자재별 수량 컬럼</p>
+<p>선택한 생산지시서에 필요한 자재가 표시되며, 수량 컬럼으로 요청·반납 진행 상황을 파악합니다.</p>
+<table>
+<thead>
+<tr class="header">
+<th>컬럼</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>총 지시수량</td>
+<td>생산지시서에서 그 자재가 필요한 총량(이동 대상 총량)</td>
+</tr>
+<tr class="even">
+<td>기 출고요청수량</td>
+<td>지금까지 자재이동요청(출고)한 누계 수량</td>
+</tr>
+<tr class="odd">
+<td>잔여수량</td>
+<td>총 지시수량 − 기 출고요청수량. 추가로 더 요청할 수 있는 수량</td>
+</tr>
+<tr class="even">
+<td>반납수량</td>
+<td>공정창고에서 원자재 창고로 반납 요청한 수량</td>
+</tr>
+</tbody>
+</table>
+<h3>5) 자재이동요청(출고) — 공정창고로 출고</h3>
+<p>상세정보에서 보낼 자재를 선택하고 <code>[+ 자재이동요청]</code> 을 누르면 출고(이동) 요청 팝업이 열립니다. <code>잔여수량</code> 범위에서 이번에 보낼 수량을 입력해 출고합니다.</p>
+<div class="callout">
+<p>ℹ️ ※ 아래 팝업은 기능 설계(최종 로직) 기준 화면이며, 표시된 코드·수량은 예시입니다. 실제 화면도 동일하게 동작합니다.</p>
+</div>
+<p><img loading="lazy" src="images/production/3-2/03_chulgo_popup.png" alt="자재이동요청(출고) 팝업 — 원자재 창고 → 공정창고 (입고공장·창고는 생산지시서 공장의 공정창고로 고정)" /></p>
+<p>자재이동요청(출고) 팝업 — 원자재 창고 → 공정창고 (입고공장·창고는 생산지시서 공장의 공정창고로 고정)</p>
+<ul>
+<li><strong>① 출고</strong> — 자재가 나가는 출처(원·부자재 창고, 예: 충주1원자재). 헤더 <code>출고창고</code> 를 고르면 모든 행에 일괄 반영되고, 품목별 기본창고가 기본값으로 채워집니다(비울 수도 있음).</li>
+<li><strong>② 입고</strong> — 들어가는 곳. <strong>생산지시서 공장의 공정창고로 자동 고정</strong>되어 변경하지 않습니다.</li>
+<li><strong>③ 수량</strong> — 총 수량 / 기 출고요청수량 / <strong>현 출고요청수량(이번에 보낼 양)</strong> / 잔여수량. 분할 출고 시 <code>현 출고요청수량</code> 만 입력합니다.</li>
+<li>④ <code>[출고]</code> — 누르면 <strong>입출고요청서에 이동요청으로 등록</strong> 됩니다. (취소는 <code>[취소]</code>)</li>
+</ul>
+<h3>6) 자재반납 요청 — 공정창고에서 반납</h3>
+<p>공정창고로 보냈으나 쓰지 않은(과불출) 자재를 원자재 창고로 되돌릴 때 <code>[+ 반납요청]</code> 으로 반납 요청 팝업을 엽니다. 출고의 <strong>역방향</strong> 이동입니다.</p>
+<p><img loading="lazy" src="images/production/3-2/04_banap_popup.png" alt="자재반납 요청 팝업 — 공정창고 → 원자재 창고 (출고의 역방향)" /></p>
+<p>자재반납 요청 팝업 — 공정창고 → 원자재 창고 (출고의 역방향)</p>
+<ul>
+<li><strong>① 출고</strong> — 반납 시 자재가 나가는 곳. <strong>생산지시서 공장의 공정창고로 자동 고정</strong>.</li>
+<li><strong>② 입고</strong> — 되돌아갈 원자재 창고. 헤더 <code>입고창고</code> 를 고르면 일괄 반영, 품목 기본창고가 기본값.</li>
+<li><strong>③ 수량</strong> — 출고완료수량 / 기 반납요청수량 / 현 반납요청수량 / 잔여수량.</li>
+<li>④ <code>[반납]</code> — 누르면 입출고요청서에 반납(이동)요청으로 등록됩니다.</li>
+</ul>
+<h3>7) 창고 지정 규칙 — 공장·창고 자동 지정 / 사용자 지정</h3>
+<p>요청서를 만들 때 공장·창고는 다음 규칙으로 채워집니다. 공장은 항상 생산지시서 기준으로 고정되고, 출고·반납에 따라 <strong>한쪽 창고만</strong> 사용자가 바꿀 수 있습니다.</p>
+<div class="callout">
+<p>📌 <strong>공장은 고정 —</strong> 출고공장·입고공장 모두 해당 생산지시서의 공장으로 고정되며 변경할 수 없습니다. (출고·입고 공장 동일)</p>
+</div>
+<p><strong>요청 유형별 창고 규칙</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th><strong>구분</strong></th>
+<th><strong>출고공장</strong></th>
+<th><strong>출고창고</strong></th>
+<th><strong>입고공장</strong></th>
+<th><strong>입고창고</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>자재이동요청(출고)</td>
+<td>지시서 공장 (고정)</td>
+<td>✎ 사용자 지정</td>
+<td>지시서 공장 (고정)</td>
+<td>공정창고 (고정)</td>
+</tr>
+<tr class="even">
+<td>자재반납 요청</td>
+<td>지시서 공장 (고정)</td>
+<td>공정창고 (고정)</td>
+<td>지시서 공장 (고정)</td>
+<td>✎ 사용자 지정</td>
+</tr>
+</tbody>
+</table>
+<p>✎ 표시가 사용자가 바꾸는 창고이고, 나머지는 자동으로 고정됩니다.</p>
+<ul>
+<li><strong>헤더 창고로 일괄 반영 —</strong> 헤더에서 출고창고(반납은 입고창고)를 선택하면 모든 품목 행에 한 번에 적용됩니다. 헤더 값은 요청정보 표시·일괄 적용용이며, 실제 저장은 디테일(품목별) 기준입니다.</li>
+<li><strong>품목별 개별 지정 —</strong> 품목마다 디테일에서 창고를 다르게 지정할 수 있습니다. 기본값은 품목별 기본창고(품목 마스터 기준)로 채워지며, 비워둘 수도 있습니다(미지정 허용).</li>
+<li><strong>라인별 이동 실행 —</strong> [이동실행] 시 품목 행마다 지정된 창고대로 각각 출고·입고 처리됩니다.</li>
+</ul>
+<h3>8) 처리 흐름과 상태</h3>
+<p>자재이동요청(출고)·반납요청은 모두 입출고요청서에 ‘이동요청’으로 쌓이고, <code>[이동실행]</code> 에서 실제 재고가 옮겨집니다. 실제 이동 수량에 따라 상태가 자동으로 바뀝니다.</p>
+<ul>
+<li>요청 생성 → 입출고요청서에 이동요청으로 쌓임 → <strong>이동실행(실제 재고 이동)</strong></li>
+<li>재고 반영 — <strong>출고 창고는 수량만큼 차감(−), 입고 창고는 수량만큼 증가(+)</strong></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>상태</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>자재이동요청</td>
+<td>문서만 생성됨, 실제 이동 수량 없음</td>
+</tr>
+<tr class="even">
+<td>자재이동 중</td>
+<td>실제 이동 수량이 1개 이상</td>
+</tr>
+<tr class="odd">
+<td>자재이동 완료</td>
+<td>총 이동수량 = 실제 이동수량</td>
+</tr>
+</tbody>
+</table>
+<h3>관련 메뉴</h3>
+<ul>
+<li><a href="production.html#production-3-1">3.1. 생산지시서</a> — 이동 대상이 되는 생산지시서를 발행</li>
+<li><a href="production.html#production-3-3">3.3. 자재이동요청 내역</a> — 자재이동 요청·실행 내역 조회</li>
+<li><a href="production.html#production-1-14">1.14. 공정별 BOM관리</a> — 공정별 투입 자재 정의(이동 대상 자재의 근거)</li>
+<li><a href="production.html#production-1-4">1.4. 창고관리</a> — 공정창고·원자재 창고 등 창고 정의</li>
+</ul>
+</section><section class="page" id="production-3-3"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">3.3. 자재이동요청 내역</h1><h1>3. 생산실행</h1>
+<h2>3.3. 자재이동요청 내역</h2>
+<div class="callout">
+<p>📋 자재이동요청 내역은 <strong>자재이동요청(출고)과 자재반납 요청으로 발생한 자재 이동 기록</strong>을 조회하는 화면입니다. 위쪽 <strong>자재이동요청 내역(출고/이동)</strong>, 아래쪽 <strong>반납요청 내역(반납)</strong> 두 영역으로 나뉘며, 요청·완료·미처리 수량을 한눈에 확인합니다.</p>
+</div>
+<h3>1) 개요</h3>
+<p>3.2 자재이동요청에서 만든 <strong>출고요청·반납요청이 처리된 내역</strong>을 생산지시서별·요청번호별로 조회합니다. 실제 이동(이동실행) 결과가 출고완료/반납완료 수량으로 반영됩니다.</p>
+<div class="callout">
+<p>💡 흐름 — 3.2 자재이동요청에서 요청 생성 → 입출고요청서/이동실행에서 실제 재고 이동 → 그 결과가 이 내역에 누적됩니다.</p>
+</div>
+<h3>2) 화면 진입</h3>
+<p>좌측 사이드바 <code>[생산관리] ▸ [생산실행] ▸ [자재이동요청 내역]</code> 메뉴를 클릭합니다.</p>
+<h3>3) 조회 / 화면 구성</h3>
+<p>상단에서 <strong>요청일자(기간)</strong> · <strong>생산지시번호</strong> 로 조회합니다. 화면은 위·아래 두 그리드로 구성됩니다.</p>
+<p><img loading="lazy" src="images/production/3-3/01_list.png" alt="자재이동요청 내역 — 위: 자재이동요청 내역(출고, 5월 14건 실제) / 아래: 반납요청 내역(반납, 예시)" /></p>
+<p>자재이동요청 내역 — 위: 자재이동요청 내역(출고, 5월 14건 실제) / 아래: 반납요청 내역(반납, 예시)</p>
+<ul>
+<li><strong>① 조회 조건</strong> — <code>요청일자</code>(기간) · <code>생산지시번호</code> 로 조회</li>
+<li><strong>② 자재이동요청 내역</strong> — <strong>출고(이동) 요청 기록</strong>. 출고공장·출고창고(원자재 창고) 기준이며 출고요청수량/출고완료수량/미출고수량을 표시합니다.</li>
+<li><strong>③ 반납요청 내역</strong> — <strong>공정창고 → 원자재 창고로 되돌린 반납 기록</strong>. 입고공장·입고창고(원자재 창고) 기준이며 반납요청수량/반납완료수량/미반납수량을 표시합니다.</li>
+</ul>
+<h3>4) 자재이동요청 내역(출고) 컬럼</h3>
+<table>
+<thead>
+<tr class="header">
+<th>컬럼</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>생산지시번호</td>
+<td>이동 대상 자재가 속한 생산지시서 번호</td>
+</tr>
+<tr class="even">
+<td>자재이동요청번호</td>
+<td>출고(이동) 요청 단위 번호 (예: MVT202605280084)</td>
+</tr>
+<tr class="odd">
+<td>요청일자</td>
+<td>자재이동(출고) 요청일</td>
+</tr>
+<tr class="even">
+<td>품목 / 규격 / 단위</td>
+<td>이동한 자재</td>
+</tr>
+<tr class="odd">
+<td>출고공장 / 출고창고</td>
+<td>자재가 나간 곳 (원자재 창고)</td>
+</tr>
+<tr class="even">
+<td>출고요청수량</td>
+<td>요청한 이동(출고) 수량</td>
+</tr>
+<tr class="odd">
+<td>출고완료수량</td>
+<td>실제로 이동(출고 완료)된 수량</td>
+</tr>
+<tr class="even">
+<td>미출고수량</td>
+<td>출고요청수량 − 출고완료수량 (아직 안 나간 수량)</td>
+</tr>
+</tbody>
+</table>
+<h3>5) 반납요청 내역(반납) 컬럼</h3>
+<div class="callout">
+<p>ℹ️ ※ 아래 반납 내역은 <strong>화면 구성을 보여주기 위한 예시 데이터</strong>입니다. (현재 시스템에 실제 반납 건이 없어, 반납요청 내역이 어떻게 표시되는지 설명하기 위해 예시로 작성)</p>
+</div>
+<p><img loading="lazy" src="images/production/3-3/02_banap.png" alt="반납요청 내역 — 공정창고에서 원자재 창고로 반납한 기록 (예시: RM-A01 200 / RM-A02 150 반납요청)" /></p>
+<p>반납요청 내역 — 공정창고에서 원자재 창고로 반납한 기록 (예시: RM-A01 200 / RM-A02 150 반납요청)</p>
+<table>
+<thead>
+<tr class="header">
+<th>컬럼</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>생산지시번호</td>
+<td>반납 대상 자재가 속한 생산지시서 번호</td>
+</tr>
+<tr class="even">
+<td>자재이동요청번호</td>
+<td>반납(이동) 요청 단위 번호</td>
+</tr>
+<tr class="odd">
+<td>요청일자</td>
+<td>반납 요청일</td>
+</tr>
+<tr class="even">
+<td>품목 / 규격 / 단위</td>
+<td>반납한 자재</td>
+</tr>
+<tr class="odd">
+<td>입고공장 / 입고창고</td>
+<td>자재가 되돌아간 곳 (원자재 창고)</td>
+</tr>
+<tr class="even">
+<td>반납요청수량</td>
+<td>요청한 반납 수량</td>
+</tr>
+<tr class="odd">
+<td>반납완료수량</td>
+<td>실제로 반납(입고 완료)된 수량</td>
+</tr>
+<tr class="even">
+<td>미반납수량</td>
+<td>반납요청수량 − 반납완료수량</td>
+</tr>
+</tbody>
+</table>
+<h3>6) 다운로드</h3>
+<p>상단 <code>[다운로드]</code> 로 조회 결과(출고·반납 내역)를 엑셀로 내려받을 수 있습니다.</p>
+<h3>관련 메뉴</h3>
+<ul>
+<li><a href="production.html#production-3-2">3.2. 자재이동요청</a> — 이 내역의 출고/반납 요청을 생성하는 화면</li>
+<li><a href="production.html#production-3-1">3.1. 생산지시서</a> — 이동 대상이 되는 생산지시서</li>
+<li><a href="production.html#production-1-4">1.4. 창고관리</a> — 공정창고·원자재 창고 등 창고 정의</li>
+</ul>
+</section><section class="page" id="production-3-4"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">3.4. 생산실적</h1><h1><strong>3. 생산실행</strong></h1>
+<h2><strong>3.4. 생산실적</strong></h2>
+<div class="callout">
+<p>🏭 생산실적은 생산지시서에 따라 실제 생산한 결과(<strong>양품·불량 수량, 작업 시간</strong>)를 입력·확정하는 화면입니다. 실적을 입력하면 <strong>Backflush</strong>로 BOM 자재가 자동 출고(재고 차감)되고, 완성 수량이 완제품/반제품 재고로 입고되며, 제조원가 전표가 발생합니다.</p>
+</div>
+<h3><strong>1) 개요 — 생산실적이란</strong></h3>
+<p>생산지시서별로 실제 생산 결과를 공정·작업 단위로 입력합니다. 작업의 시작/종료 시각, 양품수량·불량수량, 실제 노무·설비 시간을 기록하면, 시스템이 해당 공정 BOM의 자재를 자동 불출(Backflush)하고 완성 수량을 재고로 입고합니다. 입력된 실적은 생산원가 집계와 재고 이동의 근거가 됩니다.</p>
+<div class="callout">
+<p>💡 <strong>왜 필요한가 —</strong> 생산실적이 있어야 ① 실제 투입 자재·시간이 확정되어 제조원가가 계산되고, ② 완성품이 재고로 입고되어 판매가 가능하며, ③ 생산지시 대비 실적 차이를 분석할 수 있습니다. 회계·재고 처리의 구체 로직은 <strong>아래 3.5 페이지</strong>에서 다룹니다.</p>
+</div>
+<p><strong>핵심 개념</strong></p>
+<ul>
+<li><strong>공정실적 확정 —</strong> 공정/작업 단위로 실적을 입력하고 확정합니다. 모든 공정이 완료되면 생산이 끝납니다.</li>
+<li><strong>Backflush(자동 자재 불출) —</strong> 실적(완성 수량)을 등록하는 순간, 해당 공정에 매핑된 BOM 자재 중 Backflush 대상 자재를 양품수량 × 소요량만큼 출고창고에서 자동 차감합니다.</li>
+<li><strong>양품 / 불량 —</strong> 양품수량과 불량수량(불량코드별)을 입력합니다. 불량은 정상불량/비정상불량으로 구분되어 원가 처리가 달라집니다.</li>
+<li><strong>진행상태 —</strong> 실적은 초안 → 확정 단계로 관리되며, [생산실적 확정/취소]로 전환합니다.</li>
+</ul>
+<h3><strong>2) 화면 진입</strong></h3>
+<p>좌측 사이드바 <strong>[생산관리] ▸ [생산실행] ▸ [생산 실적]</strong> 메뉴를 클릭합니다.</p>
+<h3><strong>3) 목록 화면</strong></h3>
+<p>상단 <strong>조회 조건</strong>, 가운데 <strong>기본정보(생산실적 목록)</strong>, 하단 좌측 <strong>공정/작업 정보</strong>, 하단 우측 <strong>생산실적 상세정보(양품·불량·시간)</strong> 로 구성됩니다. 목록의 행을 선택하면 하단 두 그리드가 갱신됩니다.</p>
+<p><img loading="lazy" src="images/production/3-4/01_list.png" alt="생산실적 목록 — 생산지시서 발행일 기간으로 조회 (예: 2026-05, 11건)" /></p>
+<p>생산실적 목록 — 생산지시서 발행일 기간으로 조회 (예: 2026-05, 11건)</p>
+<ul>
+<li><strong>① 조회 조건 —</strong> 생산지시서 발행일(기간) · (상세검색: 생산지시번호 · 품목 · 라우팅 · 작업장 · 진행상태)으로 조회합니다.</li>
+<li><strong>② 툴바 —</strong> [마감] [등록] [수정] [삭제] [다운로드] [생산실적 확정/취소]. [등록]으로 새 실적을 입력하고, [생산실적 확정/취소]로 실적을 확정/확정취소합니다.</li>
+<li><strong>③ 기본정보(생산실적 목록) —</strong> 생산실적번호 · 생산지시번호 · 공장 · 품목 · 규격 · 라우팅 · 생산지시수량 · 생산지시서 발행일 · 계획시작/종료일 · 진행상태 · 작성자 · 부서.</li>
+<li><strong>④ 공정/작업 정보 —</strong> 선택한 생산실적의 라우팅 공정/작업(순번 · 공정명 · 작업명 · 작업장 · 활동ID · 실적완료수량).</li>
+<li><strong>⑤ 생산실적 상세정보 —</strong> 선택한 공정의 실적 라인(시작/종료 일시 · 양품수량 · 불량수량 · 노무작업시간(분) · 설비작업시간(분) · 비고).</li>
+</ul>
+<div class="callout">
+<p>📋 <strong>표시 데이터 예시 —</strong> 2026-05 조회 시 <code>PPM2026050012~023</code> 11건(캔버스 에코백·봉제완료 본체)이 표시됩니다. 예: PPM2026050023(캔버스 에코백)의 포장 공정 → 양품 3,334 · 불량 0 · 2026-05-29 09:00~18:00.</p>
+</div>
+<h3><strong>4) 상세정보 읽기 — 공정/작업 실적과 양품·불량·시간</strong></h3>
+<p>하단 좌측 <strong>공정/작업 정보</strong>에서 공정을 선택하면, 하단 우측 <strong>생산실적 상세정보</strong>에 그 공정의 실적 라인이 표시됩니다.</p>
+<ul>
+<li><strong>공정/작업 정보 —</strong> 라우팅 공정 순서대로 공정명·작업명·작업장·활동ID와 실적완료수량.</li>
+<li><strong>생산실적 상세정보 —</strong> 실제 작업 시작/종료(일자·시·분), 양품수량 · 불량수량, 실제 노무작업시간(분) · 설비작업시간(분), 비고.</li>
+</ul>
+<h3><strong>5) 생산실적 등록·입력</strong></h3>
+<p>툴바 <strong>[등록]</strong> 을 누르면 <strong>생산지시서 선택</strong> 팝업이 열립니다. 실적을 입력할 생산지시서를 먼저 고른 뒤, 공정별 실적을 입력합니다.</p>
+<p><img loading="lazy" src="images/production/3-4/02_register.png" alt="생산실적 등록 1단계 — ‘생산지시서 선택’ 팝업 (조회 후 대상 지시서 선택 → 다음)" /></p>
+<p>생산실적 등록 1단계 — ‘생산지시서 선택’ 팝업 (조회 후 대상 지시서 선택 → 다음)</p>
+<ul>
+<li><strong>① 조회 조건 —</strong> 생산계획일자(기간) · 공장 · 생산지시번호 · 품목 · 라우팅 · 작업장 으로 실적 대상 생산지시서를 조회합니다.</li>
+<li><strong>② 결과(생산지시서 목록) —</strong> 생산지시번호 · 계획버전 · 공장 · 품목 · 규격 · 단위 · 라우팅 · 생산지시수량. 작업장 권한이 있으면 본인 작업장만 선택 가능합니다.</li>
+<li><strong>③ [다음] —</strong> 선택한 지시서로 ‘생산실적 상세’ 입력 화면으로 넘어갑니다.</li>
+</ul>
+<p><strong>생산실적 상세 입력</strong> — 다음 단계에서 공정/작업을 선택하고 실적 라인을 입력합니다.</p>
+<ul>
+<li><strong>[추가]로 실적 라인 생성 →</strong> 실제 작업 시작 · 실제 작업 종료 · 양품수량 · 실제 노무시간 · 실제 설비시간 을 입력합니다.</li>
+<li><strong>불량수량 —</strong> 돋보기 버튼을 누르면 ‘불량 수량 입력’ 팝업이 열려 <strong>불량코드별</strong>(치수·외관·조립·포장 등) 수량을 입력합니다. 합계가 불량수량으로 반영됩니다.</li>
+</ul>
+<p><img loading="lazy" src="images/production/3-4/03_defect.png" alt="불량 수량 입력 팝업 — 불량코드별 수량을 입력하고, 정상불량/비정상불량 유형이 구분되어 표시됩니다" /></p>
+<p>불량 수량 입력 팝업 — 불량코드별 수량을 입력하고, 정상불량/비정상불량 유형이 구분되어 표시됩니다</p>
+<ul>
+<li><strong>① 입력 대상 —</strong> 돋보기를 누른 행의 작업 · 작업장이 표시됩니다.</li>
+<li><strong>② 불량코드 · 불량유형 —</strong> 회사에 등록된 불량코드(예: 치수·색상·스크래치·재질·조립·포장·기능 불량)와 <strong>정상불량 / 비정상불량</strong> 유형이 표시됩니다. 유형에 따라 원가 처리가 달라집니다(정상=월말 양품 원가 가산, 비정상=즉시 손실).</li>
+<li><strong>③ 수량입력 —</strong> 불량코드별 수량을 직접 입력합니다(불량코드가 많으면 스크롤).</li>
+<li><strong>④ [확인] —</strong> 입력한 수량의 합계가 메인 화면의 불량수량으로 반영되고 팝업이 닫힙니다.</li>
+<li><strong>[확인]으로 저장 →</strong> 목록에 실적이 추가되고, Backflush 자재 출고·완성품 입고·전표가 발생합니다.</li>
+</ul>
+<div class="callout">
+<p>📌 <strong>입력 규칙 —</strong> ① 한 실적의 시작·종료일은 같은 월이어야 합니다(월이 다르면 새 실적으로 분리). ② 양품수량은 확정 여부와 무관하게 누적되며, 지시수량을 초과해 입력하는 것도 허용됩니다(예: 지시 100, 누적 70에 50 입력 → 120). ③ 불량은 정상불량/비정상불량으로 구분되어 원가 처리가 달라집니다.</p>
+</div>
+<h3><strong>6) 진행상태와 확정</strong></h3>
+<p>생산실적의 진행상태는 <strong>초안 → 확정</strong> 으로 관리됩니다(시스템 자동/버튼). 툴바 <strong>[생산실적 확정/취소]</strong> 로 선택한 실적을 확정하거나 확정 취소합니다. 확정된 실적이 원가 집계·완성품 입고의 기준이 됩니다.</p>
+<h3><strong>7) 재고·원가 연동 (Backflush)</strong></h3>
+<div class="callout">
+<p>🧾 <strong>실적 입력 → 재고·전표 자동 발생 —</strong> 생산실적을 확정하면 ① BOM Backflush 자재가 출고창고에서 자동 차감(재고↓), ② 재공품(WIP)으로 인식, ③ 최종 공정 완료 시 완성품이 입고대기→완제품/반제품 재고로 입고됩니다. 구체적인 회계 전표(분개)와 재고 처리 로직은 아래 <strong>‘3.5. 생산실적 관련 전표처리 로직’</strong> 페이지를 참조하세요.</p>
+</div>
+<h3><strong>관련 메뉴</strong></h3>
+<ul>
+<li><a href="production.html#production-3-5">3.5. 생산실적 관련 전표처리 로직</a> — 생산실적 입력 시 회계처리·재고처리 상세 로직</li>
+<li><a href="production.html#production-3-1">3.1. 생산지시서</a> — 실적의 대상이 되는 생산지시서를 발행</li>
+<li><a href="production.html#production-1-14">1.14. 공정별 BOM관리</a> — Backflush 대상 자재(공정별 투입 자재) 정의</li>
+<li><a href="production.html#production-4-1">4.1. 생산투입수량확정</a> — 정상차이 수량 등 투입수량 확정(월말)</li>
+<li><a href="cost.html#cost-4-2">4.2. 제조원가 회계처리</a> — 생산실적이 발생시키는 제조원가 분개(원가관리)</li>
+</ul>
+</section><section class="page" id="production-3-5"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">3.5. 생산실적 관련 전표처리 로직</h1><h1><strong>3. 생산실행</strong></h1>
+<h2><strong>3.5. 생산실적 관련 전표처리 로직</strong></h2>
+<div class="callout">
+<p>🧾 이 페이지는 <strong>생산실적 입력·확정 시 발생하는 회계 전표(분개)와 재고 이동</strong>을 정리합니다. 상세 분개 레퍼런스는 <a href="cost.html#cost-4-2">4.2. 제조원가 회계처리</a> 를 따릅니다.</p>
+</div>
+<h3><strong>1) 한눈에 — 생산실적 입력이 일으키는 일</strong></h3>
+<p>생산실적(공정 작업실적)을 확정하면 두 가지가 동시에 일어납니다 — ① <strong>재고 이동</strong>(자재 출고 + 완성품 입고), ② <strong>회계 전표</strong>(재료비·가공비 재공품(WIP) 인식, 완성품 입고대기 대체).</p>
+<div class="callout">
+<p>⏱️ <strong>실시간 vs 월말 —</strong> 아래 전표(T1~T3)는 생산실적입력 시점에 실시간 발생합니다. 가공비 실제배부·배부차이·생산지시서별 정산·매출원가차이는 <strong>월말 제조원가 마감</strong>(<a href="cost.html#cost-4-2">4.2. 제조원가 회계처리</a>)에서 처리됩니다.</p>
+</div>
+<h3><strong>2) 재고 처리 — Backflush 출고와 완성품 입고</strong></h3>
+<p><strong>Backflush —</strong> 생산실적(완성 수량)을 등록하는 순간, 해당 공정에 매핑된 BOM 자재 중 Backflush=Y 자재를 (<strong>양품수량 × 단위소요량</strong>)만큼 출고창고에서 자동 차감합니다. 동시에 원가·재무회계의 재고 장부가 갱신됩니다.</p>
+<ul>
+<li><strong>원재료/부재료 출고(재고 ↓) —</strong> Backflush로 자동 불출. 출고창고는 공정/작업 BOM의 출고저장위치(issue_sloc).</li>
+<li><strong>재공품(WIP) 증가 —</strong> 출고된 재료비 + 표준배부 가공비가 재공품으로 집계됩니다.</li>
+<li><strong>완성품 입고(최종 공정) —</strong> 마지막 공정이 완료되면 완성 수량이 완성품입고대기(제품-완성품미입고)로 입고되고, 완제품 창고이동 시 정식 완제품 재고로 전환됩니다.</li>
+<li><strong>비정상불량 —</strong> 재공품에서 차감되어 타계정(손실)으로 대체됩니다.</li>
+</ul>
+<div class="callout">
+<p>⚠️ <strong>Backflush 재고 부족 —</strong> 시스템 재고 &lt; 차감 수량이면 “Deficit of XX in SLOC” 오류로 전표가 생성되지 않습니다. 입고·이동 전표 누락, 저장위치(SLOC) 오지정, Lot 불일치 등이 원인 → <a href="production.html#production-3-2">3.2. 자재이동요청</a> 등으로 재고를 보충한 뒤 재시도합니다.</p>
+</div>
+<h3><strong>3) 회계 처리 — 발생 전표 (T1~T3)</strong></h3>
+<p>생산실적입력 시점에 실시간으로 발생하는 분개입니다(혼합형·표준원가형 공통 구조이며 단가 인식 기준만 다릅니다).</p>
+<table>
+<thead>
+<tr class="header">
+<th>시점</th>
+<th>차변(Dr)</th>
+<th>대변(Cr)</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>T1-① 재료비 인식</td>
+<td>원재료비(50100) · 부재료비(50200)</td>
+<td>원재료(15300) · 부재료(16200)</td>
+<td>Backflush로 원재료 출고</td>
+</tr>
+<tr class="even">
+<td>T1-② 재공품 대체</td>
+<td>재공품(16900)</td>
+<td>원재료비(50100) · 부재료비(50200) [반제품(17300) 해당 시]</td>
+<td>재료비를 재공품으로 대체</td>
+</tr>
+<tr class="odd">
+<td>T1-③ 변동비 WIP</td>
+<td>재공품(16900)</td>
+<td>변동제조간접비 표준배부액(00002) [임시]</td>
+<td>변동가공비 표준배부</td>
+</tr>
+<tr class="even">
+<td>T1-④ 고정비 WIP</td>
+<td>재공품(16900)</td>
+<td>고정제조간접비 표준배부액(00003) [임시]</td>
+<td>고정가공비 표준배부</td>
+</tr>
+<tr class="odd">
+<td>T2 비정상불량</td>
+<td>비정상공손손실(94500)</td>
+<td>재공품(16900)</td>
+<td>정상불량률 초과분 즉시 손실</td>
+</tr>
+<tr class="even">
+<td>T3 최종공정 완료</td>
+<td>제품-완성품미입고(15003) · 반제품-완성품미입고(17303) [표준]</td>
+<td>재공품(16900) [표준]</td>
+<td>완성 수량을 완성품입고대기로 입고</td>
+</tr>
+</tbody>
+</table>
+<div class="callout">
+<p>💡 계정코드·적요는 회사 설정에 따라 다를 수 있으며 위는 표준 분개 골격입니다. 정확한 계정·적요·차이조정 분개는 <a href="cost.html#cost-4-2">4.2. 제조원가 회계처리</a> 를 참조하세요.</p>
+</div>
+<h3><strong>4) 양품·불량 처리 규칙</strong></h3>
+<ul>
+<li><strong>정상불량(정상불량률 이내) —</strong> 즉시 손실로 처리하지 않고, 월말에 양품 원가에 안분 가산합니다(완제품창고·완성품입고대기 양쪽).</li>
+<li><strong>비정상불량(정상불량률 초과분) —</strong> 발생 즉시 영업외비용(비정상공손손실 94500)으로 인식하고 재공품에서 차감합니다(위 T2).</li>
+<li><strong>양품수량 누적 —</strong> 실적 확정 여부와 무관하게 누적되며, 생산지시수량을 초과해 입력하는 것도 허용됩니다.</li>
+</ul>
+<h3><strong>5) 원가 방식별 차이 (생산실적 시점)</strong></h3>
+<table>
+<thead>
+<tr class="header">
+<th>구분</th>
+<th>혼합형 (원재료=이동평균 / 완제품=표준)</th>
+<th>표준원가형 (전 요소 표준)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>재료비 인식 단가</td>
+<td>원재료 이동평균단가로 출고</td>
+<td>표준재료단가로 출고</td>
+</tr>
+<tr class="even">
+<td>완성품 입고 단가</td>
+<td>표준원가</td>
+<td>표준원가 (월말 실제원가 롤업)</td>
+</tr>
+<tr class="odd">
+<td>월말 차이 조정</td>
+<td>가공비 배부차이만 조정</td>
+<td>재료비·변동비·고정비 3종 차이 모두 + Bottom-Up 4-Phase 롤업</td>
+</tr>
+</tbody>
+</table>
+<h3><strong>6) 월말 마감과의 연결</strong></h3>
+<p>생산실적입력은 실시간 전표(T1~T3)까지만 발생시킵니다. 이후 처리는 월말 제조원가 마감(<a href="cost.html#cost-4-2">4.2. 제조원가 회계처리</a>)에서 이루어집니다.</p>
+<ul>
+<li><strong>가공비 정산 —</strong> 실제 발생액 집계 → CC별 실제배부 → 표준배부 임시계정(00002/00003) 상계 → 변동비/고정비 배부차이(45502/45503) 인식.</li>
+<li><strong>생산지시서별 정산 —</strong> 배부차이를 생산지시서별로 안분 → 완성품입고대기·완제품창고로 이전 → 매출원가 차이(45500) 반영.</li>
+<li><strong>표준원가형 추가 —</strong> 재료비 가격차이(45501)와 비정상 조업도 차이(94600)를 분리 인식.</li>
+</ul>
+<div class="callout">
+<p>📌 <strong>월 경과 —</strong> 마감 시점에 완료되지 않은 재공품·완성품입고대기 잔액은 차월로 이월되며, 잔액 단가는 이전 월 마감 시점의 확정 단가를 유지합니다(표준 vs 실제 차이의 이중반영 방지).</p>
+</div>
+<h3><strong>관련 메뉴</strong></h3>
+<ul>
+<li><a href="production.html#production-3-4">3.4. 생산실적</a> — 본 전표를 발생시키는 생산실적 입력 화면</li>
+<li><a href="cost.html#cost-4-2">4.2. 제조원가 회계처리</a> — 전체 제조원가 분개 레퍼런스(원가관리)</li>
+<li><a href="production.html#production-4-1">4.1. 생산투입수량확정</a> — 정상차이 수량의 재료비 제조원가 가산</li>
+<li><a href="production.html#production-1-14">1.14. 공정별 BOM관리</a> — Backflush 대상 자재(공정별 투입 자재)의 근거</li>
+<li><a href="production.html#production-3-2">3.2. 자재이동요청</a> — Backflush 재고 부족 시 자재 보충</li>
+</ul>
+</section><section class="page" id="production-4-1"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">4.1. 생산투입수량확정</h1><h1>4. 생산마감</h1>
+<h2>4.1. 생산투입수량확정</h2>
+<h3>개요</h3>
+<p>생산투입수량확정은 월 재고실사에서 확인된 원재료·부재료·반제품의 차이수량 중 ‘정상차이수량’만큼을, 해당 자재가 투입된 제품·반제품의 생산비율로 추가 투입수량으로 안분(배부)한 뒤 확정(마감)하는 화면입니다. 확정된 정상차이 투입분은 재료비로 인식되어 제품·반제품의 제조원가에 가산됩니다.</p>
+<div class="callout">
+<p>⚠️ 선행조건: 모든 창고의 재고실사가 마감(실사 확정)되어야 조회·배부가 가능합니다. 실사가 마감되지 않은 상태로 조회하면 ‘재고실사 마감필요’ 안내가 표시됩니다.</p>
+</div>
+<h3>화면 진입</h3>
+<p>좌측 사이드바 [생산관리] ▸ [생산마감] ▸ [생산투입수량확정]. 상단 공장·기준월을 선택해 [조회]합니다(기준월 예: 2026-05).</p>
+<h3>화면 구성</h3>
+<p>화면은 ‘1. 대상 품목 실사 차이 요약’(마스터)과 ‘2. 제품/반제품 별 배부 상세 및 사용자 조정’(디테일)의 상하 마스터-디테일로 구성됩니다.</p>
+<p><img loading="lazy" src="images/production/4-1/01_overview.png" /></p>
+<ul>
+<li>1. 대상 품목 실사 차이 요약 — 실사번호 · 공장 · 창고 · 품목코드 · 품목명 · 품목유형(원재료/부재료/반제품) · 규격 · 단위 · 장부수량 · 실사수량 · 차이수량 · 정상차이수량 · 비정상차이수량 · 비고 · 배부상태. 버튼: [투입수량 확정(마감)] · [생산비율 자동안분처리] · [다운로드], 체크박스 ‘정상차이수량 품목만 보기’.</li>
+<li>2. 제품/반제품 별 배부 상세 및 사용자 조정 — 공장 · 품목코드 · 품목명 · 품목유형 · 규격 · 단위 · 구분(완제품/재공품) · 표준투입수량 · 투입비율(%) · 추가투입수량 배부 · 최종 투입수량 · 비고 · 최종작업자 · 작업일시. 하단에 추가투입수량 합계·미투입수량이 표시됩니다.</li>
+</ul>
+<h3>선행조건 — 재고실사 마감</h3>
+<p>조회 시 모든 창고의 재고실사 마감 여부를 검증합니다. 대기·결재진행·반려 등 미마감 창고가 있으면 배부가 차단됩니다.</p>
+<p><img loading="lazy" src="images/production/4-1/02_precond.png" /></p>
+<ul>
+<li>미마감 상태로 조회하면 ‘창고 재고실사가 아직 마감되지 않았습니다. 먼저 실사를 확정한 후 차이 배부를 진행해 주세요.’ 안내가 표시됩니다. 재고실사를 확정한 뒤 다시 조회합니다.</li>
+</ul>
+<h3>처리 절차</h3>
+<ul>
+<li>차이수량 확인 — 차이수량 = 장부수량 − 실사수량. 실사수량이 부족해 차이수량이 음수인 품목 중 ‘정상차이수량’이 있는 건만 제품·반제품 안분 대상입니다.</li>
+<li>정상 / 비정상 구분 — 정상차이수량은 제조원가에 반영되는 차이, 비정상차이수량(예: ‘생산투입기록 없음’)은 원가 반영에서 제외됩니다.</li>
+<li>생산비율 자동안분처리 — [생산비율 자동안분처리]를 누르면 정상차이수량을 해당 자재가 투입된 당월 제품·반제품의 생산비율(투입비율)대로 자동 안분해 추가투입수량 배부를 채웁니다. 또는 ②에서 추가투입수량 배부를 직접 키인할 수 있습니다(정상차이수량이 있는 행만 입력 가능). 예) 표준투입수량 5,000 · 투입비율 30% 행에 추가투입수량 50 → 최종 투입수량 5,050.</li>
+<li>배부상태 — 정상차이수량이 없는 라인은 상태 없음, 정상차이수량이 있는데 100% 안분되지 않으면 ‘미배부’, 모두 안분되면 ‘배부완료’입니다.</li>
+<li>투입수량 확정(마감) — 모든 라인이 배부완료(또는 정상차이 없음) 상태일 때 [투입수량 확정(마감)]으로 확정합니다(‘…의 생산투입수량을 확정하시겠습니까?’). 확정 후에도 확정취소가 가능하나, 공장별 원가마감·전체마감 상태이면 확정취소할 수 없습니다.</li>
+</ul>
+<h3>회계처리 (전표)</h3>
+<p>확정된 정상차이 투입분은 재료비로 인식되어 제조원가에 가산됩니다. 제조원가 회계처리(4.2)의 【9】 생산투입수량확정 단계로, 재료비 인식(T1)과 같은 흐름을 정상차이 수량만큼만 인식합니다(9a 추가투입분 원재료 출고 / 9b 재공품 안분(미완성분) / 9c 완성품 원가 가산(입고완료분)).</p>
+<ul>
+<li>9a 원재료 출고 — (차) 원재료비(50100)·부재료비(50200) / (대) 원재료(15300)·부재료(16200).</li>
+<li>9b·9c 재공품·완성품 대체 — (차) 재공품(16900) / (대) 원재료비(50100)·부재료비(50200), 반제품 투입 시 (대) 반제품(17300).</li>
+<li>표준원가형은 동일 구조를 표준단가로 인식합니다. 차변/대변 분개 상세는 [4.2. 제조원가 회계처리]를 참조하세요.</li>
+</ul>
+<h3>연계</h3>
+<ul>
+<li>선행은 재고실사 마감, 후속은 제조원가 마감 및 결산의 재고마감 단계입니다. 확정된 정상차이 투입분은 제품·반제품의 실제 제조원가와 원가조정 내역에 반영됩니다.</li>
+</ul>
+</section><section class="page" id="production-5-1"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">5.1. 생산지시 대비 / 실적 현황</h1><h1><strong>5. 보고서</strong></h1>
+<h2><strong>5.1. 생산지시 대비 / 실적 현황</strong></h2>
+<div class="callout">
+<p>📊 <strong>생산지시 대비 실적 현황</strong> 보고서는 생산지시서별 실제 생산실적을 <strong>라인(공정/작업) 단위</strong>로 나란히 보여줍니다. 생산지시와 실적을 생산지시번호로 연결(Join)해, 지시수량 대비 실적·양품·불량을 한눈에 확인합니다.</p>
+</div>
+<h3><strong>1) 개요</strong></h3>
+<p>생산지시서(헤더·디테일)와 생산실적(헤더·디테일)을 <code>생산지시번호</code>로 연결해, 공정/작업·작업장·지시일자별로 펼쳐 보여주는 현황 보고서입니다. 양품수량은 <strong>실적수량 − 불량수량</strong> 으로 계산되며, 같은 생산지시번호는 소계로 묶여 표시됩니다.</p>
+<h3><strong>2) 화면 진입</strong></h3>
+<p>좌측 사이드바 <strong>[생산관리] ▸ [보고서] ▸ [생산지시대비 실적현황]</strong> 메뉴를 클릭합니다.</p>
+<h3><strong>3) 화면 구성</strong></h3>
+<p><img loading="lazy" src="images/production/5-1/01_list.png" alt="생산지시 대비 실적 현황 — 지시일자 기간으로 조회 (예: 2026-05). 생산지시번호별 소계 표시" /></p>
+<p>생산지시 대비 실적 현황 — 지시일자 기간으로 조회 (예: 2026-05). 생산지시번호별 소계 표시</p>
+<ul>
+<li><strong>① 조회 조건 —</strong> 지시일자(기간) · (상세검색: 공정 · 작업장 · 작업)으로 조회합니다.</li>
+<li><strong>② 다운로드 —</strong> 조회 결과를 엑셀로 저장합니다.</li>
+<li><strong>③ 데이터(지시+실적 라인) —</strong> 생산지시서와 실적을 연결한 공정/작업 단위 목록.</li>
+<li><strong>④ 수량 —</strong> 지시수량 · 실적수량 · 양품수량(=실적−불량) · 불량수량 · 불량코드. 생산지시번호별 <strong>소계</strong>와 맨 아래 <strong>합계</strong> 행이 고정 표시됩니다.</li>
+</ul>
+<h3><strong>4) 컬럼 설명</strong></h3>
+<table>
+<thead>
+<tr class="header">
+<th>컬럼</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>생산지시번호 / 실적번호</td>
+<td>생산지시·실적 문서 번호(생산지시번호로 Join). 같은 지시번호는 그룹·소계 처리</td>
+</tr>
+<tr class="even">
+<td>품목 · 규격 · 단위</td>
+<td>생산 대상 제품</td>
+</tr>
+<tr class="odd">
+<td>공정명 · 작업장 · 작업명</td>
+<td>라우팅 공정/작업과 수행 작업장</td>
+</tr>
+<tr class="even">
+<td>지시일자</td>
+<td>생산지시 일자</td>
+</tr>
+<tr class="odd">
+<td>지시수량</td>
+<td>생산지시 수량</td>
+</tr>
+<tr class="even">
+<td>실적수량</td>
+<td>실제 생산수량</td>
+</tr>
+<tr class="odd">
+<td>양품수량</td>
+<td>실적수량 − 불량수량</td>
+</tr>
+<tr class="even">
+<td>불량수량 · 불량코드</td>
+<td>불량 수량과 불량코드</td>
+</tr>
+</tbody>
+</table>
+<h3><strong>관련 메뉴</strong></h3>
+<ul>
+<li><a href="production.html#production-3-1">3.1. 생산지시서</a> — 지시수량의 원천(생산지시 발행)</li>
+<li><a href="production.html#production-3-4">3.4. 생산실적</a> — 실적수량·양품·불량의 원천(생산실적 입력)</li>
+<li><a href="production.html#production-5-2">5.2. 생산지시 대비 실적 차이</a> — 계획 대비 실적 차이를 분석하는 보고서</li>
+</ul>
+</section><section class="page" id="production-5-2"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">5.2. 생산지시 대비 실적 차이</h1><h1><strong>5. 보고서</strong></h1>
+<h2><strong>5.2. 생산지시 대비 실적 차이</strong></h2>
+<div class="callout">
+<p>📉 <strong>생산지시 대비 실적 차이</strong> 보고서는 생산지시(계획)수량과 실제 생산수량의 <strong>차이</strong>를 날짜·공정/작업장 단위로 분석합니다. 생산수량 차이와 불량을 <strong>색상</strong>으로 강조해, 계획 미달·초과나 불량 발생 건을 빠르게 찾습니다.</p>
+</div>
+<h3><strong>1) 개요</strong></h3>
+<p>생산지시서의 <strong>계획수량</strong>과 생산실적의 <strong>실제수량</strong>을 비교해 <strong>생산수량 차이(= 실제수량 − 계획수량)</strong>를 산출합니다. 차이의 방향을 색상으로 구분해 한눈에 파악할 수 있습니다.</p>
+<div class="callout">
+<p>🎨 <strong>색상 표시 —</strong> 계획 &gt; 실제 = <strong>빨강</strong>(미달) · 계획 = 실제 = <strong>녹색</strong>(일치) · 계획 &lt; 실제 = <strong>파랑</strong>(초과). 불량수량이 0보다 크면 불량 항목도 강조됩니다.</p>
+</div>
+<h3><strong>2) 화면 진입</strong></h3>
+<p>좌측 사이드바 <strong>[생산관리] ▸ [보고서] ▸ [생산지시대비 실적차이]</strong> 메뉴를 클릭합니다.</p>
+<h3><strong>3) 화면 구성</strong></h3>
+<p><img loading="lazy" src="images/production/5-2/01_list.png" alt="생산지시 대비 실적 차이 — 대상기간으로 조회 (예: 2026-05). 생산수량 차이가 색상으로 표시됨" /></p>
+<p>생산지시 대비 실적 차이 — 대상기간으로 조회 (예: 2026-05). 생산수량 차이가 색상으로 표시됨</p>
+<ul>
+<li><strong>① 조회 조건 · 필터 —</strong> 대상기간(기간) · (상세검색: 품목 · 규격 · 단위 · 생산지시서 번호 · 작업장). <strong>생산수량 차이 / 불량 발생</strong> 체크 시 해당 건만 필터링합니다.</li>
+<li><strong>② 라인 데이터 —</strong> 날짜 · 공장 · 품목 · 생산지시서 번호 · 작업장 단위의 계획/실적 비교 행.</li>
+<li><strong>③ 계획수량 · 실제수량 · 생산수량 차이 —</strong> 계획 대비 실제, 그 차이(색상 표시). 생산지시서 번호 클릭 시 해당 지시서로 이동합니다.</li>
+<li><strong>④ 실제양품 수량 · 불량 수량 · 불량 원인 —</strong> 양품·불량 수량과 불량 원인(불량코드). 불량 원인 클릭 시 해당 실적의 불량 내역으로 이동합니다.</li>
+</ul>
+<h3><strong>4) 컬럼 설명</strong></h3>
+<table>
+<thead>
+<tr class="header">
+<th>컬럼</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>날짜</td>
+<td>생산실적 일자</td>
+</tr>
+<tr class="even">
+<td>공장 · 품목 · 규격 · 단위</td>
+<td>생산 대상</td>
+</tr>
+<tr class="odd">
+<td>생산지시서 번호</td>
+<td>대상 생산지시서(클릭 시 이동)</td>
+</tr>
+<tr class="even">
+<td>작업장</td>
+<td>수행 작업장</td>
+</tr>
+<tr class="odd">
+<td>계획수량</td>
+<td>생산지시서의 일자별 계획수량</td>
+</tr>
+<tr class="even">
+<td>실제수량</td>
+<td>생산실적의 일자별 실제수량</td>
+</tr>
+<tr class="odd">
+<td>생산수량 차이</td>
+<td>실제수량 − 계획수량 (− 빨강 / 0 녹색 / + 파랑)</td>
+</tr>
+<tr class="even">
+<td>실제양품 수량</td>
+<td>생산실적의 양품수량</td>
+</tr>
+<tr class="odd">
+<td>불량 수량 · 불량 원인</td>
+<td>불량 수량과 원인(불량코드)</td>
+</tr>
+</tbody>
+</table>
+<h3><strong>5) 활용</strong></h3>
+<ul>
+<li><strong>차이 건만 보기 —</strong> ‘생산수량 차이’ 필터로 계획과 실제가 다른 건만 모아 원인을 점검합니다.</li>
+<li><strong>불량 건만 보기 —</strong> ‘불량 발생’ 필터로 불량이 발생한 공정/작업장을 추려 품질 이슈를 분석합니다.</li>
+</ul>
+<h3><strong>관련 메뉴</strong></h3>
+<ul>
+<li><a href="production.html#production-5-1">5.1. 생산지시 대비 / 실적 현황</a> — 지시 대비 실적을 라인 단위로 보는 현황 보고서</li>
+<li><a href="production.html#production-3-1">3.1. 생산지시서</a> — 계획수량의 원천(생산지시)</li>
+<li><a href="production.html#production-3-4">3.4. 생산실적</a> — 실제수량·불량의 원천(생산실적)</li>
+<li><a href="production.html#production-5-3">5.3. 주차별 생산효율</a> — 효율·품질·납기까지 평가하는 생산 성과 보고서</li>
+</ul>
+</section><section class="page" id="production-5-3"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">5.3. 주차별 생산효율</h1><h1><strong>5. 보고서</strong></h1>
+<h2><strong>5.3. 주차별 생산효율</strong></h2>
+<div class="callout">
+<p>📈 <strong>주차별 생산효율</strong> 보고서는 일정 기간의 생산지시서 기준으로 ① 계획 대비 양품 생산수량(<strong>달성률</strong>), ② 생산효율(<strong>표준 UPH 대비 실제 UPH</strong>), ③ 품질수준(<strong>불량율</strong>)을 월·주차 단위로 평가합니다.</p>
+</div>
+<h3><strong>1) 개요</strong></h3>
+<p>생산지시서의 계획수량과 생산실적(생산·양품·불량 수량, 공수)을 월·주차 단위로 집계해 <strong>수량 달성률 · 생산효율 · 불량율</strong>을 한 화면에서 평가합니다. 대상 월을 클릭하면 해당 월의 주차별 내역이 펼쳐집니다.</p>
+<div class="callout">
+<p>🧮 <strong>계산식 —</strong> 계획수량 달성률 = 양품수량 ÷ 계획수량 × 100 · 생산효율 = 실제 UPH ÷ 표준 UPH · 불량율 = 불량수량 ÷ 생산수량. (UPH = 시간당 생산량)</p>
+</div>
+<h3><strong>2) 화면 진입</strong></h3>
+<p>좌측 사이드바 <strong>[생산관리] ▸ [보고서] ▸ [주차별 생산효율]</strong> 메뉴를 클릭합니다.</p>
+<h3><strong>3) 화면 구성</strong></h3>
+<p><img loading="lazy" src="images/production/5-3/01_list.png" alt="주차별 생산효율 — 대상기간으로 조회 (예: 2026-05). 달성률·생산효율·불량율을 주차별로 평가 (오른쪽으로 실제 UPH·생산효율·불량율 컬럼이 이어짐)" /></p>
+<p>주차별 생산효율 — 대상기간으로 조회 (예: 2026-05). 달성률·생산효율·불량율을 주차별로 평가 (오른쪽으로 실제 UPH·생산효율·불량율 컬럼이 이어짐)</p>
+<ul>
+<li><strong>① 조회 조건 · 필터 —</strong> 대상기간(기간) · (상세검색: 공장 · 제품). <strong>계획수량 미달성 / 생산효율 100% 미만 / 불량 발생</strong> 체크 시 해당 조건(AND)만 필터링합니다.</li>
+<li><strong>② 대상 월 · 주차 —</strong> 평가 기간. 월을 클릭하면 주차별 행이 펼쳐집니다.</li>
+<li><strong>③ 수량 · 달성률 —</strong> 계획수량 · 생산수량 · 양품수량 · 불량수량과 양품수량 차이(개) · 계획수량 달성률(%) · 계획준수 여부.</li>
+<li><strong>④ 효율 —</strong> 계획공수 · 실제공수 · 표준 UPH · 실제 UPH · 생산효율 · 불량율.</li>
+</ul>
+<h3><strong>4) 컬럼 설명</strong></h3>
+<table>
+<thead>
+<tr class="header">
+<th>컬럼</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>대상 월 · 주차</td>
+<td>평가 기간(월 클릭 시 주차 펼침)</td>
+</tr>
+<tr class="even">
+<td>공장 · 제품 · 규격 · 단위</td>
+<td>평가 대상</td>
+</tr>
+<tr class="odd">
+<td>계획수량 / 생산수량 / 양품수량 / 불량수량</td>
+<td>지시 계획수량과 실적(생산·양품·불량)</td>
+</tr>
+<tr class="even">
+<td>양품수량 차이(개)</td>
+<td>양품수량 − 계획수량</td>
+</tr>
+<tr class="odd">
+<td>계획수량 달성률(%)</td>
+<td>양품수량 ÷ 계획수량 × 100</td>
+</tr>
+<tr class="even">
+<td>계획준수 여부</td>
+<td>계획 대비 달성 시 Y, 미달 시 N</td>
+</tr>
+<tr class="odd">
+<td>계획공수 / 실제공수</td>
+<td>표준·실제 투입 공수</td>
+</tr>
+<tr class="even">
+<td>표준 UPH / 실제 UPH</td>
+<td>시간당 생산량(표준/실제)</td>
+</tr>
+<tr class="odd">
+<td>생산효율</td>
+<td>실제 UPH ÷ 표준 UPH</td>
+</tr>
+<tr class="even">
+<td>불량율</td>
+<td>불량수량 ÷ 생산수량</td>
+</tr>
+</tbody>
+</table>
+<h3><strong>5) 활용</strong></h3>
+<ul>
+<li><strong>미달성·저효율·불량 건 추출 —</strong> ‘계획수량 미달성’·‘생산효율 100% 미만’·‘불량 발생’ 필터를 조합해 개선 대상 주차/제품을 빠르게 찾습니다.</li>
+</ul>
+<h3><strong>관련 메뉴</strong></h3>
+<ul>
+<li><a href="production.html#production-3-4">3.4. 생산실적</a> — 양품·불량·공수 실적의 원천(생산실적)</li>
+<li><a href="production.html#production-5-1">5.1. 생산지시 대비 / 실적 현황</a> — 지시 대비 실적을 라인 단위로 보는 현황</li>
+<li><a href="production.html#production-5-2">5.2. 생산지시 대비 실적 차이</a> — 계획 대비 실적 차이 분석</li>
+</ul>
+</section><section class="page" id="production-5-4"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">5.4. BOM 대비 실적 차이</h1><h1><strong>5. 보고서</strong></h1>
+<h2><strong>5.4. BOM 대비 실적 차이</strong></h2>
+<div class="callout">
+<p>📦 <strong>BOM 대비 실적 차이</strong> 보고서는 생산지시서 BOM의 <strong>표준 소요량</strong>과 실제 <strong>투입량(Backflush·카운팅)</strong>을 자재별로 비교해 투입량 차이를 분석합니다. 과다·절감 투입을 색상으로 강조합니다.</p>
+</div>
+<h3><strong>1) 개요</strong></h3>
+<p>제품별 생산량과 BOM 표준 소요량을 기준으로 자재별 <strong>표준소요량</strong>을 산출하고, 실제 투입량과 비교해 <strong>투입량 차이</strong>를 봅니다. 제품별 소계와 전체 합계가 표시됩니다.</p>
+<div class="callout">
+<p>🧮 <strong>계산식 —</strong> 표준소요량 = 표준 단위 소요량 × (1 + 표준 스크랩) × 제품 생산량 · 투입량 차이 = 실제투입량 − 표준소요량 · 투입량 차이(%) = 차이 ÷ 표준소요량 × 100.</p>
+</div>
+<div class="callout">
+<p>🎨 <strong>색상 표시 —</strong> 표준 &lt; 실제 = <strong>빨강</strong>(과다 투입) · 표준 = 실제 = <strong>녹색</strong> · 표준 &gt; 실제 = <strong>파랑</strong>(절감).</p>
+</div>
+<h3><strong>2) 화면 진입</strong></h3>
+<p>좌측 사이드바 <strong>[생산관리] ▸ [보고서] ▸ [BOM 대비 실적 차이]</strong> 메뉴를 클릭합니다.</p>
+<h3><strong>3) 화면 구성</strong></h3>
+<p><img loading="lazy" src="images/production/5-4/01_list.png" alt="BOM 대비 실적 차이 — 대상기간으로 조회 (예: 2026-05). 자재별 표준소요량 대비 실제투입량 차이, 제품별 소계/합계" /></p>
+<p>BOM 대비 실적 차이 — 대상기간으로 조회 (예: 2026-05). 자재별 표준소요량 대비 실제투입량 차이, 제품별 소계/합계</p>
+<ul>
+<li><strong>① 조회 조건 · 필터 —</strong> 대상기간(기간) · (상세검색: 공장 · 제품). <strong>투입량 과다</strong> 체크 시 표준 대비 실제투입이 큰 건만 필터링합니다.</li>
+<li><strong>② 제품 · 자재 —</strong> 공장 · 제품 · 제품 생산량과 BOM 투입 자재(자재코드 · 자재명).</li>
+<li><strong>③ 표준 —</strong> 표준 단위 소요량 · 표준 스크랩 · 표준소요량.</li>
+<li><strong>④ 실제 · 차이 —</strong> 실제투입량 · 투입량 차이(색상) · 투입량 차이(%). 제품별 <strong>소계</strong>와 맨 아래 <strong>합계</strong>.</li>
+</ul>
+<h3><strong>4) 컬럼 설명</strong></h3>
+<table>
+<thead>
+<tr class="header">
+<th>컬럼</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>공장 · 제품 · 규격 · 단위</td>
+<td>생산 제품</td>
+</tr>
+<tr class="even">
+<td>제품 생산량</td>
+<td>해당 기간 제품 양품 생산수량</td>
+</tr>
+<tr class="odd">
+<td>자재코드 · 자재명 · 규격 · 단위</td>
+<td>BOM 투입 자재</td>
+</tr>
+<tr class="even">
+<td>표준 단위 소요량</td>
+<td>제품 1개당 자재 표준 소요량(BOM)</td>
+</tr>
+<tr class="odd">
+<td>표준 스크랩</td>
+<td>공정·작업별 표준 스크랩율</td>
+</tr>
+<tr class="even">
+<td>표준소요량</td>
+<td>표준 단위 소요량 × (1 + 표준 스크랩) × 생산량</td>
+</tr>
+<tr class="odd">
+<td>실제투입량</td>
+<td>실제 카운팅 또는 Backflush 투입량</td>
+</tr>
+<tr class="even">
+<td>투입량 차이</td>
+<td>실제투입량 − 표준소요량 (과다 빨강 / 일치 녹색 / 절감 파랑)</td>
+</tr>
+<tr class="odd">
+<td>투입량 차이(%)</td>
+<td>투입량 차이 ÷ 표준소요량 × 100</td>
+</tr>
+</tbody>
+</table>
+<h3><strong>5) 활용</strong></h3>
+<ul>
+<li><strong>자재 로스 점검 —</strong> ‘투입량 과다’ 필터로 표준 대비 과투입(로스) 자재를 찾아 원인(불량·세팅·계량 오차 등)을 분석합니다.</li>
+</ul>
+<h3><strong>관련 메뉴</strong></h3>
+<ul>
+<li><a href="production.html#production-3-5">3.5. 생산실적 관련 전표처리 로직</a> — 투입 자재의 재고·전표 처리</li>
+<li><a href="production.html#production-1-14">1.14. 공정별 BOM관리</a> — 표준 소요량의 근거(공정별 투입 자재 BOM)</li>
+<li><a href="production.html#production-3-4">3.4. 생산실적</a> — 실제투입량의 원천(생산실적 Backflush)</li>
+<li><a href="production.html#production-5-2">5.2. 생산지시 대비 실적 차이</a> — 생산수량 차이 분석 보고서</li>
+</ul>
+</section><section class="page" id="production-5-5"><a class="top" href="#top">▲ 맨 위</a><h1 class="page-title">5.5. 생산지시서별 재공재고 현황</h1><h1>5. 보고서</h1>
+<h2>5.5. 생산지시서별 재공재고 현황</h2>
+<h3>개요</h3>
+<p>생산지시서별 재공재고 현황은 생산지시서별로 월말 시점의 재공재고(WIP)를 재료비·변동가공비·고정가공비 비목별로 나눠 표준 대비 실제로 산출해 보여주는 조회 전용 보고서입니다. 공정·작업 단위로 기초 재공에서 당기 작업분을 더하고 완성품으로 전환된 분을 빼서 차월로 이월되는 재공재고를 확인하며, 표준과 실제 금액의 차이도 함께 봅니다.</p>
+<div class="callout">
+<p>💡 재공재고수량(양품) = 작업별 양품수량 − 완성(전환)수량. WIP금액(표준) = 표준소요량(또는 표준시간) × 표준단가 WIP금액(실제) = 실제투입수량(또는 실제시간) × 실제단가 표준-실제 차이금액 = WIP금액(표준) − WIP금액(실제) 기초WIP(이월) + 당기작업분 − 완성품전환 = 차월이월.</p>
+</div>
+<h3>화면 진입</h3>
+<p>좌측 사이드바 [생산관리] ▸ [보고서] ▸ [생산지시서별 재공재고 현황]. 상단 기준월·공장을 선택해 [조회]합니다. 조건을 비우려면 [초기화], [상세 검색]으로 생산지시서 등 조건을 추가할 수 있으며, [다운로드]·[출력]로 내보냅니다.</p>
+<h3>화면 구성</h3>
+<p>화면은 상단 ‘생산지시서 목록’(마스터)과 하단 ‘공정·작업별 재공재고 산출[표준 대비 실적]’(디테일)의 마스터-디테일로 구성됩니다. 마스터에서 생산지시서를 선택하면 하단에 그 지시서의 재공재고가 표시되고, 하단은 재료비 / 변동가공비 / 고정가공비 탭으로 나뉩니다.</p>
+<p><img loading="lazy" src="images/production/5-5/01_master.png" /></p>
+<ul>
+<li>생산지시서 목록(마스터) — 생산지시서번호 · 제품코드 · 제품명 · 규격 · 단위 · 생산지시수량 · 생산지시서 발행일 · 계획시작일 · 계획종료일 · 작성자 · 부서 · 비고.</li>
+</ul>
+<p><img loading="lazy" src="images/production/5-5/02_detail.png" /></p>
+<ul>
+<li>공정·작업별 재공재고(디테일) — 공통 좌측: 공정명 · 작업명 · 작업장 · 작업순번과 A.기초WIP(이월)[기초수량·기초단가·기초금액], B.당기작업분[양품 · 정상불량 · 비정상불량 · 합계], C.완성품전환[전환수량 · 총평균단가 · 전환금액(실제)], D.차월이월[이월수 · 이월단가 · 이월금액(실제)]. 비목별 표준/실제 컬럼은 탭에 따라 달라집니다.</li>
+<li>재료비 탭 — 자재코드 · 자재명 · 표준소요량 · 표준재료비단가 · WIP금액(표준) · 실제투입수량 · 실제재료비단가 · WIP금액(실제) · 표준-실제 차이금액. (예: 캔버스 원단 표준 2,500,000 vs 실제 2,627,273 → 차이 −127,273.)</li>
+<li>변동가공비 탭 — 활동코드 · 활동명 · 계정과목 · 표준노무시간(분) · 표준설비시간(분) · 표준활동단가 · WIP금액(표준) · 실제노무시간(분) · 실제설비시간(분) · 실제활동단가 · WIP금액(실제) · 표준-실제 차이금액. 작업 진행은 준비(S)·가공(P)·완료(F) 구분으로 집계됩니다.</li>
+<li>고정가공비 탭 — 코스트센터 · 고정비 계정과목 · 표준배부율 · 배부적수값 · WIP금액(표준) · 실제배부율 · WIP금액(실제) · 표준-실제 차이금액.</li>
+</ul>
+<h3>재공재고(WIP) 산출</h3>
+<ul>
+<li>재공재고수량은 작업별 양품수량에서 완성(전환)수량을 뺀 미완성 수량입니다(최종 작업까지 완료된 양품은 완성품으로 전환).</li>
+<li>WIP금액(표준)은 재공수량 기준 표준소요량·표준시간에 표준단가를 곱한 값, WIP금액(실제)은 실제투입·실제시간에 실제단가(총평균단가 기준)를 곱한 값이며, 둘의 차이가 표준-실제 차이금액입니다.</li>
+<li>월마감 시 완성분은 전환금액으로 제품·반제품에 대체되어 해당 생산지시서의 재공은 0이 되는 것이 원칙이며, 미완성분만 차월로 이월됩니다. 표준-실제 차이는 원가차이로 정산됩니다.</li>
+</ul>
+<h3>연계</h3>
+<ul>
+<li>생산지시서·생산실적·생산투입수량확정을 선행으로 집계되며, 산출된 재공재고·완성품 전환금액과 차이는 당기 생산원가 보고서와 제조원가 마감 및 결산에 반영됩니다.</li>
+</ul>
+</section></main></div></body></html>
